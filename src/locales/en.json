@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "home": "Home",
+    "appearance": "Exploring",
+    "profile": "Profile",
+    "label": "Main navigation",
+    "brand": "GGAS home"
+  },
+  "home": {
+    "available": "OPEN TO NEW IDEAS",
+    "hello": "Hey, I'm",
+    "tagline": "Building things. Trying new worlds.",
+    "description": "A full-stack developer who loves turning ideas into something you can use. From web apps to tiny circuits and 3D prints, there is always something new on my workbench.",
+    "explore": "Explore my world",
+    "stack": "My tech stack",
+    "exploring": "CURRENTLY EXPLORING",
+    "mainClass": "MAIN CLASS",
+    "flutter": "Experimenting with cross-platform apps and playful mobile interfaces.",
+    "esp32": "Connecting tiny circuits to real-world ideas. A little code, a little hardware.",
+    "printing": "Turning digital designs into things I can actually hold.",
+    "inProgress": "Experiment in progress",
+    "previous": "Previous experiment",
+    "next": "Next experiment"
+  },
+  "appearance": {
+    "preferences": "PREFERENCES",
+    "heading": "Appearance",
+    "palette": "Theme palette",
+    "preview": "PREVIEW"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "switch": "Switch to {{mode}} theme",
+    "tooltip": "{{mode}} theme"
+  },
+  "language": {
+    "switch": "Switch to Thai",
+    "tooltip": "ภาษาไทย"
+  },
+  "profile": {
+    "role": "Full Stack Developer",
+    "space": "PERSONAL SPACE",
+    "creative": "CREATIVE!",
+    "tagline": "CODE + CREATIVITY",
+    "cartoon": "Cartoon portrait of {{name}}",
+    "photo": "Photograph of {{name}}",
+    "cartoonUnavailable": "Cartoon portrait of {{name}} unavailable",
+    "photoUnavailable": "Photograph of {{name}} unavailable",
+    "showCartoon": "Show cartoon portrait of {{name}}",
+    "showPhoto": "Show real photo of {{name}}",
+    "cartoonTooltip": "Back to my alter ego?",
+    "photoTooltip": "Who's behind this face?",
+    "react": "React",
+    "gaming": "Gaming",
+    "printing": "3D printing"
+  }
+}
