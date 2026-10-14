@@ -16,6 +16,8 @@ html { scrollbar-gutter: stable; }
 .notebook-photo { position: relative; margin: 22px 8px; padding: 12px 12px 8px; border: 3px solid #171717; background: #fff; box-shadow: 5px 5px 0 #171717; transform: rotate(-3deg); }
 .notebook-photo > img:not(.notebook-tape) { display: block; width: 100%; height: 155px; padding: 12px; background: #c9e9ee; object-fit: contain; }
 .notebook-photo figcaption { margin-top: 8px; text-align: center; font-size: 11px; font-weight: 700; }
+.notebook-photo-personal > img:not(.notebook-tape) { height: auto; max-height: 220px; padding: 0; background: #fff; object-fit: contain; }
+.notebook-pages[data-university="true"] .notebook-paper-left h2 { font-size: clamp(22px, 2.5vw, 30px); line-height: 1.25; text-wrap: balance; }
 .notebook-tape { position: absolute; z-index: 1; top: -21px; left: calc(50% - 45px); width: 90px; height: 42px; transform: rotate(5deg); }
 .notebook-bookmark { position: absolute; top: -30px; right: 6px; width: 35px; height: 60px; }
 .notebook-paperclip { position: absolute; top: 0; right: -16px; width: 24px; height: 43px; transform: rotate(15deg); }
@@ -79,6 +81,7 @@ html { scrollbar-gutter: stable; }
   .notebook-cover-front h3 { font-size: 32px; }
   .notebook-close { top: -12px; right: -9px; }
   .notebook-photo > img:not(.notebook-tape) { height: 145px; }
+  .notebook-photo-personal > img:not(.notebook-tape) { height: auto; max-height: 230px; }
   .notebook-turn-sheet { width: calc(100% - 18px); }
   .notebook-turn-forward { left: 9px; }
   .notebook-turn-backward { right: 9px; }

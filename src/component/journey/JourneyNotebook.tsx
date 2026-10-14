@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import ScrambleText from '../ScrambleText'
 import car from '../../assets/journey_timeline/journey_car_side.png'
 import sign from '../../assets/journey_timeline/direction_sign.png'
+import universityPhoto from '../../assets/journey_timeline/img/university-rmuti.png'
 import starSticker from '../../assets/journey-notebook-asset-pack/svg/12-sticker-star.svg'
 import heartSticker from '../../assets/journey-notebook-asset-pack/svg/13-sticker-heart.svg'
 import arrowSticker from '../../assets/journey-notebook-asset-pack/svg/14-sticker-arrow.svg'
@@ -44,6 +45,7 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
   const restorePageFocus = useRef(false)
   const pageCount = selection.id === 'career' ? 2 : 1
   const chapterPrefix = `journey.stages.${selection.id}`
+  const isUniversity = selection.id === 'university'
   const prefix = pageCount > 1 ? `${chapterPrefix}.spreads.${page === 0 ? 'first' : 'present'}` : chapterPrefix
 
   useLayoutEffect(() => {
@@ -309,16 +311,16 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
     <div ref={overlayRef} className="notebook-overlay" role="dialog" aria-modal="true" aria-labelledby="notebook-title" aria-describedby="notebook-description" style={{ '--notebook-accent': selection.color } as CSSProperties}>
       <div className="notebook-backdrop" onClick={() => closeAnimation.current()} aria-hidden="true" />
       <div className="notebook-stage">
-        <div className="notebook-pages" data-paginated={pageCount > 1}>
+        <div className="notebook-pages" data-paginated={pageCount > 1} data-university={isUniversity}>
           <div className="notebook-paper-scroll" tabIndex={0} role="region" aria-label={t('journey.notebook.pages')}>
             <section className="notebook-paper notebook-paper-left">
               <div className="notebook-content">
-                <p className="notebook-eyebrow"><ScrambleText text={t('journey.chapter')} /> {selection.label} / <ScrambleText text={t('journey.mockStory')} /></p>
-                <h2 id="notebook-title"><ScrambleText text={t(`${prefix}.title`)} /></h2>
-                <p id="notebook-description" className="notebook-lead"><ScrambleText text={t(`${prefix}.description`)} /></p>
-                <figure className="notebook-photo">
+                <p className="notebook-eyebrow"><ScrambleText text={`${t('journey.chapter')} ${selection.label} / ${t(`${prefix}.episodeTitle`, { defaultValue: t(`${prefix}.title`) })}`} /></p>
+                <h2 id="notebook-title"><ScrambleText text={t(`${prefix}.${isUniversity ? 'notebookTitle' : 'title'}`)} /></h2>
+                <p id="notebook-description" className="notebook-lead"><ScrambleText text={t(`${prefix}.${isUniversity ? 'degree' : 'description'}`)} />{isUniversity && <><br /><ScrambleText text={t(`${prefix}.faculty`)} /></>}</p>
+                <figure className={`notebook-photo${isUniversity ? ' notebook-photo-personal' : ''}`}>
                   <img src={blueTape} className="notebook-tape" alt="" aria-hidden="true" />
-                  <img src={selection.image ?? sign} alt={t(`journey.notebook.images.${selection.id}`)} />
+                  <img src={isUniversity ? universityPhoto : selection.image ?? sign} alt={t(`journey.notebook.images.${selection.id}`)} />
                   <figcaption><ScrambleText text={t(`${prefix}.period`)} /></figcaption>
                 </figure>
                 <p><ScrambleText text={t(`${prefix}.story`)} /></p>

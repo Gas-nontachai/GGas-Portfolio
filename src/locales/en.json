@@ -76,23 +76,31 @@
       "nextPage": "Next pages",
       "pageIndicator": "Spread {{current}} / {{total}}",
       "images": {
-        "university": "Cartoon university building in a mock memory photo",
+        "university": "Photo from my university years",
         "career": "Cartoon office building in a mock memory photo",
         "future": "A direction sign pointing toward the next adventure"
       }
     },
     "stages": {
       "university": {
+        "episodeTitle": "Where coding began",
         "title": "University",
+        "notebookTitle": "Rajamangala University of Technology Isan",
+        "degree": "Bachelor’s Degree in Computer Engineering",
+        "faculty": "Faculty of Engineering",
         "shortDescription": "Where my coding journey began.",
         "description": "Where my coding journey began.",
         "preview": "The very first lines of code.",
         "tag": "Curiosity / Code / Discovery",
-        "period": "The starting line",
-        "memory": "The first time a tiny project finally worked, I couldn't stop clicking through it. That little win made the next experiment feel possible.",
-        "story": "A small class assignment turned into late-night experiments. I started connecting what I learned in lectures with little tools I could actually use.",
-        "highlights": ["Built a simple web app with classmates.", "Practiced debugging, Git, and sharing code.", "Discovered that making things was the best way to learn."],
-        "takeaway": "Start small, ask questions, and keep experimenting."
+        "period": "2021–2025",
+        "memory": "The first time a tiny project finally worked, I couldn't stop clicking through it. I thought I was pretty good — until I stepped into the real world.",
+        "story": "I started engineering with circuits and electrical calculations. But wait, why wasn't it as fun as writing HTML and CSS? Maybe it was time to give web development a proper try.",
+        "highlights": [
+          "Started with simple HTML, CSS, and JavaScript.",
+          "Connected a database with PHP in class, then built on it for my final-year project.",
+          "Interned at a software house (Node.js + Express, Nuxt 3 + TypeScript)."
+        ],
+        "takeaway": "Time to step into the real world of work."
       },
       "career": {
         "title": "First Job / Present",
@@ -150,7 +158,6 @@
       }
     },
     "details": "{{stage}} story details",
-    "mockStory": "Mock story",
     "highlights": "Along the way",
     "takeaway": "Next step:",
     "continued": "See you at the next stop!",
