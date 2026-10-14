@@ -39,6 +39,8 @@ export default function JourneyTimeline() {
   const scene = useRef<HTMLDivElement>(null)
   const trigger = useRef<ScrollTrigger | null>(null)
   const navigationTween = useRef<gsap.core.Tween | null>(null)
+  const navigationArrival = useRef<(() => void) | null>(null)
+  const notebookDelay = useRef<gsap.core.Tween | null>(null)
   const focusIndex = useRef(0)
   const arrivalState = useRef(false)
   const [focused, setFocused] = useState(0)
@@ -49,11 +51,15 @@ export default function JourneyTimeline() {
 
   const openNotebook = (index: number, source: HTMLButtonElement) => {
     if (notebook) return
-    navigationTween.current?.kill()
-    // Finish any scrub lag before measuring the card, then freeze background scroll.
-    trigger.current?.getTween()?.progress(1)
-    const milestone = milestones[index]
-    setNotebook({ ...milestone, source, initialRect: source.getBoundingClientRect(), initialState: Flip.getState(source) })
+    // Measure only after the car arrives and the focused card finishes scaling.
+    goToMilestone(index, () => {
+      notebookDelay.current = gsap.delayedCall(window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : .4, () => {
+        notebookDelay.current = null
+        if (!source.isConnected) return
+        const milestone = milestones[index]
+        setNotebook({ ...milestone, source, initialRect: source.getBoundingClientRect(), initialState: Flip.getState(source) })
+      })
+    })
   }
 
   useGSAP(() => {
@@ -138,6 +144,12 @@ export default function JourneyTimeline() {
           invalidateOnRefresh: true,
           onRefreshInit: measure,
           onRefresh: render,
+          onScrubComplete: () => {
+            if (navigationTween.current?.isActive()) return
+            const onArrival = navigationArrival.current
+            navigationArrival.current = null
+            onArrival?.()
+          },
         },
       })
       trigger.current = animation.scrollTrigger!
@@ -149,6 +161,8 @@ export default function JourneyTimeline() {
         disposed = true
         stopDust.kill()
         navigationTween.current?.kill()
+        navigationArrival.current = null
+        notebookDelay.current?.kill()
         vehicle.dataset.moving = 'false'
         shell.style.removeProperty('height')
         trigger.current = null
@@ -158,15 +172,29 @@ export default function JourneyTimeline() {
     return () => media.revert()
   }, { scope: section })
 
-  const goToMilestone = (index: number) => {
+  const goToMilestone = (index: number, onArrival?: () => void) => {
     if (index < 0 || index >= milestones.length) return
     const scrollTrigger = trigger.current
     if (!scrollTrigger) return
     navigationTween.current?.kill()
+    notebookDelay.current?.kill()
+    notebookDelay.current = null
+    navigationArrival.current = onArrival ?? null
     navigationTween.current = gsap.to(window, {
-      scrollTo: { y: scrollTrigger.start + (scrollTrigger.end - scrollTrigger.start) * getMilestoneScrollProgress(index, milestones.length), autoKill: true },
+      scrollTo: {
+        y: scrollTrigger.start + (scrollTrigger.end - scrollTrigger.start) * getMilestoneScrollProgress(index, milestones.length),
+        autoKill: true,
+        onAutoKill: () => { navigationArrival.current = null },
+      },
       duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 0.8,
       ease: 'power2.inOut',
+      onComplete: () => {
+        ScrollTrigger.update()
+        if (scrollTrigger.getTween()?.isActive()) return
+        const arrived = navigationArrival.current
+        navigationArrival.current = null
+        arrived?.()
+      },
     })
   }
 
