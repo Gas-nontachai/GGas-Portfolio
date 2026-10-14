@@ -68,25 +68,60 @@
         "title": "University",
         "description": "Where my coding journey began.",
         "preview": "The very first lines of code.",
-        "tag": "Curiosity / Code / Discovery"
+        "tag": "Curiosity / Code / Discovery",
+        "period": "The starting line",
+        "story": "A small class assignment turned into late-night experiments. I started connecting what I learned in lectures with little tools I could actually use.",
+        "highlights": ["Built a simple web app with classmates.", "Practiced debugging, Git, and sharing code.", "Discovered that making things was the best way to learn."],
+        "takeaway": "Start small, ask questions, and keep experimenting."
       },
-      "firstJob": {
-        "title": "First Job",
-        "description": "Turning ideas into real-world applications.",
-        "preview": "From experiments to real projects.",
-        "tag": "Build / Collaborate / Grow"
-      },
-      "present": {
-        "title": "Present",
-        "description": "Building, learning, and exploring new technologies.",
-        "preview": "Still learning. Still making things.",
-        "tag": "Create / Learn / Repeat"
+      "career": {
+        "title": "First Job / Present",
+        "description": "Turning ideas into real-world applications, while building, learning, and exploring new technologies.",
+        "preview": "From my first job to the work I do today.",
+        "tag": "Build / Learn / Grow",
+        "period": "First job to today",
+        "story": "My first job became a place to keep growing. The same journey now includes taking ideas from a sketch to a working application and improving them with a team.",
+        "highlights": ["Built interfaces and connected them to application services.", "Learned through code reviews, releases, and user feedback.", "Kept exploring mobile apps, hardware, and side projects."],
+        "takeaway": "Good software grows through collaboration and steady improvements."
       },
       "future": {
-        "title": "Future",
-        "description": "The next adventure is waiting!",
-        "preview": "A new road. Endless possibilities.",
-        "tag": "Next stop / Who knows?"
+        "title": "What comes next?",
+        "description": "No idea what the next sign will say. I bet there are plenty of fun things left to try.",
+        "preview": "The road goes on… what will the next stop be?",
+        "tag": "Next stop / Still a question mark",
+        "period": "The road ahead",
+        "story": "Maybe a new app, a homemade gadget, or something I haven't even imagined yet. I'm curious where this road will lead, so let's keep going and find out.",
+        "highlights": ["Prototype a small app that solves an everyday problem.", "Combine a connected device with a custom printed enclosure.", "Share an experiment and learn from the people who try it."],
+        "takeaway": "Stay curious. Pick one idea and turn it into the next adventure."
+      }
+    },
+    "details": "{{stage}} story details",
+    "mockStory": "Mock story",
+    "highlights": "Along the way",
+    "takeaway": "Next step:",
+    "continued": "See you at the next stop!",
+    "replay": "Drive again",
+    "arrival": "You have reached the future sign. What comes next? You can drive again or scroll on."
+  },
+  "afterJourney": {
+    "label": "NEXT CHAPTER / MOCK SECTION",
+    "heading": "More things to explore",
+    "description": "A placeholder for the next portfolio section. Keep scrolling past Future to leave the journey and explore these mock projects.",
+    "placeholder": "Placeholder project",
+    "scrollHint": "Scroll back up to re-enter the journey and drive in reverse.",
+    "back": "Back to the journey",
+    "projects": {
+      "playground": {
+        "title": "Code playground",
+        "description": "A space for small app ideas and playful interface experiments."
+      },
+      "maker": {
+        "title": "Maker experiments",
+        "description": "Mock projects combining hardware, code, and things made by hand."
+      },
+      "next": {
+        "title": "What comes next?",
+        "description": "A spot reserved for the next idea, experiment, or adventure."
       }
     }
   }

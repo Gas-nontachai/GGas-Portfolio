@@ -3,12 +3,11 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
-import { ArrowDown, ArrowRight, Flag } from 'lucide-react'
+import { ArrowDown, ArrowRight, Flag, RotateCcw } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import car from '../../assets/journey_timeline/journey_car_side.png'
 import university from '../../assets/journey_timeline/university.png'
 import office from '../../assets/journey_timeline/office_building.png'
-import busStop from '../../assets/journey_timeline/future_bus_stop.png'
 import tree from '../../assets/journey_timeline/tree_round.png'
 import tallTree from '../../assets/journey_timeline/tree_tall.png'
 import bush from '../../assets/journey_timeline/bush.png'
@@ -18,16 +17,17 @@ import lamp from '../../assets/journey_timeline/street_lamp.png'
 import sign from '../../assets/journey_timeline/direction_sign.png'
 import barrier from '../../assets/journey_timeline/construction_barrier.png'
 import dust from '../../assets/journey_timeline/dust_small.png'
+import { getJourneyFrame, getMilestoneScrollProgress } from './journeyMotion'
 import './journey.css'
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin)
 
 const milestones = [
   { id: 'university', image: university, color: '#ffe16b', label: '01' },
-  { id: 'firstJob', image: office, color: '#ff9cba', label: '02' },
-  { id: 'present', image: office, color: '#b6db94', label: '03' },
-  { id: 'future', image: busStop, color: '#a5dff5', label: '04' },
+  { id: 'career', image: office, color: '#b6db94', label: '02' },
+  { id: 'future', image: null, color: '#a5dff5', label: '03' },
 ] as const
+const decorationCount = milestones.length * 2 - 1
 
 export default function JourneyTimeline() {
   const { t } = useTranslation()
@@ -36,7 +36,9 @@ export default function JourneyTimeline() {
   const trigger = useRef<ScrollTrigger | null>(null)
   const navigationTween = useRef<gsap.core.Tween | null>(null)
   const focusIndex = useRef(0)
+  const arrivalState = useRef(false)
   const [focused, setFocused] = useState(0)
+  const [arrived, setArrived] = useState(false)
   const [hovered, setHovered] = useState<number | null>(null)
 
   useGSAP(() => {
@@ -64,20 +66,25 @@ export default function JourneyTimeline() {
       const stopDust = gsap.delayedCall(0.15, () => { vehicle.dataset.moving = 'false' }).pause()
 
       const render = () => {
-        const progress = position.progress
-        setWorldX(-travel * progress)
-        setSkyX(reduced ? 0 : -travel * progress * 0.22)
-        setWheels(reduced ? 0 : travel * progress * 1.5)
+        const frame = getJourneyFrame(position.progress, milestones.length, spacing)
+        const { progress } = frame
+        setWorldX(-frame.distance)
+        setSkyX(reduced ? 0 : -frame.distance * 0.22)
+        setWheels(reduced ? 0 : frame.distance * 1.5)
         setProgress(progress)
-        const nextPercentage = Math.round(progress * 100)
+        const nextPercentage = frame.percentage
         if (lastPercentage !== nextPercentage) {
           percentage.textContent = `${nextPercentage}%`
           lastPercentage = nextPercentage
         }
-        const nextFocus = Math.min(milestones.length - 1, Math.round(progress * (milestones.length - 1)))
+        const nextFocus = frame.focused
         if (focusIndex.current !== nextFocus) {
           focusIndex.current = nextFocus
           setFocused(nextFocus)
+        }
+        if (arrivalState.current !== frame.arrived) {
+          arrivalState.current = frame.arrived
+          setArrived(frame.arrived)
         }
         if (!reduced && Math.abs(progress - previousProgress) > 0.00001) {
           vehicle.dataset.moving = 'true'
@@ -108,6 +115,7 @@ export default function JourneyTimeline() {
           start: 'top top',
           end: () => `+=${Math.max(2400, travel * 1.5)}`,
           pin: true,
+          pinSpacing: true,
           scrub: reduced ? true : 0.65,
           anticipatePin: 1,
           invalidateOnRefresh: true,
@@ -137,20 +145,27 @@ export default function JourneyTimeline() {
     if (!scrollTrigger) return
     navigationTween.current?.kill()
     navigationTween.current = gsap.to(window, {
-      scrollTo: { y: scrollTrigger.start + (scrollTrigger.end - scrollTrigger.start) * index / (milestones.length - 1), autoKill: true },
+      scrollTo: { y: scrollTrigger.start + (scrollTrigger.end - scrollTrigger.start) * getMilestoneScrollProgress(index, milestones.length), autoKill: true },
       duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 0.8,
       ease: 'power2.inOut',
     })
   }
 
   return (
-    <section ref={section} id="journey" className="journey" aria-labelledby="journey-heading">
+    <div className="journey-scroll-shell">
+    <section ref={section} id="journey" className="journey" data-arrived={arrived} aria-labelledby="journey-heading">
       <header className="journey-header">
         <div>
           <p className="journey-eyebrow"><span /> {t('journey.eyebrow')}</p>
           <h2 id="journey-heading">{t('journey.heading')}<span>.</span></h2>
         </div>
-        <p className="journey-instruction"><ArrowDown size={18} aria-hidden="true" />{t('journey.scroll')}<ArrowRight size={18} aria-hidden="true" /></p>
+        <div className="journey-instruction">
+          <p className="journey-drive-hint" aria-hidden={arrived}><ArrowDown size={18} aria-hidden="true" />{t('journey.scroll')}<ArrowRight size={18} aria-hidden="true" /></p>
+          <div className="journey-ending" inert={!arrived} aria-hidden={!arrived}>
+            <span><Flag size={15} aria-hidden="true" />{t('journey.continued')}</span>
+            <button type="button" onClick={() => goToMilestone(0)}><RotateCcw size={14} aria-hidden="true" />{t('journey.replay')}</button>
+          </div>
+        </div>
       </header>
 
       <div ref={scene} className="journey-scene">
@@ -168,6 +183,7 @@ export default function JourneyTimeline() {
               <article
                 key={milestone.id}
                 className="journey-milestone"
+                data-stage={milestone.id}
                 data-state={state}
                 style={{ '--stage-index': index, '--stage-color': milestone.color } as CSSProperties}
                 onPointerEnter={(event) => { if (event.pointerType !== 'touch') setHovered(index) }}
@@ -181,12 +197,23 @@ export default function JourneyTimeline() {
                   <div className="journey-card">
                     <div className="journey-card-meta"><span>{t('journey.chapter')} {milestone.label}</span><span className="journey-state-label">{t(`journey.${state === 'focused' ? 'here' : state === 'hovered' ? 'preview' : 'stop'}`)}</span></div>
                     <h3>{t(`journey.stages.${milestone.id}.title`)}</h3>
-                    <div className="journey-card-copy" aria-hidden={state === 'inactive'}>
+                    <div className="journey-card-copy" aria-hidden={state === 'inactive'} tabIndex={state === 'focused' ? 0 : -1} role="region" aria-label={t('journey.details', { stage: t(`journey.stages.${milestone.id}.title`) })}>
                       <p>{t(`journey.stages.${milestone.id}.${state === 'hovered' ? 'preview' : 'description'}`)}</p>
+                      <div className="journey-story" hidden={state !== 'focused'}>
+                        <span className="journey-story-label">{t('journey.mockStory')} / {t(`journey.stages.${milestone.id}.period`)}</span>
+                        <p>{t(`journey.stages.${milestone.id}.story`)}</p>
+                        <h4>{t('journey.highlights')}</h4>
+                        <ul>{[0, 1, 2].map((item) => <li key={item}>{t(`journey.stages.${milestone.id}.highlights.${item}`)}</li>)}</ul>
+                        <p className="journey-takeaway"><strong>{t('journey.takeaway')}</strong> {t(`journey.stages.${milestone.id}.takeaway`)}</p>
+                      </div>
                       <span className="journey-card-tag">{t(`journey.stages.${milestone.id}.tag`)}</span>
                     </div>
                   </div>
-                  <img src={milestone.image} alt="" className="journey-building" draggable={false} />
+                  {milestone.image ? <img src={milestone.image} alt="" className="journey-building" draggable={false} /> : (
+                    <div className="journey-building journey-future-sign" aria-hidden="true">
+                      <div className="journey-future-board"><span className="journey-future-question">?</span><span>NEXT<br /><strong>???</strong></span><ArrowRight size={36} strokeWidth={3} /></div>
+                    </div>
+                  )}
                 </div>
                 <div className="journey-stop-marker" aria-hidden="true">{milestone.label}</div>
               </article>
@@ -194,11 +221,11 @@ export default function JourneyTimeline() {
           })}
 
           <div className="journey-decorations" aria-hidden="true">
-            {Array.from({ length: 7 }, (_, index) => (
+            {Array.from({ length: decorationCount }, (_, index) => (
               <div className="journey-decoration-group" key={index} style={{ left: `calc(var(--journey-origin) + var(--journey-spacing) * ${index * 0.5 - 0.25})` }}>
                 <img src={index % 2 ? tallTree : tree} className="journey-tree" alt="" draggable={false} />
                 <img src={bush} className="journey-bush" alt="" draggable={false} />
-                <img src={index === 6 ? barrier : index % 3 === 0 ? sign : lamp} className="journey-roadside" alt="" draggable={false} />
+                <img src={index === decorationCount - 2 ? barrier : index === decorationCount - 1 || index % 3 === 0 ? sign : lamp} className="journey-roadside" alt="" draggable={false} />
               </div>
             ))}
           </div>
@@ -213,13 +240,14 @@ export default function JourneyTimeline() {
       </div>
 
       <footer className="journey-hud">
-        <div className="journey-status"><Flag size={17} aria-hidden="true" /><span>{t('journey.chapter')} {milestones[focused].label} / 04</span><span className="journey-percent" aria-hidden="true">0%</span></div>
+        <div className="journey-status"><Flag size={17} aria-hidden="true" /><span>{t('journey.chapter')} {milestones[focused].label} / {String(milestones.length).padStart(2, '0')}</span><span className="journey-percent" aria-hidden="true">0%</span></div>
         <div className="journey-progress" aria-hidden="true"><div className="journey-progress-fill" /></div>
         <nav className="journey-stops" aria-label={t('journey.navigation')}>
           {milestones.map((milestone, index) => <button type="button" key={milestone.id} aria-current={index === focused ? 'step' : undefined} onClick={() => goToMilestone(index)}><span>{milestone.label}</span><span>{t(`journey.stages.${milestone.id}.title`)}</span></button>)}
         </nav>
       </footer>
-      <p className="journey-sr-only" aria-live="polite" aria-atomic="true">{t(`journey.stages.${milestones[focused].id}.title`)}. {t(`journey.stages.${milestones[focused].id}.description`)}</p>
+      <p className="journey-sr-only" aria-live="polite" aria-atomic="true">{t(`journey.stages.${milestones[focused].id}.title`)}. {t(`journey.stages.${milestones[focused].id}.description`)} {arrived ? t('journey.arrival') : ''}</p>
     </section>
+    </div>
   )
 }
