@@ -13,8 +13,10 @@ the driving state. The Future button lands inside this final pause.
 A separate `#after-journey` mock project section provides at least 120svh of
 normal-flow content after the pin, so its release and reverse re-entry can be
 reviewed. It includes three placeholder cards and a link to restart the journey.
-The scene uses a non-shrinking block wrapper and explicit `pinSpacing: true`
-to preserve the full pinned scroll distance inside the page's flex layout.
+The scene uses CSS sticky inside a non-shrinking block wrapper. Its real document
+height equals the scene height plus the journey scroll distance. ScrollTrigger
+tracks that wrapper without creating a pin spacer; sticky releases at its end
+and the next section follows in normal document flow.
 
 Milestone states use focused > hovered > inactive priority, with scale/brightness
 of 1/100%, .85/80%, and .65/45%. Hover previews never change the active chapter or

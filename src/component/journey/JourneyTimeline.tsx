@@ -32,6 +32,7 @@ const decorationCount = milestones.length * 2 - 1
 export default function JourneyTimeline() {
   const { t } = useTranslation()
   const section = useRef<HTMLElement>(null)
+  const scrollShell = useRef<HTMLDivElement>(null)
   const scene = useRef<HTMLDivElement>(null)
   const trigger = useRef<ScrollTrigger | null>(null)
   const navigationTween = useRef<gsap.core.Tween | null>(null)
@@ -43,6 +44,7 @@ export default function JourneyTimeline() {
 
   useGSAP(() => {
     const root = section.current!
+    const shell = scrollShell.current!
     const viewport = scene.current!
     const world = root.querySelector<HTMLElement>('.journey-world')!
     const sky = root.querySelector<HTMLElement>('.journey-sky')!
@@ -56,6 +58,7 @@ export default function JourneyTimeline() {
       const reduced = Boolean(context.conditions?.reduced)
       let spacing = 0
       let travel = 0
+      let scrollDistance = 2400
       let previousProgress = 0
       let lastPercentage = -1
       const position = { progress: 0 }
@@ -98,6 +101,9 @@ export default function JourneyTimeline() {
         const width = viewport.clientWidth
         spacing = Math.max(370, Math.min(760, width * 0.66))
         travel = spacing * (milestones.length - 1)
+        scrollDistance = Math.max(2400, travel * 1.5)
+        // Reserve real document height; sticky releases at the shell's end.
+        shell.style.height = `${root.offsetHeight + scrollDistance}px`
         root.style.setProperty('--journey-spacing', `${spacing}px`)
         root.style.setProperty('--journey-origin', `${width / 2}px`)
         world.style.width = `${width + travel}px`
@@ -111,13 +117,10 @@ export default function JourneyTimeline() {
         onUpdate: render,
         scrollTrigger: {
           id: 'portfolio-journey',
-          trigger: root,
+          trigger: shell,
           start: 'top top',
-          end: () => `+=${Math.max(2400, travel * 1.5)}`,
-          pin: true,
-          pinSpacing: true,
+          end: () => `+=${scrollDistance}`,
           scrub: reduced ? true : 0.65,
-          anticipatePin: 1,
           invalidateOnRefresh: true,
           onRefreshInit: measure,
           onRefresh: render,
@@ -133,6 +136,7 @@ export default function JourneyTimeline() {
         stopDust.kill()
         navigationTween.current?.kill()
         vehicle.dataset.moving = 'false'
+        shell.style.removeProperty('height')
         trigger.current = null
       }
     })
@@ -152,7 +156,7 @@ export default function JourneyTimeline() {
   }
 
   return (
-    <div className="journey-scroll-shell">
+    <div ref={scrollShell} className="journey-scroll-shell">
     <section ref={section} id="journey" className="journey" data-arrived={arrived} aria-labelledby="journey-heading">
       <header className="journey-header">
         <div>
@@ -163,7 +167,10 @@ export default function JourneyTimeline() {
           <p className="journey-drive-hint" aria-hidden={arrived}><ArrowDown size={18} aria-hidden="true" />{t('journey.scroll')}<ArrowRight size={18} aria-hidden="true" /></p>
           <div className="journey-ending" inert={!arrived} aria-hidden={!arrived}>
             <span><Flag size={15} aria-hidden="true" />{t('journey.continued')}</span>
-            <button type="button" onClick={() => goToMilestone(0)}><RotateCcw size={14} aria-hidden="true" />{t('journey.replay')}</button>
+            <div className="journey-ending-actions">
+              <button type="button" onClick={() => goToMilestone(0)}><RotateCcw size={14} aria-hidden="true" />{t('journey.replay')}</button>
+              <a href="#after-journey">{t('journey.continue')}<ArrowDown size={14} aria-hidden="true" /></a>
+            </div>
           </div>
         </div>
       </header>

@@ -1,15 +1,15 @@
-.journey-scroll-shell { display: block; flex-shrink: 0; width: 100%; }
+.journey-scroll-shell { display: block; flex-shrink: 0; width: 100%; height: calc(100svh + 2400px); margin-top: 48px; }
 .journey {
   --journey-ink: #171717;
   --journey-spacing: 760px;
   --journey-origin: 50vw;
-  position: relative;
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100svh;
   min-height: 540px;
-  margin-top: 48px;
   border-block: 4px solid var(--journey-ink);
   background: #c9e9ee;
   color: var(--journey-ink);
@@ -28,6 +28,9 @@
 .journey-ending button { border: 2px solid #171717; background: #ffe16b; color: #171717; padding: 2px 8px; font: inherit; font-size: 10px; box-shadow: 2px 2px 0 #171717; }
 .journey-ending button:hover { background: #fff8de; }
 .journey-ending button:focus-visible { outline: 3px solid #171717; outline-offset: 3px; }
+.journey-ending-actions { display: flex; align-items: center; gap: 8px; }
+.journey-ending-actions a { display: inline-flex; align-items: center; gap: 3px; color: #171717; font-size: 10px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.journey-ending-actions a:focus-visible { outline: 3px solid #171717; outline-offset: 3px; }
 .journey[data-arrived="true"] .journey-instruction { background: #a5dff5; }
 .journey[data-arrived="true"] .journey-drive-hint { opacity: 0; }
 .journey[data-arrived="true"] .journey-ending { visibility: visible; opacity: 1; }
@@ -106,12 +109,14 @@
 .journey-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .dark .journey { background: #9dbdc8; }
 @media (max-width: 700px) {
-  .journey { margin-top: 30px; }
+  .journey-scroll-shell { margin-top: 30px; }
   .journey-header { padding: 18px 20px 10px; gap: 10px; align-items: flex-start; }
   .journey-eyebrow { font-size: 9px; letter-spacing: 1px; }
   .journey-instruction { width: 115px; flex-shrink: 0; padding: 6px 8px; font-size: 10px; line-height: 1.3; }
   .journey-drive-hint { gap: 5px; }
   .journey-ending > span { font-size: 9px; text-align: center; }
+  .journey-ending-actions { flex-direction: column; gap: 5px; }
+  .journey-ending > span { display: none; }
   .journey-instruction svg { width: 13px; flex-shrink: 0; }
   .journey-drive-hint svg:last-child { display: none; }
   .journey-milestone { width: 280px; margin-left: -140px; height: min(440px, calc(100% - 145px)); bottom: 123px; }
