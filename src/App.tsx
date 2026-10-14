@@ -2,8 +2,10 @@ import { useLayoutEffect } from 'react'
 import { Button } from '@risky2k1/neobrutalism-ui'
 import { Moon, Sun } from 'lucide-react'
 import CustomCursor from './component/CustomCursor'
+import Navbar from './component/Navbar'
 import ProfileOrbit from './component/profile/ProfileOrbit'
 import { useThemeStore } from './store/useThemeStore'
+import './App.css'
 
 const modes = [
   { value: 'light', label: 'Light', icon: Sun },
@@ -23,12 +25,9 @@ function App() {
   return (
     <>
       <CustomCursor />
-      <header className="flex items-center justify-between gap-4 border-b-[3px] border-border bg-secondary-background px-6 py-5 sm:px-10">
-        <a href="#main" className="text-2xl font-bold text-foreground no-underline">GGAS<span className="text-[#df563d]">.</span></a>
-        <span className="font-mono text-xs">PERSONAL SPACE / 01</span>
-      </header>
+      <Navbar />
       <main id="main" className="mx-auto grid w-full max-w-5xl flex-1 items-center gap-12 px-6 py-14 md:grid-cols-2 md:gap-20 md:py-24">
-        <section aria-labelledby="appearance-heading" className="min-w-0">
+        <section id="appearance" aria-labelledby="appearance-heading" className="min-w-0">
           <p className="mb-4 font-mono text-xs font-bold">PREFERENCES</p>
           <h1 id="appearance-heading" className="mb-10 text-4xl leading-tight font-bold sm:text-5xl">Appearance<span className="text-[#df563d]">.</span></h1>
           <fieldset className="min-w-0">
@@ -53,7 +52,7 @@ function App() {
             ))}
           </div>
         </section>
-        <section aria-labelledby="preview-heading" className="min-w-0">
+        <section id="profile" aria-labelledby="preview-heading" className="min-w-0">
           <h2 id="preview-heading" className="mb-4 font-mono text-xs font-bold">PREVIEW</h2>
           <ProfileOrbit />
         </section>
