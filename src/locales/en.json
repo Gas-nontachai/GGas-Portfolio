@@ -4,7 +4,8 @@
     "appearance": "Exploring",
     "profile": "Profile",
     "label": "Main navigation",
-    "brand": "GGAS home"
+    "brand": "GGAS home",
+    "journey": "Journey"
   },
   "home": {
     "hello": "Hey, I'm",
@@ -52,5 +53,41 @@
     "react": "React",
     "gaming": "Gaming",
     "printing": "3D printing"
+  },
+  "journey": {
+    "eyebrow": "A LITTLE ROAD, A LOT OF STORIES",
+    "heading": "My journey",
+    "scroll": "Scroll to drive",
+    "chapter": "Chapter",
+    "here": "You are here",
+    "preview": "Preview",
+    "stop": "Road ahead",
+    "navigation": "Journey milestones",
+    "stages": {
+      "university": {
+        "title": "University",
+        "description": "Where my coding journey began.",
+        "preview": "The very first lines of code.",
+        "tag": "Curiosity / Code / Discovery"
+      },
+      "firstJob": {
+        "title": "First Job",
+        "description": "Turning ideas into real-world applications.",
+        "preview": "From experiments to real projects.",
+        "tag": "Build / Collaborate / Grow"
+      },
+      "present": {
+        "title": "Present",
+        "description": "Building, learning, and exploring new technologies.",
+        "preview": "Still learning. Still making things.",
+        "tag": "Create / Learn / Repeat"
+      },
+      "future": {
+        "title": "Future",
+        "description": "The next adventure is waiting!",
+        "preview": "A new road. Endless possibilities.",
+        "tag": "Next stop / Who knows?"
+      }
+    }
   }
 }

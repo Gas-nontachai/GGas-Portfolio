@@ -1,5 +1,28 @@
 # React + TypeScript + Vite
 
+## Journey Timeline POC
+
+The full-width `#journey` section follows the portfolio cards. Vertical scrolling
+drives a pinned GSAP ScrollTrigger scene through four static mock milestones.
+The car stays centered while the road and buildings move; clouds use a slower
+parallax layer. Wheel rotation follows travel in either direction, and dust
+stops when movement stops. Chapter buttons also navigate to each scroll position.
+
+Milestone states use focused > hovered > inactive priority, with scale/brightness
+of 1/100%, .85/80%, and .65/45%. Hover previews never change the active chapter or
+scroll position. Layout space is reserved for card details and all scene assets.
+English/Thai copy follows the language switch. Reduced motion removes scrub
+lag, parallax, wheel rotation, dust, and visual transitions.
+
+Implementation: `src/component/journey/JourneyTimeline.tsx` and `journey.css`.
+Mock copy is in `src/locales/{en,th}.json`; art is in
+`src/assets/journey_timeline/`. No backend or real journey data is connected.
+
+Manual review: scroll forward/backward through all four stops; hover a nearby
+inactive card while a different card is focused; leave the card; navigate with
+the chapter buttons using mouse/keyboard. Repeat at 1440×900, 390×844, 320×568,
+and mobile landscape, then resize mid-journey and enable reduced motion.
+
 ## CI checks before merging
 
 GitHub Actions runs `npm ci`, `npm run lint`, and `npm run build` on Node.js 24

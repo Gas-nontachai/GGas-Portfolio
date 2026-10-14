@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollToPlugin)
 
 const navigationItems = [
   { href: '#main', labelKey: 'nav.home' },
+  { href: '#journey', labelKey: 'nav.journey' },
 ] as const
 
 function Navbar() {
