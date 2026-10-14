@@ -1,7 +1,8 @@
 import { useLayoutEffect } from 'react'
-import { Badge, Button } from '@risky2k1/neobrutalism-ui'
+import { Button } from '@risky2k1/neobrutalism-ui'
 import { Moon, Sun } from 'lucide-react'
 import CustomCursor from './component/CustomCursor'
+import InteractiveProfileCard from './component/profile/InteractiveProfileCard'
 import { useThemeStore } from './store/useThemeStore'
 
 const modes = [
@@ -54,12 +55,7 @@ function App() {
         </section>
         <section aria-labelledby="preview-heading" className="min-w-0">
           <h2 id="preview-heading" className="mb-4 font-mono text-xs font-bold">PREVIEW</h2>
-          <article className="border-[3px] border-border bg-secondary-background shadow-[8px_8px_0_var(--border)]">
-            <div className="p-7">
-              <Badge>PERSONAL SPACE</Badge>
-              <h3 className="mt-5 text-2xl font-bold">GGas Portfolio</h3>
-            </div>
-          </article>
+          <InteractiveProfileCard />
         </section>
       </main>
       <footer className="flex justify-between gap-4 border-t-[3px] border-border bg-secondary-background px-6 py-5 font-mono text-xs sm:px-10"><span>GGAS PORTFOLIO</span><span>2026</span></footer>
