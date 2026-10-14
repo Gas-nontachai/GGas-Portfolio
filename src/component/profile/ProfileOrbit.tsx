@@ -1,21 +1,23 @@
 import { useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { useTranslation } from 'react-i18next'
 import InteractiveProfileCard from './InteractiveProfileCard'
 import reactBuddy from '../../assets/life-inventory/react-atom-buddy.png'
 import gameController from '../../assets/life-inventory/gaming-game-controller.png'
 import printerForge from '../../assets/life-inventory/3d-printer-printer-forge.png'
 
 const satellites = [
-  { name: 'React', src: reactBuddy },
-  { name: 'Gaming', src: gameController },
-  { name: '3D printing', src: printerForge },
+  { name: 'react', src: reactBuddy },
+  { name: 'gaming', src: gameController },
+  { name: 'printing', src: printerForge },
 ]
 
 const orbitHeightRatio = 0.4
 const angularSpeed = 0.00018
 
 export default function ProfileOrbit() {
+  const { t } = useTranslation()
   const stage = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
@@ -215,8 +217,8 @@ export default function ProfileOrbit() {
           key={name}
           type="button"
           className="profile-orbit__item absolute top-1/2 left-1/2 aspect-square w-[clamp(40px,12%,64px)] touch-none border-0 bg-transparent p-0 select-none will-change-transform [-webkit-user-select:none] [-webkit-tap-highlight-color:transparent] focus-visible:rounded-lg focus-visible:outline-[3px] focus-visible:outline-offset-[6px] focus-visible:outline-foreground"
-          aria-label={name}
-          title={name}
+          aria-label={t(`profile.${name}`)}
+          title={t(`profile.${name}`)}
         >
           <span data-orbit-depth className="pointer-events-none relative block h-full w-full origin-center will-change-[transform,opacity]">
             <img className="pointer-events-none absolute -top-1/2 -left-1/2 block h-[200%] w-[200%] max-w-none origin-center object-contain brightness-100" src={src} alt="" draggable={false} />

@@ -1,19 +1,13 @@
 import { useLayoutEffect } from 'react'
-import { Button } from '@risky2k1/neobrutalism-ui'
-import { Moon, Sun } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import CustomCursor from './component/CustomCursor'
 import Navbar from './component/Navbar'
 import ProfileOrbit from './component/profile/ProfileOrbit'
 import { useThemeStore } from './store/useThemeStore'
 
-const modes = [
-  { value: 'light', label: 'Light', icon: Sun },
-  { value: 'dark', label: 'Dark', icon: Moon },
-] as const
-
 function App() {
+  const { t } = useTranslation()
   const theme = useThemeStore((state) => state.theme)
-  const setTheme = useThemeStore((state) => state.setTheme)
 
   useLayoutEffect(() => {
     const dark = theme === 'dark'
@@ -27,32 +21,16 @@ function App() {
       <Navbar />
       <main id="main" className="mx-auto grid w-full max-w-5xl flex-1 scroll-mt-6 items-center gap-12 px-6 py-14 md:grid-cols-2 md:gap-20 md:py-24">
         <section id="appearance" aria-labelledby="appearance-heading" className="min-w-0 scroll-mt-6">
-          <p className="mb-4 font-mono text-xs font-bold">PREFERENCES</p>
-          <h1 id="appearance-heading" className="mb-10 text-4xl leading-tight font-bold sm:text-5xl">Appearance<span className="text-[#df563d]">.</span></h1>
-          <fieldset className="min-w-0">
-            <legend className="mb-5 font-bold">Color mode</legend>
-            <div role="group" aria-label="Color mode" className="grid grid-cols-2 gap-3">
-              {modes.map(({ value, label, icon: Icon }) => (
-                <Button
-                  key={value}
-                  variant={theme === value ? 'default' : 'neutral'}
-                  aria-pressed={theme === value}
-                  onClick={() => setTheme(value)}
-                  className="h-16 min-w-0 flex-col gap-1 px-2 text-xs aria-pressed:outline-2 aria-pressed:outline-offset-4 aria-pressed:outline-foreground sm:h-12 sm:flex-row sm:gap-2 sm:text-sm"
-                >
-                  <Icon aria-hidden="true" />{label}
-                </Button>
-              ))}
-            </div>
-          </fieldset>
-          <div className="mt-10 flex gap-2" aria-label="Theme palette">
+          <p className="mb-4 font-mono text-xs font-bold">{t('appearance.preferences')}</p>
+          <h1 id="appearance-heading" className="mb-10 text-4xl leading-tight font-bold sm:text-5xl">{t('appearance.heading')}<span className="text-[#df563d]">.</span></h1>
+          <div className="mt-10 flex gap-2" aria-label={t('appearance.palette')}>
             {['#f5d547', '#f49ab5', '#a9d89a'].map((color) => (
               <span key={color} title={color} className="size-6 border-2 border-border" style={{ backgroundColor: color }} />
             ))}
           </div>
         </section>
         <section id="profile" aria-labelledby="preview-heading" className="min-w-0 scroll-mt-6">
-          <h2 id="preview-heading" className="mb-4 font-mono text-xs font-bold">PREVIEW</h2>
+          <h2 id="preview-heading" className="mb-4 font-mono text-xs font-bold">{t('appearance.preview')}</h2>
           <ProfileOrbit />
         </section>
       </main>
