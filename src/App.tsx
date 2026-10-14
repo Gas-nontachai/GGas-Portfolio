@@ -1,13 +1,26 @@
-import { useLayoutEffect } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useLayoutEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 import CustomCursor from './component/CustomCursor'
 import Navbar from './component/Navbar'
-import ProfileOrbit from './component/profile/ProfileOrbit'
+import Introduction from './component/home/Introduction'
+import PlayerProfile from './component/home/PlayerProfile'
+import CurrentlyExploring from './component/home/CurrentlyExploring'
+import MainClass from './component/home/MainClass'
 import { useThemeStore } from './store/useThemeStore'
 
 function App() {
-  const { t } = useTranslation()
   const theme = useThemeStore((state) => state.theme)
+  const main = useRef<HTMLElement>(null)
+
+  useGSAP(() => {
+    const media = gsap.matchMedia()
+    media.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('.portfolio-panel', { y: 28, opacity: 0, duration: 0.65, stagger: 0.12, ease: 'power3.out' })
+      gsap.from('.intro-reveal', { y: 20, opacity: 0, duration: 0.65, stagger: 0.11, delay: 0.2, ease: 'power3.out' })
+    })
+    return () => media.revert()
+  }, { scope: main })
 
   useLayoutEffect(() => {
     const dark = theme === 'dark'
@@ -19,22 +32,13 @@ function App() {
     <>
       <CustomCursor />
       <Navbar />
-      <main id="main" className="mx-auto grid w-full max-w-5xl flex-1 scroll-mt-6 items-center gap-12 px-6 py-14 md:grid-cols-2 md:gap-20 md:py-24">
-        <section id="appearance" aria-labelledby="appearance-heading" className="min-w-0 scroll-mt-6">
-          <p className="mb-4 font-mono text-xs font-bold">{t('appearance.preferences')}</p>
-          <h1 id="appearance-heading" className="mb-10 text-4xl leading-tight font-bold sm:text-5xl">{t('appearance.heading')}<span className="text-[#df563d]">.</span></h1>
-          <div className="mt-10 flex gap-2" aria-label={t('appearance.palette')}>
-            {['#f5d547', '#f49ab5', '#a9d89a'].map((color) => (
-              <span key={color} title={color} className="size-6 border-2 border-border" style={{ backgroundColor: color }} />
-            ))}
-          </div>
-        </section>
-        <section id="profile" aria-labelledby="preview-heading" className="min-w-0 scroll-mt-6">
-          <h2 id="preview-heading" className="mb-4 font-mono text-xs font-bold">{t('appearance.preview')}</h2>
-          <ProfileOrbit />
-        </section>
+      <main ref={main} id="main" className="mx-auto grid w-full max-w-[1440px] shrink-0 grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_minmax(0,.85fr)] grid-rows-[1fr_1fr] content-start gap-5 px-8 py-6 [&_:is(a,button):focus-visible]:outline-[3px] [&_:is(a,button):focus-visible]:outline-foreground [&_:is(a,button):focus-visible]:outline-offset-[5px] max-[1150px]:max-w-[1000px] max-[1150px]:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] max-[1150px]:grid-rows-[auto_auto] max-[700px]:max-w-[520px] max-[700px]:grid-cols-[minmax(0,1fr)] max-[700px]:grid-rows-[auto] max-[700px]:gap-6 max-[700px]:px-5 max-[700px]:py-5">
+        <Introduction />
+        <PlayerProfile />
+        <CurrentlyExploring />
+        <MainClass />
       </main>
-      <footer className="flex justify-between gap-4 border-t-[3px] border-border bg-secondary-background px-6 py-5 font-mono text-xs sm:px-10"><span>GGAS PORTFOLIO</span><span>2026</span></footer>
+      <footer className="mt-auto flex justify-between gap-4 border-t-[3px] border-border bg-secondary-background px-6 py-5 font-mono text-xs sm:px-10"><span>GGAS PORTFOLIO</span><span>2026</span></footer>
     </>
   )
 }

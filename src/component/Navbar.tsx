@@ -7,6 +7,12 @@ import { useThemeStore } from '../store/useThemeStore'
 
 gsap.registerPlugin(ScrollToPlugin)
 
+const navigationItems = [
+  { href: '#main', labelKey: 'nav.home' },
+  { href: '#exploring', labelKey: 'nav.appearance' },
+  { href: '#profile', labelKey: 'nav.profile' },
+] as const
+
 function Navbar() {
   const { t, i18n } = useTranslation()
   const language = i18n.resolvedLanguage === 'th' ? 'th' : 'en'
@@ -79,9 +85,9 @@ function Navbar() {
         GGAS<span className="-ml-2.5 text-[#df563d] max-[420px]:-ml-1.5">.</span>
       </a>
       <nav className="flex items-center justify-center gap-7 [&_a]:py-2.5 [&_a]:text-sm [&_a]:font-bold [&_a]:text-foreground [&_a]:no-underline [&_a]:underline-offset-[5px] [&_a:hover]:underline [&_a:hover]:decoration-2 max-[800px]:col-span-full max-[800px]:row-start-2 max-[800px]:justify-between max-[800px]:gap-4 max-[800px]:border-t-2 max-[800px]:border-[var(--navbar-ink)] max-[800px]:pt-1 max-[420px]:[&_a]:text-xs" aria-label={t('nav.label')}>
-        <a href="#main" onClick={handleNavigation}>{t('nav.home')}</a>
-        <a href="#appearance" onClick={handleNavigation}>{t('nav.appearance')}</a>
-        <a href="#profile" onClick={handleNavigation}>{t('nav.profile')}</a>
+        {navigationItems.map(({ href, labelKey }) => (
+          <a key={href} href={href} onClick={handleNavigation}>{t(labelKey)}</a>
+        ))}
       </nav>
       <div className="flex items-center gap-[18px] max-[420px]:gap-2.5">
         <div

@@ -51,12 +51,53 @@ export default function InteractiveProfileCard({
   const { t } = useTranslation()
   const container = useRef<HTMLButtonElement>(null)
   const rotator = useRef<HTMLSpanElement>(null)
+  const introTimeline = useRef<gsap.core.Timeline | null>(null)
+  const userInteracted = useRef(false)
   const [flipped, setFlipped] = useState(false)
   const [tooltipDismissed, setTooltipDismissed] = useState(false)
   const tooltipId = useId()
-  const { contextSafe } = useGSAP({ scope: container })
+  const { contextSafe } = useGSAP((_context, contextSafe) => {
+    const element = rotator.current
+    if (!element || !contextSafe || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    let cancelled = false
+    let loadListener: (() => void) | undefined
+    const pageReady = new Promise<void>((resolve) => {
+      if (document.readyState === 'complete') {
+        resolve()
+      } else {
+        loadListener = () => resolve()
+        window.addEventListener('load', loadListener, { once: true })
+      }
+    })
+    const startIntro = contextSafe(() => {
+      if (cancelled || userInteracted.current || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+      introTimeline.current = gsap.timeline({ delay: 0.8 })
+        .call(() => setFlipped(true))
+        .to(element, { rotationY: 180, duration: 0.85, ease: 'power3.inOut' })
+        .call(() => setFlipped(false), [], '+=0.3')
+        .to(element, { rotationY: 0, duration: 0.85, ease: 'power3.inOut' })
+    })
+
+    Promise.all([
+      pageReady,
+      document.fonts.ready,
+      ...Array.from(element.querySelectorAll('img'), (image) => image.decode()),
+    ]).then(startIntro).catch(() => undefined)
+
+    return () => {
+      cancelled = true
+      if (loadListener) window.removeEventListener('load', loadListener)
+      introTimeline.current?.kill()
+      introTimeline.current = null
+    }
+  }, { scope: container })
 
   const flipPortrait = () => contextSafe(() => {
+    userInteracted.current = true
+    introTimeline.current?.kill()
+    introTimeline.current = null
     setTooltipDismissed(true)
     const nextFlipped = !flipped
     setFlipped(nextFlipped)
