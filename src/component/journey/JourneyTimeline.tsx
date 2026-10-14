@@ -40,7 +40,6 @@ export default function JourneyTimeline() {
   const trigger = useRef<ScrollTrigger | null>(null)
   const navigationTween = useRef<gsap.core.Tween | null>(null)
   const navigationArrival = useRef<(() => void) | null>(null)
-  const notebookDelay = useRef<gsap.core.Tween | null>(null)
   const focusIndex = useRef(0)
   const arrivalState = useRef(false)
   const [focused, setFocused] = useState(0)
@@ -51,15 +50,26 @@ export default function JourneyTimeline() {
 
   const openNotebook = (index: number, source: HTMLButtonElement) => {
     if (notebook) return
-    // Measure only after the car arrives and the focused card finishes scaling.
-    goToMilestone(index, () => {
-      notebookDelay.current = gsap.delayedCall(window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : .4, () => {
-        notebookDelay.current = null
-        if (!source.isConnected) return
-        const milestone = milestones[index]
-        setNotebook({ ...milestone, source, initialRect: source.getBoundingClientRect(), initialState: Flip.getState(source) })
-      })
-    })
+    const showNotebook = () => {
+      if (!source.isConnected) return
+      // Resolve any remaining card scale transition before taking the FLIP snapshot.
+      source.closest('.journey-milestone-visual')?.getAnimations().forEach(animation => animation.finish())
+      const milestone = milestones[index]
+      setNotebook({ ...milestone, source, initialRect: source.getBoundingClientRect(), initialState: Flip.getState(source) })
+    }
+    if (focusIndex.current === index && !navigationTween.current?.isActive() && !trigger.current?.getTween()?.isActive()) {
+      navigationArrival.current = null
+      showNotebook()
+      return
+    }
+    goToMilestone(index, showNotebook)
+  }
+
+  const finishNavigation = () => {
+    const onArrival = navigationArrival.current
+    navigationArrival.current = null
+    if (onArrival && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) trigger.current?.getTween()?.duration(.65)
+    onArrival?.()
   }
 
   useGSAP(() => {
@@ -146,9 +156,7 @@ export default function JourneyTimeline() {
           onRefresh: render,
           onScrubComplete: () => {
             if (navigationTween.current?.isActive()) return
-            const onArrival = navigationArrival.current
-            navigationArrival.current = null
-            onArrival?.()
+            finishNavigation()
           },
         },
       })
@@ -162,7 +170,6 @@ export default function JourneyTimeline() {
         stopDust.kill()
         navigationTween.current?.kill()
         navigationArrival.current = null
-        notebookDelay.current?.kill()
         vehicle.dataset.moving = 'false'
         shell.style.removeProperty('height')
         trigger.current = null
@@ -177,23 +184,24 @@ export default function JourneyTimeline() {
     const scrollTrigger = trigger.current
     if (!scrollTrigger) return
     navigationTween.current?.kill()
-    notebookDelay.current?.kill()
-    notebookDelay.current = null
     navigationArrival.current = onArrival ?? null
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!reduced) scrollTrigger.getTween()?.duration(onArrival ? .2 : .65)
     navigationTween.current = gsap.to(window, {
       scrollTo: {
         y: scrollTrigger.start + (scrollTrigger.end - scrollTrigger.start) * getMilestoneScrollProgress(index, milestones.length),
         autoKill: true,
-        onAutoKill: () => { navigationArrival.current = null },
+        onAutoKill: () => {
+          navigationArrival.current = null
+          if (!reduced) scrollTrigger.getTween()?.duration(.65)
+        },
       },
-      duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 0.8,
+      duration: reduced ? 0 : onArrival ? .55 : .8,
       ease: 'power2.inOut',
       onComplete: () => {
         ScrollTrigger.update()
         if (scrollTrigger.getTween()?.isActive()) return
-        const arrived = navigationArrival.current
-        navigationArrival.current = null
-        arrived?.()
+        finishNavigation()
       },
     })
   }
