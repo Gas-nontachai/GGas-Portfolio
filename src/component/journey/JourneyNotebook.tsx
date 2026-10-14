@@ -5,15 +5,8 @@ import { Flip } from 'gsap/Flip'
 import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import ScrambleText from '../ScrambleText'
-import car from '../../assets/journey_timeline/journey_car_side.png'
-import sign from '../../assets/journey_timeline/direction_sign.png'
-import universityPhoto from '../../assets/journey_timeline/img/university-rmuti.png'
-import starSticker from '../../assets/journey-notebook-asset-pack/svg/12-sticker-star.svg'
-import heartSticker from '../../assets/journey-notebook-asset-pack/svg/13-sticker-heart.svg'
-import arrowSticker from '../../assets/journey-notebook-asset-pack/svg/14-sticker-arrow.svg'
-import blueTape from '../../assets/journey-notebook-asset-pack/svg/07-paper-tape-blue.svg'
-import bookmark from '../../assets/journey-notebook-asset-pack/svg/09-bookmark-tab.svg'
-import paperclip from '../../assets/journey-notebook-asset-pack/svg/18-paperclip.svg'
+import { notebookChapters, type NotebookChapterId } from './chapters'
+import type { NotebookSpread } from './chapters/types'
 import closeIcon from '../../assets/journey-notebook-asset-pack/svg/10-close-button.svg'
 import { lerp, notebookEase, smoothstep, smootherstep } from './notebookMotion'
 import './notebook.css'
@@ -21,7 +14,7 @@ import './notebook.css'
 gsap.registerPlugin(Flip)
 
 export type NotebookSelection = {
-  id: string
+  id: NotebookChapterId
   label: string
   color: string
   image: string | null
@@ -43,10 +36,11 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
   const pageTurn = useRef<gsap.core.Timeline | null>(null)
   const turnSheet = useRef<HTMLElement | null>(null)
   const restorePageFocus = useRef(false)
-  const pageCount = selection.id === 'career' ? 2 : 1
+  const spreads: readonly NotebookSpread[] = notebookChapters[selection.id]
+  const pageCount = spreads.length
+  const activeSpread = spreads[page]
+  const ChapterContent = activeSpread.Content
   const chapterPrefix = `journey.stages.${selection.id}`
-  const isUniversity = selection.id === 'university'
-  const prefix = pageCount > 1 ? `${chapterPrefix}.spreads.${page === 0 ? 'first' : 'present'}` : chapterPrefix
 
   useLayoutEffect(() => {
     if (busy || !restorePageFocus.current) return
@@ -309,21 +303,15 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
 
   return createPortal(
     <div ref={overlayRef} className="notebook-overlay" role="dialog" aria-modal="true" aria-labelledby="notebook-title" aria-describedby="notebook-description" style={{ '--notebook-accent': selection.color } as CSSProperties}>
+      <span id="notebook-title" className="sr-only">{t(activeSpread.titleKey)}</span>
+      <span id="notebook-description" className="sr-only">{t(activeSpread.descriptionKey)}</span>
       <div className="notebook-backdrop" onClick={() => closeAnimation.current()} aria-hidden="true" />
       <div className="notebook-stage">
-        <div className="notebook-pages" data-paginated={pageCount > 1} data-university={isUniversity}>
+        <div className={`notebook-pages ${activeSpread.className ?? ''}`} data-paginated={pageCount > 1} data-spread={activeSpread.id}>
           <div className="notebook-paper-scroll" tabIndex={0} role="region" aria-label={t('journey.notebook.pages')}>
             <section className="notebook-paper notebook-paper-left">
               <div className="notebook-content">
-                <p className="notebook-eyebrow"><ScrambleText text={`${t('journey.chapter')} ${selection.label} / ${t(`${prefix}.episodeTitle`, { defaultValue: t(`${prefix}.title`) })}`} /></p>
-                <h2 id="notebook-title"><ScrambleText text={t(`${prefix}.${isUniversity ? 'notebookTitle' : 'title'}`)} /></h2>
-                <p id="notebook-description" className="notebook-lead"><ScrambleText text={t(`${prefix}.${isUniversity ? 'degree' : 'description'}`)} />{isUniversity && <><br /><ScrambleText text={t(`${prefix}.faculty`)} /></>}</p>
-                <figure className={`notebook-photo${isUniversity ? ' notebook-photo-personal' : ''}`}>
-                  <img src={blueTape} className="notebook-tape" alt="" aria-hidden="true" />
-                  <img src={isUniversity ? universityPhoto : selection.image ?? sign} alt={t(`journey.notebook.images.${selection.id}`)} />
-                  <figcaption><ScrambleText text={t(`${prefix}.period`)} /></figcaption>
-                </figure>
-                <p><ScrambleText text={t(`${prefix}.story`)} /></p>
+                <ChapterContent side="left" label={selection.label} />
                 <span className="notebook-page-number">{String(page * 2 + 1).padStart(2, '0')} / STORY</span>
               </div>
             </section>
@@ -334,15 +322,7 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
                 <button type="button" disabled={busy || page === pageCount - 1} onClick={() => turnPage(page + 1)} aria-label={t('journey.notebook.nextPage')}><ArrowRight size={20} aria-hidden="true" /></button>
               </nav>}
               <div className="notebook-content">
-                <img src={bookmark} className="notebook-bookmark" alt="" aria-hidden="true" />
-                <img src={paperclip} className="notebook-paperclip" alt="" aria-hidden="true" />
-                <h3><ScrambleText text={t('journey.highlights')} /></h3>
-                <ul className="notebook-memories">{[0, 1, 2].map(index => <li key={index}><span>0{index + 1}</span><ScrambleText text={t(`${prefix}.highlights.${index}`)} /></li>)}</ul>
-                <div className="notebook-memory-note"><img src={starSticker} alt="" aria-hidden="true" /><div><h3><ScrambleText text={t('journey.notebook.memory')} /></h3><p><ScrambleText text={t(`${prefix}.memory`)} /></p></div></div>
-                <div className="notebook-takeaway"><img src={arrowSticker} alt="" aria-hidden="true" /><p><strong><ScrambleText text={t('journey.takeaway')} /></strong><br /><ScrambleText text={t(`${prefix}.takeaway`)} /></p></div>
-                <p className="notebook-tags"><ScrambleText text={t(`${prefix}.tag`)} /></p>
-                <img src={heartSticker} className="notebook-heart-sticker" alt="" aria-hidden="true" />
-                <img src={car} className="notebook-car-sticker" alt="" aria-hidden="true" />
+                <ChapterContent side="right" label={selection.label} />
                 <span className="notebook-page-number">{String(page * 2 + 2).padStart(2, '0')} / MEMORIES</span>
               </div>
             </section>
