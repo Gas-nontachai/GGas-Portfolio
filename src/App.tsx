@@ -2,7 +2,7 @@ import { useLayoutEffect } from 'react'
 import { Button } from '@risky2k1/neobrutalism-ui'
 import { Moon, Sun } from 'lucide-react'
 import CustomCursor from './component/CustomCursor'
-import InteractiveProfileCard from './component/profile/InteractiveProfileCard'
+import ProfileOrbit from './component/profile/ProfileOrbit'
 import { useThemeStore } from './store/useThemeStore'
 
 const modes = [
@@ -55,7 +55,7 @@ function App() {
         </section>
         <section aria-labelledby="preview-heading" className="min-w-0">
           <h2 id="preview-heading" className="mb-4 font-mono text-xs font-bold">PREVIEW</h2>
-          <InteractiveProfileCard />
+          <ProfileOrbit />
         </section>
       </main>
       <footer className="flex justify-between gap-4 border-t-[3px] border-border bg-secondary-background px-6 py-5 font-mono text-xs sm:px-10"><span>GGAS PORTFOLIO</span><span>2026</span></footer>
