@@ -1,5 +1,23 @@
 # React + TypeScript + Vite
 
+## CI checks before merging
+
+GitHub Actions runs `npm ci`, `npm run lint`, and `npm run build` on Node.js 24
+for pull requests targeting `main`, pushes to `main`, and merge queue groups.
+The build includes TypeScript checks. The workflow can also be run manually.
+
+To block merging until checks pass, configure GitHub **Settings > Rules > Rulesets**:
+
+1. Create an active branch ruleset targeting `main`.
+2. Enable **Require a pull request before merging**.
+3. Enable **Require status checks to pass** and select **Lint and build** after
+  the workflow has run once.
+4. Enable **Require branches to be up to date before merging** unless using a
+  merge queue, and restrict bypass permissions as needed.
+
+The workflow alone does not prevent direct pushes or merges. These rules must
+be enabled on GitHub. Deployment is not configured by this workflow.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
