@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useId, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Code2, Crown, Sparkles, UserRound } from 'lucide-react'
@@ -49,9 +49,12 @@ export default function InteractiveProfileCard({
   const container = useRef<HTMLButtonElement>(null)
   const rotator = useRef<HTMLSpanElement>(null)
   const [flipped, setFlipped] = useState(false)
+  const [tooltipDismissed, setTooltipDismissed] = useState(false)
+  const tooltipId = useId()
   const { contextSafe } = useGSAP({ scope: container })
 
   const flipPortrait = () => contextSafe(() => {
+    setTooltipDismissed(true)
     const nextFlipped = !flipped
     setFlipped(nextFlipped)
     gsap.to(rotator.current, {
@@ -71,24 +74,43 @@ export default function InteractiveProfileCard({
         </div>
         <Crown className="my-0 mt-3 mb-2 ml-[35%] size-[38px] shrink-0 -rotate-12 fill-[#ffe16b] stroke-[3] max-[380px]:my-2 max-[380px]:size-7" aria-hidden="true" />
         <div className="my-auto flex w-full min-w-0 flex-col items-center">
-          <button
-            ref={container}
-            type="button"
-            className="block aspect-square w-[72%] shrink-0 rounded-full border-0 bg-transparent p-0 text-inherit perspective-[1000px] [-webkit-tap-highlight-color:transparent] focus-visible:outline-[3px] focus-visible:outline-offset-[10px] focus-visible:outline-foreground"
-            aria-label={`Show ${flipped ? 'cartoon portrait' : 'real photo'} of ${name}`}
-            aria-pressed={flipped}
-            title={flipped ? 'Show cartoon portrait' : 'Show real photo'}
-            onClick={flipPortrait}
+          <span
+            className="group/pfp relative block aspect-square w-[72%] shrink-0"
+            data-tooltip-dismissed={tooltipDismissed}
+            onPointerEnter={(event) => {
+              if (event.pointerType !== 'touch') setTooltipDismissed(false)
+            }}
           >
-            <span ref={rotator} className="relative block h-full w-full transform-3d">
-              <span className="absolute inset-0 backface-hidden [-webkit-backface-visibility:hidden]" aria-hidden={flipped}>
-                <Portrait src={cartoonSrc} name={name} cartoon />
+            <button
+              ref={container}
+              type="button"
+              className="block h-full w-full rounded-full border-0 bg-transparent p-0 text-inherit perspective-[1000px] [-webkit-tap-highlight-color:transparent] focus-visible:outline-[3px] focus-visible:outline-offset-[10px] focus-visible:outline-foreground"
+              aria-label={`Show ${flipped ? 'cartoon portrait' : 'real photo'} of ${name}`}
+              aria-pressed={flipped}
+              aria-describedby={tooltipId}
+              onClick={flipPortrait}
+              onFocus={() => setTooltipDismissed(false)}
+              onKeyDown={(event) => {
+                if (event.key === 'Escape') setTooltipDismissed(true)
+              }}
+            >
+              <span ref={rotator} className="relative block h-full w-full transform-3d">
+                <span className="absolute inset-0 backface-hidden [-webkit-backface-visibility:hidden]" aria-hidden={flipped}>
+                  <Portrait src={cartoonSrc} name={name} cartoon />
+                </span>
+                <span className="absolute inset-0 rotate-y-180 backface-hidden [-webkit-backface-visibility:hidden]" aria-hidden={!flipped}>
+                  <Portrait src={photoSrc} name={name} cartoon={false} />
+                </span>
               </span>
-              <span className="absolute inset-0 rotate-y-180 backface-hidden [-webkit-backface-visibility:hidden]" aria-hidden={!flipped}>
-                <Portrait src={photoSrc} name={name} cartoon={false} />
-              </span>
+            </button>
+            <span
+              id={tooltipId}
+              role="tooltip"
+              className="pointer-events-none invisible absolute right-0 bottom-0 z-10 max-w-full border-2 border-foreground bg-secondary-background px-2.5 py-1.5 text-left text-xs font-semibold text-foreground opacity-0 group-hover/pfp:visible group-hover/pfp:opacity-100 group-focus-within/pfp:visible group-focus-within/pfp:opacity-100 group-data-[tooltip-dismissed=true]/pfp:hidden"
+            >
+              {flipped ? 'Back to my alter ego?' : "Who's behind this face?"}
             </span>
-          </button>
+          </span>
           <h3 className="mt-[18px] max-w-full text-[32px] leading-[1.15] font-bold wrap-anywhere max-[380px]:mt-3 max-[380px]:text-[28px]">{name}<span className="text-[#a52e44]">.</span></h3>
           <span className="mt-[9px] max-w-full rounded-sm border-2 border-[#171717] bg-[#fff6dc] px-3 py-[5px] text-sm font-semibold wrap-anywhere">{role}</span>
         </div>
