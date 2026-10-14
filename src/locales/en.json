@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "home": "Home",
+    "appearance": "Exploring",
+    "profile": "Profile",
+    "label": "Main navigation",
+    "brand": "GGAS home"
+  },
+  "home": {
+    "hello": "Hey, I'm",
+    "tagline": "I'm a dev. Actually, more of an experimenter.",
+    "description": "Full-stack dev who knows a bit of everything. I like mixing what I know with whatever I'm into to make something I've never tried before.",
+    "explore": "What have I been up to?",
+    "stack": "Tech I've worked with",
+    "mainClass": "MAIN CLASS",
+    "flutter": "I'm also getting into mobile apps and looking for fresh ideas to build.",
+    "esp32": "I don't want to stick to just code on a screen. I want to turn my ideas into something I can actually hold.",
+    "printing": "If I've got a circuit, I might as well give it a nice case. I'm still not that good at CAD, though.",
+    "inProgress": "Experiment in progress",
+    "previous": "Previous experiment",
+    "next": "Next experiment"
+  },
+  "appearance": {
+    "preferences": "PREFERENCES",
+    "heading": "Appearance",
+    "palette": "Theme palette",
+    "preview": "PREVIEW"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "switch": "Switch to {{mode}} theme",
+    "tooltip": "{{mode}} theme"
+  },
+  "language": {
+    "switch": "Switch to Thai",
+    "tooltip": "ภาษาไทย"
+  },
+  "profile": {
+    "role": "Full Stack Developer",
+    "space": "PERSONAL SPACE",
+    "creative": "CREATIVE!",
+    "tagline": "CODE + CREATIVITY",
+    "cartoon": "Cartoon portrait of {{name}}",
+    "photo": "Photo of {{name}}",
+    "cartoonUnavailable": "Cartoon portrait of {{name}} unavailable",
+    "photoUnavailable": "Photo of {{name}} unavailable",
+    "showCartoon": "Show cartoon portrait of {{name}}",
+    "showPhoto": "Show real photo of {{name}}",
+    "cartoonTooltip": "Let's go back!",
+    "photoTooltip": "Wait, what does it actually look like?",
+    "react": "React",
+    "gaming": "Gaming",
+    "printing": "3D printing"
+  }
+}

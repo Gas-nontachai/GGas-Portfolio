@@ -1,6 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "@risky2k1/neobrutalism-ui/styles.css";
 @source "../node_modules/@risky2k1/neobrutalism-ui/dist";
+
+@property --background {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f3f3ee;
+}
+
+@property --secondary-background {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #fff;
+}
+
+@property --foreground {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #171717;
+}
+
+@property --border {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #171717;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    transition: --background 450ms ease, --secondary-background 450ms ease, --foreground 450ms ease, --border 450ms ease;
+  }
+}
+
+@font-face {
+  font-family: 'iannnnn AMD';
+  src: url('./assets/fonts/2005_iannnnnAMD-fixed.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  size-adjust: 200%;
+}
+
+@theme {
+  --font-sans: 'iannnnn AMD', sans-serif;
+  --font-mono: 'iannnnn AMD', monospace;
+  --animate-inventory-float: inventory-float 3.8s ease-in-out infinite;
+
+  @keyframes inventory-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+}
 
 ::selection {
   background-color: #FFD43B;
@@ -8,8 +57,8 @@
 }
 
 :root {
-  font-family: 'Space Grotesk', sans-serif;
-  font-synthesis: none;
+  font-family: var(--font-sans);
+  font-synthesis: weight style;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   letter-spacing: 0;
@@ -30,7 +79,7 @@
   --foreground: #f3f3ee;
   --main: #f5d547;
   --main-foreground: #171717;
-  --border: #050505;
+  --border: #f3f3ee;
   --ring: #f5d547;
   color-scheme: dark;
 }
