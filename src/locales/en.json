@@ -116,45 +116,69 @@
         "spreads": {
           "first": {
             "title": "First Job",
-            "description": "A new desk, a new team, and my first real-world codebase.",
+            "description": "From a class project to code my teammates would have to read.",
             "period": "The first chapter at work",
-            "story": "My first ticket looked small: build a form and connect it to an API. It taught me to ask better questions, read unfamiliar code, and ship something people could actually use.",
+            "story": "On day one, the repo looked completely unfamiliar. Even getting it running meant asking lots of questions. My first task was a small form fix, but getting through the review taught me much more than I expected.",
             "highlights": [
-              "Shipped my first feature with a teammate’s guidance.",
-              "Learned the rhythm of tickets, reviews, and releases.",
-              "Turned a confusing bug into a shared team lesson."
+              "Mission 01: Get the project running. Everything else can wait.",
+              "Mission 02: Fix a form, connect an API, and open my first pull request.",
+              "Mission 03: Apply the feedback and hold my breath during the release."
             ],
-            "memory": "I refreshed the page after my first release and saw my change live. A tiny feature, but a very big moment.",
-            "takeaway": "Ask early, take notes, and make the next change a little better.",
-            "tag": "First ticket / Teamwork / Small wins"
+            "memory": "I thought working code meant I was done… until a teammate asked, “What if the API goes down?” Right. There was a lot more to think about.",
+            "takeaway": "Make it work, then learn to make it understandable to someone else.",
+            "tag": "First ticket / Teamwork / Small wins",
+            "logTitle": "My first mission log",
+            "noteTitle": "The first code review"
           },
           "present": {
-            "title": "Present",
-            "description": "Still building, still curious — with a few more tools in my bag.",
-            "period": "What I am exploring today",
-            "story": "These days I enjoy connecting the whole picture: interfaces, APIs, and the details that make an app feel good. Outside work, I keep a small playground for mobile apps, electronics, and printed prototypes.",
+            "title": "What am I tinkering with now?",
+            "description": "Day job, side ideas, and a workbench that is getting a little crowded.",
+            "period": "Present / Still experimenting",
+            "story": "Some days I build an app. Other days I wire a circuit or watch the printer work. Not everything gets finished, but every experiment teaches me something new.",
             "highlights": [
               "Connect frontend features with backend services.",
               "Improve existing flows using feedback and small experiments.",
               "Explore Flutter, ESP32, and 3D-printed enclosures."
             ],
-            "memory": "A weekend prototype finally worked from screen to circuit. It reminded me why I love mixing different kinds of making.",
-            "takeaway": "Keep learning, build useful things, and leave room to play.",
-            "tag": "Full stack / Experiments / Keep growing"
+            "memory": "What if a mobile app controlled a board inside a case I printed myself? No idea what I would use it for yet, but it sounds fun to try.",
+            "takeaway": "Get one idea working first. There will always be another one to try.",
+            "tag": "Mobile / Hardware / 3D printing",
+            "noteTitle": "An idea from the workbench",
+            "storyTitle": "There is more to try beyond the screen",
+            "projects": {
+              "flutter": {
+                "title": "A tiny app in my pocket",
+                "description": "Try Flutter, build a few screens, and find an everyday problem to solve."
+              },
+              "esp32": {
+                "title": "Code beyond the screen",
+                "description": "Connect sensors to an ESP32, read their values, and control it from an app."
+              },
+              "printing": {
+                "title": "A home for the circuit",
+                "description": "Design a case, print it, and hope the board actually fits."
+              }
+            }
           }
         }
       },
       "future": {
         "title": "What comes next?",
         "shortDescription": "Still curious about the next adventure.",
-        "description": "No idea what the next sign will say. I bet there are plenty of fun things left to try.",
+        "description": "What will the future look like?",
         "preview": "The road goes on… what will the next stop be?",
         "tag": "Next stop / Still a question mark",
-        "period": "The road ahead",
-        "memory": "This page is saved for a memory I haven't made yet. Maybe the next scribbled idea will turn into something worth sharing.",
-        "story": "Maybe a new app, a homemade gadget, or something I haven't even imagined yet. I'm curious where this road will lead, so let's keep going and find out.",
-        "highlights": ["Prototype a small app that solves an everyday problem.", "Combine a connected device with a custom printed enclosure.", "Share an experiment and learn from the people who try it."],
-        "takeaway": "Stay curious. Pick one idea and turn it into the next adventure."
+        "period": "Next stop / No idea yet",
+        "memory": "Leaving some space here. Maybe one day I will come back with a fun story to fill it.",
+        "story": "A new app? Something I can hold in my hands? Or something I have not even imagined yet? No idea, but there must be plenty left to try.",
+        "highlights": [
+          "Prototype a small app that solves an everyday problem.",
+          "Combine a connected device with a custom printed enclosure.",
+          "Share an experiment and learn from the people who try it."
+        ],
+        "takeaway": "See you in the next chapter :)",
+        "notebookTitle": "Hmm, I wonder…",
+        "blankTitle": "This page is still unwritten"
       }
     },
     "details": "{{stage}} story details",

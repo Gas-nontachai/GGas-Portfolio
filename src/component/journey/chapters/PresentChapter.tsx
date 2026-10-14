@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next'
 import ScrambleText from '../../ScrambleText'
-import photo from '../../../assets/journey_timeline/office_building.png'
-import { EpisodeLabel, Highlights, MemoryNote, PhotoFrame, Sticker, Tags, Takeaway } from '../widgets/NotebookWidgets'
+import flutter from '../../../assets/life-inventory/flutter-flutter-shard.png'
+import esp32 from '../../../assets/life-inventory/esp32-smart-chip.png'
+import printer from '../../../assets/life-inventory/3d-printer-printer-forge.png'
+import { EpisodeLabel, MemoryNote, Sticker, Tags, Takeaway } from '../widgets/NotebookWidgets'
 import type { ChapterPageProps } from './types'
 
 export default function PresentChapter({ side, label }: ChapterPageProps) {
@@ -12,18 +14,22 @@ export default function PresentChapter({ side, label }: ChapterPageProps) {
     <EpisodeLabel text={`${t('journey.chapter')} ${label} / ${t(`${prefix}.title`)}`} />
     <h2><ScrambleText text={t(`${prefix}.title`)} /></h2>
     <p className="notebook-lead"><ScrambleText text={t(`${prefix}.description`)} /></p>
-    <PhotoFrame src={photo} alt={t('journey.notebook.images.career')} caption={t(`${prefix}.period`)} />
-    <p><ScrambleText text={t(`${prefix}.story`)} /></p>
+    <div className="notebook-experiments">
+      {([{ id: 'flutter', image: flutter }, { id: 'esp32', image: esp32 }, { id: 'printing', image: printer }] as const).map(({ id, image }) => <article className={`notebook-experiment notebook-experiment-${id}`} key={id}>
+        <img src={image} alt="" aria-hidden="true" />
+        <div><h3><ScrambleText text={t(`${prefix}.projects.${id}.title`)} /></h3><p><ScrambleText text={t(`${prefix}.projects.${id}.description`)} /></p></div>
+      </article>)}
+    </div>
+    <Tags text={t(`${prefix}.tag`)} />
   </>
 
   return <>
-    <Sticker kind="bookmark" className="notebook-bookmark" />
-    <Sticker kind="paperclip" className="notebook-paperclip" />
-    <Highlights title={t('journey.highlights')} items={t(`${prefix}.highlights`, { returnObjects: true }) as string[]} />
-    <MemoryNote title={t('journey.notebook.memory')}><p><ScrambleText text={t(`${prefix}.memory`)} /></p></MemoryNote>
+    <EpisodeLabel text={t(`${prefix}.period`)} />
+    <MemoryNote className="notebook-present-note" title={t(`${prefix}.noteTitle`)}><p><ScrambleText text={t(`${prefix}.memory`)} /></p></MemoryNote>
+    <h3 className="notebook-present-heading"><ScrambleText text={t(`${prefix}.storyTitle`)} /></h3>
+    <p><ScrambleText text={t(`${prefix}.story`)} /></p>
     <Takeaway label={t('journey.takeaway')}><ScrambleText text={t(`${prefix}.takeaway`)} /></Takeaway>
-    <Tags text={t(`${prefix}.tag`)} />
-    <Sticker kind="heart" className="notebook-heart-sticker" />
-    <Sticker kind="car" className="notebook-car-sticker" />
+    <Sticker kind="star" className="notebook-present-star" />
+    <Sticker kind="heart" className="notebook-present-heart" />
   </>
 }

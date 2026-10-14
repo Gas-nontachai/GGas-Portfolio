@@ -19,8 +19,8 @@ export default function FirstJobChapter({ side, label }: ChapterPageProps) {
   return <>
     <Sticker kind="bookmark" className="notebook-bookmark" />
     <Sticker kind="paperclip" className="notebook-paperclip" />
-    <Highlights title={t('journey.highlights')} items={t(`${prefix}.highlights`, { returnObjects: true }) as string[]} />
-    <MemoryNote title={t('journey.notebook.memory')}><p><ScrambleText text={t(`${prefix}.memory`)} /></p></MemoryNote>
+    <Highlights className="notebook-first-log" title={t(`${prefix}.logTitle`)} items={t(`${prefix}.highlights`, { returnObjects: true }) as string[]} />
+    <MemoryNote title={t(`${prefix}.noteTitle`)}><p><ScrambleText text={t(`${prefix}.memory`)} /></p></MemoryNote>
     <Takeaway label={t('journey.takeaway')}><ScrambleText text={t(`${prefix}.takeaway`)} /></Takeaway>
     <Tags text={t(`${prefix}.tag`)} />
     <Sticker kind="heart" className="notebook-heart-sticker" />

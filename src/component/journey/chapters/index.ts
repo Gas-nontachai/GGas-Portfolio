@@ -14,7 +14,7 @@ export const notebookChapters = {
     { id: 'present', Content: PresentChapter, titleKey: 'journey.stages.career.spreads.present.title', descriptionKey: 'journey.stages.career.spreads.present.description' },
   ],
   future: [
-    { id: 'future', Content: FutureChapter, titleKey: 'journey.stages.future.title', descriptionKey: 'journey.stages.future.description' },
+    { id: 'future', Content: FutureChapter, titleKey: 'journey.stages.future.notebookTitle', descriptionKey: 'journey.stages.future.description' },
   ],
 } satisfies Record<string, [NotebookSpread, ...NotebookSpread[]]>
 
