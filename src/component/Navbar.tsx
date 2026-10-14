@@ -12,6 +12,7 @@ function Navbar() {
   const navbarRef = useRef<HTMLElement>(null)
   const scrollTweenRef = useRef<gsap.core.Tween | null>(null)
   const [navbarHidden, setNavbarHidden] = useState(false)
+  const [tooltipDismissed, setTooltipDismissed] = useState(false)
 
   const handleNavigation = (event: MouseEvent<HTMLAnchorElement>) => {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
@@ -65,12 +66,12 @@ function Navbar() {
   return (
     <header
       ref={navbarRef}
-      className="sticky top-6 z-50 mx-auto mt-6 grid w-[calc(100%-64px)] max-w-6xl shrink-0 grid-cols-[auto_1fr_auto] items-center gap-6 rounded-2xl border-[3px] border-[var(--navbar-ink)] bg-secondary-background px-5 py-3.5 shadow-[5px_5px_0_var(--navbar-ink)] [--navbar-ink:#171717] [.dark_&]:[--navbar-ink:#f3f3ee] transition-[translate,opacity,visibility] [transition-duration:280ms,220ms,280ms] ease-out data-[hidden=true]:pointer-events-none data-[hidden=true]:invisible data-[hidden=true]:-translate-y-[calc(100%+32px)] data-[hidden=true]:opacity-0 [&_:is(a,button):focus-visible]:outline-[3px] [&_:is(a,button):focus-visible]:outline-foreground [&_:is(a,button):focus-visible]:outline-offset-6 max-[800px]:top-[18px] max-[800px]:mt-[18px] max-[800px]:w-[calc(100%-40px)] max-[800px]:grid-cols-[1fr_auto] max-[800px]:gap-x-4 max-[800px]:gap-y-3 max-[800px]:px-4 max-[420px]:gap-x-2 max-[420px]:px-3 motion-reduce:transition-none"
+      className="sticky top-6 z-50 mx-auto mt-6 grid w-[calc(100%-64px)] max-w-5xl shrink-0 grid-cols-[auto_1fr_auto] items-center gap-5 rounded-2xl border-[3px] border-[var(--navbar-ink)] bg-secondary-background px-4 py-2.5 shadow-[5px_5px_0_var(--navbar-ink)] [--navbar-ink:#171717] [.dark_&]:[--navbar-ink:#f3f3ee] transition-[translate,opacity,visibility] [transition-duration:280ms,220ms,280ms] ease-out data-[hidden=true]:pointer-events-none data-[hidden=true]:invisible data-[hidden=true]:-translate-y-[calc(100%+32px)] data-[hidden=true]:opacity-0 [&_:is(a,button):focus-visible]:outline-[3px] [&_:is(a,button):focus-visible]:outline-foreground [&_:is(a,button):focus-visible]:outline-offset-6 max-[800px]:top-[18px] max-[800px]:mt-[18px] max-[800px]:w-[calc(100%-40px)] max-[800px]:grid-cols-[1fr_auto] max-[800px]:gap-x-4 max-[800px]:gap-y-3 max-[800px]:px-4 max-[420px]:gap-x-2 max-[420px]:px-3 motion-reduce:transition-none"
       data-hidden={navbarHidden}
       inert={navbarHidden}
     >
-      <a href="#main" onClick={handleNavigation} className="flex w-fit items-center gap-2.5 text-2xl leading-none font-bold text-foreground no-underline max-[420px]:gap-1.5 max-[420px]:text-xl" aria-label="GGAS home">
-        <span className="grid size-7 -rotate-[8deg] place-items-center rounded-[7px] border-2 border-[#171717] bg-[#ffd43b] text-[19px] text-[#171717] max-[420px]:size-6 max-[420px]:text-base" aria-hidden="true">G</span>
+      <a href="#main" onClick={handleNavigation} className="flex w-fit items-center gap-2.5 text-xl leading-none font-bold text-foreground no-underline max-[420px]:gap-1.5" aria-label="GGAS home">
+        <span className="grid size-6 -rotate-[8deg] place-items-center rounded-[7px] border-2 border-[#171717] bg-[#ffd43b] text-base text-[#171717]" aria-hidden="true">G</span>
         GGAS<span className="-ml-2.5 text-[#df563d] max-[420px]:-ml-1.5">.</span>
       </a>
       <nav className="flex items-center justify-center gap-7 [&_a]:py-2.5 [&_a]:text-sm [&_a]:font-bold [&_a]:text-foreground [&_a]:no-underline [&_a]:underline-offset-[5px] [&_a:hover]:underline [&_a:hover]:decoration-2 max-[800px]:col-span-full max-[800px]:row-start-2 max-[800px]:justify-between max-[800px]:gap-4 max-[800px]:border-t-2 max-[800px]:border-[var(--navbar-ink)] max-[800px]:pt-1 max-[420px]:[&_a]:text-xs" aria-label="Main navigation">
@@ -79,18 +80,30 @@ function Navbar() {
         <a href="#profile" onClick={handleNavigation}>Profile</a>
       </nav>
       <div className="flex items-center gap-[18px] max-[420px]:gap-2.5">
-        <a href="#profile" onClick={handleNavigation} className="flex min-h-[42px] items-center justify-center rounded-lg border-[3px] border-[#171717] bg-[#ff71a5] px-4 py-2 text-xs font-bold whitespace-nowrap text-[#171717] no-underline shadow-[3px_3px_0_var(--navbar-ink)] transition-[translate,box-shadow,background-color] duration-[120ms] ease-[ease] hover:bg-[#ff8cb6] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none max-[420px]:px-2 max-[420px]:text-[10px]">VIEW MY PROFILE</a>
-        <div className="group relative size-[42px] shrink-0">
+        <div
+          className="group relative size-10 shrink-0"
+          data-tooltip-dismissed={tooltipDismissed}
+          onPointerEnter={(event) => {
+            if (event.pointerType !== 'touch') setTooltipDismissed(false)
+          }}
+        >
           <button
             type="button"
-            className="grid size-[42px] place-items-center rounded-none border-[3px] border-[var(--navbar-ink)] bg-white p-0 text-[var(--navbar-ink)] shadow-[4px_4px_0_var(--navbar-ink)] transition-[translate,box-shadow,background-color] duration-[120ms] ease-[ease] hover:bg-[#ffd43b] hover:text-[#171717] active:translate-x-1 active:translate-y-1 active:shadow-none [.dark_&]:bg-[#202028] [.dark_&]:hover:bg-[#ffd43b]"
-            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+            className="grid size-10 place-items-center rounded-none border-[3px] border-[var(--navbar-ink)] bg-white p-0 text-[var(--navbar-ink)] shadow-[4px_4px_0_var(--navbar-ink)] transition-[translate,box-shadow,background-color] duration-[120ms] ease-[ease] hover:bg-[#ffd43b] hover:text-[#171717] active:translate-x-1 active:translate-y-1 active:shadow-none [.dark_&]:bg-[#202028] [.dark_&]:hover:bg-[#ffd43b]"
+            onClick={() => {
+              setTooltipDismissed(true)
+              setTheme(theme === 'light' ? 'dark' : 'light')
+            }}
+            onFocus={() => setTooltipDismissed(false)}
+            onKeyDown={(event) => {
+              if (event.key === 'Escape') setTooltipDismissed(true)
+            }}
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
             aria-describedby="theme-switch-tooltip"
           >
-            {theme === 'light' ? <Moon className="size-[22px] stroke-[1.5]" aria-hidden="true" /> : <Sun className="size-[22px] stroke-[1.5]" aria-hidden="true" />}
+            {theme === 'light' ? <Moon className="size-5 stroke-[1.5]" aria-hidden="true" /> : <Sun className="size-5 stroke-[1.5]" aria-hidden="true" />}
           </button>
-          <span id="theme-switch-tooltip" role="tooltip" className="pointer-events-none invisible absolute top-[calc(100%+14px)] right-0 z-10 border-2 border-[var(--navbar-ink)] bg-secondary-background px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap text-foreground opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+          <span id="theme-switch-tooltip" role="tooltip" className="pointer-events-none invisible absolute top-[calc(100%+14px)] right-0 z-10 border-2 border-[var(--navbar-ink)] bg-secondary-background px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap text-foreground opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 group-data-[tooltip-dismissed=true]:hidden">
             {theme === 'light' ? 'Dark' : 'Light'} theme
           </span>
         </div>
