@@ -7,6 +7,8 @@ import Introduction from './component/home/Introduction'
 import PlayerProfile from './component/home/PlayerProfile'
 import CurrentlyExploring from './component/home/CurrentlyExploring'
 import MainClass from './component/home/MainClass'
+import JourneyTimeline from './component/journey/JourneyTimeline'
+import MockNextSection from './component/home/MockNextSection'
 import { useThemeStore } from './store/useThemeStore'
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
         <CurrentlyExploring />
         <MainClass />
       </main>
+      <JourneyTimeline />
+      <MockNextSection />
       <footer className="mt-auto flex justify-between gap-4 border-t-[3px] border-border bg-secondary-background px-6 py-5 font-mono text-xs sm:px-10"><span>GGAS PORTFOLIO</span><span>2026</span></footer>
     </>
   )

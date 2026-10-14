@@ -4,7 +4,8 @@
     "appearance": "Exploring",
     "profile": "Profile",
     "label": "Main navigation",
-    "brand": "GGAS home"
+    "brand": "GGAS home",
+    "journey": "Journey"
   },
   "home": {
     "hello": "Hey, I'm",
@@ -52,5 +53,162 @@
     "react": "React",
     "gaming": "Gaming",
     "printing": "3D printing"
+  },
+  "journey": {
+    "eyebrow": "A LITTLE ROAD, A LOT OF STORIES",
+    "heading": "My journey",
+    "scroll": "Scroll to drive",
+    "chapter": "Chapter",
+    "here": "You are here",
+    "preview": "Preview",
+    "stop": "Road ahead",
+    "navigation": "Journey milestones",
+    "previous": "Go to previous milestone",
+    "next": "Go to next milestone",
+    "notebook": {
+      "open": "Open the {{stage}} notebook",
+      "read": "OPEN NOTEBOOK →",
+      "close": "Close notebook",
+      "pages": "Notebook story and memories",
+      "memory": "A little memory",
+      "pageNavigation": "Notebook pages",
+      "previousPage": "Previous pages",
+      "nextPage": "Next pages",
+      "pageIndicator": "Spread {{current}} / {{total}}",
+      "images": {
+        "university": "Photo from my university years",
+        "career": "Cartoon office building in a mock memory photo",
+        "future": "A direction sign pointing toward the next adventure"
+      }
+    },
+    "stages": {
+      "university": {
+        "episodeTitle": "Where coding began",
+        "title": "University",
+        "notebookTitle": "Rajamangala University of Technology Isan",
+        "degree": "Bachelor’s Degree in Computer Engineering",
+        "faculty": "Faculty of Engineering",
+        "shortDescription": "Where my coding journey began.",
+        "description": "Where my coding journey began.",
+        "preview": "The very first lines of code.",
+        "tag": "Curiosity / Code / Discovery",
+        "period": "2021–2025",
+        "memory": "The first time a tiny project finally worked, I couldn't stop clicking through it. I thought I was pretty good — until I stepped into the real world.",
+        "story": "I started engineering with circuits and electrical calculations. But wait, why wasn't it as fun as writing HTML and CSS? Maybe it was time to give web development a proper try.",
+        "highlights": [
+          "Started with simple HTML, CSS, and JavaScript.",
+          "Connected a database with PHP in class, then built on it for my final-year project.",
+          "Interned at a software house (Node.js + Express, Nuxt 3 + TypeScript)."
+        ],
+        "takeaway": "Time to step into the real world of work."
+      },
+      "career": {
+        "title": "First Job / Present",
+        "shortDescription": "From my first job to everyday building and learning.",
+        "description": "Turning ideas into real-world applications, while building, learning, and exploring new technologies.",
+        "preview": "From my first job to the work I do today.",
+        "tag": "Build / Learn / Grow",
+        "period": "First job to today",
+        "memory": "A teammate's small suggestion during a code review solved a problem I'd been staring at all afternoon. Building together changed how I learned.",
+        "story": "My first job became a place to keep growing. The same journey now includes taking ideas from a sketch to a working application and improving them with a team.",
+        "highlights": ["Built interfaces and connected them to application services.", "Learned through code reviews, releases, and user feedback.", "Kept exploring mobile apps, hardware, and side projects."],
+        "takeaway": "Good software grows through collaboration and steady improvements.",
+        "spreads": {
+          "first": {
+            "title": "First Job",
+            "description": "From a class project to code my teammates would have to read.",
+            "period": "The first chapter at work",
+            "story": "On day one, the repo looked completely unfamiliar. Even getting it running meant asking lots of questions. My first task was a small form fix, but getting through the review taught me much more than I expected.",
+            "highlights": [
+              "Mission 01: Get the project running. Everything else can wait.",
+              "Mission 02: Fix a form, connect an API, and open my first pull request.",
+              "Mission 03: Apply the feedback and hold my breath during the release."
+            ],
+            "memory": "I thought working code meant I was done… until a teammate asked, “What if the API goes down?” Right. There was a lot more to think about.",
+            "takeaway": "Make it work, then learn to make it understandable to someone else.",
+            "tag": "First ticket / Teamwork / Small wins",
+            "logTitle": "My first mission log",
+            "noteTitle": "The first code review"
+          },
+          "present": {
+            "title": "What am I tinkering with now?",
+            "description": "Day job, side ideas, and a workbench that is getting a little crowded.",
+            "period": "Present / Still experimenting",
+            "story": "Some days I build an app. Other days I wire a circuit or watch the printer work. Not everything gets finished, but every experiment teaches me something new.",
+            "highlights": [
+              "Connect frontend features with backend services.",
+              "Improve existing flows using feedback and small experiments.",
+              "Explore Flutter, ESP32, and 3D-printed enclosures."
+            ],
+            "memory": "What if a mobile app controlled a board inside a case I printed myself? No idea what I would use it for yet, but it sounds fun to try.",
+            "takeaway": "Get one idea working first. There will always be another one to try.",
+            "tag": "Mobile / Hardware / 3D printing",
+            "noteTitle": "An idea from the workbench",
+            "storyTitle": "There is more to try beyond the screen",
+            "projects": {
+              "flutter": {
+                "title": "A tiny app in my pocket",
+                "description": "Try Flutter, build a few screens, and find an everyday problem to solve."
+              },
+              "esp32": {
+                "title": "Code beyond the screen",
+                "description": "Connect sensors to an ESP32, read their values, and control it from an app."
+              },
+              "printing": {
+                "title": "A home for the circuit",
+                "description": "Design a case, print it, and hope the board actually fits."
+              }
+            }
+          }
+        }
+      },
+      "future": {
+        "title": "What comes next?",
+        "shortDescription": "Still curious about the next adventure.",
+        "description": "What will the future look like?",
+        "preview": "The road goes on… what will the next stop be?",
+        "tag": "Next stop / Still a question mark",
+        "period": "Next stop / No idea yet",
+        "memory": "Leaving some space here. Maybe one day I will come back with a fun story to fill it.",
+        "story": "A new app? Something I can hold in my hands? Or something I have not even imagined yet? No idea, but there must be plenty left to try.",
+        "highlights": [
+          "Prototype a small app that solves an everyday problem.",
+          "Combine a connected device with a custom printed enclosure.",
+          "Share an experiment and learn from the people who try it."
+        ],
+        "takeaway": "See you in the next chapter :)",
+        "notebookTitle": "Hmm, I wonder…",
+        "blankTitle": "This page is still unwritten"
+      }
+    },
+    "details": "{{stage}} story details",
+    "highlights": "Along the way",
+    "takeaway": "Next step:",
+    "continued": "See you at the next stop!",
+    "replay": "Drive again",
+    "continue": "Explore next",
+    "arrival": "You have reached the future sign. What comes next? You can drive again or scroll on."
+  },
+  "afterJourney": {
+    "label": "NEXT CHAPTER / MOCK SECTION",
+    "heading": "More things to explore",
+    "description": "A placeholder for the next portfolio section. Keep scrolling past Future to leave the journey and explore these mock projects.",
+    "placeholder": "Placeholder project",
+    "scrollHint": "Scroll back up to re-enter the journey and drive in reverse.",
+    "back": "Back to the journey",
+    "projects": {
+      "playground": {
+        "title": "Code playground",
+        "description": "A space for small app ideas and playful interface experiments."
+      },
+      "maker": {
+        "title": "Maker experiments",
+        "description": "Mock projects combining hardware, code, and things made by hand."
+      },
+      "next": {
+        "title": "What comes next?",
+        "description": "A spot reserved for the next idea, experiment, or adventure."
+      }
+    }
   }
 }

@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789กขคงจชซดตนบปผพมยรลวสห'
+const segmenter = new Intl.Segmenter(['th', 'en'], { granularity: 'grapheme' })
 
 export default function ScrambleText({ text }: { text: string }) {
   const { i18n } = useTranslation()
@@ -10,7 +11,7 @@ export default function ScrambleText({ text }: { text: string }) {
   const overlay = useRef<HTMLSpanElement>(null)
   const previousLanguage = useRef(language)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (previousLanguage.current === language) return
     previousLanguage.current = language
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -20,7 +21,7 @@ export default function ScrambleText({ text }: { text: string }) {
     if (!wrapper || !animated) return
 
     const started = performance.now()
-    const glyphs = Array.from(text)
+    const glyphs = Array.from(segmenter.segment(text), ({ segment }) => segment)
     const render = () => {
       const progress = Math.min(1, (performance.now() - started) / 520)
       animated.textContent = glyphs.map((character, index) => (
