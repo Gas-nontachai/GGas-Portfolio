@@ -2,6 +2,11 @@
 @import "@risky2k1/neobrutalism-ui/styles.css";
 @source "../node_modules/@risky2k1/neobrutalism-ui/dist";
 
+::selection {
+  background-color: #FFD43B;
+  color: #000000;
+}
+
 :root {
   font-family: 'Space Grotesk', sans-serif;
   font-synthesis: none;
