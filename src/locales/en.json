@@ -65,33 +65,51 @@
     "navigation": "Journey milestones",
     "previous": "Go to previous milestone",
     "next": "Go to next milestone",
+    "notebook": {
+      "open": "Open the {{stage}} notebook",
+      "read": "OPEN NOTEBOOK →",
+      "close": "Close notebook",
+      "pages": "Notebook story and memories",
+      "memory": "A little memory",
+      "images": {
+        "university": "Cartoon university building in a mock memory photo",
+        "career": "Cartoon office building in a mock memory photo",
+        "future": "A direction sign pointing toward the next adventure"
+      }
+    },
     "stages": {
       "university": {
         "title": "University",
+        "shortDescription": "Where my coding journey began.",
         "description": "Where my coding journey began.",
         "preview": "The very first lines of code.",
         "tag": "Curiosity / Code / Discovery",
         "period": "The starting line",
+        "memory": "The first time a tiny project finally worked, I couldn't stop clicking through it. That little win made the next experiment feel possible.",
         "story": "A small class assignment turned into late-night experiments. I started connecting what I learned in lectures with little tools I could actually use.",
         "highlights": ["Built a simple web app with classmates.", "Practiced debugging, Git, and sharing code.", "Discovered that making things was the best way to learn."],
         "takeaway": "Start small, ask questions, and keep experimenting."
       },
       "career": {
         "title": "First Job / Present",
+        "shortDescription": "From my first job to everyday building and learning.",
         "description": "Turning ideas into real-world applications, while building, learning, and exploring new technologies.",
         "preview": "From my first job to the work I do today.",
         "tag": "Build / Learn / Grow",
         "period": "First job to today",
+        "memory": "A teammate's small suggestion during a code review solved a problem I'd been staring at all afternoon. Building together changed how I learned.",
         "story": "My first job became a place to keep growing. The same journey now includes taking ideas from a sketch to a working application and improving them with a team.",
         "highlights": ["Built interfaces and connected them to application services.", "Learned through code reviews, releases, and user feedback.", "Kept exploring mobile apps, hardware, and side projects."],
         "takeaway": "Good software grows through collaboration and steady improvements."
       },
       "future": {
         "title": "What comes next?",
+        "shortDescription": "Still curious about the next adventure.",
         "description": "No idea what the next sign will say. I bet there are plenty of fun things left to try.",
         "preview": "The road goes on… what will the next stop be?",
         "tag": "Next stop / Still a question mark",
         "period": "The road ahead",
+        "memory": "This page is saved for a memory I haven't made yet. Maybe the next scribbled idea will turn into something worth sharing.",
         "story": "Maybe a new app, a homemade gadget, or something I haven't even imagined yet. I'm curious where this road will lead, so let's keep going and find out.",
         "highlights": ["Prototype a small app that solves an everyday problem.", "Combine a connected device with a custom printed enclosure.", "Share an experiment and learn from the people who try it."],
         "takeaway": "Stay curious. Pick one idea and turn it into the next adventure."

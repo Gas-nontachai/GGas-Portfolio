@@ -1,8 +1,9 @@
-import { useRef, useState, type CSSProperties } from 'react'
+import { useCallback, useRef, useState, type CSSProperties } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+import { Flip } from 'gsap/Flip'
 import { ArrowDown, ArrowLeft, ArrowRight, Flag, RotateCcw } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import car from '../../assets/journey_timeline/journey_car_side.png'
@@ -18,9 +19,10 @@ import sign from '../../assets/journey_timeline/direction_sign.png'
 import barrier from '../../assets/journey_timeline/construction_barrier.png'
 import dust from '../../assets/journey_timeline/dust_small.png'
 import { getJourneyFrame, getMilestoneScrollProgress } from './journeyMotion'
+import JourneyNotebook, { type NotebookSelection } from './JourneyNotebook'
 import './journey.css'
 
-gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin)
+gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin, Flip)
 
 const milestones = [
   { id: 'university', image: university, color: '#ffe16b', label: '01' },
@@ -41,6 +43,17 @@ export default function JourneyTimeline() {
   const [focused, setFocused] = useState(0)
   const [arrived, setArrived] = useState(false)
   const [hovered, setHovered] = useState<number | null>(null)
+  const [notebook, setNotebook] = useState<NotebookSelection | null>(null)
+  const closeNotebook = useCallback(() => setNotebook(null), [])
+
+  const openNotebook = (index: number, source: HTMLButtonElement) => {
+    if (notebook) return
+    navigationTween.current?.kill()
+    // Finish any scrub lag before measuring the card, then freeze background scroll.
+    trigger.current?.getTween()?.progress(1)
+    const milestone = milestones[index]
+    setNotebook({ ...milestone, source, initialRect: source.getBoundingClientRect(), initialState: Flip.getState(source) })
+  }
 
   useGSAP(() => {
     const root = section.current!
@@ -192,25 +205,17 @@ export default function JourneyTimeline() {
                 onPointerLeave={() => setHovered(null)}
                 onFocus={() => setHovered(index)}
                 onBlur={() => setHovered(null)}
-                tabIndex={index === focused ? 0 : -1}
                 aria-label={`${milestone.label}: ${t(`journey.stages.${milestone.id}.title`)}`}
               >
                 <div className="journey-milestone-visual">
-                  <div className="journey-card">
-                    <div className="journey-card-meta"><span>{t('journey.chapter')} {milestone.label}</span><span className="journey-state-label">{t(`journey.${state === 'focused' ? 'here' : state === 'hovered' ? 'preview' : 'stop'}`)}</span></div>
-                    <h3>{t(`journey.stages.${milestone.id}.title`)}</h3>
-                    <div className="journey-card-copy" aria-hidden={state === 'inactive'} tabIndex={state === 'focused' ? 0 : -1} role="region" aria-label={t('journey.details', { stage: t(`journey.stages.${milestone.id}.title`) })}>
-                      <p>{t(`journey.stages.${milestone.id}.${state === 'hovered' ? 'preview' : 'description'}`)}</p>
-                      <div className="journey-story" hidden={state !== 'focused'}>
-                        <span className="journey-story-label">{t('journey.mockStory')} / {t(`journey.stages.${milestone.id}.period`)}</span>
-                        <p>{t(`journey.stages.${milestone.id}.story`)}</p>
-                        <h4>{t('journey.highlights')}</h4>
-                        <ul>{[0, 1, 2].map((item) => <li key={item}>{t(`journey.stages.${milestone.id}.highlights.${item}`)}</li>)}</ul>
-                        <p className="journey-takeaway"><strong>{t('journey.takeaway')}</strong> {t(`journey.stages.${milestone.id}.takeaway`)}</p>
-                      </div>
-                      <span className="journey-card-tag">{t(`journey.stages.${milestone.id}.tag`)}</span>
-                    </div>
-                  </div>
+                  <button type="button" className="journey-card" data-flip-id={`journey-card-${milestone.id}`} tabIndex={index === focused ? 0 : -1} onClick={event => openNotebook(index, event.currentTarget)} aria-label={t('journey.notebook.open', { stage: t(`journey.stages.${milestone.id}.title`) })} aria-haspopup="dialog">
+                    <span className="journey-card-meta"><span>{t('journey.chapter')} {milestone.label}</span><span className="journey-state-label">{t(`journey.${state === 'focused' ? 'here' : state === 'hovered' ? 'preview' : 'stop'}`)}</span></span>
+                    <span className="journey-card-title">{t(`journey.stages.${milestone.id}.title`)}</span>
+                    <span className="journey-card-copy">
+                      <span className="journey-card-summary">{t(`journey.stages.${milestone.id}.${state === 'hovered' ? 'preview' : 'shortDescription'}`)}</span>
+                      <span className="journey-card-tag">{t('journey.notebook.read')}</span>
+                    </span>
+                  </button>
                   {milestone.image ? <img src={milestone.image} alt="" className="journey-building" draggable={false} /> : (
                     <div className="journey-building journey-future-sign" aria-hidden="true">
                       <div className="journey-future-board"><span className="journey-future-question">?</span><span>NEXT<br /><strong>???</strong></span><ArrowRight size={36} strokeWidth={3} /></div>
@@ -257,6 +262,7 @@ export default function JourneyTimeline() {
       </footer>
       <p className="journey-sr-only" aria-live="polite" aria-atomic="true">{t(`journey.stages.${milestones[focused].id}.title`)}. {t(`journey.stages.${milestones[focused].id}.description`)} {arrived ? t('journey.arrival') : ''}</p>
     </section>
+    {notebook && <JourneyNotebook selection={notebook} onExited={closeNotebook} />}
     </div>
   )
 }

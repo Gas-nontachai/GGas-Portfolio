@@ -22,10 +22,16 @@ and the next section follows in normal document flow.
 Milestone states use focused > hovered > inactive priority, with scale/brightness
 of 1/100%, .85/80%, and .65/45%. Hover previews never change the active chapter or
 scroll position. Layout space is reserved for card details and all scene assets.
-Each focused stop includes a mock story, three highlights, and a takeaway, from
-University through the combined First Job / Present chapter to Future. The card
-body scrolls with mouse, touch, or keyboard to keep full details readable on short
-screens; hover shows only a brief preview. Stories are placeholders in both languages.
+Cards show a short summary. Click or activate with Enter/Space to open a notebook
+containing the full mock story, highlights, memory, image, takeaway, and tags.
+The notebook uses a React Portal, GSAP Flip, an HTML/CSS 3D cover matching the chapter card's color, and
+decorations from `src/assets/journey-notebook-asset-pack/svg`. It opens in about
+960ms, with two cream pages on desktop and a single scrolling column on mobile.
+Close with the button, backdrop, or Escape. Closing cancels any opening animation,
+returns the visual to the card's current bounds, restores focus, and preserves
+the page scroll position. The background is inert and scroll-locked while open.
+Reduced motion opens/closes immediately without the zoom or cover rotation.
+All stories and memories are placeholders in both languages.
 English/Thai copy follows the language switch. Reduced motion removes scrub
 lag, parallax, wheel rotation, dust, and visual transitions.
 
@@ -39,6 +45,10 @@ the chapter buttons using mouse/keyboard. Repeat at 1440×900, 390×844, 320×56
 and mobile landscape, then resize mid-journey and enable reduced motion.
 Run `npm run test:journey` to verify chapter navigation, Future arrival/hold,
 reverse travel, and camera positions after resize.
+Notebook review: open each chapter with mouse and keyboard; Tab/Shift+Tab must
+remain in the dialog. Try all three closing actions, close during opening,
+repeatedly reopen, resize while open, and repeat with reduced motion. The scene's
+scroll position and focused milestone must stay unchanged after closing.
 
 ## CI checks before merging
 

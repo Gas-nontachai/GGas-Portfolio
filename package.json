@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test:journey": "node --test tests/journey-motion.test.mjs"
+    "test:journey": "node --test tests/journey-motion.test.mjs tests/notebook-motion.test.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
