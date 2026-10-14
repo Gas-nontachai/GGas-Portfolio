@@ -63,6 +63,8 @@
     "preview": "Preview",
     "stop": "Road ahead",
     "navigation": "Journey milestones",
+    "previous": "Go to previous milestone",
+    "next": "Go to next milestone",
     "stages": {
       "university": {
         "title": "University",

@@ -3,7 +3,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
-import { ArrowDown, ArrowRight, Flag, RotateCcw } from 'lucide-react'
+import { ArrowDown, ArrowLeft, ArrowRight, Flag, RotateCcw } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import car from '../../assets/journey_timeline/journey_car_side.png'
 import university from '../../assets/journey_timeline/university.png'
@@ -145,6 +145,7 @@ export default function JourneyTimeline() {
   }, { scope: section })
 
   const goToMilestone = (index: number) => {
+    if (index < 0 || index >= milestones.length) return
     const scrollTrigger = trigger.current
     if (!scrollTrigger) return
     navigationTween.current?.kill()
@@ -163,16 +164,10 @@ export default function JourneyTimeline() {
           <p className="journey-eyebrow"><span /> {t('journey.eyebrow')}</p>
           <h2 id="journey-heading">{t('journey.heading')}<span>.</span></h2>
         </div>
-        <div className="journey-instruction">
-          <p className="journey-drive-hint" aria-hidden={arrived}><ArrowDown size={18} aria-hidden="true" />{t('journey.scroll')}<ArrowRight size={18} aria-hidden="true" /></p>
-          <div className="journey-ending" inert={!arrived} aria-hidden={!arrived}>
-            <span><Flag size={15} aria-hidden="true" />{t('journey.continued')}</span>
-            <div className="journey-ending-actions">
-              <button type="button" onClick={() => goToMilestone(0)}><RotateCcw size={14} aria-hidden="true" />{t('journey.replay')}</button>
-              <a href="#after-journey">{t('journey.continue')}<ArrowDown size={14} aria-hidden="true" /></a>
-            </div>
-          </div>
-        </div>
+        <nav className="journey-instruction" aria-label={t('journey.navigation')}>
+          <button type="button" disabled={focused === 0} onClick={() => goToMilestone(focused - 1)} aria-label={t('journey.previous')} title={t('journey.previous')}><ArrowLeft size={24} strokeWidth={2.5} aria-hidden="true" /></button>
+          <button type="button" disabled={focused === milestones.length - 1} onClick={() => goToMilestone(focused + 1)} aria-label={t('journey.next')} title={t('journey.next')}><ArrowRight size={24} strokeWidth={2.5} aria-hidden="true" /></button>
+        </nav>
       </header>
 
       <div ref={scene} className="journey-scene">
@@ -252,6 +247,13 @@ export default function JourneyTimeline() {
         <nav className="journey-stops" aria-label={t('journey.navigation')}>
           {milestones.map((milestone, index) => <button type="button" key={milestone.id} aria-current={index === focused ? 'step' : undefined} onClick={() => goToMilestone(index)}><span>{milestone.label}</span><span>{t(`journey.stages.${milestone.id}.title`)}</span></button>)}
         </nav>
+        <div className="journey-ending" inert={!arrived} aria-hidden={!arrived}>
+          <span><Flag size={15} aria-hidden="true" />{t('journey.continued')}</span>
+          <div className="journey-ending-actions">
+            <button type="button" onClick={() => goToMilestone(0)}><RotateCcw size={14} aria-hidden="true" />{t('journey.replay')}</button>
+            <a href="#after-journey">{t('journey.continue')}<ArrowDown size={14} aria-hidden="true" /></a>
+          </div>
+        </div>
       </footer>
       <p className="journey-sr-only" aria-live="polite" aria-atomic="true">{t(`journey.stages.${milestones[focused].id}.title`)}. {t(`journey.stages.${milestones[focused].id}.description`)} {arrived ? t('journey.arrival') : ''}</p>
     </section>

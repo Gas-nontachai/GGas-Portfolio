@@ -48,11 +48,24 @@ function Navbar() {
 
   useEffect(() => {
     let previousY = Math.max(0, window.scrollY)
+    const journeyShell = document.querySelector<HTMLElement>('.journey-scroll-shell')
 
     const handleScroll = () => {
       const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight)
       const currentY = Math.min(maxY, Math.max(0, window.scrollY))
       const distance = currentY - previousY
+
+      // The journey's own controls occupy the top of the viewport. Keep the
+      // floating navbar hidden here, including during reverse/programmatic scroll.
+      if (journeyShell) {
+        const bounds = journeyShell.getBoundingClientRect()
+        const navbarClearance = (navbarRef.current?.offsetHeight ?? 0) + 48
+        if (bounds.top <= navbarClearance && bounds.bottom > 0) {
+          setNavbarHidden(true)
+          previousY = currentY
+          return
+        }
+      }
 
       if (currentY <= 80) {
         setNavbarHidden(false)
@@ -68,8 +81,12 @@ function Navbar() {
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', handleScroll)
+    const initialFrame = window.requestAnimationFrame(handleScroll)
     return () => {
+      window.cancelAnimationFrame(initialFrame)
       window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
       scrollTweenRef.current?.kill()
     }
   }, [])

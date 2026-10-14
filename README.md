@@ -6,9 +6,10 @@ The full-width `#journey` section follows the portfolio cards. Vertical scrollin
 drives a pinned GSAP ScrollTrigger scene through three static mock milestones (University, First Job / Present, Future).
 The car stays centered while the road and buildings move; clouds use a slower
 parallax layer. Wheel rotation follows travel in either direction, and dust
-stops when movement stops. Chapter buttons also navigate to each scroll position.
+stops when movement stops. Chapter buttons also navigate to each scroll position. Header arrows move to the
+previous/next focused milestone and remain visible, disabled at the route edges.
 Future is reached at 90% of the pinned scroll, leaving a final reading pause with
-the car parked at a question-mark direction sign and a replay button. Scrolling backward restores
+the car parked at a question-mark direction sign and replay/continue controls in the footer. Scrolling backward restores
 the driving state. The Future button lands inside this final pause.
 A separate `#after-journey` mock project section provides at least 120svh of
 normal-flow content after the pin, so its release and reverse re-entry can be
