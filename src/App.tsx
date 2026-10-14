@@ -5,7 +5,6 @@ import CustomCursor from './component/CustomCursor'
 import Navbar from './component/Navbar'
 import ProfileOrbit from './component/profile/ProfileOrbit'
 import { useThemeStore } from './store/useThemeStore'
-import './App.css'
 
 const modes = [
   { value: 'light', label: 'Light', icon: Sun },
@@ -26,8 +25,8 @@ function App() {
     <>
       <CustomCursor />
       <Navbar />
-      <main id="main" className="mx-auto grid w-full max-w-5xl flex-1 items-center gap-12 px-6 py-14 md:grid-cols-2 md:gap-20 md:py-24">
-        <section id="appearance" aria-labelledby="appearance-heading" className="min-w-0">
+      <main id="main" className="mx-auto grid w-full max-w-5xl flex-1 scroll-mt-6 items-center gap-12 px-6 py-14 md:grid-cols-2 md:gap-20 md:py-24">
+        <section id="appearance" aria-labelledby="appearance-heading" className="min-w-0 scroll-mt-6">
           <p className="mb-4 font-mono text-xs font-bold">PREFERENCES</p>
           <h1 id="appearance-heading" className="mb-10 text-4xl leading-tight font-bold sm:text-5xl">Appearance<span className="text-[#df563d]">.</span></h1>
           <fieldset className="min-w-0">
@@ -52,7 +51,7 @@ function App() {
             ))}
           </div>
         </section>
-        <section id="profile" aria-labelledby="preview-heading" className="min-w-0">
+        <section id="profile" aria-labelledby="preview-heading" className="min-w-0 scroll-mt-6">
           <h2 id="preview-heading" className="mb-4 font-mono text-xs font-bold">PREVIEW</h2>
           <ProfileOrbit />
         </section>
