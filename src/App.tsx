@@ -1,7 +1,6 @@
 import { useLayoutEffect } from 'react'
 import { Badge, Button } from '@risky2k1/neobrutalism-ui'
 import { Moon, Sun } from 'lucide-react'
-import heroImage from './assets/hero.png'
 import CustomCursor from './component/CustomCursor'
 import { useThemeStore } from './store/useThemeStore'
 
@@ -56,7 +55,6 @@ function App() {
         <section aria-labelledby="preview-heading" className="min-w-0">
           <h2 id="preview-heading" className="mb-4 font-mono text-xs font-bold">PREVIEW</h2>
           <article className="border-[3px] border-border bg-secondary-background shadow-[8px_8px_0_var(--border)]">
-            <img src={heroImage} alt="Layered geometric artwork" className="h-48 w-full border-b-[3px] border-border bg-[#a9d89a] object-contain p-5" />
             <div className="p-7">
               <Badge>PERSONAL SPACE</Badge>
               <h3 className="mt-5 text-2xl font-bold">GGas Portfolio</h3>
