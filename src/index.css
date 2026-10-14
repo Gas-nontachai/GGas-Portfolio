@@ -1,6 +1,36 @@
 @import "@risky2k1/neobrutalism-ui/styles.css";
 @source "../node_modules/@risky2k1/neobrutalism-ui/dist";
 
+@property --background {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f3f3ee;
+}
+
+@property --secondary-background {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #fff;
+}
+
+@property --foreground {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #171717;
+}
+
+@property --border {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #171717;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    transition: --background 450ms ease, --secondary-background 450ms ease, --foreground 450ms ease, --border 450ms ease;
+  }
+}
+
 @font-face {
   font-family: 'iannnnn AMD';
   src: url('./assets/fonts/2005_iannnnnAMD.ttf') format('truetype');
@@ -49,7 +79,7 @@
   --foreground: #f3f3ee;
   --main: #f5d547;
   --main-foreground: #171717;
-  --border: #050505;
+  --border: #f3f3ee;
   --ring: #f5d547;
   color-scheme: dark;
 }
