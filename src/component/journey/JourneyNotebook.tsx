@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import { Flip } from 'gsap/Flip'
 import { BookOpen } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import ScrambleText from '../ScrambleText'
 import car from '../../assets/journey_timeline/journey_car_side.png'
 import sign from '../../assets/journey_timeline/direction_sign.png'
 import starSticker from '../../assets/journey-notebook-asset-pack/svg/12-sticker-star.svg'
@@ -227,15 +228,15 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
           <div className="notebook-paper-scroll" tabIndex={0} role="region" aria-label={t('journey.notebook.pages')}>
             <section className="notebook-paper notebook-paper-left">
               <div className="notebook-content">
-                <p className="notebook-eyebrow">{t('journey.chapter')} {selection.label} / {t('journey.mockStory')}</p>
-                <h2 id="notebook-title">{t(`${prefix}.title`)}</h2>
-                <p id="notebook-description" className="notebook-lead">{t(`${prefix}.description`)}</p>
+                <p className="notebook-eyebrow"><ScrambleText text={t('journey.chapter')} /> {selection.label} / <ScrambleText text={t('journey.mockStory')} /></p>
+                <h2 id="notebook-title"><ScrambleText text={t(`${prefix}.title`)} /></h2>
+                <p id="notebook-description" className="notebook-lead"><ScrambleText text={t(`${prefix}.description`)} /></p>
                 <figure className="notebook-photo">
                   <img src={blueTape} className="notebook-tape" alt="" aria-hidden="true" />
                   <img src={selection.image ?? sign} alt={t(`journey.notebook.images.${selection.id}`)} />
-                  <figcaption>{t(`${prefix}.period`)}</figcaption>
+                  <figcaption><ScrambleText text={t(`${prefix}.period`)} /></figcaption>
                 </figure>
-                <p>{t(`${prefix}.story`)}</p>
+                <p><ScrambleText text={t(`${prefix}.story`)} /></p>
                 <span className="notebook-page-number">01 / STORY</span>
               </div>
             </section>
@@ -243,11 +244,11 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
               <div className="notebook-content">
                 <img src={bookmark} className="notebook-bookmark" alt="" aria-hidden="true" />
                 <img src={paperclip} className="notebook-paperclip" alt="" aria-hidden="true" />
-                <h3>{t('journey.highlights')}</h3>
-                <ul className="notebook-memories">{[0, 1, 2].map(index => <li key={index}><span>0{index + 1}</span>{t(`${prefix}.highlights.${index}`)}</li>)}</ul>
-                <div className="notebook-memory-note"><img src={starSticker} alt="" aria-hidden="true" /><div><h3>{t('journey.notebook.memory')}</h3><p>{t(`${prefix}.memory`)}</p></div></div>
-                <div className="notebook-takeaway"><img src={arrowSticker} alt="" aria-hidden="true" /><p><strong>{t('journey.takeaway')}</strong><br />{t(`${prefix}.takeaway`)}</p></div>
-                <p className="notebook-tags">{t(`${prefix}.tag`)}</p>
+                <h3><ScrambleText text={t('journey.highlights')} /></h3>
+                <ul className="notebook-memories">{[0, 1, 2].map(index => <li key={index}><span>0{index + 1}</span><ScrambleText text={t(`${prefix}.highlights.${index}`)} /></li>)}</ul>
+                <div className="notebook-memory-note"><img src={starSticker} alt="" aria-hidden="true" /><div><h3><ScrambleText text={t('journey.notebook.memory')} /></h3><p><ScrambleText text={t(`${prefix}.memory`)} /></p></div></div>
+                <div className="notebook-takeaway"><img src={arrowSticker} alt="" aria-hidden="true" /><p><strong><ScrambleText text={t('journey.takeaway')} /></strong><br /><ScrambleText text={t(`${prefix}.takeaway`)} /></p></div>
+                <p className="notebook-tags"><ScrambleText text={t(`${prefix}.tag`)} /></p>
                 <img src={heartSticker} className="notebook-heart-sticker" alt="" aria-hidden="true" />
                 <img src={car} className="notebook-car-sticker" alt="" aria-hidden="true" />
                 <span className="notebook-page-number">02 / MEMORIES</span>
@@ -258,7 +259,7 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
         </div>
         <div className="notebook-flight" data-flip-id={`journey-card-${selection.id}`} aria-hidden="true">
           <div className="notebook-cover">
-            <div className="notebook-cover-front"><span>{t('journey.chapter')} {selection.label}</span><BookOpen size={42} strokeWidth={3} /><h3>{t(`${prefix}.title`)}</h3><p>{t(`${prefix}.shortDescription`)}</p><span className="notebook-cover-label">JOURNEY / NOTES</span></div>
+            <div className="notebook-cover-front"><span><ScrambleText text={t('journey.chapter')} /> {selection.label}</span><BookOpen size={42} strokeWidth={3} /><h3><ScrambleText text={t(`${prefix}.title`)} /></h3><p><ScrambleText text={t(`${prefix}.shortDescription`)} /></p><span className="notebook-cover-label">JOURNEY / NOTES</span></div>
             <div className="notebook-cover-back" />
           </div>
           <div className="notebook-card-face" inert />

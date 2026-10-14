@@ -17,9 +17,9 @@
 }
 .journey-header { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 5vw 12px; z-index: 2; }
 .journey-eyebrow { display: flex; align-items: center; gap: 8px; margin: 0 0 4px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; }
-.journey-eyebrow > span { width: 9px; height: 9px; border: 2px solid #171717; background: #ff805c; }
+.journey-eyebrow > span:first-child { width: 9px; height: 9px; border: 2px solid #171717; background: #ff805c; }
 .journey h2 { margin: 0; font-size: clamp(30px, 3.6vw, 50px); line-height: 1.1; font-weight: 700; }
-.journey h2 > span { color: #e6583d; }
+.journey-heading-dot { color: #e6583d; }
 .journey-instruction { display: flex; align-items: center; justify-content: center; gap: 12px; flex-shrink: 0; }
 .journey-instruction button { display: grid; place-items: center; width: 52px; height: 52px; padding: 0; border: 3px solid #171717; background: #fff8de; color: #171717; box-shadow: 4px 4px 0 #171717; transition: background 150ms ease, opacity 150ms ease, transform 150ms ease, box-shadow 150ms ease; }
 .journey-instruction button:hover:not(:disabled) { background: #ffe16b; }

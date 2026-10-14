@@ -6,6 +6,7 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import { Flip } from 'gsap/Flip'
 import { ArrowDown, ArrowLeft, ArrowRight, Flag, RotateCcw } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import ScrambleText from '../ScrambleText'
 import car from '../../assets/journey_timeline/journey_car_side.png'
 import university from '../../assets/journey_timeline/university.png'
 import office from '../../assets/journey_timeline/office_building.png'
@@ -174,8 +175,8 @@ export default function JourneyTimeline() {
     <section ref={section} id="journey" className="journey" data-arrived={arrived} aria-labelledby="journey-heading">
       <header className="journey-header">
         <div>
-          <p className="journey-eyebrow"><span /> {t('journey.eyebrow')}</p>
-          <h2 id="journey-heading">{t('journey.heading')}<span>.</span></h2>
+          <p className="journey-eyebrow"><span /> <ScrambleText text={t('journey.eyebrow')} /></p>
+          <h2 id="journey-heading"><ScrambleText text={t('journey.heading')} /><span className="journey-heading-dot">.</span></h2>
         </div>
         <nav className="journey-instruction" aria-label={t('journey.navigation')}>
           <button type="button" disabled={focused === 0} onClick={() => goToMilestone(focused - 1)} aria-label={t('journey.previous')} title={t('journey.previous')}><ArrowLeft size={24} strokeWidth={2.5} aria-hidden="true" /></button>
@@ -209,11 +210,11 @@ export default function JourneyTimeline() {
               >
                 <div className="journey-milestone-visual">
                   <button type="button" className="journey-card" data-flip-id={`journey-card-${milestone.id}`} tabIndex={index === focused ? 0 : -1} onClick={event => openNotebook(index, event.currentTarget)} aria-label={t('journey.notebook.open', { stage: t(`journey.stages.${milestone.id}.title`) })} aria-haspopup="dialog">
-                    <span className="journey-card-meta"><span>{t('journey.chapter')} {milestone.label}</span><span className="journey-state-label">{t(`journey.${state === 'focused' ? 'here' : state === 'hovered' ? 'preview' : 'stop'}`)}</span></span>
-                    <span className="journey-card-title">{t(`journey.stages.${milestone.id}.title`)}</span>
+                    <span className="journey-card-meta"><span><ScrambleText text={t('journey.chapter')} /> {milestone.label}</span><span className="journey-state-label"><ScrambleText text={t(`journey.${state === 'focused' ? 'here' : state === 'hovered' ? 'preview' : 'stop'}`)} /></span></span>
+                    <span className="journey-card-title"><ScrambleText text={t(`journey.stages.${milestone.id}.title`)} /></span>
                     <span className="journey-card-copy">
-                      <span className="journey-card-summary">{t(`journey.stages.${milestone.id}.${state === 'hovered' ? 'preview' : 'shortDescription'}`)}</span>
-                      <span className="journey-card-tag">{t('journey.notebook.read')}</span>
+                      <span className="journey-card-summary"><ScrambleText text={t(`journey.stages.${milestone.id}.${state === 'hovered' ? 'preview' : 'shortDescription'}`)} /></span>
+                      <span className="journey-card-tag"><ScrambleText text={t('journey.notebook.read')} /></span>
                     </span>
                   </button>
                   {milestone.image ? <img src={milestone.image} alt="" className="journey-building" draggable={false} /> : (
@@ -247,16 +248,16 @@ export default function JourneyTimeline() {
       </div>
 
       <footer className="journey-hud">
-        <div className="journey-status"><Flag size={17} aria-hidden="true" /><span>{t('journey.chapter')} {milestones[focused].label} / {String(milestones.length).padStart(2, '0')}</span><span className="journey-percent" aria-hidden="true">0%</span></div>
+        <div className="journey-status"><Flag size={17} aria-hidden="true" /><span><ScrambleText text={t('journey.chapter')} /> {milestones[focused].label} / {String(milestones.length).padStart(2, '0')}</span><span className="journey-percent" aria-hidden="true">0%</span></div>
         <div className="journey-progress" aria-hidden="true"><div className="journey-progress-fill" /></div>
         <nav className="journey-stops" aria-label={t('journey.navigation')}>
-          {milestones.map((milestone, index) => <button type="button" key={milestone.id} aria-current={index === focused ? 'step' : undefined} onClick={() => goToMilestone(index)}><span>{milestone.label}</span><span>{t(`journey.stages.${milestone.id}.title`)}</span></button>)}
+          {milestones.map((milestone, index) => <button type="button" key={milestone.id} aria-current={index === focused ? 'step' : undefined} onClick={() => goToMilestone(index)}><span>{milestone.label}</span><span><ScrambleText text={t(`journey.stages.${milestone.id}.title`)} /></span></button>)}
         </nav>
         <div className="journey-ending" inert={!arrived} aria-hidden={!arrived}>
-          <span><Flag size={15} aria-hidden="true" />{t('journey.continued')}</span>
+          <span><Flag size={15} aria-hidden="true" /><ScrambleText text={t('journey.continued')} /></span>
           <div className="journey-ending-actions">
-            <button type="button" onClick={() => goToMilestone(0)}><RotateCcw size={14} aria-hidden="true" />{t('journey.replay')}</button>
-            <a href="#after-journey">{t('journey.continue')}<ArrowDown size={14} aria-hidden="true" /></a>
+            <button type="button" onClick={() => goToMilestone(0)}><RotateCcw size={14} aria-hidden="true" /><ScrambleText text={t('journey.replay')} /></button>
+            <a href="#after-journey"><ScrambleText text={t('journey.continue')} /><ArrowDown size={14} aria-hidden="true" /></a>
           </div>
         </div>
       </footer>
