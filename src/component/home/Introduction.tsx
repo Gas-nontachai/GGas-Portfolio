@@ -10,7 +10,7 @@ export default function Introduction() {
 
   return (
     <section id="introduction" aria-labelledby="intro-heading" className="portfolio-panel row-span-2 flex min-w-0 scroll-mt-[140px] flex-col gap-5 rounded-[8px] border-[3px] border-border bg-secondary-background p-7 shadow-[7px_7px_0_var(--border)] max-[1150px]:row-auto max-[700px]:p-6">
-      <p className="intro-reveal m-0 flex items-center gap-[9px] text-[12px] leading-[1.5] font-bold"><span className="size-[9px] shrink-0 rounded-full border-[1.5px] border-border bg-[#a9d89a]" /><ScrambleText text={t('home.available')} /></p>
+      <p className="intro-reveal m-0 flex items-center gap-[9px] text-[12px] leading-[1.5] font-bold"><span className="size-[9px] shrink-0 rounded-full border-[1.5px] border-border bg-[#a9d89a]" /><ScrambleText text={'OPEN TO NEW IDEAS'} /></p>
       <div className="my-auto">
         <p className="intro-reveal mt-0 mb-0.5 text-[24px] font-bold"><ScrambleText text={t('home.hello')} /></p>
         <h1 id="intro-heading" className="intro-reveal m-0 text-[76px] leading-[1.05] font-bold max-[700px]:text-[64px]">{profileConfig.name}<span className="text-[#df563d]">.</span></h1>
