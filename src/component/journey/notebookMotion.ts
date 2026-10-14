@@ -17,3 +17,9 @@ export const smoothstep = (t: number) => {
   const clamped = Math.max(0, Math.min(1, t))
   return 3 * clamped ** 2 - 2 * clamped ** 3
 }
+
+// Quintic interpolation: velocity and acceleration both reach zero at each end.
+export const smootherstep = (t: number) => {
+  const u = Math.max(0, Math.min(1, t))
+  return u * u * u * (u * (u * 6 - 15) + 10)
+}

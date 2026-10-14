@@ -1,8 +1,8 @@
-import { useLayoutEffect, useRef, type CSSProperties } from 'react'
+import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import gsap from 'gsap'
 import { Flip } from 'gsap/Flip'
-import { BookOpen } from 'lucide-react'
+import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import ScrambleText from '../ScrambleText'
 import car from '../../assets/journey_timeline/journey_car_side.png'
@@ -14,7 +14,7 @@ import blueTape from '../../assets/journey-notebook-asset-pack/svg/07-paper-tape
 import bookmark from '../../assets/journey-notebook-asset-pack/svg/09-bookmark-tab.svg'
 import paperclip from '../../assets/journey-notebook-asset-pack/svg/18-paperclip.svg'
 import closeIcon from '../../assets/journey-notebook-asset-pack/svg/10-close-button.svg'
-import { lerp, notebookEase, smoothstep } from './notebookMotion'
+import { lerp, notebookEase, smoothstep, smootherstep } from './notebookMotion'
 import './notebook.css'
 
 gsap.registerPlugin(Flip)
@@ -36,7 +36,81 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
   const overlayRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
   const closeAnimation = useRef<() => void>(() => {})
-  const prefix = `journey.stages.${selection.id}`
+  const [page, setPage] = useState(0)
+  const [busy, setBusy] = useState(true)
+  const turning = useRef(true)
+  const pageTurn = useRef<gsap.core.Timeline | null>(null)
+  const turnSheet = useRef<HTMLElement | null>(null)
+  const restorePageFocus = useRef(false)
+  const pageCount = selection.id === 'career' ? 2 : 1
+  const chapterPrefix = `journey.stages.${selection.id}`
+  const prefix = pageCount > 1 ? `${chapterPrefix}.spreads.${page === 0 ? 'first' : 'present'}` : chapterPrefix
+
+  useLayoutEffect(() => {
+    if (busy || !restorePageFocus.current) return
+    restorePageFocus.current = false
+    overlayRef.current?.querySelector<HTMLButtonElement>('.notebook-pagination button:not(:disabled)')?.focus({ preventScroll: true })
+  }, [page, busy])
+
+  const turnPage = (next: number) => {
+    if (turning.current || next < 0 || next >= pageCount || next === page) return
+    restorePageFocus.current = true
+    const overlay = overlayRef.current!
+    const scroll = overlay.querySelector<HTMLElement>('.notebook-paper-scroll')!
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setPage(next)
+      scroll.scrollTop = 0
+      return
+    }
+    turning.current = true
+    setBusy(true)
+    const forward = next > page
+    const paper = overlay.querySelector<HTMLElement>(forward ? '.notebook-paper-right' : '.notebook-paper-left')!
+    const sheet = document.createElement('div')
+    sheet.className = `notebook-turn-sheet ${forward ? 'notebook-turn-forward' : 'notebook-turn-backward'}`
+    sheet.setAttribute('aria-hidden', 'true')
+    sheet.inert = true
+    const face = paper.cloneNode(true) as HTMLElement
+    face.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'))
+    face.querySelector('.notebook-pagination')?.remove()
+    face.classList.add('notebook-turn-face')
+    const back = document.createElement('div')
+    back.className = 'notebook-turn-back'
+    sheet.append(face, back)
+    overlay.querySelector('.notebook-pages')!.append(sheet)
+    turnSheet.current = sheet
+    const contents = [...overlay.querySelectorAll<HTMLElement>('.notebook-paper-scroll .notebook-content')]
+    const motion = { progress: 0 }
+    pageTurn.current = gsap.timeline({
+      onComplete: () => {
+        gsap.set(contents, { opacity: 1, y: 0 })
+        sheet.remove()
+        turnSheet.current = null
+        pageTurn.current = null
+        turning.current = false
+        setBusy(false)
+      },
+    })
+      .to(motion, {
+        progress: 1,
+        duration: .9,
+        ease: 'none',
+        onUpdate: () => {
+          const t = motion.progress
+          const progress = smootherstep(t)
+          gsap.set(sheet, {
+            rotationY: (forward ? -180 : 180) * progress,
+            y: -6 * Math.sin(Math.PI * progress),
+            opacity: 1 - smootherstep((t - .25) / .5),
+          })
+        },
+      }, 0)
+      .to(contents, { opacity: 0, y: forward ? -4 : 4, duration: .2, ease: smootherstep }, 0)
+      .call(() => { setPage(next); scroll.scrollTop = 0 }, [], .22)
+      .fromTo(contents, { opacity: 0, y: forward ? 8 : -8 }, {
+        opacity: 1, y: 0, duration: .54, stagger: .04, ease: smootherstep, immediateRender: false,
+      }, .28)
+  }
 
   useLayoutEffect(() => {
     const overlay = overlayRef.current!
@@ -104,8 +178,10 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
         gsap.set(stage, { x: 0 })
         gsap.set([pages, ...contents, backdrop, closeButton], { opacity: 1, y: 0 })
         gsap.set(flight, { opacity: 0 })
+        turning.current = false
+        setBusy(false)
       } else {
-        const opening = gsap.timeline()
+        const opening = gsap.timeline({ onComplete: () => { turning.current = false; setBusy(false) } })
         const flip = Flip.from(selection.initialState, {
           targets: flight,
           scale: true,
@@ -158,6 +234,10 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
     const close = () => {
       if (closing || disposed) return
       closing = true
+      turning.current = true
+      setBusy(true)
+      pageTurn.current?.kill()
+      turnSheet.current?.remove()
       timelines.forEach(animation => animation.kill())
       if (reducedQuery.matches) { finish(); return }
       // Re-read the source on close: resize may have changed its position/size.
@@ -201,6 +281,9 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
     const motionChanged = () => {
       if (!reducedQuery.matches || closing) return
       timelines.forEach(animation => animation.kill())
+      pageTurn.current?.progress(1)
+      turning.current = false
+      setBusy(false)
       gsap.set(stage, { x: 0 })
       gsap.set([pages, ...contents, backdrop, closeButton], { opacity: 1, y: 0 })
       gsap.set(flight, { opacity: 0 })
@@ -214,6 +297,8 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
       document.removeEventListener('keydown', keydown, true)
       reducedQuery.removeEventListener('change', motionChanged)
       timelines.forEach(animation => animation.kill())
+      pageTurn.current?.kill()
+      turnSheet.current?.remove()
       context.revert()
       cardClone.remove()
       restore()
@@ -224,7 +309,7 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
     <div ref={overlayRef} className="notebook-overlay" role="dialog" aria-modal="true" aria-labelledby="notebook-title" aria-describedby="notebook-description" style={{ '--notebook-accent': selection.color } as CSSProperties}>
       <div className="notebook-backdrop" onClick={() => closeAnimation.current()} aria-hidden="true" />
       <div className="notebook-stage">
-        <div className="notebook-pages">
+        <div className="notebook-pages" data-paginated={pageCount > 1}>
           <div className="notebook-paper-scroll" tabIndex={0} role="region" aria-label={t('journey.notebook.pages')}>
             <section className="notebook-paper notebook-paper-left">
               <div className="notebook-content">
@@ -237,10 +322,15 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
                   <figcaption><ScrambleText text={t(`${prefix}.period`)} /></figcaption>
                 </figure>
                 <p><ScrambleText text={t(`${prefix}.story`)} /></p>
-                <span className="notebook-page-number">01 / STORY</span>
+                <span className="notebook-page-number">{String(page * 2 + 1).padStart(2, '0')} / STORY</span>
               </div>
             </section>
             <section className="notebook-paper notebook-paper-right">
+              {pageCount > 1 && <nav className="notebook-pagination" aria-label={t('journey.notebook.pageNavigation')}>
+                <button type="button" disabled={busy || page === 0} onClick={() => turnPage(page - 1)} aria-label={t('journey.notebook.previousPage')}><ArrowLeft size={20} aria-hidden="true" /></button>
+                <span role="status" aria-live="polite" aria-atomic="true">{t('journey.notebook.pageIndicator', { current: page + 1, total: pageCount })}</span>
+                <button type="button" disabled={busy || page === pageCount - 1} onClick={() => turnPage(page + 1)} aria-label={t('journey.notebook.nextPage')}><ArrowRight size={20} aria-hidden="true" /></button>
+              </nav>}
               <div className="notebook-content">
                 <img src={bookmark} className="notebook-bookmark" alt="" aria-hidden="true" />
                 <img src={paperclip} className="notebook-paperclip" alt="" aria-hidden="true" />
@@ -251,7 +341,7 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
                 <p className="notebook-tags"><ScrambleText text={t(`${prefix}.tag`)} /></p>
                 <img src={heartSticker} className="notebook-heart-sticker" alt="" aria-hidden="true" />
                 <img src={car} className="notebook-car-sticker" alt="" aria-hidden="true" />
-                <span className="notebook-page-number">02 / MEMORIES</span>
+                <span className="notebook-page-number">{String(page * 2 + 2).padStart(2, '0')} / MEMORIES</span>
               </div>
             </section>
           </div>
@@ -259,7 +349,7 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
         </div>
         <div className="notebook-flight" data-flip-id={`journey-card-${selection.id}`} aria-hidden="true">
           <div className="notebook-cover">
-            <div className="notebook-cover-front"><span><ScrambleText text={t('journey.chapter')} /> {selection.label}</span><BookOpen size={42} strokeWidth={3} /><h3><ScrambleText text={t(`${prefix}.title`)} /></h3><p><ScrambleText text={t(`${prefix}.shortDescription`)} /></p><span className="notebook-cover-label">JOURNEY / NOTES</span></div>
+            <div className="notebook-cover-front"><span><ScrambleText text={t('journey.chapter')} /> {selection.label}</span><BookOpen size={42} strokeWidth={3} /><h3><ScrambleText text={t(`${chapterPrefix}.title`)} /></h3><p><ScrambleText text={t(`${chapterPrefix}.shortDescription`)} /></p><span className="notebook-cover-label">JOURNEY / NOTES</span></div>
             <div className="notebook-cover-back" />
           </div>
           <div className="notebook-card-face" inert />

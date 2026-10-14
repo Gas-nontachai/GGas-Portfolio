@@ -71,6 +71,10 @@
       "close": "Close notebook",
       "pages": "Notebook story and memories",
       "memory": "A little memory",
+      "pageNavigation": "Notebook pages",
+      "previousPage": "Previous pages",
+      "nextPage": "Next pages",
+      "pageIndicator": "Spread {{current}} / {{total}}",
       "images": {
         "university": "Cartoon university building in a mock memory photo",
         "career": "Cartoon office building in a mock memory photo",
@@ -100,7 +104,37 @@
         "memory": "A teammate's small suggestion during a code review solved a problem I'd been staring at all afternoon. Building together changed how I learned.",
         "story": "My first job became a place to keep growing. The same journey now includes taking ideas from a sketch to a working application and improving them with a team.",
         "highlights": ["Built interfaces and connected them to application services.", "Learned through code reviews, releases, and user feedback.", "Kept exploring mobile apps, hardware, and side projects."],
-        "takeaway": "Good software grows through collaboration and steady improvements."
+        "takeaway": "Good software grows through collaboration and steady improvements.",
+        "spreads": {
+          "first": {
+            "title": "First Job",
+            "description": "A new desk, a new team, and my first real-world codebase.",
+            "period": "The first chapter at work",
+            "story": "My first ticket looked small: build a form and connect it to an API. It taught me to ask better questions, read unfamiliar code, and ship something people could actually use.",
+            "highlights": [
+              "Shipped my first feature with a teammate’s guidance.",
+              "Learned the rhythm of tickets, reviews, and releases.",
+              "Turned a confusing bug into a shared team lesson."
+            ],
+            "memory": "I refreshed the page after my first release and saw my change live. A tiny feature, but a very big moment.",
+            "takeaway": "Ask early, take notes, and make the next change a little better.",
+            "tag": "First ticket / Teamwork / Small wins"
+          },
+          "present": {
+            "title": "Present",
+            "description": "Still building, still curious — with a few more tools in my bag.",
+            "period": "What I am exploring today",
+            "story": "These days I enjoy connecting the whole picture: interfaces, APIs, and the details that make an app feel good. Outside work, I keep a small playground for mobile apps, electronics, and printed prototypes.",
+            "highlights": [
+              "Connect frontend features with backend services.",
+              "Improve existing flows using feedback and small experiments.",
+              "Explore Flutter, ESP32, and 3D-printed enclosures."
+            ],
+            "memory": "A weekend prototype finally worked from screen to circuit. It reminded me why I love mixing different kinds of making.",
+            "takeaway": "Keep learning, build useful things, and leave room to play.",
+            "tag": "Full stack / Experiments / Keep growing"
+          }
+        }
       },
       "future": {
         "title": "What comes next?",
