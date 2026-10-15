@@ -1,6 +1,5 @@
 import UniversityChapter from './UniversityChapter'
-import FirstJobChapter from './FirstJobChapter'
-import PresentChapter from './PresentChapter'
+import { FirstJobSpread, PresentSpread } from './CareerChapter'
 import FutureChapter from './FutureChapter'
 import type { NotebookSpread } from './types'
 
@@ -10,8 +9,8 @@ export const notebookChapters = {
     { id: 'university', Content: UniversityChapter, titleKey: 'journey.stages.university.notebookTitle', descriptionKey: 'journey.stages.university.degree' },
   ],
   career: [
-    { id: 'first-job', Content: FirstJobChapter, titleKey: 'journey.stages.career.spreads.first.title', descriptionKey: 'journey.stages.career.spreads.first.description' },
-    { id: 'present', Content: PresentChapter, titleKey: 'journey.stages.career.spreads.present.title', descriptionKey: 'journey.stages.career.spreads.present.description' },
+    { id: 'first-job', Content: FirstJobSpread, titleKey: 'journey.stages.career.spreads.first.title', descriptionKey: 'journey.stages.career.spreads.first.description' },
+    { id: 'present', Content: PresentSpread, titleKey: 'journey.stages.career.spreads.present.title', descriptionKey: 'journey.stages.career.spreads.present.description' },
   ],
   future: [
     { id: 'future', Content: FutureChapter, titleKey: 'journey.stages.future.notebookTitle', descriptionKey: 'journey.stages.future.description' },
