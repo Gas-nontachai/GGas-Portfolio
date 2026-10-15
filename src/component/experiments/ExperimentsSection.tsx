@@ -218,10 +218,7 @@ export default function ExperimentsSection({ ready = true }: { ready?: boolean }
           {t('experiments.choose')}
         </p>
         <ExperimentScene selection={selection} dispatch={dispatch} />
-        <ExperimentDetailPanel
-          activeId={getPreviewExperiment(selection)}
-          selectedId={selection.selected}
-        />
+        <ExperimentDetailPanel activeId={getPreviewExperiment(selection)} />
       </div>
       <p className="experiments-sr-only" role="status">
         {t('experiments.selected', {

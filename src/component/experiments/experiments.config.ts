@@ -34,7 +34,7 @@ export const experiments: readonly Experiment[] = [
     width: 800,
     height: 694,
     color: '#94dca0',
-    status: 'exploring',
+    status: 'learning',
     translationKey: 'experiments.items.esp32',
   },
   {
@@ -44,7 +44,7 @@ export const experiments: readonly Experiment[] = [
     width: 800,
     height: 597,
     color: '#ffe16b',
-    status: 'experimenting',
+    status: 'learning',
     translationKey: 'experiments.items.printing',
   },
   {

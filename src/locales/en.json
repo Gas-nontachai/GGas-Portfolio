@@ -8,8 +8,6 @@
   },
   "nav": {
     "home": "Home",
-    "appearance": "Exploring",
-    "profile": "Profile",
     "label": "Main navigation",
     "brand": "GGAS home",
     "journey": "Journey",
@@ -21,19 +19,12 @@
     "description": "Full-stack dev who knows a bit of everything. I like mixing what I know with whatever I'm into to make something I've never tried before.",
     "explore": "Let's explore my journey",
     "stack": "Tech I've worked with",
-    "mainClass": "MAIN CLASS",
     "flutter": "I'm also getting into mobile apps and looking for fresh ideas to build.",
     "esp32": "I don't want to stick to just code on a screen. I want to turn my ideas into something I can actually hold.",
     "printing": "If I've got a circuit, I might as well give it a nice case. I'm still not that good at CAD, though.",
-    "inProgress": "Currently learning",
+    "inProgress": "Learning",
     "previous": "Previous experiment",
     "next": "Next experiment"
-  },
-  "appearance": {
-    "preferences": "PREFERENCES",
-    "heading": "Appearance",
-    "palette": "Theme palette",
-    "preview": "PREVIEW"
   },
   "theme": {
     "light": "Light",
@@ -59,7 +50,6 @@
   "journey": {
     "eyebrow": "A LITTLE ROAD, A LOT OF STORIES",
     "heading": "My journey",
-    "scroll": "Scroll to drive",
     "chapter": "Chapter",
     "here": "You are here",
     "preview": "Preview",
@@ -78,7 +68,6 @@
       "pageIndicator": "Spread {{current}} / {{total}}",
       "images": {
         "university": "Photo from my university years",
-        "career": "Cartoon office building in a mock memory photo",
         "future": "A direction sign pointing toward the next adventure"
       }
     },
@@ -107,16 +96,6 @@
         "shortDescription": "From my first job to today, still building, learning, and experimenting.",
         "description": "From my first job to today, turning ideas into real-world applications while learning and exploring new technologies.",
         "preview": "From my first job to the work I do today.",
-        "tag": "Build / Learn / Grow",
-        "period": "First job to today",
-        "memory": "A teammate's small suggestion during a code review solved a problem I'd been staring at all afternoon. Building together changed how I learned.",
-        "story": "My first job became a place to keep growing. The same journey now includes taking ideas from a sketch to a working application and improving them with a team.",
-        "highlights": [
-          "Built interfaces and connected them to application services.",
-          "Learned through code reviews, releases, and user feedback.",
-          "Kept exploring mobile apps, hardware, and side projects."
-        ],
-        "takeaway": "Good software grows through collaboration and steady improvements.",
         "spreads": {
           "first": {
             "photos": {
@@ -134,7 +113,6 @@
             "story": "After graduating, it was time to move to a bigger city and start my first job in Bangkok. So this is where the real world begins.",
             "contents": {
               "title": "Projects along the way",
-              "description": "From my first job to the things I have built.",
               "project": "Project {{number}}",
               "hint": "Pick a project to turn straight to its pages."
             }
@@ -191,58 +169,27 @@
         "shortDescription": "Still wondering what the next stop will be.",
         "description": "What will the future look like?",
         "preview": "The road goes on… what will the next stop be?",
-        "tag": "Next stop / Still a question mark",
         "period": "Next stop / No idea yet",
         "memory": "Leaving some space here. Maybe one day I will come back with a fun story to fill it.",
         "story": "A new app? Something I can hold in my hands? Or something I have not even imagined yet? No idea, but there must be plenty left to try.",
-        "highlights": [
-          "Prototype a small app that solves an everyday problem.",
-          "Combine a connected device with a custom printed enclosure.",
-          "Share an experiment and learn from the people who try it."
-        ],
         "takeaway": "See you in the next chapter :)",
         "notebookTitle": "Hmm, I wonder…",
         "blankTitle": "This page is still unwritten"
       }
     },
-    "details": "{{stage}} story details",
     "highlights": "Along the way",
     "continued": "See you at the next stop!",
     "replay": "Drive again",
     "continue": "Explore next",
     "arrival": "You have reached the future sign. What comes next? You can drive again or scroll on."
   },
-  "afterJourney": {
-    "label": "NEXT CHAPTER / MOCK SECTION",
-    "heading": "More things to explore",
-    "description": "A placeholder for the next portfolio section. Keep scrolling past Future to leave the journey and explore these mock projects.",
-    "placeholder": "Placeholder project",
-    "scrollHint": "Scroll back up to re-enter the journey and drive in reverse.",
-    "back": "Back to the journey",
-    "projects": {
-      "playground": {
-        "title": "Code playground",
-        "description": "A space for small app ideas and playful interface experiments."
-      },
-      "maker": {
-        "title": "Maker experiments",
-        "description": "Mock projects combining hardware, code, and things made by hand."
-      },
-      "next": {
-        "title": "What comes next?",
-        "description": "A spot reserved for the next idea, experiment, or adventure."
-      }
-    }
-  },
   "experiments": {
     "eyebrow": "CURRENTLY EXPLORING",
-    "description": "Outside my day job, I like trying new technologies and following curious ideas. This is my little space to build, learn, and keep experimenting.",
+    "description": "Outside my day job, I like using what I know to try out little proofs of concept, just to see what else I can build on top of it.",
     "explore": "Explore my experiments",
     "choose": "Choose an experiment to discover what I am learning",
     "select": "Explore {{title}}",
     "selected": "Selected experiment: {{title}}",
-    "locked": "Selected · hover or focus another object to explore",
-    "preview": "Preview · select this object to keep it here",
     "status": {
       "learning": "Learning",
       "exploring": "Exploring",
@@ -250,38 +197,36 @@
     },
     "items": {
       "flutter": {
-        "description": "Learning to build mobile apps with Flutter, exploring how small ideas can become useful experiences on a phone.",
+        "description": "Learning to build apps with Flutter and picking up new skills to build on what I already know.",
         "highlights": [
           "Trying out UI components",
           "Learning state management",
+          "API Integration",
           "Building small practice apps"
         ]
       },
       "esp32": {
-        "description": "Exploring where software meets the physical world, with ESP32 boards, sensors, and connected devices.",
+        "description": "Now that I can build mobile apps, I want to monitor things and play around with notifications too. What better place to start than an ESP32?",
         "highlights": [
           "Getting to know boards and sensors",
           "Trying device connectivity",
-          "Exploring small IoT ideas"
+          "Small proof-of-concept projects",
+          "BLE/WIFI Communication"
         ]
       },
       "printing": {
-        "description": "Experimenting with 3D printing and the process of turning an idea on a screen into something I can hold.",
-        "highlights": [
-          "Learning model preparation",
-          "Trying print settings",
-          "Exploring small useful objects"
-        ]
+        "description": "Once I have a circuit of my own, it would be a shame not to give it a nice case. So the next step is learning to model and print one myself.",
+        "highlights": ["CAD basics", "Filament", "Magnetic Tool", "Printing and assembling parts"]
       },
       "davinci": {
-        "description": "Learning video editing with DaVinci Resolve, exploring how images, sound, and timing can tell a story.",
+        "description": "After making something, I always end up wanting to share it online. Editing is a big part of getting people interested in what I have made.",
         "highlights": [
-          "Practicing cuts and pacing",
-          "Exploring color adjustments",
-          "Trying sound and titles"
+          "Creating hooks that draw viewers in",
+          "Color Grading",
+          "VFX and SFX",
+          "Editing Techniques"
         ]
       }
-    },
-    "touchHint": "Tap another object to explore more."
+    }
   }
 }

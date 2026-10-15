@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import type { CSSProperties, RefObject } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import { Braces, Check, Cpu, Film, Printer } from 'lucide-react'
+import { Braces, Cpu, Film, Printer } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { experiments } from './experiments.config'
 import type { Experiment } from './experiments.config'
@@ -13,11 +13,9 @@ const icons = { flutter: Braces, esp32: Cpu, printing: Printer, davinci: Film }
 
 function PanelContent({
   experiment,
-  selected,
   scrollRef,
 }: {
   experiment: Experiment
-  selected: boolean
   scrollRef: RefObject<HTMLDivElement | null>
 }) {
   const { t } = useTranslation()
@@ -45,34 +43,19 @@ function PanelContent({
           <ScrambleText text={t(`${experiment.translationKey}.description`)} />
         </p>
         <ul className="experiment-highlights">
-          {[0, 1, 2].map((index) => (
+          {[0, 1, 2, 3].map((index) => (
             <li key={index}>
               <span className="experiment-highlight-marker" aria-hidden="true" />
               <ScrambleText text={t(`${experiment.translationKey}.highlights.${index}`)} />
             </li>
           ))}
         </ul>
-        <p className="experiment-panel-hint">
-          <Check size={16} aria-hidden="true" />
-          <span className="experiment-hint-pointer">
-            <ScrambleText text={t(selected ? 'experiments.locked' : 'experiments.preview')} />
-          </span>
-          <span className="experiment-hint-touch">
-            <ScrambleText text={t('experiments.touchHint')} />
-          </span>
-        </p>
       </div>
     </>
   )
 }
 
-export default function ExperimentDetailPanel({
-  activeId,
-  selectedId,
-}: {
-  activeId: ExperimentId
-  selectedId: ExperimentId
-}) {
+export default function ExperimentDetailPanel({ activeId }: { activeId: ExperimentId }) {
   const [displayedId, setDisplayedId] = useState(activeId)
   const displayed = useRef(activeId)
   const content = useRef<HTMLDivElement>(null)
@@ -128,11 +111,7 @@ export default function ExperimentDetailPanel({
       data-experiment-panel
     >
       <div ref={content} className="experiment-panel-content">
-        <PanelContent
-          experiment={experiment}
-          selected={displayedId === selectedId}
-          scrollRef={scroller}
-        />
+        <PanelContent experiment={experiment} scrollRef={scroller} />
       </div>
     </aside>
   )
