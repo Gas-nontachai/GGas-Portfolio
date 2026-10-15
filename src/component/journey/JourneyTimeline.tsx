@@ -7,6 +7,7 @@ import { Flip } from 'gsap/Flip'
 import { ArrowDown, ArrowLeft, ArrowRight, Flag, RotateCcw } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import ScrambleText from '../ScrambleText'
+import { handleScrollNavigation } from '../../utils/scrollNavigation'
 import car from '../../assets/journey_timeline/journey_car_side.png'
 import university from '../../assets/journey_timeline/university.png'
 import office from '../../assets/journey_timeline/office_building.png'
@@ -484,7 +485,7 @@ export default function JourneyTimeline({ ready = true }: { ready?: boolean }) {
                 <RotateCcw size={14} aria-hidden="true" />
                 <ScrambleText text={t('journey.replay')} />
               </button>
-              <a href="#after-journey">
+              <a href="#after-journey" onClick={handleScrollNavigation}>
                 <ScrambleText text={t('journey.continue')} />
                 <ArrowDown size={14} aria-hidden="true" />
               </a>
