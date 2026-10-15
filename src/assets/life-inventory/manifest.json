@@ -12,24 +12,6 @@
     "height": 512
   },
   {
-    "id": "javascript-js-spark",
-    "file": "javascript-js-spark.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "html5-structure-brick",
-    "file": "html5-structure-brick.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "css3-style-shield",
-    "file": "css3-style-shield.png",
-    "width": 512,
-    "height": 512
-  },
-  {
     "id": "tailwind-wind-wave",
     "file": "tailwind-wind-wave.png",
     "width": 512,
@@ -42,68 +24,8 @@
     "height": 512
   },
   {
-    "id": "dart-dart-gem",
-    "file": "dart-dart-gem.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "android-droid-buddy",
-    "file": "android-droid-buddy.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "ios-pocket-phone",
-    "file": "ios-pocket-phone.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "local-notifications-bell-bomb",
-    "file": "local-notifications-bell-bomb.png",
-    "width": 512,
-    "height": 512
-  },
-  {
     "id": "git-branch-fork",
     "file": "git-branch-fork.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "github-repo-chest",
-    "file": "github-repo-chest.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "docker-container-whale",
-    "file": "docker-container-whale.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "postman-api-rocket",
-    "file": "postman-api-rocket.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "vscode-code-crystal",
-    "file": "vscode-code-crystal.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "figma-design-blocks",
-    "file": "figma-design-blocks.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "esp32-smart-chip",
-    "file": "esp32-smart-chip.png",
     "width": 512,
     "height": 512
   },
@@ -114,32 +36,8 @@
     "height": 512
   },
   {
-    "id": "filament-color-spool",
-    "file": "filament-color-spool.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "electronics-maker-toolkit",
-    "file": "electronics-maker-toolkit.png",
-    "width": 512,
-    "height": 512
-  },
-  {
     "id": "gaming-game-controller",
     "file": "gaming-game-controller.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "streaming-live-microphone",
-    "file": "streaming-live-microphone.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "headset-sound-ears",
-    "file": "headset-sound-ears.png",
     "width": 512,
     "height": 512
   },
@@ -152,30 +50,6 @@
   {
     "id": "running-speed-shoes",
     "file": "running-speed-shoes.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "fitness-heart-power",
-    "file": "fitness-heart-power.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "travel-adventure-backpack",
-    "file": "travel-adventure-backpack.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "photography-memory-camera",
-    "file": "photography-memory-camera.png",
-    "width": 512,
-    "height": 512
-  },
-  {
-    "id": "music-music-note",
-    "file": "music-music-note.png",
     "width": 512,
     "height": 512
   }
