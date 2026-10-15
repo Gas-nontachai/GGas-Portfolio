@@ -19,7 +19,7 @@
     "description": "FullStack Dev ที่ทำทุกอย่างได้นิดหน่อย ผมชอบที่จะเอาความรู้ที่มีมารวมกับอะไรที่ผมสนใจให้ออกมาเป็นอะไรใหม่ๆที่ผมไม่เคยทำมาก่อน",
     "explore": "มาดูเส้นทางชีวิตผมกัน",
     "stack": "stack ที่ผมเคยใช้",
-    "flutter": "แอพมือถือเป็นอีกอย่างที่ผมกำลังสนใจ และกำลังหาไอเดียใหม่ๆมาทำอยู่ครับ",
+    "flutter": "แอปมือถือเป็นอีกอย่างที่ผมกำลังสนใจ และกำลังหาไอเดียใหม่ๆมาทำอยู่ครับ",
     "esp32": "ผมไม่อยากจำกัดตัวเองอยู่กับแค่ code บนหน้าจอ ผมอยากให้ไอเดียของผมออกมาเป็นสิ่งที่จับต้องได้จริง",
     "printing": "ถ้าเรามีวงจรแล้วไม่มีเคสสวยๆก็เสียดายแย่ แต่เรื่อง cad นี่ผมก็ยังไม่เก่งนัก",
     "inProgress": "กำลังเรียนรู้",
@@ -135,7 +135,7 @@
             "backendLabel": "Sustainability / หลังบ้านและการส่งมอบ",
             "backendTopics": [
               {
-                "description": "Dervelop Be แบบ microservices เพื่อให้ง่ายต่อการ dev&deploy"
+                "description": "Deverlop Be แบบ microservices เพื่อให้ง่ายต่อการ dev&deploy"
               },
               {
                 "description": "สิทธิ์ระดับ task ตามผู้ใช้/กลุ่ม พร้อม session restoration และ route ช่วง maintenance"
@@ -147,20 +147,20 @@
           },
           "flyer": {
             "category": "โปรเจกต์ / แอปมือถือ",
-            "description": "integration Appsflyer เข้าแอป Oishi Club สำหรับติดตามข้อมูลลูกค้า",
+            "description": "integration AppsFlyer เข้าแอป Oishi Club สำหรับติดตามข้อมูลลูกค้า",
             "purpose": "ติดตามข้อมูลลูกค้า",
             "stackTitle": "หน้าจอแอป & หลังบ้าน",
             "workTopics": [
               {
                 "title": "แอปมือถือ",
-                "description": "integration Appsflyer เข้าแอป Oishi Club สำหรับติดตามข้อมูลลูกค้า"
+                "description": "integration AppsFlyer เข้าแอป Oishi Club สำหรับติดตามข้อมูลลูกค้า"
               },
               {
                 "title": "ระบบหลังบ้าน",
-                "description": "ประสานข้อมูลของ Appsflyer, Oishi club, Connect X เข้าด้วยกัน"
+                "description": "ประสานข้อมูลของ AppsFlyer, Oishi club, Connect X เข้าด้วยกัน"
               }
             ],
-            "summary": "Oishi Club คือแหล่งข้อมูลลูกค้า ส่วน Appsflyer คือแอปที่ใช้ติดตามข้อมูลเหล่านั้นก่อนที่จะไปเก็บลง Connect X"
+            "summary": "Oishi Club คือแหล่งข้อมูลลูกค้า ส่วน AppsFlyer คือแอปที่ใช้ติดตามข้อมูลเหล่านั้นก่อนที่จะไปเก็บลง Connect X"
           }
         }
       },
@@ -206,7 +206,7 @@
         ]
       },
       "esp32": {
-        "description": "จากที่ทำแอพมือถือได้แล้วเราก็อยากจะ monitor หรือเล่นอะไรกับ notification ได้ด้วย จะเป็นอะไรไปได้ล่ะนอกจาก esp32",
+        "description": "จากที่ทำแอปมือถือได้แล้วเราก็อยากจะ monitor หรือเล่นอะไรกับ notification ได้ด้วย จะเป็นอะไรไปได้ล่ะนอกจาก esp32",
         "highlights": [
           "ทำความรู้จักบอร์ดและเซนเซอร์",
           "ทดลองเชื่อมต่ออุปกรณ์",
