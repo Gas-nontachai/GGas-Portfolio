@@ -88,6 +88,10 @@ export default function ExperimentsSection({ ready = true }: { ready?: boolean }
           window.removeEventListener('resize', stopCapture)
         }
         const handleWheel = (event: WheelEvent) => {
+          if (event.target instanceof Element && event.target.closest('.experiment-panel-scroll')) {
+            stopCapture()
+            return
+          }
           if (event.ctrlKey || event.deltaY < 0) stopCapture()
           else if (event.deltaY > 0) event.preventDefault()
         }
@@ -176,12 +180,8 @@ export default function ExperimentsSection({ ready = true }: { ready?: boolean }
     const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches
       ? 'instant'
       : 'smooth'
-    if (window.matchMedia('(min-width: 1024px)').matches) {
-      if (Math.abs(section.current!.getBoundingClientRect().top) > 1) {
-        section.current!.scrollIntoView({ behavior, block: 'start' })
-      }
-    } else {
-      first.scrollIntoView({ behavior, block: 'center' })
+    if (Math.abs(section.current!.getBoundingClientRect().top) > 1) {
+      section.current!.scrollIntoView({ behavior, block: 'start' })
     }
     dispatch({ type: 'focus', id: 'flutter' })
   }

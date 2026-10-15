@@ -20,63 +20,75 @@ export default function ExperimentScene({
 }) {
   return (
     <div className="experiments-stage">
-      <div className="experiments-scenery" aria-hidden="true">
-        <img className="experiments-shelf" src={shelf} width="800" height="454" alt="" />
-        <div className="experiments-note experiments-note--pink">
-          Build.
-          <br />
-          Learn.
-          <br />
-          Create.
-          <br />
-          Repeat. <span>☺</span>
+      <div className="experiments-scene-art">
+        <div className="experiments-scenery" aria-hidden="true">
+          <img className="experiments-shelf" src={shelf} width="800" height="454" alt="" />
+          <div className="experiments-note experiments-note--pink">
+            Build.
+            <br />
+            Learn.
+            <br />
+            Create.
+            <br />
+            Repeat. <span>☺</span>
+          </div>
+          <div className="experiments-avatar" data-experiment-avatar>
+            <img src={avatar} width="1000" height="929" alt="" />
+          </div>
+          <img
+            className="experiments-desk"
+            src={desk}
+            width="1415"
+            height="533"
+            alt=""
+            data-experiment-reveal
+          />
+          <img
+            className="experiments-books"
+            src={books}
+            width="800"
+            height="561"
+            alt=""
+            data-experiment-reveal
+          />
+          <img
+            className="experiments-lamp"
+            src={lamp}
+            width="686"
+            height="800"
+            alt=""
+            data-experiment-reveal
+          />
+          <img
+            className="experiments-camera"
+            src={camera}
+            width="800"
+            height="645"
+            alt=""
+            data-experiment-reveal
+          />
+          <div className="experiments-note experiments-note--yellow">
+            Make
+            <br />
+            progress,
+            <br />
+            not perfect. ☺
+          </div>
+          <div className="experiments-note experiments-note--green">
+            Same curiosity.
+            <br />
+            Different day. ☺
+          </div>
         </div>
-        <div className="experiments-avatar" data-experiment-avatar>
-          <img src={avatar} width="1000" height="929" alt="" />
-        </div>
-        <img
-          className="experiments-desk"
-          src={desk}
-          width="1415"
-          height="533"
-          alt=""
-          data-experiment-reveal
-        />
-        <img
-          className="experiments-books"
-          src={books}
-          width="800"
-          height="561"
-          alt=""
-          data-experiment-reveal
-        />
-        <img
-          className="experiments-lamp"
-          src={lamp}
-          width="686"
-          height="800"
-          alt=""
-          data-experiment-reveal
-        />
-        <img
-          className="experiments-camera"
-          src={camera}
-          width="800"
-          height="645"
-          alt=""
-          data-experiment-reveal
-        />
-        <div className="experiments-note experiments-note--yellow">
-          Make
-          <br />
-          progress,
-          <br />
-          not perfect. ☺
-        </div>
-        <div className="experiments-note experiments-note--green">
-          Same curiosity.
-          <br />
-          Different day. ☺
+        <div className="experiments-foreground" aria-hidden="true">
+          <img
+            className="experiments-chair"
+            src={chair}
+            width="705"
+            height="800"
+            alt=""
+            data-experiment-reveal
+          />
         </div>
       </div>
       <div className="experiments-objects" role="group" aria-labelledby="experiments-choose">
@@ -89,16 +101,6 @@ export default function ExperimentScene({
             dispatch={dispatch}
           />
         ))}
-      </div>
-      <div className="experiments-foreground" aria-hidden="true">
-        <img
-          className="experiments-chair"
-          src={chair}
-          width="705"
-          height="800"
-          alt=""
-          data-experiment-reveal
-        />
       </div>
     </div>
   )
