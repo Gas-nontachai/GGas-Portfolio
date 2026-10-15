@@ -16,18 +16,18 @@ export default function ExperimentActivity({ experiment }: { experiment: Experim
       focusable="false"
     >
       {experiment.id === 'esp32' && (
-        <circle className="experiment-activity-led" cx="307" cy="285" r="8" fill="#a6ff45" />
+        <circle className="experiment-activity-led" cx="314" cy="289" r="8" fill="#a6ff45" />
       )}
       {experiment.id === 'printing' && (
         <>
           <defs>
             <clipPath id={printClip}>
-              <path d="M280 375 L308 365 L380 365 L356 375 Z" />
+              <path d="M290 370 L310 359 L375 359 L355 370 Z" />
             </clipPath>
           </defs>
           <path
             className="experiment-activity-filament"
-            d="M334 349 V365"
+            d="M335 343 V359"
             stroke="#ff80ab"
             strokeWidth="4"
             strokeDasharray="4 4"
@@ -35,8 +35,8 @@ export default function ExperimentActivity({ experiment }: { experiment: Experim
           <g clipPath={`url(#${printClip})`}>
             <rect
               className="experiment-activity-print-pass"
-              x="280"
-              y="364"
+              x="289"
+              y="358"
               width="14"
               height="14"
               fill="#ff80ab"
@@ -49,9 +49,9 @@ export default function ExperimentActivity({ experiment }: { experiment: Experim
           {/* Replace the baked-in playhead so only one cursor moves on the timeline. */}
           <path fill="#171717" d="M150 240 H694 V339 H150 Z" />
           <g stroke="#171717" strokeWidth="5">
-            <rect x="159" y="260" width="304" height="30" rx="7" fill="#ff80ab" />
-            <rect x="498" y="260" width="186" height="30" rx="7" fill="#ff80ab" />
-            <rect x="211" y="297" width="473" height="30" rx="7" fill="#68a4ff" />
+            <rect x="159" y="260" width="304" height="30" fill="#ff80ab" />
+            <rect x="498" y="260" width="186" height="30" fill="#ff80ab" />
+            <rect x="211" y="297" width="473" height="30" fill="#68a4ff" />
           </g>
           <g
             className="experiment-activity-playhead"
@@ -60,7 +60,7 @@ export default function ExperimentActivity({ experiment }: { experiment: Experim
             strokeWidth="3"
           >
             <path d="M162 252 V335" stroke="#ff80ab" strokeWidth="5" />
-            <circle cx="162" cy="252" r="9" />
+            <rect x="154" y="244" width="16" height="16" />
           </g>
         </>
       )}
