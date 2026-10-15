@@ -1,13 +1,10 @@
-import { useEffect, useRef, useState, type MouseEvent } from 'react'
-import { gsap } from 'gsap'
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+import { useEffect, useRef, useState } from 'react'
 import { Moon, Sun } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useThemeStore } from '../store/useThemeStore'
 import favicon from '../assets/g-neobrutal-favicon.svg'
 import ScrambleText from './ScrambleText'
-
-gsap.registerPlugin(ScrollToPlugin)
+import { handleScrollNavigation } from '../utils/scrollNavigation'
 
 const navigationItems = [
   { href: '#main', labelKey: 'nav.home' },
@@ -20,31 +17,9 @@ function Navbar() {
   const theme = useThemeStore((state) => state.theme)
   const setTheme = useThemeStore((state) => state.setTheme)
   const navbarRef = useRef<HTMLElement>(null)
-  const scrollTweenRef = useRef<gsap.core.Tween | null>(null)
   const [navbarHidden, setNavbarHidden] = useState(false)
   const [tooltipDismissed, setTooltipDismissed] = useState(false)
   const [languageTooltipDismissed, setLanguageTooltipDismissed] = useState(false)
-
-  const handleNavigation = (event: MouseEvent<HTMLAnchorElement>) => {
-    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
-
-    const hash = event.currentTarget.hash
-    const target = document.getElementById(hash.slice(1))
-    if (!target) return
-
-    event.preventDefault()
-    scrollTweenRef.current?.kill()
-
-    if (window.location.hash !== hash) {
-      window.history.pushState(window.history.state, '', hash)
-    }
-
-    scrollTweenRef.current = gsap.to(window, {
-      scrollTo: { y: target, offsetY: 24, autoKill: true },
-      duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 0.7,
-      ease: 'power2.out',
-    })
-  }
 
   useEffect(() => {
     let previousY = Math.max(0, window.scrollY)
@@ -87,7 +62,6 @@ function Navbar() {
       window.cancelAnimationFrame(initialFrame)
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleScroll)
-      scrollTweenRef.current?.kill()
     }
   }, [])
 
@@ -98,14 +72,14 @@ function Navbar() {
       data-hidden={navbarHidden}
       inert={navbarHidden}
     >
-      <a href="#main" onClick={handleNavigation} className="flex w-fit items-center gap-2.5 text-xl leading-none font-bold text-foreground no-underline max-[420px]:gap-1.5" aria-label={t('nav.brand')}>
+      <a href="#main" onClick={handleScrollNavigation} className="flex w-fit items-center gap-2.5 text-xl leading-none font-bold text-foreground no-underline max-[420px]:gap-1.5" aria-label={t('nav.brand')}>
         <img src={favicon} className="size-8 shrink-0" alt="" aria-hidden="true" />
         Portfolio
         <span className="-ml-2.5 text-[#df563d] max-[420px]:-ml-1.5">.</span>
       </a>
       <nav className="flex items-center justify-center gap-7 [&_a]:py-2.5 [&_a]:text-sm [&_a]:font-bold [&_a]:text-foreground [&_a]:no-underline [&_a]:underline-offset-[5px] [&_a:hover]:underline [&_a:hover]:decoration-2 max-[800px]:col-span-full max-[800px]:row-start-2 max-[800px]:justify-between max-[800px]:gap-4 max-[800px]:border-t-2 max-[800px]:border-[var(--navbar-ink)] max-[800px]:pt-1 max-[420px]:[&_a]:text-xs" aria-label={t('nav.label')}>
         {navigationItems.map(({ href, labelKey }) => (
-          <a key={href} href={href} onClick={handleNavigation}><ScrambleText text={t(labelKey)} /></a>
+          <a key={href} href={href} onClick={handleScrollNavigation}><ScrambleText text={t(labelKey)} /></a>
         ))}
       </nav>
       <div className="flex items-center gap-[18px] max-[420px]:gap-2.5">

@@ -1,7 +1,8 @@
-import { ArrowDownRight, Code2, Sparkles } from 'lucide-react'
+import { ArrowDownRight, Sparkles } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { profileConfig } from '../../config/profile'
 import ScrambleText from '../ScrambleText'
+import { handleScrollNavigation } from '../../utils/scrollNavigation'
 
 const ctaClassName = 'inline-flex min-h-12 items-center justify-center gap-2.5 rounded-[6px] border-2 border-border px-4 py-2.5 text-[14px] font-bold text-[#171717] no-underline shadow-[4px_4px_0_var(--border)] transition-[translate,box-shadow] duration-150 ease-[ease] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_var(--border)]'
 
@@ -18,8 +19,7 @@ export default function Introduction() {
         <p className="intro-reveal m-0 text-[18px] leading-[1.65] max-[700px]:text-[17px]"><ScrambleText text={t('home.description')} /></p>
       </div>
       <div className="intro-reveal flex flex-wrap gap-3.5">
-        <a className={`${ctaClassName} bg-[#ff80ab]`} href="#exploring"><ScrambleText text={t('home.explore')} /><ArrowDownRight size={20} aria-hidden="true" /></a>
-        <a className={`${ctaClassName} bg-[#ffe16b]`} href="#main-class"><ScrambleText text={t('home.stack')} /><Code2 size={20} aria-hidden="true" /></a>
+        <a className={`${ctaClassName} bg-[#ff80ab]`} href="#journey" onClick={handleScrollNavigation}><ScrambleText text={t('home.explore')} /><ArrowDownRight size={20} className="shrink-0" aria-hidden="true" /></a>
       </div>
       <div className="intro-reveal flex items-center justify-between gap-3 border-t-2 border-[color-mix(in_srgb,var(--foreground)_18%,transparent)] pt-3 text-[10px] font-bold"><span>CODE / CREATE / REPEAT</span><Sparkles size={19} aria-hidden="true" /></div>
     </section>
