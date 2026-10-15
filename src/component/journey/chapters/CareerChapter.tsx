@@ -129,7 +129,7 @@ export function SustainabilitySpread({ side, label }: ChapterPageProps) {
   return <SustainabilityProject side={side} label={label} />
 }
 
-export function AppsflyerSpread({ side, label }: ChapterPageProps) {
+export function AppsFlyerSpread({ side, label }: ChapterPageProps) {
   const { t } = useTranslation()
   const prefix = 'journey.stages.career.spreads.flyer'
 

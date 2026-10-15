@@ -1,5 +1,5 @@
 import UniversityChapter from './UniversityChapter'
-import { FirstJobSpread, SustainabilitySpread, AppsflyerSpread } from './CareerChapter'
+import { FirstJobSpread, SustainabilitySpread, AppsFlyerSpread } from './CareerChapter'
 import FutureChapter from './FutureChapter'
 import type { NotebookSpread } from './types'
 import { careerProjectTitles } from '../../../config/journey'
@@ -30,7 +30,7 @@ export const notebookChapters = {
     },
     {
       id: 'app-flyer',
-      Content: AppsflyerSpread,
+      Content: AppsFlyerSpread,
       title: careerProjectTitles.flyer,
       descriptionKey: 'journey.stages.career.spreads.flyer.description',
     },

@@ -26,7 +26,7 @@ const frontendTopics = [
   { title: 'State, Query and Integration', stack: ['Zustand', 'TanStack Query', 'TypeScript'] },
 ]
 const backendTopics = [
-  { title: 'Backend, Micro service', stack: ['Node.js', 'Fastify', 'Prisma', 'Kafka'] },
+  { title: 'Backend, MicroService', stack: ['Node.js', 'Fastify', 'Prisma', 'Kafka'] },
   {
     title: 'Authenticate & Permission',
     stack: ['Fastify', 'Prisma', 'Authentication', 'Authorization'],

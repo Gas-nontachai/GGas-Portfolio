@@ -1,4 +1,4 @@
 export const careerProjectTitles = {
   sustainability: 'Sustainability',
-  flyer: 'Appsflyer',
+  flyer: 'AppsFlyer',
 } as const
