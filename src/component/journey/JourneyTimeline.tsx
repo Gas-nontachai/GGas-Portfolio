@@ -32,7 +32,7 @@ const milestones = [
 ] as const
 const decorationCount = milestones.length * 2 - 1
 
-export default function JourneyTimeline() {
+export default function JourneyTimeline({ ready = true }: { ready?: boolean }) {
   const { t } = useTranslation()
   const section = useRef<HTMLElement>(null)
   const scrollShell = useRef<HTMLDivElement>(null)
@@ -73,6 +73,7 @@ export default function JourneyTimeline() {
   }
 
   useGSAP(() => {
+    if (!ready) return
     const root = section.current!
     const shell = scrollShell.current!
     const viewport = scene.current!
@@ -177,7 +178,7 @@ export default function JourneyTimeline() {
     })
 
     return () => media.revert()
-  }, { scope: section })
+  }, { scope: section, dependencies: [ready], revertOnUpdate: true })
 
   const goToMilestone = (index: number, onArrival?: () => void) => {
     if (index < 0 || index >= milestones.length) return

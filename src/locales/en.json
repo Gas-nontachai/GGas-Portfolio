@@ -1,4 +1,11 @@
 {
+  "loading": {
+    "title": "Loading",
+    "wait": "Preparing something fun...",
+    "error": "Couldn't load everything",
+    "failed": "Check your connection and try again.",
+    "retry": "Try again"
+  },
   "nav": {
     "home": "Home",
     "appearance": "Exploring",
