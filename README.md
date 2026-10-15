@@ -1,5 +1,33 @@
 # React + TypeScript + Vite
 
+## Image Optimization
+
+Run `npm run assets:check` to preview savings without writing files, then
+`npm run assets:optimize` to optimize images recursively in `src/assets` and
+`public` with Sharp. Files are replaced atomically only when smaller; paths,
+extensions, dimensions, orientation, and animation timing are retained.
+
+For oversized images, use `npm run assets:check:large` to preview, then
+`npm run assets:optimize:large` to write. This opt-in mode resizes only static
+images larger than 1,000,000 bytes whose longest edge exceeds 768px, keeping
+their aspect ratio and original extension. It does not reduce the palette.
+Smaller files and animated images retain their dimensions. Resizing changes
+pixels and is not lossless; the normal commands still keep original dimensions.
+The 1 MB threshold selects inputs, not a guaranteed output size.
+
+PNG, WebP, AVIF, GIF, and TIFF candidates must decode to identical pixels before
+replacement (or match the resized reference in large-image mode). JPEG uses
+quality 100 and 4:4:4 chroma subsampling, but re-encoding
+JPEG is **not lossless**, even at quality 100. JPEG originals stay unchanged if
+the output is larger. SVG and other formats without a supported same-format
+encoder are reported and left untouched, not rasterized. Animated PNG is also
+left untouched because Sharp cannot safely preserve its animation.
+
+Optimization runs sequentially to limit memory usage. Errors leave originals
+untouched and return a nonzero exit code. Review changes before committing;
+this command does not keep separate backups. Run `npm run test:assets` for the
+optimizer's safety checks.
+
 ## Journey Timeline POC
 
 The full-width `#journey` section follows the portfolio cards. Vertical scrolling
