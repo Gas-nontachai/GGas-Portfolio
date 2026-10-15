@@ -77,7 +77,7 @@ export default function AssetGate({ children }: { children: (ready: boolean) => 
   const icon = overlayImageUrls[iconIndex % overlayImageUrls.length]
 
   if (!overlayReady) return <div role="status" className="grid min-h-svh place-content-center bg-[#f3f3ee] p-6 text-center font-mono text-[#171717]">
-    <strong>GGAS / PORTFOLIO</strong>
+    <strong>THANGGAS WORLD JOURNEY</strong>
     <p>{failed ? t('loading.failed') : 'Loading...'}</p>
     {failed && <button type="button" className="min-h-12 border-2 border-[#171717] bg-[#ffe16b] px-4 py-2" onClick={() => {
       setFailed(false)
