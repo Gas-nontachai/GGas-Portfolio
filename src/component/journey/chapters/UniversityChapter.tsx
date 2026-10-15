@@ -12,7 +12,7 @@ export default function UniversityChapter({ side, label }: ChapterPageProps) {
     <EpisodeLabel text={`${t('journey.chapter')} ${label} / ${t(`${prefix}.episodeTitle`)}`} />
     <h2 className="university-notebook-title"><ScrambleText text={t(`${prefix}.notebookTitle`)} /></h2>
     <p className="notebook-lead"><ScrambleText text={t(`${prefix}.degree`)} /><br /><ScrambleText text={t(`${prefix}.faculty`)} /></p>
-    <PhotoFrame src={universityPhoto} alt={t('journey.notebook.images.university')} caption={t(`${prefix}.period`)} personal />
+    <PhotoFrame src={universityPhoto} alt={t('journey.notebook.images.university')} caption={t(`${prefix}.period`)} variant="polaroid" style={{ margin: '28px auto 22px' }} />
     <p><ScrambleText text={t(`${prefix}.story`)} /></p>
   </>
 
