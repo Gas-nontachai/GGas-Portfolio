@@ -14,16 +14,17 @@ export function EpisodeLabel({ text, className = '', ...props }: HTMLAttributes<
   return <p {...props} className={`notebook-eyebrow ${className}`}><ScrambleText text={text} /></p>
 }
 
-export function PhotoFrame({ src, alt, caption, personal = false, tape = blueTape, rotation = -3, imageStyle, className = '', style, ...props }: HTMLAttributes<HTMLElement> & {
+export function PhotoFrame({ src, alt, caption, personal = false, variant = 'illustrated', tape = blueTape, rotation = -3, imageStyle, className = '', style, ...props }: HTMLAttributes<HTMLElement> & {
   src: string
   alt: string
   caption?: string
   personal?: boolean
+  variant?: 'illustrated' | 'polaroid'
   tape?: string | false
   rotation?: number
   imageStyle?: CSSProperties
 }) {
-  return <figure {...props} className={`notebook-photo${personal ? ' notebook-photo-personal' : ''} ${className}`} style={{ transform: `rotate(${rotation}deg)`, ...style }}>
+  return <figure {...props} className={`notebook-photo${personal ? ' notebook-photo-personal' : ''}${variant === 'polaroid' ? ' notebook-photo-polaroid' : ''} ${className}`} style={{ transform: `rotate(${rotation}deg)`, ...style }}>
     {tape && <img src={tape} className="notebook-tape" alt="" aria-hidden="true" />}
     <img src={src} alt={alt} style={imageStyle} />
     {caption && <figcaption><ScrambleText text={caption} /></figcaption>}

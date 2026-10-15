@@ -1,7 +1,8 @@
 # Custom notebook chapters
 
-Each spread has its own React component. `UniversityChapter`, `FirstJobChapter`,
-`PresentChapter`, and `FutureChapter` own their content and layout. The notebook
+Each spread has its own React component. `UniversityChapter`, `CareerChapter`,
+and `FutureChapter` own their content and layout. `CareerChapter.tsx` groups
+`FirstJobSpread`, `SustainabilitySpread`, and `AppsflyerSpread` together in the same chapter file. The notebook
 owns opening, closing, page turns, numbering, navigation, and focus management.
 
 ## Change an existing EP

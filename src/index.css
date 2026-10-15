@@ -99,6 +99,10 @@ body {
   flex-direction: column;
 }
 
+img {
+  -webkit-user-drag: none;
+}
+
 @media (pointer: fine) {
   body, body * { cursor: none !important; }
 }

@@ -1,4 +1,11 @@
 {
+  "loading": {
+    "title": "Loading",
+    "wait": "Preparing something fun...",
+    "error": "Couldn't load everything",
+    "failed": "Check your connection and try again.",
+    "retry": "Try again"
+  },
   "nav": {
     "home": "Home",
     "appearance": "Exploring",
@@ -11,13 +18,13 @@
     "hello": "Hey, I'm",
     "tagline": "I'm a dev. Actually, more of an experimenter.",
     "description": "Full-stack dev who knows a bit of everything. I like mixing what I know with whatever I'm into to make something I've never tried before.",
-    "explore": "What have I been up to?",
+    "explore": "Let's explore my journey",
     "stack": "Tech I've worked with",
     "mainClass": "MAIN CLASS",
     "flutter": "I'm also getting into mobile apps and looking for fresh ideas to build.",
     "esp32": "I don't want to stick to just code on a screen. I want to turn my ideas into something I can actually hold.",
     "printing": "If I've got a circuit, I might as well give it a nice case. I'm still not that good at CAD, though.",
-    "inProgress": "Experiment in progress",
+    "inProgress": "Currently learning",
     "previous": "Previous experiment",
     "next": "Next experiment"
   },
@@ -39,9 +46,6 @@
   },
   "profile": {
     "role": "Full Stack Developer",
-    "space": "PERSONAL SPACE",
-    "creative": "CREATIVE!",
-    "tagline": "CODE + CREATIVITY",
     "cartoon": "Cartoon portrait of {{name}}",
     "photo": "Photo of {{name}}",
     "cartoonUnavailable": "Cartoon portrait of {{name}} unavailable",
@@ -49,7 +53,7 @@
     "showCartoon": "Show cartoon portrait of {{name}}",
     "showPhoto": "Show real photo of {{name}}",
     "cartoonTooltip": "Let's go back!",
-    "photoTooltip": "Wait, what does it actually look like?",
+    "photoTooltip": "Wait, what do you actually look like?",
     "react": "React",
     "gaming": "Gaming",
     "printing": "3D printing"
@@ -70,7 +74,7 @@
       "read": "OPEN NOTEBOOK →",
       "close": "Close notebook",
       "pages": "Notebook story and memories",
-      "memory": "A little memory",
+      "memory": "Mini Memory",
       "pageNavigation": "Notebook pages",
       "previousPage": "Previous pages",
       "nextPage": "Next pages",
@@ -90,7 +94,7 @@
         "faculty": "Faculty of Engineering",
         "shortDescription": "Where my coding journey began.",
         "description": "Where my coding journey began.",
-        "preview": "The very first lines of code.",
+        "preview": "From my first lines of code to new discoveries.",
         "tag": "Curiosity / Code / Discovery",
         "period": "2021–2025",
         "memory": "The first time a tiny project finally worked, I couldn't stop clicking through it. I thought I was pretty good — until I stepped into the real world.",
@@ -104,67 +108,153 @@
       },
       "career": {
         "title": "First Job / Present",
-        "shortDescription": "From my first job to everyday building and learning.",
-        "description": "Turning ideas into real-world applications, while building, learning, and exploring new technologies.",
+        "shortDescription": "From my first job to today, still building, learning, and experimenting.",
+        "description": "From my first job to today, turning ideas into real-world applications while learning and exploring new technologies.",
         "preview": "From my first job to the work I do today.",
         "tag": "Build / Learn / Grow",
         "period": "First job to today",
         "memory": "A teammate's small suggestion during a code review solved a problem I'd been staring at all afternoon. Building together changed how I learned.",
         "story": "My first job became a place to keep growing. The same journey now includes taking ideas from a sketch to a working application and improving them with a team.",
-        "highlights": ["Built interfaces and connected them to application services.", "Learned through code reviews, releases, and user feedback.", "Kept exploring mobile apps, hardware, and side projects."],
+        "highlights": [
+          "Built interfaces and connected them to application services.",
+          "Learned through code reviews, releases, and user feedback.",
+          "Kept exploring mobile apps, hardware, and side projects."
+        ],
         "takeaway": "Good software grows through collaboration and steady improvements.",
         "spreads": {
           "first": {
-            "title": "First Job",
-            "description": "From a class project to code my teammates would have to read.",
-            "period": "The first chapter at work",
-            "story": "On day one, the repo looked completely unfamiliar. Even getting it running meant asking lots of questions. My first task was a small form fix, but getting through the review taught me much more than I expected.",
-            "highlights": [
-              "Mission 01: Get the project running. Everything else can wait.",
-              "Mission 02: Fix a form, connect an API, and open my first pull request.",
-              "Mission 03: Apply the feedback and hold my breath during the release."
-            ],
-            "memory": "I thought working code meant I was done… until a teammate asked, “What if the API goes down?” Right. There was a lot more to think about.",
-            "takeaway": "Make it work, then learn to make it understandable to someone else.",
-            "tag": "First ticket / Teamwork / Small wins",
-            "logTitle": "My first mission log",
-            "noteTitle": "The first code review"
-          },
-          "present": {
-            "title": "What am I tinkering with now?",
-            "description": "Day job, side ideas, and a workbench that is getting a little crowded.",
-            "period": "Present / Still experimenting",
-            "story": "Some days I build an app. Other days I wire a circuit or watch the printer work. Not everything gets finished, but every experiment teaches me something new.",
-            "highlights": [
-              "Connect frontend features with backend services.",
-              "Improve existing flows using feedback and small experiments.",
-              "Explore Flutter, ESP32, and 3D-printed enclosures."
-            ],
-            "memory": "What if a mobile app controlled a board inside a case I printed myself? No idea what I would use it for yet, but it sounds fun to try.",
-            "takeaway": "Get one idea working first. There will always be another one to try.",
-            "tag": "Mobile / Hardware / 3D printing",
-            "noteTitle": "An idea from the workbench",
-            "storyTitle": "There is more to try beyond the screen",
-            "projects": {
-              "flutter": {
-                "title": "A tiny app in my pocket",
-                "description": "Try Flutter, build a few screens, and find an everyday problem to solve."
+            "company": "TCC Technology Limited",
+            "role": "Full Stack Developer",
+            "photos": {
+              "team": {
+                "alt": "Photo booth picture with teammates at TCC Technology",
+                "caption": "The junior team"
               },
-              "esp32": {
-                "title": "Code beyond the screen",
-                "description": "Connect sensors to an ESP32, read their values, and control it from an app."
-              },
-              "printing": {
-                "title": "A home for the circuit",
-                "description": "Design a case, print it, and hope the board actually fits."
+              "party": {
+                "alt": "Group photo with colleagues at the TCC Technology staff party",
+                "caption": "Outing Party / TCC Technology"
               }
+            },
+            "title": "First Job",
+            "description": "Building enterprise websites, from interfaces to backend services.",
+            "period": "Jun 2025 – Present",
+            "story": "After graduating, it was time to move to a bigger city and start my first job in Bangkok. So this is where the real world begins.",
+            "contents": {
+              "title": "Projects along the way",
+              "description": "From my first job to the things I have built.",
+              "project": "Project {{number}}",
+              "hint": "Pick a project to turn straight to its pages."
             }
+          },
+          "sustainability": {
+            "title": "Sustainability",
+            "category": "Project / Enterprise web",
+            "description": "A web app for calculating and managing pollution and waste, both within and outside the organization.",
+            "frontendLabel": "Sustainability / Frontend",
+            "frontendTopics": [
+              {
+                "title": "Micro-Frontends",
+                "description": "Split the app into independently deployable modules that work together in one application.",
+                "stack": [
+                  "React",
+                  "TypeScript",
+                  "Webpack"
+                ]
+              },
+              {
+                "title": "Sustaina SharedUI",
+                "description": "Create a shared UI component library and publish it through npm for the team.",
+                "stack": [
+                  "React",
+                  "Tailwind CSS",
+                  "npm"
+                ]
+              },
+              {
+                "title": "State, Query and Integration",
+                "description": "Async selects with caching, pagination, and error handling.",
+                "stack": [
+                  "Zustand",
+                  "TanStack Query",
+                  "TypeScript"
+                ]
+              }
+            ],
+            "backendLabel": "Sustainability / Backend & delivery",
+            "backendTopics": [
+              {
+                "title": "Backend Microservices",
+                "description": "Develop backend microservices to simplify development and deployment.",
+                "stack": [
+                  "Node.js",
+                  "Fastify",
+                  "Prisma",
+                  "Kafka"
+                ]
+              },
+              {
+                "title": "Authentication & Permissions",
+                "description": "Task access by user/group, session restoration, and route access during maintenance.",
+                "stack": [
+                  "Fastify",
+                  "Prisma",
+                  "Authentication",
+                  "Authorization"
+                ]
+              },
+              {
+                "title": "Testing and QA Handoff",
+                "description": "Test permissions, tenant isolation, and inactive groups; debug, refactor, review, and hand off to QA.",
+                "stack": [
+                  "Unit testing",
+                  "Agile Scrum",
+                  "Git",
+                  "AI-assisted development"
+                ]
+              }
+            ],
+            "toolsTitle": "Tools in my bag",
+            "tools": [
+              "PostgreSQL",
+              "MySQL",
+              "Git",
+              "Docker",
+              "Nginx",
+              "Argo CD",
+              "Postman",
+              "Figma"
+            ]
+          },
+          "flyer": {
+            "title": "Appsflyer",
+            "category": "Project / Mobile app",
+            "description": "Integrate AppsFlyer into the Oishi Club app to track customer data.",
+            "purpose": "Customer data tracking",
+            "stackLabel": "Appsflyer / Stack",
+            "stackTitle": "Mobile app & backend",
+            "workTopics": [
+              {
+                "title": "Mobile application",
+                "description": "Integrate AppsFlyer into the Oishi Club app to track customer data.",
+                "stack": [
+                  "Flutter"
+                ]
+              },
+              {
+                "title": "Backend",
+                "description": "Connect data across AppsFlyer, Oishi Club, and Connect X.",
+                "stack": [
+                  "Go"
+                ]
+              }
+            ],
+            "summary": "Oishi Club is the customer data source; AppsFlyer tracks that data before it is stored in Connect X."
           }
         }
       },
       "future": {
         "title": "What comes next?",
-        "shortDescription": "Still curious about the next adventure.",
+        "shortDescription": "Still wondering what the next stop will be.",
         "description": "What will the future look like?",
         "preview": "The road goes on… what will the next stop be?",
         "tag": "Next stop / Still a question mark",

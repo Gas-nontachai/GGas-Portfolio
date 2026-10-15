@@ -302,7 +302,7 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
   }, [selection, onExited])
 
   return createPortal(
-    <div ref={overlayRef} className="notebook-overlay" role="dialog" aria-modal="true" aria-labelledby="notebook-title" aria-describedby="notebook-description" style={{ '--notebook-accent': selection.color } as CSSProperties}>
+    <div ref={overlayRef} className="notebook-overlay" data-chapter={selection.id} role="dialog" aria-modal="true" aria-labelledby="notebook-title" aria-describedby="notebook-description" style={{ '--notebook-accent': selection.color } as CSSProperties}>
       <span id="notebook-title" className="sr-only">{t(activeSpread.titleKey)}</span>
       <span id="notebook-description" className="sr-only">{t(activeSpread.descriptionKey)}</span>
       <div className="notebook-backdrop" onClick={() => closeAnimation.current()} aria-hidden="true" />
@@ -322,7 +322,11 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
                 <button type="button" disabled={busy || page === pageCount - 1} onClick={() => turnPage(page + 1)} aria-label={t('journey.notebook.nextPage')}><ArrowRight size={20} aria-hidden="true" /></button>
               </nav>}
               <div className="notebook-content">
-                <ChapterContent side="right" label={selection.label} />
+                <ChapterContent side="right" label={selection.label} navigation={{
+                  entries: spreads.map((spread, spreadIndex) => ({ id: spread.id, titleKey: spread.titleKey, descriptionKey: spread.descriptionKey, spreadIndex })),
+                  onSelect: id => turnPage(spreads.findIndex(spread => spread.id === id)),
+                  disabled: busy,
+                }} />
                 <span className="notebook-page-number">{String(page * 2 + 2).padStart(2, '0')} / MEMORIES</span>
               </div>
             </section>
