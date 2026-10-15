@@ -8,7 +8,7 @@ let scrollTween: gsap.core.Tween | null = null
 
 export function scrollToSection(
   hash: string,
-  { offsetY = hash === '#after-journey' ? 0 : 24, duration = 0.7 } = {},
+  { offsetY = hash === '#current-experiments' ? 0 : 24, duration = 0.7 } = {},
 ) {
   if (!hash.startsWith('#') || hash.length === 1) return null
 

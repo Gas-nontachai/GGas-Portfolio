@@ -488,6 +488,60 @@ html {
   line-height: 1.4;
   color: #45413b;
 }
+.notebook-photo-polaroid[role='button'] {
+  cursor: zoom-in;
+  touch-action: manipulation;
+}
+.notebook-photo-polaroid[role='button']:focus-visible {
+  outline: 3px dashed #171717;
+  outline-offset: 5px;
+}
+.polaroid-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  isolation: isolate;
+  color: #171717;
+  font-family: var(--font-sans);
+  overscroll-behavior: contain;
+}
+.polaroid-zoom-backdrop {
+  position: absolute;
+  inset: 0;
+  background: #171717d9;
+  touch-action: none;
+}
+.polaroid-zoom-flight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  will-change: transform;
+  backface-visibility: hidden;
+  overflow: visible;
+}
+.polaroid-zoom-close {
+  position: absolute;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(20px, env(safe-area-inset-right));
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid #171717;
+  border-radius: 4px;
+  background: #ffe16b;
+  color: #171717;
+  box-shadow: 4px 4px 0 #171717;
+}
+.polaroid-zoom-close:hover {
+  background: #fffefa;
+}
+.polaroid-zoom-close:focus-visible {
+  outline: 3px dashed #fffefa;
+  outline-offset: 5px;
+}
 .notebook-overlay .notebook-career-heading {
   font-size: clamp(25px, 2.5vw, 32px);
   line-height: 1.2;

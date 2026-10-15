@@ -39,7 +39,7 @@ previous/next focused milestone and remain visible, disabled at the route edges.
 Future is reached at 90% of the pinned scroll, leaving a final reading pause with
 the car parked at a question-mark direction sign and replay/continue controls in the footer. Scrolling backward restores
 the driving state. The Future button lands inside this final pause.
-A separate `#after-journey` mock project section provides at least 120svh of
+A separate `#current-experiments` mock project section provides at least 120svh of
 normal-flow content after the pin, so its release and reverse re-entry can be
 reviewed. It includes three placeholder cards and a link to restart the journey.
 The scene uses CSS sticky inside a non-shrinking block wrapper. Its real document

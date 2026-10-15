@@ -9,7 +9,7 @@ import { handleScrollNavigation } from '../utils/scrollNavigation'
 const navigationItems = [
   { href: '#main', labelKey: 'nav.home' },
   { href: '#journey', labelKey: 'nav.journey' },
-  { href: '#after-journey', labelKey: 'nav.experiments' },
+  { href: '#current-experiments', labelKey: 'nav.experiments' },
 ] as const
 
 function Navbar() {

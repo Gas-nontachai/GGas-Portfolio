@@ -189,7 +189,7 @@ export default function ExperimentsSection({ ready = true }: { ready?: boolean }
   return (
     <section
       ref={section}
-      id="after-journey"
+      id="current-experiments"
       className="experiments-section"
       aria-labelledby="experiments-heading"
       data-running={running}
