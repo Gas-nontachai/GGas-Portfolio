@@ -121,57 +121,127 @@
             "photos": {
               "team": {
                 "alt": "ภาพถ่ายกับเพื่อนร่วมทีม TCC Technology ในโฟโต้บูธ",
-                "caption": "เพื่อนร่วมทีม กับมุมสนุกๆ นอกจอ"
+                "caption": "ทีมน้องๆจูเนียร์"
               },
               "party": {
                 "alt": "ภาพหมู่เพื่อนร่วมงานในงาน Staff Party ของ TCC Technology",
-                "caption": "Staff Party / TCC Technology"
+                "caption": "Outing Party / TCC Technology"
               }
             },
             "title": "งานแรก",
-            "description": "จากโปรเจกต์ส่งอาจารย์ สู่โค้ดที่เพื่อนร่วมทีมต้องอ่านต่อ",
-            "period": "บทแรกของชีวิตทำงาน",
+            "description": "สร้างเว็บองค์กร ตั้งแต่หน้าจอไปจนถึงบริการหลังบ้าน",
+            "period": "มิ.ย. 2025 – ปัจจุบัน",
             "story": "หลังจากเรียนจบก็ได้เวลาเดินทางเข้าเมืองที่ใหญ่กว่าเดิม กับงานแรกของที่กทม. โลกความเป็นจริงจะเริ่มแล้วสินะะ",
-            "highlights": [
-              "ภารกิจ 01: รันโปรเจกต์ให้ได้ก่อน ค่อยว่ากัน",
-              "ภารกิจ 02: แก้ฟอร์ม เชื่อม API แล้วเปิด pull request แรก",
-              "ภารกิจ 03: รับ feedback แก้โค้ด และลุ้นตอนปล่อยงาน"
-            ],
-            "memory": "คิดว่าโค้ดทำงานได้ก็น่าจะจบแล้ว… จนพี่ในทีมถามว่า “ถ้า API ล่มล่ะ?” โอเค ยังมีอะไรให้คิดอีกเยอะเลย",
-            "takeaway": "เขียนให้ทำงานได้ แล้วค่อยฝึกเขียนให้คนอื่นเข้าใจด้วย",
-            "tag": "งานชิ้นแรก / เพื่อนร่วมทีม / ความสำเร็จเล็กๆ",
-            "logTitle": "บันทึกภารกิจแรก",
-            "noteTitle": "รีวิวโค้ดครั้งแรก"
-          },
-          "present": {
-            "title": "ตอนนี้กำลังลองอะไรอยู่?",
-            "description": "งานประจำก็ทำ ไอเดียเล่นๆ ก็ยังอยากลอง สลับไปมาจนโต๊ะเริ่มรกแล้ว",
-            "period": "ปัจจุบัน / ยังทดลองอยู่",
-            "story": "บางวันเขียนแอป บางวันต่อวงจร บางวันนั่งดูเครื่องพิมพ์ทำงาน ไม่ได้มีทุกอย่างที่เสร็จ แต่ทุกอย่างที่ลองทำให้ได้เรียนรู้อะไรใหม่ๆ",
-            "highlights": [
-              "เชื่อมฟีเจอร์หน้าบ้านเข้ากับบริการหลังบ้าน",
-              "ปรับการใช้งานจากความคิดเห็นและการทดลองเล็กๆ",
-              "ลอง Flutter, ESP32 และเคสที่พิมพ์สามมิติเอง"
-            ],
-            "memory": "ถ้าเอาแอปมือถือมาสั่งบอร์ด แล้วพิมพ์เคสให้มันด้วยล่ะ? ไม่รู้จะใช้ทำอะไรดี แต่ฟังดูน่าลองนะ",
-            "takeaway": "เลือกหนึ่งไอเดียมาลองให้ใช้งานได้ก่อน แล้วค่อยคิดไอเดียต่อไป",
-            "tag": "Mobile / Hardware / 3D printing",
-            "noteTitle": "ไอเดียจากโต๊ะทดลอง",
-            "storyTitle": "นอกจอ ยังมีอะไรให้ลองอีก",
-            "projects": {
-              "flutter": {
-                "title": "แอปเล็กๆ ในกระเป๋า",
-                "description": "ลอง Flutter ทำหน้าจอ แล้วหาว่ามีปัญหาอะไรในชีวิตที่อยากแก้"
-              },
-              "esp32": {
-                "title": "ให้โค้ดออกมานอกจอ",
-                "description": "ต่อ ESP32 กับเซนเซอร์ ลองอ่านค่า และสั่งงานจากแอป"
-              },
-              "printing": {
-                "title": "วงจรก็ต้องมีบ้าน",
-                "description": "ลองออกแบบเคส พิมพ์ออกมา แล้วลุ้นว่าจะใส่บอร์ดได้ไหม"
-              }
+            "contents": {
+              "title": "โปรเจกต์ที่ผ่านมา",
+              "description": "จากงานแรก ถึงสิ่งที่ได้ลงมือสร้าง",
+              "project": "โปรเจกต์ {{number}}",
+              "hint": "กดชื่อโปรเจกต์ เพื่อพลิกไปอ่านได้เลย"
             }
+          },
+          "sustainability": {
+            "title": "Sustainability",
+            "category": "โปรเจกต์ / เว็บองค์กร",
+            "description": "web app ในการคำนวณและจัดการมลพิษและของเสียต่างๆทั้งภายในและนอกองกรค์",
+            "frontendLabel": "Sustainability / หน้าบ้าน",
+            "frontendTopics": [
+              {
+                "title": "Micro-Frontends",
+                "description": "แบ่ง module ของแอปออกเป็นส่วนย่อยที่สามารถ deploy ได้อิสระ แต่ทำงานร่วมกันภายในแอปเดียว",
+                "stack": [
+                  "React",
+                  "TypeScript",
+                  "Webpack"
+                ]
+              },
+              {
+                "title": "Sustaina SharedUI",
+                "description": "สร้าง Shared UI Component Library และเผยแพร่ผ่าน npm ให้ทีมใช้ร่วมกัน",
+                "stack": [
+                  "React",
+                  "Tailwind CSS",
+                  "npm"
+                ]
+              },
+              {
+                "title": "State, Query and Integration",
+                "description": "ทำ async selects พร้อม cache, pagination และจัดการ error",
+                "stack": [
+                  "Zustand",
+                  "TanStack Query",
+                  "TypeScript"
+                ]
+              }
+            ],
+            "backendLabel": "Sustainability / หลังบ้านและการส่งมอบ",
+            "backendTopics": [
+              {
+                "title": "Backend, Micro service",
+                "description": "Dervelop Be แบบ microservices เพื่อให้ง่ายต่อการ dev&deploy",
+                "stack": [
+                  "Node.js",
+                  "Fastify",
+                  "Prisma",
+                  "Kafka"
+                ]
+              },
+              {
+                "title": "Authenticate & Permission",
+                "description": "สิทธิ์ระดับ task ตามผู้ใช้/กลุ่ม พร้อม session restoration และ route ช่วง maintenance",
+                "stack": [
+                  "Fastify",
+                  "Prisma",
+                  "Authentication",
+                  "Authorization"
+                ]
+              },
+              {
+                "title": "Testing and QA handoff",
+                "description": "ทดสอบสิทธิ์, tenant isolation และกลุ่ม inactive; debug, refactor, review และส่งงานต่อให้ QA",
+                "stack": [
+                  "Unit testing",
+                  "Agile Scrum",
+                  "Git",
+                  "AI-assisted development"
+                ]
+              }
+            ],
+            "toolsTitle": "เครื่องมือในกระเป๋า",
+            "tools": [
+              "PostgreSQL",
+              "MySQL",
+              "Git",
+              "Docker",
+              "Nginx",
+              "Argo CD",
+              "Postman",
+              "Figma"
+            ]
+          },
+          "flyer": {
+            "title": "Appsflyer",
+            "category": "โปรเจกต์ / แอปมือถือ",
+            "description": "integration Appsflyer เข้าแอป Oishi Club สำหรับติดตามข้อมูลลูกค้า",
+            "purpose": "ติดตามข้อมูลลูกค้า",
+            "stackLabel": "Appsflyer / Stack",
+            "stackTitle": "หน้าจอแอป & หลังบ้าน",
+            "workTopics": [
+              {
+                "title": "แอปมือถือ",
+                "description": "integration Appsflyer เข้าแอป Oishi Club สำหรับติดตามข้อมูลลูกค้า",
+                "stack": [
+                  "Flutter"
+                ]
+              },
+              {
+                "title": "ระบบหลังบ้าน",
+                "description": "ประสานข้อมูลของ Appsflyer, Oishi club, Connect X เข้าด้วยกัน",
+                "stack": [
+                  "Go"
+                ]
+              }
+            ],
+            "summary": "Oishi Club คือแหล่งข้อมูลลูกค้า ส่วน Appsflyer คือแอปที่ใช้ติดตามข้อมูลเหล่านั้นก่อนที่จะไปเก็บลง Connect X"
           }
         }
       },
