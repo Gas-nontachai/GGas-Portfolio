@@ -20,13 +20,13 @@ export default function Introduction() {
         <span className="size-[9px] shrink-0 rounded-full border-[1.5px] border-border bg-[#a9d89a]" />
         <ScrambleText text={'OPEN TO NEW IDEAS'} />
       </p>
-      <div className="my-auto">
+      <div className="my-auto [container-type:inline-size]">
         <p className="intro-reveal mt-0 mb-0.5 text-[24px] font-bold">
           <ScrambleText text={t('home.hello')} />
         </p>
         <h1
           id="intro-heading"
-          className="intro-reveal m-0 text-[76px] leading-[1.05] font-bold max-[700px]:text-[64px]"
+          className="intro-reveal m-0 text-[min(76px,20cqw)] leading-[1.05] font-bold max-[700px]:text-[min(64px,20cqw)]"
         >
           {profileConfig.name}
           <span className="text-[#df563d]">.</span>
