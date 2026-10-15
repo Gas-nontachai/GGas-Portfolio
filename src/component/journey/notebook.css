@@ -70,6 +70,13 @@ html { scrollbar-gutter: stable; }
 .notebook-turn-back { transform: rotateY(180deg); background: repeating-linear-gradient(#fff8de 0 27px, #e4dcc6 28px 29px); }
 .notebook-first-log .notebook-memories { border-left: 2px dashed #17171760; padding-left: 12px; gap: 20px; }
 .notebook-first-log .notebook-memories li > span:first-child { transform: rotate(-5deg); background: #ffe16b; }
+.notebook-overlay .notebook-first-company { font-size: clamp(25px, 2.5vw, 32px); line-height: 1.2; }
+.notebook-first-photos { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; margin: 28px 0 20px; padding: 0 14px; }
+.notebook-first-photos .notebook-photo:first-child { justify-self: start; z-index: 1; }
+.notebook-first-photos .notebook-photo:last-child { justify-self: end; z-index: 2; margin-top: -28px; }
+.notebook-photo.notebook-photo-polaroid { width: min(calc(100% - 16px), 240px); margin: 0; padding: 8px 8px 6px; border: 1px solid #17171718; background: #fffefa; box-shadow: 0 4px 10px #17171724, 0 1px 2px #17171716; }
+.notebook-photo.notebook-photo-polaroid > img:not(.notebook-tape) { width: 100%; height: auto; max-height: none; padding: 0; background: transparent; object-fit: contain; }
+.notebook-photo-polaroid figcaption { margin: 0; padding: 10px 1px 5px; font-size: 10px; font-weight: 400; line-height: 1.4; color: #45413b; }
 .notebook-experiments { display: grid; gap: 16px; margin: 24px 0; }
 .notebook-experiment { display: flex; align-items: center; gap: 10px; padding: 12px; border: 2px solid #171717; box-shadow: 4px 4px 0 #171717; }
 .notebook-experiment-flutter { background: #bdefff; transform: rotate(-2deg); }

@@ -116,6 +116,18 @@
         "takeaway": "ซอฟต์แวร์ที่ดีเติบโตจากการร่วมมือและปรับปรุงทีละนิด",
         "spreads": {
           "first": {
+            "company": "TCC Technology Limited",
+            "role": "Full Stack Developer",
+            "photos": {
+              "team": {
+                "alt": "ภาพถ่ายกับเพื่อนร่วมทีม TCC Technology ในโฟโต้บูธ",
+                "caption": "เพื่อนร่วมทีม กับมุมสนุกๆ นอกจอ"
+              },
+              "party": {
+                "alt": "ภาพหมู่เพื่อนร่วมงานในงาน Staff Party ของ TCC Technology",
+                "caption": "Staff Party / TCC Technology"
+              }
+            },
             "title": "งานแรก",
             "description": "จากโปรเจกต์ส่งอาจารย์ สู่โค้ดที่เพื่อนร่วมทีมต้องอ่านต่อ",
             "period": "บทแรกของชีวิตทำงาน",

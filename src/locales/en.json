@@ -115,6 +115,18 @@
         "takeaway": "Good software grows through collaboration and steady improvements.",
         "spreads": {
           "first": {
+            "company": "TCC Technology Limited",
+            "role": "Full Stack Developer",
+            "photos": {
+              "team": {
+                "alt": "Photo booth picture with teammates at TCC Technology",
+                "caption": "Teammates / A little fun beyond the screen"
+              },
+              "party": {
+                "alt": "Group photo with colleagues at the TCC Technology staff party",
+                "caption": "Staff Party / TCC Technology"
+              }
+            },
             "title": "First Job",
             "description": "From a class project to code my teammates would have to read.",
             "period": "The first chapter at work",
