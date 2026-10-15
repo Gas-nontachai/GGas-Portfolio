@@ -157,10 +157,10 @@
   z-index: 5;
 }
 .experiments-lamp {
-  bottom: 39%;
+  bottom: 32%;
   left: 59%;
   width: 8%;
-  z-index: 3;
+  z-index: 5;
 }
 .experiments-camera {
   bottom: 25%;
@@ -681,72 +681,20 @@
     inset: auto;
     min-width: 0;
     min-height: 0;
+    overflow: clip;
     container-type: size;
   }
   .experiments-scenery,
   .experiments-foreground {
     position: absolute;
     inset: 50% auto auto 50%;
-    /* One shared coordinate system keeps the seated pose intact on wide, short scenes. */
-    width: min(100cqw, 153.846cqh);
+    width: min(100cqw, 160cqh);
     height: auto;
-    aspect-ratio: 1000 / 650;
+    aspect-ratio: 1600 / 1000;
     transform: translate(-50%, -50%);
   }
-  .experiments-avatar {
-    left: 33%;
-    bottom: 49%;
-    width: 34%;
-    height: 52%;
-  }
   .experiments-avatar > img {
-    height: 100%;
-    object-fit: contain;
-    object-position: center bottom;
     animation: none;
-  }
-  .experiments-desk {
-    top: auto;
-    left: 13%;
-    bottom: 12%;
-    width: 74%;
-    height: 55%;
-    object-fit: contain;
-    object-position: center bottom;
-  }
-  .experiments-chair {
-    top: auto;
-    bottom: 0;
-    left: 38%;
-    width: 24%;
-    height: 32%;
-    object-fit: contain;
-    object-position: center bottom;
-  }
-  .experiments-shelf {
-    top: 2%;
-    left: 2%;
-    width: 26%;
-    height: 34%;
-    object-fit: contain;
-  }
-  .experiments-books {
-    bottom: 55%;
-    left: 15%;
-    width: 14%;
-    height: 20%;
-    object-fit: contain;
-    object-position: center bottom;
-  }
-  .experiments-lamp {
-    bottom: 55%;
-    left: auto;
-    right: 12%;
-    width: 12%;
-    height: 27%;
-    object-fit: contain;
-    object-position: center bottom;
-    z-index: 5;
   }
   .experiments-camera,
   .experiments-headphones,
