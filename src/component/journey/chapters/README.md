@@ -63,3 +63,5 @@ career: [
 Keep each chapter's list nonempty and spread IDs unique within it. The list order
 determines navigation and page numbers. `titleKey` and `descriptionKey` name the
 dialog for assistive technology independently of the visual layout.
+For a fixed project name shared by all languages, use `title: 'Project Name'`
+instead of `titleKey`. Navigation and the dialog use the same resolved title.

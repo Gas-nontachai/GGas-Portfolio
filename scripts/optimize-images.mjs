@@ -5,7 +5,23 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import sharp from 'sharp'
 
 const projectRoot = fileURLToPath(new URL('../', import.meta.url))
-const imageExtensions = new Set(['.png', '.jpg', '.jpeg', '.webp', '.avif', '.gif', '.tif', '.tiff', '.svg', '.ico', '.bmp', '.apng', '.heic', '.heif', '.jxl'])
+const imageExtensions = new Set([
+  '.png',
+  '.jpg',
+  '.jpeg',
+  '.webp',
+  '.avif',
+  '.gif',
+  '.tif',
+  '.tiff',
+  '.svg',
+  '.ico',
+  '.bmp',
+  '.apng',
+  '.heic',
+  '.heif',
+  '.jxl',
+])
 const formats = {
   '.png': ['png', { compressionLevel: 9, effort: 10, adaptiveFiltering: true, palette: false }],
   '.jpg': ['jpeg', { quality: 100, chromaSubsampling: '4:4:4', mozjpeg: true }],
@@ -22,20 +38,25 @@ export async function optimizeImage(original, extension, { resizeLarge = false }
   if (!format) return { reason: 'No same-format Sharp encoder; original kept' }
   const before = await sharp(original, { animated: true }).metadata()
   if (before.format === 'png') {
-    for (let offset = 8; offset + 12 <= original.length; offset += original.readUInt32BE(offset) + 12) {
+    for (
+      let offset = 8;
+      offset + 12 <= original.length;
+      offset += original.readUInt32BE(offset) + 12
+    ) {
       if (original.toString('ascii', offset + 4, offset + 8) === 'acTL') {
         return { reason: 'Animated PNG preserved without re-encoding' }
       }
     }
   }
-  const resize = resizeLarge && original.length > 1_000_000 && (before.pages ?? 1) === 1
-    && Math.max(before.width, before.height) > 768
+  const resize =
+    resizeLarge &&
+    original.length > 1_000_000 &&
+    (before.pages ?? 1) === 1 &&
+    Math.max(before.width, before.height) > 768
   const resizeOptions = { width: 768, height: 768, fit: 'inside', withoutEnlargement: true }
   const pipeline = sharp(original, { animated: true }).keepMetadata()
   if (resize) pipeline.resize(resizeOptions)
-  const buffer = await pipeline
-    .toFormat(...format)
-    .toBuffer()
+  const buffer = await pipeline.toFormat(...format).toBuffer()
   if (buffer.length >= original.length) return { reason: 'Already smaller than optimized output' }
 
   const after = await sharp(buffer, { animated: true }).metadata()
@@ -52,7 +73,10 @@ export async function optimizeImage(original, extension, { resizeLarge = false }
   }
   if (resize) {
     const scale = 768 / Math.max(before.width, before.height)
-    if (after.width !== Math.round(before.width * scale) || after.height !== Math.round(before.height * scale)) {
+    if (
+      after.width !== Math.round(before.width * scale) ||
+      after.height !== Math.round(before.height * scale)
+    ) {
       return { reason: 'Unexpected resized dimensions; original kept' }
     }
   }
@@ -70,29 +94,39 @@ export async function optimizeImage(original, extension, { resizeLarge = false }
 }
 
 async function* findImages(directory) {
-  const entries = await readdir(directory, { withFileTypes: true }).catch(error => {
+  const entries = await readdir(directory, { withFileTypes: true }).catch((error) => {
     if (error.code === 'ENOENT') return []
     throw error
   })
   for (const entry of entries.sort((first, second) => first.name.localeCompare(second.name))) {
     const filename = path.join(directory, entry.name)
     if (entry.isDirectory()) yield* findImages(filename)
-    else if (entry.isFile() && imageExtensions.has(path.extname(entry.name).toLowerCase())) yield filename
+    else if (entry.isFile() && imageExtensions.has(path.extname(entry.name).toLowerCase()))
+      yield filename
   }
 }
 
-const size = bytes => `${(bytes / 1024).toFixed(1)} KiB`
+const size = (bytes) => `${(bytes / 1024).toFixed(1)} KiB`
 
-export async function optimizeAssets({ roots = ['src/assets', 'public'], write = false, resizeLarge = false, log = console.log } = {}) {
+export async function optimizeAssets({
+  roots = ['src/assets', 'public'],
+  write = false,
+  resizeLarge = false,
+  log = console.log,
+} = {}) {
   let totalBefore = 0
   let totalAfter = 0
   let changed = 0
   let files = 0
   let errors = 0
-  log(`${write ? 'WRITE' : 'DRY RUN'}: original extensions retained; JPEG quality 100 (not lossless).`)
-  log(resizeLarge
-    ? 'Large-image mode: static images > 1 MB resized to a maximum edge of 768px; this changes pixels. Smaller images and animations keep their dimensions.'
-    : 'Original dimensions retained.')
+  log(
+    `${write ? 'WRITE' : 'DRY RUN'}: original extensions retained; JPEG quality 100 (not lossless).`,
+  )
+  log(
+    resizeLarge
+      ? 'Large-image mode: static images > 1 MB resized to a maximum edge of 768px; this changes pixels. Smaller images and animations keep their dimensions.'
+      : 'Original dimensions retained.',
+  )
   for (const root of roots) {
     for await (const filename of findImages(path.resolve(projectRoot, root))) {
       files += 1
@@ -101,7 +135,9 @@ export async function optimizeAssets({ roots = ['src/assets', 'public'], write =
         const original = await readFile(filename)
         totalBefore += original.length
         totalAfter += original.length
-        const { buffer, reason, resized } = await optimizeImage(original, path.extname(filename), { resizeLarge })
+        const { buffer, reason, resized } = await optimizeImage(original, path.extname(filename), {
+          resizeLarge,
+        })
         const label = path.relative(projectRoot, filename)
         if (!buffer) {
           log(`KEEP ${label}: ${reason}`)
@@ -114,7 +150,9 @@ export async function optimizeAssets({ roots = ['src/assets', 'public'], write =
         }
         changed += 1
         totalAfter -= original.length - buffer.length
-        log(`${write ? 'SAVED' : 'WOULD SAVE'} ${label}: ${size(original.length)} -> ${size(buffer.length)}${resized ? ' (resized to fit 768px)' : ''}`)
+        log(
+          `${write ? 'SAVED' : 'WOULD SAVE'} ${label}: ${size(original.length)} -> ${size(buffer.length)}${resized ? ' (resized to fit 768px)' : ''}`,
+        )
       } catch (error) {
         errors += 1
         log(`ERROR ${path.relative(projectRoot, filename)}: ${error.message}`)
@@ -124,17 +162,25 @@ export async function optimizeAssets({ roots = ['src/assets', 'public'], write =
     }
   }
   const savings = totalBefore - totalAfter
-  log(`${files} images, ${changed} ${write ? 'optimized' : 'candidates'}, ${errors} errors. ${size(totalBefore)} -> ${size(totalAfter)}; saved ${size(savings)} (${totalBefore ? (savings / totalBefore * 100).toFixed(1) : '0.0'}%).`)
+  log(
+    `${files} images, ${changed} ${write ? 'optimized' : 'candidates'}, ${errors} errors. ${size(totalBefore)} -> ${size(totalAfter)}; saved ${size(savings)} (${totalBefore ? ((savings / totalBefore) * 100).toFixed(1) : '0.0'}%).`,
+  )
   return { files, changed, errors, totalBefore, totalAfter }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const flags = process.argv.slice(2)
-  if (flags.some(flag => !['--dry-run', '--write', '--resize-large'].includes(flag)) || (flags.includes('--write') && flags.includes('--dry-run'))) {
+  if (
+    flags.some((flag) => !['--dry-run', '--write', '--resize-large'].includes(flag)) ||
+    (flags.includes('--write') && flags.includes('--dry-run'))
+  ) {
     console.error('Usage: node scripts/optimize-images.mjs [--dry-run | --write] [--resize-large]')
     process.exitCode = 1
   } else {
-    const result = await optimizeAssets({ write: flags.includes('--write'), resizeLarge: flags.includes('--resize-large') })
+    const result = await optimizeAssets({
+      write: flags.includes('--write'),
+      resizeLarge: flags.includes('--resize-large'),
+    })
     if (result.errors) process.exitCode = 1
   }
 }

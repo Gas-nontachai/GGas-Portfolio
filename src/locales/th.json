@@ -8,11 +8,10 @@
   },
   "nav": {
     "home": "หน้าแรก",
-    "appearance": "กำลังทดลอง",
-    "profile": "โปรไฟล์",
     "label": "เมนูหลัก",
     "brand": "หน้าแรก GGAS",
-    "journey": "เส้นทางชีวิต"
+    "journey": "เส้นทางชีวิต",
+    "experiments": "กำลังทดลอง"
   },
   "home": {
     "hello": "สวัสดีครับ ผม",
@@ -20,19 +19,12 @@
     "description": "FullStack Dev ที่ทำทุกอย่างได้นิดหน่อย ผมชอบที่จะเอาความรู้ที่มีมารวมกับอะไรที่ผมสนใจให้ออกมาเป็นอะไรใหม่ๆที่ผมไม่เคยทำมาก่อน",
     "explore": "มาดูเส้นทางชีวิตผมกัน",
     "stack": "stack ที่ผมเคยใช้",
-    "mainClass": "คลาสหลัก",
     "flutter": "แอพมือถือเป็นอีกอย่างที่ผมกำลังสนใจ และกำลังหาไอเดียใหม่ๆมาทำอยู่ครับ",
     "esp32": "ผมไม่อยากจำกัดตัวเองอยู่กับแค่ code บนหน้าจอ ผมอยากให้ไอเดียของผมออกมาเป็นสิ่งที่จับต้องได้จริง",
     "printing": "ถ้าเรามีวงจรแล้วไม่มีเคสสวยๆก็เสียดายแย่ แต่เรื่อง cad นี่ผมก็ยังไม่เก่งนัก",
-    "inProgress": "อยู่ระหว่างเรียนรู้",
+    "inProgress": "กำลังเรียนรู้",
     "previous": "การทดลองก่อนหน้า",
     "next": "การทดลองถัดไป"
-  },
-  "appearance": {
-    "preferences": "การตั้งค่า",
-    "heading": "การแสดงผล",
-    "palette": "ชุดสีธีม",
-    "preview": "ตัวอย่าง"
   },
   "theme": {
     "light": "สว่าง",
@@ -41,11 +33,9 @@
     "tooltip": "ธีม{{mode}}"
   },
   "language": {
-    "switch": "เปลี่ยนเป็นภาษาอังกฤษ",
-    "tooltip": "English"
+    "switch": "เปลี่ยนเป็นภาษาอังกฤษ"
   },
   "profile": {
-    "role": "Fullstack Developer",
     "cartoon": "ภาพการ์ตูนของ {{name}}",
     "photo": "ภาพถ่ายของ {{name}}",
     "cartoonUnavailable": "ไม่สามารถแสดงภาพการ์ตูนของ {{name}}",
@@ -54,14 +44,12 @@
     "showPhoto": "แสดงภาพถ่ายจริงของ {{name}}",
     "cartoonTooltip": "กลับไปแบบเดิมดีก่า",
     "photoTooltip": "เอ๊ะ หน้าจริงๆเป็นไงนะ?",
-    "react": "React",
     "gaming": "เล่นเกม",
     "printing": "การพิมพ์สามมิติ"
   },
   "journey": {
     "eyebrow": "ถนนสายเล็ก กับเรื่องราวมากมาย",
     "heading": "เส้นทางของผม",
-    "scroll": "เลื่อนเพื่อเดินทาง",
     "chapter": "บทที่",
     "here": "คุณอยู่ที่นี่",
     "preview": "แอบดูก่อน",
@@ -74,14 +62,12 @@
       "read": "เปิดสมุดบันทึก →",
       "close": "ปิดสมุดบันทึก",
       "pages": "เรื่องราวและความทรงจำในสมุด",
-      "memory": "Mini Memory",
       "pageNavigation": "หน้าสมุดบันทึก",
       "previousPage": "หน้าก่อนหน้า",
       "nextPage": "หน้าถัดไป",
       "pageIndicator": "หน้าคู่ที่ {{current}} / {{total}}",
       "images": {
         "university": "ภาพถ่ายในช่วงเรียนมหาวิทยาลัย",
-        "career": "ภาพการ์ตูนอาคารสำนักงานในกรอบภาพความทรงจำสมมติ",
         "future": "ป้ายบอกทางสู่การผจญภัยครั้งต่อไป"
       }
     },
@@ -95,7 +81,6 @@
         "shortDescription": "จุดเริ่มต้นของเส้นทางการเขียนโค้ดของผม",
         "description": "จุดเริ่มต้นของเส้นทางการเขียนโค้ดของผม",
         "preview": "จากโค้ดบรรทัดแรก สู่การค้นพบสิ่งใหม่",
-        "tag": "Curiosity / Code / Discovery",
         "period": "2021–2025",
         "memory": "ครั้งแรกที่โปรเจกต์เล็กๆ ทำงานได้จริง ผมกดเล่นมันซ้ำอยู่นานมาก คิดว่าตัวเองเก่งแล้วจนกระทั่งได้มาเจอโลกจริง",
         "story": "เริ่มต้นการเรียนวิศวะด้วยการต่อวงจรและการคำนวณไฟฟ้า แต่เอ๊ะทำไมนะเราถึงไม่สนุกเท่าการที่จะมาเขียน html css ถ้างั้นเรามาลองฝึกสกิลด้านนี้กันเถอะ",
@@ -111,28 +96,15 @@
         "shortDescription": "จากงานแรกถึงวันนี้ ยังสร้าง เรียนรู้ และทดลองอยู่เสมอ",
         "description": "จากงานแรกถึงวันนี้ เปลี่ยนไอเดียให้ใช้งานได้จริง พร้อมเรียนรู้และสำรวจเทคโนโลยีใหม่ๆ",
         "preview": "งานแรกที่ยังเป็นเส้นทางของผมในวันนี้",
-        "tag": "สร้าง / เรียนรู้ / เติบโต",
-        "period": "จากงานแรกถึงวันนี้",
-        "memory": "คำแนะนำเล็กๆ จากเพื่อนร่วมทีมตอนรีวิวโค้ด ช่วยแก้ปัญหาที่ผมนั่งมองมาทั้งบ่าย การได้สร้างงานด้วยกันเปลี่ยนวิธีเรียนรู้ของผมไปเลย",
-        "story": "งานแรกกลายเป็นพื้นที่ให้ผมเติบโตต่อเนื่อง เส้นทางเดิมในวันนี้มีทั้งการเปลี่ยนไอเดียให้เป็นแอปที่ใช้ได้จริง และพัฒนามันร่วมกับทีม",
-        "highlights": [
-          "สร้างหน้าจอและเชื่อมต่อกับบริการของแอป",
-          "เรียนรู้จากการรีวิวโค้ด การปล่อยงาน และเสียงผู้ใช้",
-          "ลองทำแอปมือถือ ฮาร์ดแวร์ และโปรเจกต์ส่วนตัว"
-        ],
-        "takeaway": "ซอฟต์แวร์ที่ดีเติบโตจากการร่วมมือและปรับปรุงทีละนิด",
         "spreads": {
           "first": {
-            "company": "TCC Technology Limited",
-            "role": "Full Stack Developer",
             "photos": {
               "team": {
                 "alt": "ภาพถ่ายกับเพื่อนร่วมทีม TCC Technology ในโฟโต้บูธ",
                 "caption": "ทีมน้องๆจูเนียร์"
               },
               "party": {
-                "alt": "ภาพหมู่เพื่อนร่วมงานในงาน Staff Party ของ TCC Technology",
-                "caption": "Outing Party / TCC Technology"
+                "alt": "ภาพหมู่เพื่อนร่วมงานในงาน Staff Party ของ TCC Technology"
               }
             },
             "title": "งานแรก",
@@ -141,111 +113,51 @@
             "story": "หลังจากเรียนจบก็ได้เวลาเดินทางเข้าเมืองที่ใหญ่กว่าเดิม กับงานแรกของที่กทม. โลกความเป็นจริงจะเริ่มแล้วสินะะ",
             "contents": {
               "title": "โปรเจกต์ที่ผ่านมา",
-              "description": "จากงานแรก ถึงสิ่งที่ได้ลงมือสร้าง",
               "project": "โปรเจกต์ {{number}}",
               "hint": "กดชื่อโปรเจกต์ เพื่อพลิกไปอ่านได้เลย"
             }
           },
           "sustainability": {
-            "title": "Sustainability",
             "category": "โปรเจกต์ / เว็บองค์กร",
             "description": "web app ในการคำนวณและจัดการมลพิษและของเสียต่างๆทั้งภายในและนอกองกรค์",
             "frontendLabel": "Sustainability / หน้าบ้าน",
             "frontendTopics": [
               {
-                "title": "Micro-Frontends",
-                "description": "แบ่ง module ของแอปออกเป็นส่วนย่อยที่สามารถ deploy ได้อิสระ แต่ทำงานร่วมกันภายในแอปเดียว",
-                "stack": [
-                  "React",
-                  "TypeScript",
-                  "Webpack"
-                ]
+                "description": "แบ่ง module ของแอปออกเป็นส่วนย่อยที่สามารถ deploy ได้อิสระ แต่ทำงานร่วมกันภายในแอปเดียว"
               },
               {
-                "title": "Sustaina SharedUI",
-                "description": "สร้าง Shared UI Component Library และเผยแพร่ผ่าน npm ให้ทีมใช้ร่วมกัน",
-                "stack": [
-                  "React",
-                  "Tailwind CSS",
-                  "npm"
-                ]
+                "description": "สร้าง Shared UI Component Library และเผยแพร่ผ่าน npm ให้ทีมใช้ร่วมกัน"
               },
               {
-                "title": "State, Query and Integration",
-                "description": "ทำ async selects พร้อม cache, pagination และจัดการ error",
-                "stack": [
-                  "Zustand",
-                  "TanStack Query",
-                  "TypeScript"
-                ]
+                "description": "ทำ async selects พร้อม cache, pagination และจัดการ error"
               }
             ],
             "backendLabel": "Sustainability / หลังบ้านและการส่งมอบ",
             "backendTopics": [
               {
-                "title": "Backend, Micro service",
-                "description": "Dervelop Be แบบ microservices เพื่อให้ง่ายต่อการ dev&deploy",
-                "stack": [
-                  "Node.js",
-                  "Fastify",
-                  "Prisma",
-                  "Kafka"
-                ]
+                "description": "Dervelop Be แบบ microservices เพื่อให้ง่ายต่อการ dev&deploy"
               },
               {
-                "title": "Authenticate & Permission",
-                "description": "สิทธิ์ระดับ task ตามผู้ใช้/กลุ่ม พร้อม session restoration และ route ช่วง maintenance",
-                "stack": [
-                  "Fastify",
-                  "Prisma",
-                  "Authentication",
-                  "Authorization"
-                ]
+                "description": "สิทธิ์ระดับ task ตามผู้ใช้/กลุ่ม พร้อม session restoration และ route ช่วง maintenance"
               },
               {
-                "title": "Testing and QA handoff",
-                "description": "ทดสอบสิทธิ์, tenant isolation และกลุ่ม inactive; debug, refactor, review และส่งงานต่อให้ QA",
-                "stack": [
-                  "Unit testing",
-                  "Agile Scrum",
-                  "Git",
-                  "AI-assisted development"
-                ]
+                "description": "ทดสอบสิทธิ์, tenant isolation และกลุ่ม inactive; debug, refactor, review และส่งงานต่อให้ QA"
               }
-            ],
-            "toolsTitle": "เครื่องมือในกระเป๋า",
-            "tools": [
-              "PostgreSQL",
-              "MySQL",
-              "Git",
-              "Docker",
-              "Nginx",
-              "Argo CD",
-              "Postman",
-              "Figma"
             ]
           },
           "flyer": {
-            "title": "Appsflyer",
             "category": "โปรเจกต์ / แอปมือถือ",
             "description": "integration Appsflyer เข้าแอป Oishi Club สำหรับติดตามข้อมูลลูกค้า",
             "purpose": "ติดตามข้อมูลลูกค้า",
-            "stackLabel": "Appsflyer / Stack",
             "stackTitle": "หน้าจอแอป & หลังบ้าน",
             "workTopics": [
               {
                 "title": "แอปมือถือ",
-                "description": "integration Appsflyer เข้าแอป Oishi Club สำหรับติดตามข้อมูลลูกค้า",
-                "stack": [
-                  "Flutter"
-                ]
+                "description": "integration Appsflyer เข้าแอป Oishi Club สำหรับติดตามข้อมูลลูกค้า"
               },
               {
                 "title": "ระบบหลังบ้าน",
-                "description": "ประสานข้อมูลของ Appsflyer, Oishi club, Connect X เข้าด้วยกัน",
-                "stack": [
-                  "Go"
-                ]
+                "description": "ประสานข้อมูลของ Appsflyer, Oishi club, Connect X เข้าด้วยกัน"
               }
             ],
             "summary": "Oishi Club คือแหล่งข้อมูลลูกค้า ส่วน Appsflyer คือแอปที่ใช้ติดตามข้อมูลเหล่านั้นก่อนที่จะไปเก็บลง Connect X"
@@ -257,47 +169,58 @@
         "shortDescription": "ยังสงสัยว่าป้ายต่อไปจะเป็นอะไรนะ",
         "description": "อนาคตจะเป็นยังไงนะะ",
         "preview": "ถนนยังอีกยาว… ป้ายต่อไปจะเป็นอะไรนะ?",
-        "tag": "ป้ายต่อไป / ยังเป็นเครื่องหมายคำถาม",
         "period": "ป้ายต่อไป / ยังไม่รู้เลย",
         "memory": "เว้นที่ไว้ก่อน เผื่อวันหนึ่งจะมีเรื่องสนุกๆ กลับมาเขียนลงหน้านี้",
         "story": "จะได้ทำแอปใหม่? สร้างอะไรที่จับต้องได้? หรือเจอสิ่งที่วันนี้ยังนึกไม่ถึง? ยังไม่รู้เลย แต่ก็คงมีอะไรให้ลองอีกเยอะเนอะ",
-        "highlights": [
-          "ทำต้นแบบแอปเล็กๆ เพื่อแก้ปัญหาในชีวิตประจำวัน",
-          "รวมอุปกรณ์เชื่อมต่อกับเคสที่ออกแบบและพิมพ์เอง",
-          "แบ่งปันการทดลอง แล้วเรียนรู้จากคนที่ลองใช้งาน"
-        ],
         "takeaway": "ไว้เจอกันในบทต่อไป :)",
         "notebookTitle": "นั่นสิน้าา…",
         "blankTitle": "หน้านี้ยังไม่ได้เขียน"
       }
     },
-    "details": "รายละเอียดเรื่องราว: {{stage}}",
     "highlights": "สิ่งที่ได้ทำระหว่างทาง",
-    "takeaway": "Next Step:",
     "continued": "แล้วเจอกันที่ป้ายต่อไป!",
     "replay": "เดินทางอีกครั้ง",
     "continue": "ดูส่วนถัดไป",
     "arrival": "ถึงป้ายอนาคตแล้ว ป้ายต่อไปจะเป็นอะไรนะ? เริ่มเดินทางใหม่หรือเลื่อนต่อได้เลย"
   },
-  "afterJourney": {
-    "label": "บทต่อไป / MOCK SECTION",
-    "heading": "ยังมีอะไรให้สำรวจอีก",
-    "description": "ส่วนจำลองสำหรับเนื้อหาถัดไปของ Portfolio เลื่อนผ่าน Future เพื่อออกจาก Journey แล้วดูตัวอย่างโปรเจกต์ด้านล่างได้เลยครับ",
-    "placeholder": "โปรเจกต์ตัวอย่าง",
-    "scrollHint": "เลื่อนขึ้นเพื่อกลับเข้า Journey และทดสอบการเดินทางย้อนกลับ",
-    "back": "กลับไปเริ่ม Journey",
-    "projects": {
-      "playground": {
-        "title": "สนามทดลองโค้ด",
-        "description": "พื้นที่จำลองสำหรับไอเดียแอปเล็กๆ และการทดลองหน้าตาเว็บแบบสนุกๆ"
+  "experiments": {
+    "eyebrow": "สิ่งที่กำลังเรียนรู้",
+    "description": "นอกเหนือจากงานประจำ ผมชอบลองเอาความรู้ที่มีมาลอง poc อะไรเล่นไปเรื่อยๆ เผื่อว่าจะต่อยอดอะไรจากเดิมได้อีก",
+    "explore": "มาดูสิ่งที่ผมกำลังทดลองกัน",
+    "choose": "เลือกหัวข้อเพื่อดูสิ่งที่ผมกำลังเรียนรู้",
+    "select": "สำรวจ {{title}}",
+    "selected": "หัวข้อที่เลือก: {{title}}",
+    "status": {
+      "learning": "กำลังเรียนรู้",
+      "exploring": "กำลังสำรวจ",
+      "experimenting": "กำลังทดลอง"
+    },
+    "items": {
+      "flutter": {
+        "description": "กำลังศึกษาและลองพัฒนาแอปพลิเคชันด้วย Flutter เพื่อหาความรู้ใหม่ๆไปต่อยอดจากของเดิมที่มีอยู่ได้",
+        "highlights": [
+          "ทดลองทำ UI Components",
+          "ศึกษา State Management",
+          "API Integration",
+          "สร้างแอปเล็ก ๆ เพื่อฝึกฝน"
+        ]
       },
-      "maker": {
-        "title": "การทดลองสาย Maker",
-        "description": "ตัวอย่างโปรเจกต์ที่ผสมฮาร์ดแวร์ โค้ด และสิ่งที่สร้างด้วยมือ"
+      "esp32": {
+        "description": "จากที่ทำแอพมือถือได้แล้วเราก็อยากจะ monitor หรือเล่นอะไรกับ notification ได้ด้วย จะเป็นอะไรไปได้ล่ะนอกจาก esp32",
+        "highlights": [
+          "ทำความรู้จักบอร์ดและเซนเซอร์",
+          "ทดลองเชื่อมต่ออุปกรณ์",
+          "POC โปรเจคเล็กๆ",
+          "BLE/WIFI Communication"
+        ]
       },
-      "next": {
-        "title": "ไอเดียถัดไปคืออะไร?",
-        "description": "พื้นที่ที่เตรียมไว้สำหรับไอเดีย การทดลอง หรือการผจญภัยครั้งต่อไป"
+      "printing": {
+        "description": "หลังจากเรามีวงจรเป็นของตัวเองแล้ว ถ้าไม่มี case สวยคงเสียดายแย่เลย ดังนั้นเราก็ต้องปั้นโมเดลและปริ้นออกมาให้ได้",
+        "highlights": ["CAD เบื้องต้น", "Filament", "Magnetic Tool", "การพิมพ์และประกอบชิ้นงาน"]
+      },
+      "davinci": {
+        "description": "หลังจากเราทำอะไรจนได้ของชิ้นนึงมาก็คงหนีไม่พ้นอยากทำคอนเท้นเพื่อแชร์มันลงอินเตอร์เน็ต แน่นอนว่าการตัดต่อก็เป็นสิ่งสำคัญที่จะดึงคนเข้ามาสนจของๆเราให้มากขึ้น",
+        "highlights": ["Hook ยังไงให้มีคนดู", "Color Grading", "VFX and SFX", "Editing Techniques"]
       }
     }
   }

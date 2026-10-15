@@ -6,7 +6,10 @@ gsap.registerPlugin(ScrollToPlugin)
 
 let scrollTween: gsap.core.Tween | null = null
 
-export function scrollToSection(hash: string, { offsetY = 24, duration = 0.7 } = {}) {
+export function scrollToSection(
+  hash: string,
+  { offsetY = hash === '#after-journey' ? 0 : 24, duration = 0.7 } = {},
+) {
   if (!hash.startsWith('#') || hash.length === 1) return null
 
   const target = document.getElementById(hash.slice(1))
@@ -28,11 +31,24 @@ export function scrollToSection(hash: string, { offsetY = 24, duration = 0.7 } =
 }
 
 export function handleScrollNavigation(event: MouseEvent<HTMLAnchorElement>) {
-  if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+  if (
+    event.defaultPrevented ||
+    event.button !== 0 ||
+    event.metaKey ||
+    event.ctrlKey ||
+    event.shiftKey ||
+    event.altKey
+  )
+    return
 
   const link = event.currentTarget
   if (link.hasAttribute('download') || (link.target && link.target !== '_self')) return
-  if (link.origin !== window.location.origin || link.pathname !== window.location.pathname || link.search !== window.location.search) return
+  if (
+    link.origin !== window.location.origin ||
+    link.pathname !== window.location.pathname ||
+    link.search !== window.location.search
+  )
+    return
 
   if (scrollToSection(link.hash)) event.preventDefault()
 }

@@ -4,7 +4,7 @@ export const notebookEase = (t: number) => {
   let high = 1
   for (let i = 0; i < 16; i++) {
     const mid = (low + high) / 2
-    const x = 3 * (1 - mid) ** 2 * mid * .22 + 3 * (1 - mid) * mid ** 2 * .36 + mid ** 3
+    const x = 3 * (1 - mid) ** 2 * mid * 0.22 + 3 * (1 - mid) * mid ** 2 * 0.36 + mid ** 3
     if (x < t) low = mid
     else high = mid
   }

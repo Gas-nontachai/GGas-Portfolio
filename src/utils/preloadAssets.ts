@@ -5,7 +5,14 @@ import gamingIcon from '../assets/life-inventory/gaming-game-controller.png'
 import cameraIcon from '../assets/life-inventory/webcam-camera-eye.png'
 import printerIcon from '../assets/life-inventory/3d-printer-printer-forge.png'
 
-export const overlayImageUrls = [reactIcon, typescriptIcon, flutterIcon, gamingIcon, cameraIcon, printerIcon]
+export const overlayImageUrls = [
+  reactIcon,
+  typescriptIcon,
+  flutterIcon,
+  gamingIcon,
+  cameraIcon,
+  printerIcon,
+]
 
 const imageUrls = import.meta.glob<string>('../assets/**/*.{png,jpg,jpeg,webp,gif,svg}', {
   eager: true,
@@ -30,26 +37,34 @@ function preloadImage(url: string) {
   if (cached) return cached
 
   const image = new Image()
-  const task = withTimeout(new Promise<void>((resolve, reject) => {
-    image.onload = () => { image.decode().then(resolve, reject) }
-    image.onerror = () => reject(new Error(`Unable to load ${url}`))
-    image.src = url
-  })).catch(error => {
-    images.delete(url)
-    throw error
-  }).finally(() => {
-    image.onload = null
-    image.onerror = null
-  })
+  const task = withTimeout(
+    new Promise<void>((resolve, reject) => {
+      image.onload = () => {
+        image.decode().then(resolve, reject)
+      }
+      image.onerror = () => reject(new Error(`Unable to load ${url}`))
+      image.src = url
+    }),
+  )
+    .catch((error) => {
+      images.delete(url)
+      throw error
+    })
+    .finally(() => {
+      image.onload = null
+      image.onerror = null
+    })
   images.set(url, task)
   return task
 }
 
 export async function preloadOverlayAssets() {
-  fontTask ??= withTimeout(document.fonts.load('16px "iannnnn AMD"').then(fonts => {
-    if (!fonts.length) throw new Error('Portfolio font unavailable')
-    return document.fonts.ready
-  })).catch(error => {
+  fontTask ??= withTimeout(
+    document.fonts.load('16px "iannnnn AMD"').then((fonts) => {
+      if (!fonts.length) throw new Error('Portfolio font unavailable')
+      return document.fonts.ready
+    }),
+  ).catch((error) => {
     fontTask = undefined
     throw error
   })
@@ -57,21 +72,25 @@ export async function preloadOverlayAssets() {
 }
 
 export async function preloadAssets(onProgress: (progress: AssetProgress) => void) {
-  const urls = [...new Set(Object.values(imageUrls))].filter(url => !overlayImageUrls.includes(url))
+  const urls = [...new Set(Object.values(imageUrls))].filter(
+    (url) => !overlayImageUrls.includes(url),
+  )
   const progress: AssetProgress = { completed: 0, total: urls.length, failed: 0 }
   onProgress({ ...progress })
 
   const tasks = urls.map(preloadImage)
-  await Promise.all(tasks.map(async task => {
-    try {
-      await task
-    } catch {
-      progress.failed += 1
-    } finally {
-      progress.completed += 1
-      onProgress({ ...progress })
-    }
-  }))
+  await Promise.all(
+    tasks.map(async (task) => {
+      try {
+        await task
+      } catch {
+        progress.failed += 1
+      } finally {
+        progress.completed += 1
+        onProgress({ ...progress })
+      }
+    }),
+  )
 
   return { ...progress }
 }

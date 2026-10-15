@@ -8,11 +8,10 @@
   },
   "nav": {
     "home": "Home",
-    "appearance": "Exploring",
-    "profile": "Profile",
     "label": "Main navigation",
     "brand": "GGAS home",
-    "journey": "Journey"
+    "journey": "Journey",
+    "experiments": "Experiments"
   },
   "home": {
     "hello": "Hey, I'm",
@@ -20,19 +19,12 @@
     "description": "Full-stack dev who knows a bit of everything. I like mixing what I know with whatever I'm into to make something I've never tried before.",
     "explore": "Let's explore my journey",
     "stack": "Tech I've worked with",
-    "mainClass": "MAIN CLASS",
     "flutter": "I'm also getting into mobile apps and looking for fresh ideas to build.",
     "esp32": "I don't want to stick to just code on a screen. I want to turn my ideas into something I can actually hold.",
     "printing": "If I've got a circuit, I might as well give it a nice case. I'm still not that good at CAD, though.",
-    "inProgress": "Currently learning",
+    "inProgress": "Learning",
     "previous": "Previous experiment",
     "next": "Next experiment"
-  },
-  "appearance": {
-    "preferences": "PREFERENCES",
-    "heading": "Appearance",
-    "palette": "Theme palette",
-    "preview": "PREVIEW"
   },
   "theme": {
     "light": "Light",
@@ -41,11 +33,9 @@
     "tooltip": "{{mode}} theme"
   },
   "language": {
-    "switch": "Switch to Thai",
-    "tooltip": "ภาษาไทย"
+    "switch": "Switch to Thai"
   },
   "profile": {
-    "role": "Full Stack Developer",
     "cartoon": "Cartoon portrait of {{name}}",
     "photo": "Photo of {{name}}",
     "cartoonUnavailable": "Cartoon portrait of {{name}} unavailable",
@@ -54,14 +44,12 @@
     "showPhoto": "Show real photo of {{name}}",
     "cartoonTooltip": "Let's go back!",
     "photoTooltip": "Wait, what do you actually look like?",
-    "react": "React",
     "gaming": "Gaming",
     "printing": "3D printing"
   },
   "journey": {
     "eyebrow": "A LITTLE ROAD, A LOT OF STORIES",
     "heading": "My journey",
-    "scroll": "Scroll to drive",
     "chapter": "Chapter",
     "here": "You are here",
     "preview": "Preview",
@@ -74,14 +62,12 @@
       "read": "OPEN NOTEBOOK →",
       "close": "Close notebook",
       "pages": "Notebook story and memories",
-      "memory": "Mini Memory",
       "pageNavigation": "Notebook pages",
       "previousPage": "Previous pages",
       "nextPage": "Next pages",
       "pageIndicator": "Spread {{current}} / {{total}}",
       "images": {
         "university": "Photo from my university years",
-        "career": "Cartoon office building in a mock memory photo",
         "future": "A direction sign pointing toward the next adventure"
       }
     },
@@ -95,7 +81,6 @@
         "shortDescription": "Where my coding journey began.",
         "description": "Where my coding journey began.",
         "preview": "From my first lines of code to new discoveries.",
-        "tag": "Curiosity / Code / Discovery",
         "period": "2021–2025",
         "memory": "The first time a tiny project finally worked, I couldn't stop clicking through it. I thought I was pretty good — until I stepped into the real world.",
         "story": "I started engineering with circuits and electrical calculations. But wait, why wasn't it as fun as writing HTML and CSS? Maybe it was time to give web development a proper try.",
@@ -111,28 +96,15 @@
         "shortDescription": "From my first job to today, still building, learning, and experimenting.",
         "description": "From my first job to today, turning ideas into real-world applications while learning and exploring new technologies.",
         "preview": "From my first job to the work I do today.",
-        "tag": "Build / Learn / Grow",
-        "period": "First job to today",
-        "memory": "A teammate's small suggestion during a code review solved a problem I'd been staring at all afternoon. Building together changed how I learned.",
-        "story": "My first job became a place to keep growing. The same journey now includes taking ideas from a sketch to a working application and improving them with a team.",
-        "highlights": [
-          "Built interfaces and connected them to application services.",
-          "Learned through code reviews, releases, and user feedback.",
-          "Kept exploring mobile apps, hardware, and side projects."
-        ],
-        "takeaway": "Good software grows through collaboration and steady improvements.",
         "spreads": {
           "first": {
-            "company": "TCC Technology Limited",
-            "role": "Full Stack Developer",
             "photos": {
               "team": {
                 "alt": "Photo booth picture with teammates at TCC Technology",
                 "caption": "The junior team"
               },
               "party": {
-                "alt": "Group photo with colleagues at the TCC Technology staff party",
-                "caption": "Outing Party / TCC Technology"
+                "alt": "Group photo with colleagues at the TCC Technology staff party"
               }
             },
             "title": "First Job",
@@ -141,111 +113,51 @@
             "story": "After graduating, it was time to move to a bigger city and start my first job in Bangkok. So this is where the real world begins.",
             "contents": {
               "title": "Projects along the way",
-              "description": "From my first job to the things I have built.",
               "project": "Project {{number}}",
               "hint": "Pick a project to turn straight to its pages."
             }
           },
           "sustainability": {
-            "title": "Sustainability",
             "category": "Project / Enterprise web",
             "description": "A web app for calculating and managing pollution and waste, both within and outside the organization.",
             "frontendLabel": "Sustainability / Frontend",
             "frontendTopics": [
               {
-                "title": "Micro-Frontends",
-                "description": "Split the app into independently deployable modules that work together in one application.",
-                "stack": [
-                  "React",
-                  "TypeScript",
-                  "Webpack"
-                ]
+                "description": "Split the app into independently deployable modules that work together in one application."
               },
               {
-                "title": "Sustaina SharedUI",
-                "description": "Create a shared UI component library and publish it through npm for the team.",
-                "stack": [
-                  "React",
-                  "Tailwind CSS",
-                  "npm"
-                ]
+                "description": "Create a shared UI component library and publish it through npm for the team."
               },
               {
-                "title": "State, Query and Integration",
-                "description": "Async selects with caching, pagination, and error handling.",
-                "stack": [
-                  "Zustand",
-                  "TanStack Query",
-                  "TypeScript"
-                ]
+                "description": "Async selects with caching, pagination, and error handling."
               }
             ],
             "backendLabel": "Sustainability / Backend & delivery",
             "backendTopics": [
               {
-                "title": "Backend Microservices",
-                "description": "Develop backend microservices to simplify development and deployment.",
-                "stack": [
-                  "Node.js",
-                  "Fastify",
-                  "Prisma",
-                  "Kafka"
-                ]
+                "description": "Develop backend microservices to simplify development and deployment."
               },
               {
-                "title": "Authentication & Permissions",
-                "description": "Task access by user/group, session restoration, and route access during maintenance.",
-                "stack": [
-                  "Fastify",
-                  "Prisma",
-                  "Authentication",
-                  "Authorization"
-                ]
+                "description": "Task access by user/group, session restoration, and route access during maintenance."
               },
               {
-                "title": "Testing and QA Handoff",
-                "description": "Test permissions, tenant isolation, and inactive groups; debug, refactor, review, and hand off to QA.",
-                "stack": [
-                  "Unit testing",
-                  "Agile Scrum",
-                  "Git",
-                  "AI-assisted development"
-                ]
+                "description": "Test permissions, tenant isolation, and inactive groups; debug, refactor, review, and hand off to QA."
               }
-            ],
-            "toolsTitle": "Tools in my bag",
-            "tools": [
-              "PostgreSQL",
-              "MySQL",
-              "Git",
-              "Docker",
-              "Nginx",
-              "Argo CD",
-              "Postman",
-              "Figma"
             ]
           },
           "flyer": {
-            "title": "Appsflyer",
             "category": "Project / Mobile app",
             "description": "Integrate AppsFlyer into the Oishi Club app to track customer data.",
             "purpose": "Customer data tracking",
-            "stackLabel": "Appsflyer / Stack",
             "stackTitle": "Mobile app & backend",
             "workTopics": [
               {
                 "title": "Mobile application",
-                "description": "Integrate AppsFlyer into the Oishi Club app to track customer data.",
-                "stack": [
-                  "Flutter"
-                ]
+                "description": "Integrate AppsFlyer into the Oishi Club app to track customer data."
               },
               {
                 "title": "Backend",
-                "description": "Connect data across AppsFlyer, Oishi Club, and Connect X.",
-                "stack": [
-                  "Go"
-                ]
+                "description": "Connect data across AppsFlyer, Oishi Club, and Connect X."
               }
             ],
             "summary": "Oishi Club is the customer data source; AppsFlyer tracks that data before it is stored in Connect X."
@@ -257,47 +169,63 @@
         "shortDescription": "Still wondering what the next stop will be.",
         "description": "What will the future look like?",
         "preview": "The road goes on… what will the next stop be?",
-        "tag": "Next stop / Still a question mark",
         "period": "Next stop / No idea yet",
         "memory": "Leaving some space here. Maybe one day I will come back with a fun story to fill it.",
         "story": "A new app? Something I can hold in my hands? Or something I have not even imagined yet? No idea, but there must be plenty left to try.",
-        "highlights": [
-          "Prototype a small app that solves an everyday problem.",
-          "Combine a connected device with a custom printed enclosure.",
-          "Share an experiment and learn from the people who try it."
-        ],
         "takeaway": "See you in the next chapter :)",
         "notebookTitle": "Hmm, I wonder…",
         "blankTitle": "This page is still unwritten"
       }
     },
-    "details": "{{stage}} story details",
     "highlights": "Along the way",
-    "takeaway": "Next step:",
     "continued": "See you at the next stop!",
     "replay": "Drive again",
     "continue": "Explore next",
     "arrival": "You have reached the future sign. What comes next? You can drive again or scroll on."
   },
-  "afterJourney": {
-    "label": "NEXT CHAPTER / MOCK SECTION",
-    "heading": "More things to explore",
-    "description": "A placeholder for the next portfolio section. Keep scrolling past Future to leave the journey and explore these mock projects.",
-    "placeholder": "Placeholder project",
-    "scrollHint": "Scroll back up to re-enter the journey and drive in reverse.",
-    "back": "Back to the journey",
-    "projects": {
-      "playground": {
-        "title": "Code playground",
-        "description": "A space for small app ideas and playful interface experiments."
+  "experiments": {
+    "eyebrow": "CURRENTLY EXPLORING",
+    "description": "Outside my day job, I like using what I know to try out little proofs of concept, just to see what else I can build on top of it.",
+    "explore": "Explore my experiments",
+    "choose": "Choose an experiment to discover what I am learning",
+    "select": "Explore {{title}}",
+    "selected": "Selected experiment: {{title}}",
+    "status": {
+      "learning": "Learning",
+      "exploring": "Exploring",
+      "experimenting": "Experimenting"
+    },
+    "items": {
+      "flutter": {
+        "description": "Learning to build apps with Flutter and picking up new skills to build on what I already know.",
+        "highlights": [
+          "Trying out UI components",
+          "Learning state management",
+          "API Integration",
+          "Building small practice apps"
+        ]
       },
-      "maker": {
-        "title": "Maker experiments",
-        "description": "Mock projects combining hardware, code, and things made by hand."
+      "esp32": {
+        "description": "Now that I can build mobile apps, I want to monitor things and play around with notifications too. What better place to start than an ESP32?",
+        "highlights": [
+          "Getting to know boards and sensors",
+          "Trying device connectivity",
+          "Small proof-of-concept projects",
+          "BLE/WIFI Communication"
+        ]
       },
-      "next": {
-        "title": "What comes next?",
-        "description": "A spot reserved for the next idea, experiment, or adventure."
+      "printing": {
+        "description": "Once I have a circuit of my own, it would be a shame not to give it a nice case. So the next step is learning to model and print one myself.",
+        "highlights": ["CAD basics", "Filament", "Magnetic Tool", "Printing and assembling parts"]
+      },
+      "davinci": {
+        "description": "After making something, I always end up wanting to share it online. Editing is a big part of getting people interested in what I have made.",
+        "highlights": [
+          "Creating hooks that draw viewers in",
+          "Color Grading",
+          "VFX and SFX",
+          "Editing Techniques"
+        ]
       }
     }
   }

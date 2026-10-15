@@ -45,7 +45,9 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
   useLayoutEffect(() => {
     if (busy || !restorePageFocus.current) return
     restorePageFocus.current = false
-    overlayRef.current?.querySelector<HTMLButtonElement>('.notebook-pagination button:not(:disabled)')?.focus({ preventScroll: true })
+    overlayRef.current
+      ?.querySelector<HTMLButtonElement>('.notebook-pagination button:not(:disabled)')
+      ?.focus({ preventScroll: true })
   }, [page, busy])
 
   const turnPage = (next: number) => {
@@ -61,13 +63,15 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
     turning.current = true
     setBusy(true)
     const forward = next > page
-    const paper = overlay.querySelector<HTMLElement>(forward ? '.notebook-paper-right' : '.notebook-paper-left')!
+    const paper = overlay.querySelector<HTMLElement>(
+      forward ? '.notebook-paper-right' : '.notebook-paper-left',
+    )!
     const sheet = document.createElement('div')
     sheet.className = `notebook-turn-sheet ${forward ? 'notebook-turn-forward' : 'notebook-turn-backward'}`
     sheet.setAttribute('aria-hidden', 'true')
     sheet.inert = true
     const face = paper.cloneNode(true) as HTMLElement
-    face.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'))
+    face.querySelectorAll('[id]').forEach((element) => element.removeAttribute('id'))
     face.querySelector('.notebook-pagination')?.remove()
     face.classList.add('notebook-turn-face')
     const back = document.createElement('div')
@@ -75,37 +79,61 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
     sheet.append(face, back)
     overlay.querySelector('.notebook-pages')!.append(sheet)
     turnSheet.current = sheet
-    const contents = [...overlay.querySelectorAll<HTMLElement>('.notebook-paper-scroll .notebook-content')]
+    const contents = [
+      ...overlay.querySelectorAll<HTMLElement>('.notebook-paper-scroll .notebook-content'),
+    ]
     const motion = { progress: 0 }
-    pageTurn.current = gsap.timeline({
-      onComplete: () => {
-        gsap.set(contents, { opacity: 1, y: 0 })
-        sheet.remove()
-        turnSheet.current = null
-        pageTurn.current = null
-        turning.current = false
-        setBusy(false)
-      },
-    })
-      .to(motion, {
-        progress: 1,
-        duration: .9,
-        ease: 'none',
-        onUpdate: () => {
-          const t = motion.progress
-          const progress = smootherstep(t)
-          gsap.set(sheet, {
-            rotationY: (forward ? -180 : 180) * progress,
-            y: -6 * Math.sin(Math.PI * progress),
-            opacity: 1 - smootherstep((t - .25) / .5),
-          })
+    pageTurn.current = gsap
+      .timeline({
+        onComplete: () => {
+          gsap.set(contents, { opacity: 1, y: 0 })
+          sheet.remove()
+          turnSheet.current = null
+          pageTurn.current = null
+          turning.current = false
+          setBusy(false)
         },
-      }, 0)
-      .to(contents, { opacity: 0, y: forward ? -4 : 4, duration: .2, ease: smootherstep }, 0)
-      .call(() => { setPage(next); scroll.scrollTop = 0 }, [], .22)
-      .fromTo(contents, { opacity: 0, y: forward ? 8 : -8 }, {
-        opacity: 1, y: 0, duration: .54, stagger: .04, ease: smootherstep, immediateRender: false,
-      }, .28)
+      })
+      .to(
+        motion,
+        {
+          progress: 1,
+          duration: 0.9,
+          ease: 'none',
+          onUpdate: () => {
+            const t = motion.progress
+            const progress = smootherstep(t)
+            gsap.set(sheet, {
+              rotationY: (forward ? -180 : 180) * progress,
+              y: -6 * Math.sin(Math.PI * progress),
+              opacity: 1 - smootherstep((t - 0.25) / 0.5),
+            })
+          },
+        },
+        0,
+      )
+      .to(contents, { opacity: 0, y: forward ? -4 : 4, duration: 0.2, ease: smootherstep }, 0)
+      .call(
+        () => {
+          setPage(next)
+          scroll.scrollTop = 0
+        },
+        [],
+        0.22,
+      )
+      .fromTo(
+        contents,
+        { opacity: 0, y: forward ? 8 : -8 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.54,
+          stagger: 0.04,
+          ease: smootherstep,
+          immediateRender: false,
+        },
+        0.28,
+      )
   }
 
   useLayoutEffect(() => {
@@ -122,12 +150,17 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
     const reducedQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
     const app = document.getElementById('root')!
     const originalInert = app.inert
-    const source = app.querySelector<HTMLButtonElement>(`[data-flip-id="journey-card-${selection.id}"]`)!
+    const source = app.querySelector<HTMLButtonElement>(
+      `[data-flip-id="journey-card-${selection.id}"]`,
+    )!
     const originalVisibility = source.style.visibility
     const initialBrightness = getComputedStyle(source.closest('.journey-milestone-visual')!).filter
     const savedScroll = { x: window.scrollX, y: window.scrollY }
     const html = document.documentElement
-    const previous = { htmlOverflow: html.style.overflow, scrollBehavior: html.style.scrollBehavior }
+    const previous = {
+      htmlOverflow: html.style.overflow,
+      scrollBehavior: html.style.scrollBehavior,
+    }
     const timelines: gsap.core.Animation[] = []
     let closing = false
     let disposed = false
@@ -138,7 +171,8 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
     const clones = [cardClone, ...cardClone.querySelectorAll<HTMLElement>('*')]
     originals.forEach((element, index) => {
       const computed = getComputedStyle(element)
-      for (const property of computed) clones[index].style.setProperty(property, computed.getPropertyValue(property))
+      for (const property of computed)
+        clones[index].style.setProperty(property, computed.getPropertyValue(property))
       clones[index].removeAttribute('id')
       clones[index].removeAttribute('data-flip-id')
     })
@@ -148,7 +182,10 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
     cardClone.style.setProperty('margin', '0')
     cardClone.style.setProperty('transition', 'none')
     cardClone.style.setProperty('transform-origin', '0 0')
-    cardClone.style.setProperty('transform', `scale(${flight.clientWidth / source.offsetWidth}, ${flight.clientHeight / source.offsetHeight})`)
+    cardClone.style.setProperty(
+      'transform',
+      `scale(${flight.clientWidth / source.offsetWidth}, ${flight.clientHeight / source.offsetHeight})`,
+    )
     cardClone.style.setProperty('visibility', 'visible')
     cardFace.append(cardClone)
 
@@ -177,35 +214,56 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
         turning.current = false
         setBusy(false)
       } else {
-        const opening = gsap.timeline({ onComplete: () => { turning.current = false; setBusy(false) } })
+        const opening = gsap.timeline({
+          onComplete: () => {
+            turning.current = false
+            setBusy(false)
+          },
+        })
         const flip = Flip.from(selection.initialState, {
           targets: flight,
           scale: true,
-          duration: .56,
+          duration: 0.56,
           ease: notebookEase,
           paused: true,
         })
-        opening.add(flip.play(), 0)
-          .to(backdrop, { opacity: 1, duration: .35, ease: smoothstep }, 0)
-          .to(cardFace, { opacity: 0, duration: .2, ease: smoothstep }, .16)
-          .to(front, { opacity: 1, duration: .2, ease: smoothstep }, .16)
-          .to(front, { backgroundColor: selection.color, borderRadius: 12, duration: .3, ease: notebookEase }, .18)
-          .to(stage, { x: 0, duration: .52, ease: notebookEase }, .38)
-          .to(pages, { opacity: 1, duration: .28, ease: smoothstep }, .38)
-          .to(cover, { rotationY: mobile ? -105 : -175, duration: .54, ease: notebookEase }, .4)
-          .to(flight, { opacity: 0, duration: .16, ease: smoothstep }, .8)
-          .to(closeButton, { opacity: 1, duration: .2, ease: smoothstep }, .45)
+        opening
+          .add(flip.play(), 0)
+          .to(backdrop, { opacity: 1, duration: 0.35, ease: smoothstep }, 0)
+          .to(cardFace, { opacity: 0, duration: 0.2, ease: smoothstep }, 0.16)
+          .to(front, { opacity: 1, duration: 0.2, ease: smoothstep }, 0.16)
+          .to(
+            front,
+            {
+              backgroundColor: selection.color,
+              borderRadius: 12,
+              duration: 0.3,
+              ease: notebookEase,
+            },
+            0.18,
+          )
+          .to(stage, { x: 0, duration: 0.52, ease: notebookEase }, 0.38)
+          .to(pages, { opacity: 1, duration: 0.28, ease: smoothstep }, 0.38)
+          .to(cover, { rotationY: mobile ? -105 : -175, duration: 0.54, ease: notebookEase }, 0.4)
+          .to(flight, { opacity: 0, duration: 0.16, ease: smoothstep }, 0.8)
+          .to(closeButton, { opacity: 1, duration: 0.2, ease: smoothstep }, 0.45)
 
         // Overlapping smoothstep fades follow a small vertical interpolation.
         contents.forEach((content, index) => {
           const fade = { progress: 0 }
-          opening.to(fade, {
-            progress: 1, duration: .28, ease: 'none',
-            onUpdate: () => {
-              content.style.opacity = String(smoothstep(fade.progress))
-              content.style.transform = `translateY(${lerp(12, 0, fade.progress)}px)`
+          opening.to(
+            fade,
+            {
+              progress: 1,
+              duration: 0.28,
+              ease: 'none',
+              onUpdate: () => {
+                content.style.opacity = String(smoothstep(fade.progress))
+                content.style.transform = `translateY(${lerp(12, 0, fade.progress)}px)`
+              },
             },
-          }, .6 + index * .08)
+            0.6 + index * 0.08,
+          )
         })
         timelines.push(opening, flip)
       }
@@ -234,49 +292,82 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
       setBusy(true)
       pageTurn.current?.kill()
       turnSheet.current?.remove()
-      timelines.forEach(animation => animation.kill())
-      if (reducedQuery.matches) { finish(); return }
+      timelines.forEach((animation) => animation.kill())
+      if (reducedQuery.matches) {
+        finish()
+        return
+      }
       // Re-read the source on close: resize may have changed its position/size.
       const destination = Flip.getState(source)
       const mobile = window.matchMedia('(max-width: 700px)').matches
       const closingTimeline = gsap.timeline({ onComplete: finish })
       closingTimeline
-        .to(contents, { opacity: 0, y: 8, duration: .18, ease: smoothstep }, 0)
-        .to(closeButton, { opacity: 0, duration: .18 }, 0)
-        .to(flight, { opacity: 1, duration: .18 }, 0)
-        .to(cover, { rotationY: 0, duration: .32, ease: notebookEase }, 0)
-        .to(stage, { x: mobile ? 0 : -stage.clientWidth / 4, duration: .32, ease: notebookEase }, 0)
-        .to(pages, { opacity: 0, duration: .12 }, .22)
-        .to(front, { backgroundColor: selection.color, borderRadius: 0, duration: .25 }, .3)
-        .to(cardFace, { opacity: 1, duration: .2, ease: smoothstep }, .52)
-        .to(cardFace, { filter: getComputedStyle(source.closest('.journey-milestone-visual')!).filter, duration: .2 }, .52)
-        .to(front, { opacity: 0, duration: .2, ease: smoothstep }, .52)
+        .to(contents, { opacity: 0, y: 8, duration: 0.18, ease: smoothstep }, 0)
+        .to(closeButton, { opacity: 0, duration: 0.18 }, 0)
+        .to(flight, { opacity: 1, duration: 0.18 }, 0)
+        .to(cover, { rotationY: 0, duration: 0.32, ease: notebookEase }, 0)
+        .to(
+          stage,
+          { x: mobile ? 0 : -stage.clientWidth / 4, duration: 0.32, ease: notebookEase },
+          0,
+        )
+        .to(pages, { opacity: 0, duration: 0.12 }, 0.22)
+        .to(front, { backgroundColor: selection.color, borderRadius: 0, duration: 0.25 }, 0.3)
+        .to(cardFace, { opacity: 1, duration: 0.2, ease: smoothstep }, 0.52)
+        .to(
+          cardFace,
+          {
+            filter: getComputedStyle(source.closest('.journey-milestone-visual')!).filter,
+            duration: 0.2,
+          },
+          0.52,
+        )
+        .to(front, { opacity: 0, duration: 0.2, ease: smoothstep }, 0.52)
         .add(() => {
-          const returning = Flip.to(destination, { targets: flight, scale: true, duration: .46, ease: notebookEase })
+          const returning = Flip.to(destination, {
+            targets: flight,
+            scale: true,
+            duration: 0.46,
+            ease: notebookEase,
+          })
           timelines.push(returning)
-        }, .32)
-        .to(backdrop, { opacity: 0, duration: .28, ease: smoothstep }, .5)
-        .to({}, { duration: .02 }, .78)
+        }, 0.32)
+        .to(backdrop, { opacity: 0, duration: 0.28, ease: smoothstep }, 0.5)
+        .to({}, { duration: 0.02 }, 0.78)
       timelines.push(closingTimeline)
     }
     closeAnimation.current = close
     closeButton.focus({ preventScroll: true })
 
     const keydown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') { event.preventDefault(); close(); return }
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        close()
+        return
+      }
       if (event.key !== 'Tab') return
-      const focusable = [...overlay.querySelectorAll<HTMLElement>('button:not(:disabled), a[href], [tabindex="0"]')].filter(element => !element.closest('[inert]'))
+      const focusable = [
+        ...overlay.querySelectorAll<HTMLElement>('button:not(:disabled), a[href], [tabindex="0"]'),
+      ].filter((element) => !element.closest('[inert]'))
       const first = focusable[0]
       const last = focusable[focusable.length - 1]
-      if (event.shiftKey && (document.activeElement === first || !overlay.contains(document.activeElement))) {
-        event.preventDefault(); last?.focus()
-      } else if (!event.shiftKey && (document.activeElement === last || !overlay.contains(document.activeElement))) {
-        event.preventDefault(); first?.focus()
+      if (
+        event.shiftKey &&
+        (document.activeElement === first || !overlay.contains(document.activeElement))
+      ) {
+        event.preventDefault()
+        last?.focus()
+      } else if (
+        !event.shiftKey &&
+        (document.activeElement === last || !overlay.contains(document.activeElement))
+      ) {
+        event.preventDefault()
+        first?.focus()
       }
     }
     const motionChanged = () => {
       if (!reducedQuery.matches || closing) return
-      timelines.forEach(animation => animation.kill())
+      timelines.forEach((animation) => animation.kill())
       pageTurn.current?.progress(1)
       turning.current = false
       setBusy(false)
@@ -292,7 +383,7 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
       closeAnimation.current = () => {}
       document.removeEventListener('keydown', keydown, true)
       reducedQuery.removeEventListener('change', motionChanged)
-      timelines.forEach(animation => animation.kill())
+      timelines.forEach((animation) => animation.kill())
       pageTurn.current?.kill()
       turnSheet.current?.remove()
       context.revert()
@@ -302,46 +393,135 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
   }, [selection, onExited])
 
   return createPortal(
-    <div ref={overlayRef} className="notebook-overlay" data-chapter={selection.id} role="dialog" aria-modal="true" aria-labelledby="notebook-title" aria-describedby="notebook-description" style={{ '--notebook-accent': selection.color } as CSSProperties}>
-      <span id="notebook-title" className="sr-only">{t(activeSpread.titleKey)}</span>
-      <span id="notebook-description" className="sr-only">{t(activeSpread.descriptionKey)}</span>
-      <div className="notebook-backdrop" onClick={() => closeAnimation.current()} aria-hidden="true" />
+    <div
+      ref={overlayRef}
+      className="notebook-overlay"
+      data-chapter={selection.id}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="notebook-title"
+      aria-describedby="notebook-description"
+      style={{ '--notebook-accent': selection.color } as CSSProperties}
+    >
+      <span id="notebook-title" className="sr-only">
+        {'title' in activeSpread ? activeSpread.title : t(activeSpread.titleKey)}
+      </span>
+      <span id="notebook-description" className="sr-only">
+        {t(activeSpread.descriptionKey)}
+      </span>
+      <div
+        className="notebook-backdrop"
+        onClick={() => closeAnimation.current()}
+        aria-hidden="true"
+      />
       <div className="notebook-stage">
-        <div className={`notebook-pages ${activeSpread.className ?? ''}`} data-paginated={pageCount > 1} data-spread={activeSpread.id}>
-          <div className="notebook-paper-scroll" tabIndex={0} role="region" aria-label={t('journey.notebook.pages')}>
+        <div
+          className={`notebook-pages ${activeSpread.className ?? ''}`}
+          data-paginated={pageCount > 1}
+          data-spread={activeSpread.id}
+        >
+          <div
+            className="notebook-paper-scroll"
+            tabIndex={0}
+            role="region"
+            aria-label={t('journey.notebook.pages')}
+          >
             <section className="notebook-paper notebook-paper-left">
               <div className="notebook-content">
                 <ChapterContent side="left" label={selection.label} />
-                <span className="notebook-page-number">{String(page * 2 + 1).padStart(2, '0')} / STORY</span>
+                <span className="notebook-page-number">
+                  {String(page * 2 + 1).padStart(2, '0')} / STORY
+                </span>
               </div>
             </section>
             <section className="notebook-paper notebook-paper-right">
-              {pageCount > 1 && <nav className="notebook-pagination" aria-label={t('journey.notebook.pageNavigation')}>
-                <button type="button" disabled={busy || page === 0} onClick={() => turnPage(page - 1)} aria-label={t('journey.notebook.previousPage')}><ArrowLeft size={20} aria-hidden="true" /></button>
-                <span role="status" aria-live="polite" aria-atomic="true">{t('journey.notebook.pageIndicator', { current: page + 1, total: pageCount })}</span>
-                <button type="button" disabled={busy || page === pageCount - 1} onClick={() => turnPage(page + 1)} aria-label={t('journey.notebook.nextPage')}><ArrowRight size={20} aria-hidden="true" /></button>
-              </nav>}
+              {pageCount > 1 && (
+                <nav
+                  className="notebook-pagination"
+                  aria-label={t('journey.notebook.pageNavigation')}
+                >
+                  <button
+                    type="button"
+                    disabled={busy || page === 0}
+                    onClick={() => turnPage(page - 1)}
+                    aria-label={t('journey.notebook.previousPage')}
+                  >
+                    <ArrowLeft size={20} aria-hidden="true" />
+                  </button>
+                  <span role="status" aria-live="polite" aria-atomic="true">
+                    {t('journey.notebook.pageIndicator', { current: page + 1, total: pageCount })}
+                  </span>
+                  <button
+                    type="button"
+                    disabled={busy || page === pageCount - 1}
+                    onClick={() => turnPage(page + 1)}
+                    aria-label={t('journey.notebook.nextPage')}
+                  >
+                    <ArrowRight size={20} aria-hidden="true" />
+                  </button>
+                </nav>
+              )}
               <div className="notebook-content">
-                <ChapterContent side="right" label={selection.label} navigation={{
-                  entries: spreads.map((spread, spreadIndex) => ({ id: spread.id, titleKey: spread.titleKey, descriptionKey: spread.descriptionKey, spreadIndex })),
-                  onSelect: id => turnPage(spreads.findIndex(spread => spread.id === id)),
-                  disabled: busy,
-                }} />
-                <span className="notebook-page-number">{String(page * 2 + 2).padStart(2, '0')} / MEMORIES</span>
+                <ChapterContent
+                  side="right"
+                  label={selection.label}
+                  navigation={{
+                    entries: spreads.map((spread, spreadIndex) => ({
+                      id: spread.id,
+                      title: 'title' in spread ? spread.title : t(spread.titleKey),
+                      descriptionKey: spread.descriptionKey,
+                      spreadIndex,
+                    })),
+                    onSelect: (id) => turnPage(spreads.findIndex((spread) => spread.id === id)),
+                    disabled: busy,
+                  }}
+                />
+                <span className="notebook-page-number">
+                  {String(page * 2 + 2).padStart(2, '0')} / MEMORIES
+                </span>
               </div>
             </section>
           </div>
-          <div className="notebook-spine" aria-hidden="true"><i /><i /><i /></div>
+          <div className="notebook-spine" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+          </div>
         </div>
-        <div className="notebook-flight" data-flip-id={`journey-card-${selection.id}`} aria-hidden="true">
+        <div
+          className="notebook-flight"
+          data-flip-id={`journey-card-${selection.id}`}
+          aria-hidden="true"
+        >
           <div className="notebook-cover">
-            <div className="notebook-cover-front"><span><ScrambleText text={t('journey.chapter')} /> {selection.label}</span><BookOpen size={42} strokeWidth={3} /><h3><ScrambleText text={t(`${chapterPrefix}.title`)} /></h3><p><ScrambleText text={t(`${chapterPrefix}.shortDescription`)} /></p><span className="notebook-cover-label">JOURNEY / NOTES</span></div>
+            <div className="notebook-cover-front">
+              <span>
+                <ScrambleText text={t('journey.chapter')} /> {selection.label}
+              </span>
+              <BookOpen size={42} strokeWidth={3} />
+              <h3>
+                <ScrambleText text={t(`${chapterPrefix}.title`)} />
+              </h3>
+              <p>
+                <ScrambleText text={t(`${chapterPrefix}.shortDescription`)} />
+              </p>
+              <span className="notebook-cover-label">JOURNEY / NOTES</span>
+            </div>
             <div className="notebook-cover-back" />
           </div>
           <div className="notebook-card-face" inert />
         </div>
-        <button ref={closeRef} type="button" className="notebook-close" onClick={() => closeAnimation.current()} aria-label={t('journey.notebook.close')}><img src={closeIcon} alt="" aria-hidden="true" /></button>
+        <button
+          ref={closeRef}
+          type="button"
+          className="notebook-close"
+          onClick={() => closeAnimation.current()}
+          aria-label={t('journey.notebook.close')}
+        >
+          <img src={closeIcon} alt="" aria-hidden="true" />
+        </button>
       </div>
-    </div>, document.body,
+    </div>,
+    document.body,
   )
 }

@@ -1,6 +1,11 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { lerp, notebookEase, smoothstep, smootherstep } from '../src/component/journey/notebookMotion.ts'
+import {
+  lerp,
+  notebookEase,
+  smoothstep,
+  smootherstep,
+} from '../src/component/journey/notebookMotion.ts'
 
 test('notebook fades stay bounded and monotonic, including overlapping fade windows', () => {
   let previous = 0

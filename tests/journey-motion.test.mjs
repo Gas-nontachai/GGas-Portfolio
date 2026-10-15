@@ -1,6 +1,9 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { getJourneyFrame, getMilestoneScrollProgress } from '../src/component/journey/journeyMotion.ts'
+import {
+  getJourneyFrame,
+  getMilestoneScrollProgress,
+} from '../src/component/journey/journeyMotion.ts'
 
 test('all chapter buttons position the matching stop at the camera center', () => {
   for (const spacing of [370, 760]) {
@@ -24,7 +27,10 @@ test('Future remains at the center during the ending hold', () => {
 
 test('reverse scrolling leaves the ending and returns through each earlier chapter', () => {
   assert.equal(getJourneyFrame(0.89, 3, 760).arrived, false)
-  assert.deepEqual([0.95, 0.45, 0].map(progress => getJourneyFrame(progress, 3, 760).focused), [2, 1, 0])
+  assert.deepEqual(
+    [0.95, 0.45, 0].map((progress) => getJourneyFrame(progress, 3, 760).focused),
+    [2, 1, 0],
+  )
   assert.equal(getJourneyFrame(-0.1, 3, 760).distance, 0)
 })
 
