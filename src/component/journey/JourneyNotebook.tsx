@@ -340,6 +340,7 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
     closeButton.focus({ preventScroll: true })
 
     const keydown = (event: KeyboardEvent) => {
+      if (overlay.inert) return
       if (event.key === 'Escape') {
         event.preventDefault()
         close()

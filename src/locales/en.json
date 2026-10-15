@@ -61,6 +61,7 @@
       "open": "Open the {{stage}} notebook",
       "read": "OPEN NOTEBOOK →",
       "close": "Close notebook",
+      "closePhoto": "Close photo",
       "pages": "Notebook story and memories",
       "pageNavigation": "Notebook pages",
       "previousPage": "Previous pages",
