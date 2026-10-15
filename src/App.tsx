@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import CustomCursor from './component/CustomCursor'
@@ -14,6 +14,15 @@ import { useThemeStore } from './store/useThemeStore'
 function App() {
   const theme = useThemeStore((state) => state.theme)
   const main = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const preventImageDrag = (event: DragEvent) => {
+      if (event.target instanceof HTMLImageElement) event.preventDefault()
+    }
+    // Capture also covers notebook portals rendered outside #root.
+    document.addEventListener('dragstart', preventImageDrag, true)
+    return () => document.removeEventListener('dragstart', preventImageDrag, true)
+  }, [])
 
   useGSAP(() => {
     const media = gsap.matchMedia()
