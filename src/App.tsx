@@ -8,7 +8,7 @@ import PlayerProfile from './component/home/PlayerProfile'
 import CurrentlyExploring from './component/home/CurrentlyExploring'
 import MainClass from './component/home/MainClass'
 import JourneyTimeline from './component/journey/JourneyTimeline'
-import MockNextSection from './component/home/MockNextSection'
+import ExperimentsSection from './component/experiments/ExperimentsSection'
 import { useThemeStore } from './store/useThemeStore'
 
 function App({ ready = true }: { ready?: boolean }) {
@@ -71,7 +71,7 @@ function App({ ready = true }: { ready?: boolean }) {
         <MainClass />
       </main>
       <JourneyTimeline ready={ready} />
-      <MockNextSection />
+      <ExperimentsSection ready={ready} />
       <footer className="mt-auto flex justify-between gap-4 border-t-[3px] border-border bg-secondary-background px-6 py-5 font-mono text-xs sm:px-10">
         <span>GGAS PORTFOLIO</span>
         <span>2026</span>

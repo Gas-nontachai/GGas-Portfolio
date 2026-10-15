@@ -14,6 +14,7 @@
     "assets:optimize:large": "node scripts/optimize-images.mjs --write --resize-large",
     "test:assets": "node --test tests/optimize-images.test.mjs",
     "test:journey": "node --test tests/journey-motion.test.mjs tests/notebook-motion.test.mjs",
+    "test:experiments": "node --test tests/experiment-selection.test.mjs tests/experiment-scroll.test.mjs tests/experiment-layout.test.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky"

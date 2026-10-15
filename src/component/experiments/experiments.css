@@ -1,0 +1,922 @@
+.experiments-section {
+  --lab-ink: #171717;
+  position: relative;
+  isolation: isolate;
+  flex-shrink: 0;
+  overflow: clip;
+  scroll-margin-top: 24px;
+  border-top: 3px solid var(--border);
+  background-color: var(--background);
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--foreground) 14%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+.experiments-layout {
+  position: relative;
+  width: 100%;
+  max-width: 1760px;
+  min-height: 960px;
+  aspect-ratio: 1600 / 960;
+  margin-inline: auto;
+}
+
+.experiments-heading {
+  position: absolute;
+  top: 6%;
+  left: 4.5%;
+  width: 33%;
+  z-index: 8;
+}
+.experiments-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 22px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.experiments-section-marker {
+  width: 13px;
+  height: 13px;
+  border: 2px solid var(--lab-ink);
+  border-radius: 2px;
+  background: #ef725d;
+}
+.experiments-heading h2 {
+  margin: 0;
+  font-size: clamp(42px, 4.7vw, 80px);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+}
+.experiments-heading h2 > .experiments-period {
+  color: #ef725d;
+}
+.experiments-intro {
+  margin: 20px 0;
+  max-width: 520px;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.65;
+}
+.experiments-explore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  min-height: 48px;
+  padding: 10px 20px;
+  border: 3px solid var(--lab-ink);
+  border-radius: 6px;
+  color: var(--lab-ink);
+  background: #ffe16b;
+  box-shadow: 5px 5px 0 var(--lab-ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  transition:
+    transform 150ms,
+    box-shadow 150ms;
+}
+.experiments-explore:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--lab-ink);
+}
+.experiments-explore:active {
+  transform: translate(4px, 4px);
+  box-shadow: 1px 1px 0 var(--lab-ink);
+}
+.experiments-section :is(button, a):focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 6px;
+}
+
+.experiments-stage {
+  position: absolute;
+  inset: 0;
+}
+.experiments-scenery {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.experiments-scenery > img {
+  position: absolute;
+  height: auto;
+}
+.experiments-shelf {
+  top: 3%;
+  left: 38%;
+  width: 27%;
+  z-index: 1;
+}
+.experiments-chair {
+  position: absolute;
+  height: auto;
+  top: 84%;
+  left: 32%;
+  width: 36%;
+}
+.experiments-foreground {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 7;
+}
+.experiments-avatar {
+  position: absolute;
+  bottom: 37%;
+  left: 35%;
+  width: 24%;
+  z-index: 3;
+}
+.experiments-avatar > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: experiment-avatar-float 5s ease-in-out infinite;
+}
+.experiments-desk {
+  top: 61%;
+  left: -4%;
+  width: 108%;
+  max-width: none;
+  z-index: 4;
+}
+.experiments-books {
+  bottom: 24%;
+  left: -2%;
+  width: 20%;
+  z-index: 5;
+}
+.experiments-lamp {
+  bottom: 39%;
+  left: 59%;
+  width: 8%;
+  z-index: 3;
+}
+.experiments-camera {
+  bottom: 25%;
+  right: -2.5%;
+  width: 10%;
+  z-index: 5;
+}
+.experiments-headphones {
+  bottom: 24%;
+  right: 5.5%;
+  width: 5.5%;
+  z-index: 5;
+}
+.experiments-note {
+  position: absolute;
+  padding: 14px;
+  border: 3px solid var(--lab-ink);
+  color: var(--lab-ink);
+  box-shadow: 5px 6px 0 var(--lab-ink);
+  font-size: clamp(12px, 1.25vw, 20px);
+  line-height: 1.15;
+  z-index: 2;
+}
+.experiments-note span {
+  float: right;
+}
+.experiments-note--pink {
+  top: 29%;
+  left: 60%;
+  width: 8%;
+  background: #ffbcd3;
+  transform: rotate(-7deg);
+}
+.experiments-note--yellow {
+  top: 90%;
+  left: 16%;
+  width: 9%;
+  background: #ffe16b;
+  transform: rotate(10deg);
+  z-index: 5;
+}
+.experiments-note--green {
+  top: 90%;
+  right: 9%;
+  width: 9%;
+  background: #b9e7a0;
+  transform: rotate(-9deg);
+  z-index: 5;
+}
+
+.experiment-position {
+  position: absolute;
+  bottom: 18%;
+  z-index: 6;
+}
+.experiment-position--flutter {
+  left: 21%;
+  width: 10%;
+}
+.experiment-position--esp32 {
+  left: 34%;
+  width: 17%;
+}
+.experiment-position--printing {
+  left: 53%;
+  width: 18%;
+}
+.experiment-position--davinci {
+  left: 73%;
+  width: 19.5%;
+}
+.experiment-object {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  color: var(--lab-ink);
+  background: transparent;
+  font: inherit;
+  text-align: center;
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.experiment-object-art {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+}
+.experiment-object-art > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: filter 180ms;
+}
+.experiment-name {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: max-content;
+  max-width: 240px;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 3px solid var(--lab-ink);
+  border-radius: 6px;
+  background: #fffdf2;
+  box-shadow: 4px 4px 0 var(--lab-ink);
+  font-size: clamp(13px, 1.25vw, 20px);
+  line-height: 1.2;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.experiment-dot {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+  border: 2px solid var(--lab-ink);
+  border-radius: 50%;
+  background: var(--experiment-color, #ffe16b);
+}
+.experiment-status {
+  position: relative;
+  display: block;
+  margin-top: -1px;
+  padding: 4px 12px;
+  border: 2px solid var(--lab-ink);
+  border-radius: 10px;
+  background: var(--experiment-color);
+  box-shadow: 2px 2px 0 var(--lab-ink);
+  font-size: clamp(11px, 1vw, 15px);
+  line-height: 1.15;
+  font-weight: 700;
+}
+.experiment-object[data-selected='true'] .experiment-name {
+  background: var(--experiment-color);
+}
+.experiment-object[data-previewed='true'] .experiment-object-art > img {
+  filter: drop-shadow(0 3px 5px color-mix(in srgb, var(--experiment-color) 65%, transparent));
+}
+.experiment-object:focus-visible {
+  transform: translateY(-8px) scale(1.06);
+}
+.experiments-objects:not(:has(.experiment-object:hover)):has(.experiment-object:focus-visible)
+  .experiment-object:not(:focus-visible) {
+  filter: brightness(0.65);
+}
+@media (hover: hover) and (pointer: fine) {
+  .experiments-objects:has(.experiment-object:hover) .experiment-object:not(:hover) {
+    filter: brightness(0.65);
+  }
+  .experiment-object:hover {
+    transform: translateY(-8px) scale(1.06);
+  }
+  .experiment-object:hover .experiment-object-art > img {
+    filter: drop-shadow(0 5px 7px color-mix(in srgb, var(--experiment-color) 80%, transparent));
+  }
+}
+.experiment-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  z-index: 10;
+  visibility: hidden;
+  width: max-content;
+  max-width: 220px;
+  padding: 7px 12px;
+  border: 2px solid var(--lab-ink);
+  border-radius: 5px;
+  background: #fffdf2;
+  box-shadow: 3px 3px 0 var(--lab-ink);
+  font-size: 14px;
+  line-height: 1.3;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.experiment-object:focus-visible .experiment-tooltip {
+  visibility: visible;
+}
+@media (hover: hover) {
+  .experiment-object:hover .experiment-tooltip {
+    visibility: visible;
+  }
+}
+.experiment-object[data-tooltip-dismissed='true'] .experiment-tooltip {
+  visibility: hidden;
+}
+
+.experiment-panel {
+  display: grid;
+  position: absolute;
+  top: 7%;
+  right: 4.5%;
+  z-index: 9;
+  width: 28.5%;
+  min-height: 37%;
+  padding: clamp(18px, 1.7vw, 28px);
+  border: 3px solid var(--lab-ink);
+  border-radius: 14px;
+  color: var(--lab-ink);
+  background: var(--panel-color);
+  box-shadow: 8px 9px 0 var(--lab-ink);
+}
+.experiment-panel-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.experiment-panel h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-size: clamp(22px, 2.1vw, 34px);
+  line-height: 1.2;
+  font-weight: 700;
+}
+.experiment-panel h3 svg {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+.experiment-panel-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 9px;
+  border: 2px solid var(--lab-ink);
+  border-radius: 7px;
+  background: #fffdf2;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.experiment-panel-status .experiment-dot {
+  width: 12px;
+  height: 12px;
+}
+.experiment-panel-description {
+  min-height: 5em;
+  margin: 18px 0;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.65;
+}
+.experiment-highlights {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 18px 0 0;
+  border-top: 2px solid #17171740;
+  list-style: none;
+}
+.experiment-highlights li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: clamp(13px, 1.1vw, 17px);
+  line-height: 1.4;
+}
+.experiment-highlight-marker {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+  border: 2px solid var(--lab-ink);
+  border-radius: 50%;
+}
+.experiment-panel-hint {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 20px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+  min-height: 2.8em;
+}
+.experiment-panel-content,
+.experiment-panel-sizer {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+.experiment-panel-sizer {
+  display: grid;
+  visibility: hidden;
+  pointer-events: none;
+}
+.experiment-hint-touch {
+  display: none;
+}
+@media (hover: none) {
+  .experiment-hint-pointer {
+    display: none;
+  }
+  .experiment-hint-touch {
+    display: inline;
+  }
+}
+.experiment-panel-hint svg {
+  flex-shrink: 0;
+}
+
+.experiment-idle {
+  position: absolute;
+  pointer-events: none;
+}
+.experiment-idle--flutter {
+  top: 9%;
+  left: 19%;
+  width: 61%;
+  height: 60%;
+  border-radius: 12%;
+  background: #c6eaff;
+  opacity: 0;
+  animation: experiment-screen-pulse 4s ease-in-out infinite;
+  transform: rotate(-8deg);
+}
+.experiment-idle--esp32 {
+  top: 53%;
+  left: 44%;
+  width: 4%;
+  aspect-ratio: 1;
+  border: 1px solid #116d26;
+  border-radius: 50%;
+  background: #a6ff45;
+  animation: experiment-led-blink 2.5s steps(1) infinite;
+}
+.experiment-idle--printing {
+  top: 25%;
+  left: 36%;
+  width: 10%;
+  height: 3%;
+  border-radius: 2px;
+  background: #ffe16b;
+  animation: experiment-printer-move 4s ease-in-out infinite;
+}
+.experiment-idle--davinci {
+  top: 49%;
+  left: 24%;
+  height: 11%;
+  width: 2px;
+  background: #fff;
+  opacity: 0.8;
+  animation: experiment-playhead 6s linear infinite;
+}
+.experiments-section[data-running='false'] :is(.experiment-idle, .experiments-avatar > img) {
+  animation-play-state: paused;
+}
+@keyframes experiment-avatar-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+@keyframes experiment-screen-pulse {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.16;
+  }
+}
+@keyframes experiment-led-blink {
+  0%,
+  70%,
+  90% {
+    opacity: 1;
+  }
+  75%,
+  95% {
+    opacity: 0.15;
+  }
+}
+@keyframes experiment-printer-move {
+  0%,
+  100% {
+    transform: translateX(-8px);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+}
+@keyframes experiment-playhead {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(70px);
+  }
+}
+.experiments-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 1024px) {
+  .experiments-section {
+    height: 100dvh;
+    scroll-margin-top: 0;
+  }
+  /* Scale one complete composition, including labels and typography, to fit the viewport. */
+  .experiments-layout {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1600px;
+    height: 1000px;
+    min-height: 0;
+    max-width: none;
+    margin: 0;
+    aspect-ratio: auto;
+    transform: translate(-50%, -50%) scale(var(--experiment-scene-scale, 0.75));
+    transform-origin: center;
+  }
+  .experiments-heading h2 {
+    font-size: 75px;
+  }
+  .experiments-intro {
+    font-size: 18px;
+  }
+  .experiments-note {
+    font-size: 20px;
+  }
+  .experiment-name {
+    font-size: 20px;
+  }
+  .experiment-status {
+    font-size: 15px;
+  }
+  .experiment-panel {
+    padding: 26px;
+  }
+  .experiment-panel h3 {
+    font-size: 32px;
+  }
+  .experiment-panel-description {
+    font-size: 18px;
+  }
+  .experiment-highlights li {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .experiments-layout {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    aspect-ratio: auto;
+    padding: 48px 5% 56px;
+  }
+  .experiments-heading {
+    position: relative;
+    inset: auto;
+    width: 65%;
+    padding-bottom: 20px;
+  }
+  .experiments-heading h2 {
+    font-size: clamp(48px, 6vw, 68px);
+  }
+  .experiments-intro {
+    font-size: 17px;
+  }
+  .experiments-stage {
+    position: relative;
+    inset: auto;
+    width: 111.111%;
+    margin-left: -5.555%;
+    /* Reserve floor space for the foreground chair before the detail panel. */
+    margin-bottom: 30%;
+    aspect-ratio: 1600 / 1000;
+  }
+  .experiments-shelf {
+    top: -35%;
+    left: 72%;
+    width: 25%;
+  }
+  .experiments-avatar {
+    left: 36%;
+    bottom: 37%;
+    width: 28%;
+  }
+  .experiments-desk {
+    width: 108%;
+  }
+  .experiments-note--pink {
+    top: 4%;
+    left: 65%;
+    width: 11%;
+  }
+  .experiments-note--yellow,
+  .experiments-note--green {
+    display: none;
+  }
+  .experiments-chair {
+    top: 84%;
+    width: 32%;
+    left: 34%;
+  }
+  .experiments-lamp {
+    left: 79%;
+    bottom: 40%;
+    width: 10%;
+  }
+  .experiments-objects {
+    position: absolute;
+    inset: 0;
+  }
+  .experiment-position {
+    bottom: 18%;
+  }
+  .experiment-position--flutter {
+    width: 12%;
+    left: 19%;
+  }
+  .experiment-name {
+    font-size: 15px;
+    padding: 6px 9px;
+  }
+  .experiment-status {
+    font-size: 12px;
+  }
+  .experiment-panel {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: 0;
+    margin-top: 20px;
+    padding: 25px;
+  }
+  .experiment-panel-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 35px;
+  }
+  .experiment-panel-top {
+    grid-column: 1 / -1;
+  }
+  .experiment-panel h3 {
+    font-size: 30px;
+  }
+  .experiment-panel-description {
+    margin-bottom: 0;
+    min-height: 0;
+    font-size: 17px;
+  }
+  .experiment-highlights {
+    margin-top: 18px;
+    padding: 0 0 0 25px;
+    border-top: 0;
+    border-left: 2px solid #17171740;
+  }
+  .experiment-highlights li {
+    font-size: 16px;
+  }
+  .experiment-panel-hint {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .experiments-layout {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: auto;
+    padding: 40px 20px 48px;
+  }
+  .experiments-stage {
+    display: contents;
+  }
+  .experiments-heading {
+    position: relative;
+    inset: auto;
+    width: 100%;
+  }
+  .experiments-eyebrow {
+    margin-bottom: 18px;
+    font-size: 12px;
+  }
+  .experiments-heading h2 {
+    font-size: clamp(35px, 9vw, 60px);
+    letter-spacing: -0.5px;
+  }
+  .experiments-intro {
+    font-size: 16px;
+    margin-block: 18px;
+  }
+  .experiments-explore {
+    width: 100%;
+    max-width: 340px;
+    font-size: 14px;
+  }
+  .experiments-scenery {
+    position: relative;
+    inset: auto;
+    height: auto;
+    aspect-ratio: 1.65;
+    margin: 35px -20px 0;
+    overflow: clip;
+  }
+  .experiments-shelf {
+    top: 1%;
+    left: 3%;
+    width: 40%;
+  }
+  .experiments-avatar {
+    left: 32%;
+    bottom: 16%;
+    width: 39%;
+  }
+  .experiments-desk {
+    top: 73%;
+    width: 110%;
+    left: -5%;
+  }
+  .experiments-books {
+    bottom: -6%;
+    width: 30%;
+    left: -5%;
+  }
+  .experiments-lamp {
+    bottom: 4%;
+    left: 79%;
+    width: 16%;
+    z-index: 5;
+  }
+  .experiments-foreground,
+  .experiments-camera,
+  .experiments-headphones {
+    display: none;
+  }
+  .experiments-note--pink {
+    top: 8%;
+    left: auto;
+    right: 8%;
+    width: 17%;
+    padding: 8px;
+    font-size: 12px;
+  }
+  .experiments-note--yellow,
+  .experiments-note--green {
+    display: none;
+  }
+  .experiments-objects {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .experiment-position {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-width: 0;
+  }
+  .experiment-object {
+    height: 100%;
+    padding: 12px 5px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: var(--secondary-background);
+  }
+  .experiment-object[data-selected='true'] {
+    border-color: var(--lab-ink);
+    background: color-mix(in srgb, var(--experiment-color) 22%, var(--secondary-background));
+    box-shadow: 3px 3px 0 var(--border);
+  }
+  .experiment-object-art {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: clamp(105px, 29vw, 185px);
+  }
+  .experiment-object-art > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .experiment-position--flutter .experiment-object-art > img {
+    width: auto;
+    max-width: 100%;
+  }
+  .experiment-name {
+    gap: 4px;
+    max-width: 100%;
+    min-height: 30px;
+    padding: 5px;
+    border-width: 2px;
+    font-size: clamp(11px, 3.1vw, 17px);
+  }
+  .experiment-dot {
+    width: 11px;
+    height: 11px;
+  }
+  .experiment-status {
+    max-width: 100%;
+    padding: 4px 7px;
+    font-size: 11px;
+  }
+  .experiment-idle {
+    display: none;
+  }
+  .experiment-panel {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: 400px;
+    margin-top: 28px;
+    padding: 20px;
+    box-shadow: 5px 6px 0 var(--lab-ink);
+  }
+  .experiment-panel h3 {
+    font-size: 26px;
+    gap: 8px;
+  }
+  .experiment-panel h3 svg {
+    width: 25px;
+    height: 25px;
+  }
+  .experiment-panel-description {
+    min-height: 5.5em;
+    font-size: 16px;
+  }
+  .experiment-highlights li {
+    font-size: 15px;
+  }
+  .experiment-tooltip {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experiments-section *,
+  .experiments-section *::before,
+  .experiments-section *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .experiment-object:is(:hover, :focus-visible),
+  .experiments-explore:is(:hover, :active) {
+    transform: none;
+  }
+}

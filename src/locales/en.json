@@ -12,7 +12,8 @@
     "profile": "Profile",
     "label": "Main navigation",
     "brand": "GGAS home",
-    "journey": "Journey"
+    "journey": "Journey",
+    "experiments": "Experiments"
   },
   "home": {
     "hello": "Hey, I'm",
@@ -269,5 +270,57 @@
         "description": "A spot reserved for the next idea, experiment, or adventure."
       }
     }
+  },
+  "experiments": {
+    "eyebrow": "CURRENTLY EXPLORING",
+    "description": "Outside my day job, I like trying new technologies and following curious ideas. This is my little space to build, learn, and keep experimenting.",
+    "explore": "Explore my experiments",
+    "choose": "Choose an experiment to discover what I am learning",
+    "select": "Explore {{title}}",
+    "selected": "Selected experiment: {{title}}",
+    "locked": "Selected · hover or focus another object to explore",
+    "preview": "Preview · select this object to keep it here",
+    "status": {
+      "learning": "Learning",
+      "exploring": "Exploring",
+      "experimenting": "Experimenting"
+    },
+    "items": {
+      "flutter": {
+        "description": "Learning to build mobile apps with Flutter, exploring how small ideas can become useful experiences on a phone.",
+        "highlights": [
+          "Trying out UI components",
+          "Learning state management",
+          "Building small practice apps"
+        ]
+      },
+      "esp32": {
+        "description": "Exploring where software meets the physical world, with ESP32 boards, sensors, and connected devices.",
+        "highlights": [
+          "Getting to know boards and sensors",
+          "Trying device connectivity",
+          "Exploring small IoT ideas"
+        ]
+      },
+      "printing": {
+        "description": "Experimenting with 3D printing and the process of turning an idea on a screen into something I can hold.",
+        "highlights": [
+          "Learning model preparation",
+          "Trying print settings",
+          "Exploring small useful objects"
+        ]
+      },
+      "davinci": {
+        "description": "Learning video editing with DaVinci Resolve, exploring how images, sound, and timing can tell a story.",
+        "highlights": [
+          "Practicing cuts and pacing",
+          "Exploring color adjustments",
+          "Trying sound and titles"
+        ]
+      }
+    },
+    "headingFirst": "My Current",
+    "headingSecond": "Experiments",
+    "touchHint": "Tap another object to explore more."
   }
 }
