@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Blocks, ClipboardCheck, KeyRound, ListFilter, MousePointer2, PanelsTopLeft, ServerCog, UsersRound } from 'lucide-react'
+import { Blocks, ClipboardCheck, KeyRound, ListFilter, MousePointer2, PanelsTopLeft, ServerCog, UserRound } from 'lucide-react'
 import ScrambleText from '../../ScrambleText'
 import TechnologyBadge from '../widgets/TechnologyBadge'
 import { EpisodeLabel } from '../widgets/NotebookWidgets'
@@ -10,7 +10,7 @@ import tape from '../../../assets/journey-notebook-asset-pack/svg/07-paper-tape-
 import './sustainability.css'
 
 type Topic = { title: string; description: string; stack: string[] }
-const illustrations = [PanelsTopLeft, Blocks, ListFilter, ServerCog, UsersRound, ClipboardCheck]
+const illustrations = [PanelsTopLeft, Blocks, ListFilter, ServerCog, UserRound, ClipboardCheck]
 
 function IllustratedTopics({ topics, start }: { topics: Topic[]; start: number }) {
   return <div className="sustainability-topics">{topics.map((topic, index) => {

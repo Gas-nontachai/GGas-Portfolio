@@ -116,6 +116,7 @@ html { scrollbar-gutter: stable; }
 .notebook-contents-meta, .notebook-contents-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .notebook-contents-meta { font-size: 11px; }
 .notebook-contents-title { font-size: 25px; line-height: 1.2; font-weight: 700; }
+.notebook-contents-pixel-arrow { display: block; width: 24px; height: 24px; flex: 0 0 24px; background: currentColor; clip-path: polygon(37.5% 0, 100% 0, 100% 62.5%, 75% 62.5%, 75% 37.5%, 62.5% 37.5%, 62.5% 50%, 50% 50%, 50% 62.5%, 37.5% 62.5%, 37.5% 75%, 25% 75%, 25% 100%, 0 100%, 0 75%, 12.5% 75%, 12.5% 62.5%, 25% 62.5%, 25% 50%, 37.5% 50%, 37.5% 37.5%, 50% 37.5%, 50% 25%, 37.5% 25%); }
 .notebook-contents-description { font-size: 13px; line-height: 1.5; }
 .notebook-contents-hint { font-size: 12px !important; color: #57534e; }
 .notebook-experiments { display: grid; gap: 16px; margin: 24px 0; }

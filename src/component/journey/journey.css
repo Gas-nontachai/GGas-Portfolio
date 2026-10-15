@@ -46,7 +46,7 @@
 .journey-ground { position: absolute; inset: auto 0 0; height: 150px; border-top: 3px solid #171717; background: #b6d68c; }
 .journey-world { position: absolute; inset: 0 auto 0 0; will-change: transform; }
 .journey-road { position: absolute; inset: auto 0 40px; height: 92px; border-block: 5px solid #171717; background: #565661; }
-.journey-road-lines { position: absolute; top: 45%; width: 100%; height: 7px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='106' height='7'%3E%3Cpath fill='%23fff5d8' d='M0 0h54v7H0z'/%3E%3C/svg%3E") repeat-x; }
+.journey-road-lines { position: absolute; top: 45%; width: 100%; height: 7px; background: url('../../assets/journey_timeline/road-dashes.svg') repeat-x; }
 .journey-milestone { position: absolute; left: calc(var(--journey-origin) + var(--stage-index) * var(--journey-spacing)); bottom: 143px; width: 310px; height: min(340px, calc(100% - 165px)); margin-left: -155px; z-index: 3; outline: none; }
 .journey-milestone-visual { display: flex; flex-direction: column; align-items: center; height: 100%; transform: scale(.65); filter: brightness(.45); transform-origin: center bottom; transition: transform 380ms cubic-bezier(.22,1,.36,1), filter 380ms ease; }
 .journey-milestone[data-state="hovered"] .journey-milestone-visual { transform: scale(.85); filter: brightness(.8); }

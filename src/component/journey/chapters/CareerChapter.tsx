@@ -45,7 +45,7 @@ export function FirstJobSpread({ side, label, navigation }: ChapterPageProps) {
         {navigation?.entries.filter(entry => entry.spreadIndex > 0).map(entry => <li key={entry.id}>
           <button type="button" disabled={navigation.disabled} onClick={() => navigation.onSelect(entry.id)}>
             <span className="notebook-contents-meta"><span><ScrambleText text={t(`${prefix}.contents.project`, { number: String(entry.spreadIndex).padStart(2, '0') })} /></span><span>{String(entry.spreadIndex * 2 + 1).padStart(2, '0')}–{String(entry.spreadIndex * 2 + 2).padStart(2, '0')}</span></span>
-            <span className="notebook-contents-title"><ScrambleText text={t(entry.titleKey)} /><span aria-hidden="true">↗</span></span>
+            <span className="notebook-contents-title"><ScrambleText text={t(entry.titleKey)} /><span className="notebook-contents-pixel-arrow" aria-hidden="true" /></span>
             <span className="notebook-contents-description"><ScrambleText text={t(entry.descriptionKey)} /></span>
           </button>
         </li>)}
