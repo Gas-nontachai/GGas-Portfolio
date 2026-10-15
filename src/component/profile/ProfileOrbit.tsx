@@ -137,7 +137,21 @@ export default function ProfileOrbit() {
       })
       observer.observe(element)
       render(0, 0)
-      gsap.ticker.add(render)
+      let inView = false
+      let running = false
+      const syncTicker = () => {
+        const shouldRun = inView && !document.hidden
+        if (running === shouldRun) return
+        running = shouldRun
+        if (running) gsap.ticker.add(render)
+        else gsap.ticker.remove(render)
+      }
+      const visibilityObserver = new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting
+        syncTicker()
+      })
+      visibilityObserver.observe(element)
+      document.addEventListener('visibilitychange', syncTicker)
 
       const cleanups = models.map((model, index) => {
         const enter = (event: PointerEvent) => {
@@ -273,6 +287,8 @@ export default function ProfileOrbit() {
 
       return () => {
         gsap.ticker.remove(render)
+        visibilityObserver.disconnect()
+        document.removeEventListener('visibilitychange', syncTicker)
         observer.disconnect()
         cleanups.forEach((cleanup) => cleanup())
       }
