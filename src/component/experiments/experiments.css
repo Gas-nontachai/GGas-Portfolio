@@ -1,5 +1,6 @@
 .experiments-section {
   --lab-ink: #171717;
+  --experiment-desk-top: 61%;
   position: relative;
   isolation: isolate;
   flex-shrink: 0;
@@ -44,7 +45,7 @@
   height: 13px;
   border: 2px solid var(--lab-ink);
   border-radius: 2px;
-  background: #ef725d;
+  background: #df563d;
 }
 .experiments-heading h2 {
   margin: 0;
@@ -54,7 +55,7 @@
   letter-spacing: -1.5px;
 }
 .experiments-heading h2 > .experiments-period {
-  color: #ef725d;
+  color: #df563d;
 }
 .experiments-intro {
   margin: 20px 0;
@@ -132,7 +133,8 @@
 }
 .experiments-avatar {
   position: absolute;
-  bottom: 37%;
+  /* Tuck the portrait's cut edge behind the tabletop, including asset padding. */
+  bottom: calc(100% - var(--experiment-desk-top) - 6%);
   left: 35%;
   width: 24%;
   z-index: 3;
@@ -141,10 +143,9 @@
   display: block;
   width: 100%;
   height: auto;
-  animation: experiment-avatar-float 5s ease-in-out infinite;
 }
 .experiments-desk {
-  top: 61%;
+  top: var(--experiment-desk-top);
   left: -4%;
   width: 108%;
   max-width: none;
@@ -164,8 +165,8 @@
 }
 .experiments-camera {
   bottom: 25%;
-  right: -2.5%;
-  width: 10%;
+  right: 1.5%;
+  width: 7.5%;
   z-index: 5;
 }
 .experiments-headphones {
@@ -191,7 +192,7 @@
   top: 29%;
   left: 60%;
   width: 8%;
-  background: #ffbcd3;
+  background: #ff80ab;
   transform: rotate(-7deg);
 }
 .experiments-note--yellow {
@@ -206,7 +207,7 @@
   top: 90%;
   right: 9%;
   width: 9%;
-  background: #b9e7a0;
+  background: #b9edbc;
   transform: rotate(-9deg);
   z-index: 5;
 }
@@ -215,6 +216,15 @@
   position: absolute;
   bottom: 18%;
   z-index: 6;
+}
+/* Lift the whole stacking context so tooltips can clear the detail panel. */
+.experiment-position:has(.experiment-object:focus-visible) {
+  z-index: 10;
+}
+@media (hover: hover) and (pointer: fine) {
+  .experiment-position:has(.experiment-object:hover) {
+    z-index: 10;
+  }
 }
 .experiment-position--flutter {
   left: 21%;
@@ -229,8 +239,8 @@
   width: 18%;
 }
 .experiment-position--davinci {
-  left: 73%;
-  width: 19.5%;
+  left: 72%;
+  width: 19%;
 }
 .experiment-object {
   position: relative;
@@ -296,7 +306,7 @@
   margin-top: -1px;
   padding: 4px 12px;
   border: 2px solid var(--lab-ink);
-  border-radius: 10px;
+  border-radius: 4px;
   background: var(--experiment-color);
   box-shadow: 2px 2px 0 var(--lab-ink);
   font-size: clamp(11px, 1vw, 15px);
@@ -307,7 +317,7 @@
   background: var(--experiment-color);
 }
 .experiment-object[data-previewed='true'] .experiment-object-art > img {
-  filter: drop-shadow(0 3px 5px color-mix(in srgb, var(--experiment-color) 65%, transparent));
+  filter: drop-shadow(4px 4px 0 var(--lab-ink));
 }
 .experiment-object:focus-visible {
   transform: translateY(-8px) scale(1.06);
@@ -324,7 +334,7 @@
     transform: translateY(-8px) scale(1.06);
   }
   .experiment-object:hover .experiment-object-art > img {
-    filter: drop-shadow(0 5px 7px color-mix(in srgb, var(--experiment-color) 80%, transparent));
+    filter: drop-shadow(6px 6px 0 var(--lab-ink));
   }
 }
 .experiment-tooltip {
@@ -372,10 +382,10 @@
   overflow: hidden;
   padding: clamp(18px, 1.7vw, 28px);
   border: 3px solid var(--lab-ink);
-  border-radius: 14px;
+  border-radius: 8px;
   color: var(--lab-ink);
   background: var(--panel-color);
-  box-shadow: 8px 9px 0 var(--lab-ink);
+  box-shadow: 7px 7px 0 var(--lab-ink);
 }
 .experiment-panel-top {
   display: flex;
@@ -493,55 +503,38 @@
   pointer-events: none;
 }
 .experiment-idle--flutter {
-  top: 9%;
-  left: 19%;
-  width: 61%;
-  height: 60%;
+  top: 10%;
+  left: 23%;
+  width: 55%;
+  height: 58%;
   border-radius: 12%;
   background: #c6eaff;
   opacity: 0;
   animation: experiment-screen-pulse 4s ease-in-out infinite;
   transform: rotate(-8deg);
 }
-.experiment-idle--esp32 {
-  top: 53%;
-  left: 44%;
-  width: 4%;
-  aspect-ratio: 1;
-  border: 1px solid #116d26;
-  border-radius: 50%;
-  background: #a6ff45;
+/* SVG viewBoxes match the source images; translations scale with the artwork. */
+.experiment-activity {
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.experiment-activity-led {
   animation: experiment-led-blink 2.5s steps(1) infinite;
 }
-.experiment-idle--printing {
-  top: 25%;
-  left: 36%;
-  width: 10%;
-  height: 3%;
-  border-radius: 2px;
-  background: #ffe16b;
-  animation: experiment-printer-move 4s ease-in-out infinite;
+.experiment-activity-filament {
+  animation: experiment-filament-feed 0.8s linear infinite;
 }
-.experiment-idle--davinci {
-  top: 49%;
-  left: 24%;
-  height: 11%;
-  width: 2px;
-  background: #fff;
-  opacity: 0.8;
+.experiment-activity-print-pass {
+  animation: experiment-printer-move 3s ease-in-out infinite;
+}
+.experiment-activity-playhead {
   animation: experiment-playhead 6s linear infinite;
 }
-.experiments-section[data-running='false'] :is(.experiment-idle, .experiments-avatar > img) {
+.experiments-section[data-running='false'] :is(.experiment-idle, .experiment-activity *) {
   animation-play-state: paused;
-}
-@keyframes experiment-avatar-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
 }
 @keyframes experiment-screen-pulse {
   0%,
@@ -563,13 +556,18 @@
     opacity: 0.15;
   }
 }
+@keyframes experiment-filament-feed {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
 @keyframes experiment-printer-move {
   0%,
   100% {
-    transform: translateX(-8px);
+    transform: translateX(0);
   }
   50% {
-    transform: translateX(8px);
+    transform: translateX(86px);
   }
 }
 @keyframes experiment-playhead {
@@ -577,7 +575,7 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(70px);
+    transform: translateX(520px);
   }
 }
 .experiments-sr-only {
@@ -693,10 +691,6 @@
     aspect-ratio: 1600 / 1000;
     transform: translate(-50%, -50%);
   }
-  .experiments-avatar > img {
-    animation: none;
-  }
-  .experiments-camera,
   .experiments-headphones,
   .experiments-note {
     display: none;

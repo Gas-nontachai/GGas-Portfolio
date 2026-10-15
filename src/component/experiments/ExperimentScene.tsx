@@ -1,11 +1,11 @@
 import type { Dispatch } from 'react'
-import avatar from '../../assets/current-experiments-asset-pack/avatar.png'
-import shelf from '../../assets/current-experiments-asset-pack/stair.png'
-import desk from '../../assets/current-experiments-asset-pack/desk.png'
-import chair from '../../assets/current-experiments-asset-pack/chair.png'
-import books from '../../assets/current-experiments-asset-pack/book.png'
-import lamp from '../../assets/current-experiments-asset-pack/light.png'
-import camera from '../../assets/current-experiments-asset-pack/cam.png'
+import avatar from '../../assets/experiments-neubrutal/avatar.webp'
+import shelf from '../../assets/experiments-neubrutal/shelf.webp'
+import desk from '../../assets/experiments-neubrutal/desk.webp'
+import chair from '../../assets/experiments-neubrutal/chair.webp'
+import books from '../../assets/experiments-neubrutal/books.webp'
+import lamp from '../../assets/experiments-neubrutal/lamp.webp'
+import camera from '../../assets/experiments-neubrutal/camera.webp'
 import { experiments } from './experiments.config'
 import ExperimentObject from './ExperimentObject'
 import { getPreviewExperiment } from './experimentSelection'
@@ -22,7 +22,7 @@ export default function ExperimentScene({
     <div className="experiments-stage">
       <div className="experiments-scene-art">
         <div className="experiments-scenery" aria-hidden="true">
-          <img className="experiments-shelf" src={shelf} width="800" height="454" alt="" />
+          <img className="experiments-shelf" src={shelf} width="800" height="457" alt="" />
           <div className="experiments-note experiments-note--pink">
             Build.
             <br />
@@ -33,13 +33,13 @@ export default function ExperimentScene({
             Repeat. <span>☺</span>
           </div>
           <div className="experiments-avatar" data-experiment-avatar>
-            <img src={avatar} width="1000" height="929" alt="" />
+            <img src={avatar} width="800" height="742" alt="" />
           </div>
           <img
             className="experiments-desk"
             src={desk}
-            width="1415"
-            height="533"
+            width="1600"
+            height="603"
             alt=""
             data-experiment-reveal
           />
@@ -63,7 +63,7 @@ export default function ExperimentScene({
             className="experiments-camera"
             src={camera}
             width="800"
-            height="645"
+            height="644"
             alt=""
             data-experiment-reveal
           />

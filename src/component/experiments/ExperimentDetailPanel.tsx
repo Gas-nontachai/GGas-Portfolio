@@ -106,7 +106,12 @@ export default function ExperimentDetailPanel({ activeId }: { activeId: Experime
     <aside
       id="experiment-detail"
       className="experiment-panel"
-      style={{ '--panel-color': experiment.color } as CSSProperties}
+      style={
+        {
+          '--panel-color': experiment.color,
+          '--experiment-color': experiment.color,
+        } as CSSProperties
+      }
       aria-labelledby="experiment-detail-title"
       data-experiment-panel
     >

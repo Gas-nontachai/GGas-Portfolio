@@ -1,7 +1,7 @@
-import flutter from '../../assets/current-experiments-asset-pack/flutter-dev.png'
-import esp32 from '../../assets/current-experiments-asset-pack/esp32-iot.png'
-import printing from '../../assets/current-experiments-asset-pack/3dprint.png'
-import davinci from '../../assets/current-experiments-asset-pack/davinci.png'
+import flutter from '../../assets/experiments-neubrutal/flutter.webp'
+import esp32 from '../../assets/experiments-neubrutal/esp32.webp'
+import printing from '../../assets/experiments-neubrutal/printing.webp'
+import davinci from '../../assets/experiments-neubrutal/davinci.webp'
 import type { ExperimentId } from './experimentSelection'
 
 export type Experiment = {
@@ -23,7 +23,7 @@ export const experiments: readonly Experiment[] = [
     asset: flutter,
     width: 559,
     height: 800,
-    color: '#78b7ff',
+    color: '#68a4ff',
     status: 'learning',
     translationKey: 'experiments.items.flutter',
   },
@@ -33,7 +33,7 @@ export const experiments: readonly Experiment[] = [
     asset: esp32,
     width: 800,
     height: 694,
-    color: '#94dca0',
+    color: '#b9edbc',
     status: 'learning',
     translationKey: 'experiments.items.esp32',
   },
@@ -42,7 +42,7 @@ export const experiments: readonly Experiment[] = [
     title: '3D Printing',
     asset: printing,
     width: 800,
-    height: 597,
+    height: 640,
     color: '#ffe16b',
     status: 'learning',
     translationKey: 'experiments.items.printing',
@@ -52,8 +52,8 @@ export const experiments: readonly Experiment[] = [
     title: 'DaVinci Resolve',
     asset: davinci,
     width: 800,
-    height: 681,
-    color: '#ff9cc9',
+    height: 547,
+    color: '#ff80ab',
     status: 'learning',
     translationKey: 'experiments.items.davinci',
   },
