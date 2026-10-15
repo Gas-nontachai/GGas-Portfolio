@@ -42,11 +42,9 @@
     "tooltip": "{{mode}} theme"
   },
   "language": {
-    "switch": "Switch to Thai",
-    "tooltip": "ภาษาไทย"
+    "switch": "Switch to Thai"
   },
   "profile": {
-    "role": "Full Stack Developer",
     "cartoon": "Cartoon portrait of {{name}}",
     "photo": "Photo of {{name}}",
     "cartoonUnavailable": "Cartoon portrait of {{name}} unavailable",
@@ -55,7 +53,6 @@
     "showPhoto": "Show real photo of {{name}}",
     "cartoonTooltip": "Let's go back!",
     "photoTooltip": "Wait, what do you actually look like?",
-    "react": "React",
     "gaming": "Gaming",
     "printing": "3D printing"
   },
@@ -75,7 +72,6 @@
       "read": "OPEN NOTEBOOK →",
       "close": "Close notebook",
       "pages": "Notebook story and memories",
-      "memory": "Mini Memory",
       "pageNavigation": "Notebook pages",
       "previousPage": "Previous pages",
       "nextPage": "Next pages",
@@ -96,7 +92,6 @@
         "shortDescription": "Where my coding journey began.",
         "description": "Where my coding journey began.",
         "preview": "From my first lines of code to new discoveries.",
-        "tag": "Curiosity / Code / Discovery",
         "period": "2021–2025",
         "memory": "The first time a tiny project finally worked, I couldn't stop clicking through it. I thought I was pretty good — until I stepped into the real world.",
         "story": "I started engineering with circuits and electrical calculations. But wait, why wasn't it as fun as writing HTML and CSS? Maybe it was time to give web development a proper try.",
@@ -124,16 +119,13 @@
         "takeaway": "Good software grows through collaboration and steady improvements.",
         "spreads": {
           "first": {
-            "company": "TCC Technology Limited",
-            "role": "Full Stack Developer",
             "photos": {
               "team": {
                 "alt": "Photo booth picture with teammates at TCC Technology",
                 "caption": "The junior team"
               },
               "party": {
-                "alt": "Group photo with colleagues at the TCC Technology staff party",
-                "caption": "Outing Party / TCC Technology"
+                "alt": "Group photo with colleagues at the TCC Technology staff party"
               }
             },
             "title": "First Job",
@@ -148,74 +140,46 @@
             }
           },
           "sustainability": {
-            "title": "Sustainability",
             "category": "Project / Enterprise web",
             "description": "A web app for calculating and managing pollution and waste, both within and outside the organization.",
             "frontendLabel": "Sustainability / Frontend",
             "frontendTopics": [
               {
-                "title": "Micro-Frontends",
-                "description": "Split the app into independently deployable modules that work together in one application.",
-                "stack": ["React", "TypeScript", "Webpack"]
+                "description": "Split the app into independently deployable modules that work together in one application."
               },
               {
-                "title": "Sustaina SharedUI",
-                "description": "Create a shared UI component library and publish it through npm for the team.",
-                "stack": ["React", "Tailwind CSS", "npm"]
+                "description": "Create a shared UI component library and publish it through npm for the team."
               },
               {
-                "title": "State, Query and Integration",
-                "description": "Async selects with caching, pagination, and error handling.",
-                "stack": ["Zustand", "TanStack Query", "TypeScript"]
+                "description": "Async selects with caching, pagination, and error handling."
               }
             ],
             "backendLabel": "Sustainability / Backend & delivery",
             "backendTopics": [
               {
-                "title": "Backend Microservices",
-                "description": "Develop backend microservices to simplify development and deployment.",
-                "stack": ["Node.js", "Fastify", "Prisma", "Kafka"]
+                "description": "Develop backend microservices to simplify development and deployment."
               },
               {
-                "title": "Authentication & Permissions",
-                "description": "Task access by user/group, session restoration, and route access during maintenance.",
-                "stack": ["Fastify", "Prisma", "Authentication", "Authorization"]
+                "description": "Task access by user/group, session restoration, and route access during maintenance."
               },
               {
-                "title": "Testing and QA Handoff",
-                "description": "Test permissions, tenant isolation, and inactive groups; debug, refactor, review, and hand off to QA.",
-                "stack": ["Unit testing", "Agile Scrum", "Git", "AI-assisted development"]
+                "description": "Test permissions, tenant isolation, and inactive groups; debug, refactor, review, and hand off to QA."
               }
-            ],
-            "toolsTitle": "Tools in my bag",
-            "tools": [
-              "PostgreSQL",
-              "MySQL",
-              "Git",
-              "Docker",
-              "Nginx",
-              "Argo CD",
-              "Postman",
-              "Figma"
             ]
           },
           "flyer": {
-            "title": "Appsflyer",
             "category": "Project / Mobile app",
             "description": "Integrate AppsFlyer into the Oishi Club app to track customer data.",
             "purpose": "Customer data tracking",
-            "stackLabel": "Appsflyer / Stack",
             "stackTitle": "Mobile app & backend",
             "workTopics": [
               {
                 "title": "Mobile application",
-                "description": "Integrate AppsFlyer into the Oishi Club app to track customer data.",
-                "stack": ["Flutter"]
+                "description": "Integrate AppsFlyer into the Oishi Club app to track customer data."
               },
               {
                 "title": "Backend",
-                "description": "Connect data across AppsFlyer, Oishi Club, and Connect X.",
-                "stack": ["Go"]
+                "description": "Connect data across AppsFlyer, Oishi Club, and Connect X."
               }
             ],
             "summary": "Oishi Club is the customer data source; AppsFlyer tracks that data before it is stored in Connect X."
@@ -243,7 +207,6 @@
     },
     "details": "{{stage}} story details",
     "highlights": "Along the way",
-    "takeaway": "Next step:",
     "continued": "See you at the next stop!",
     "replay": "Drive again",
     "continue": "Explore next",
@@ -319,8 +282,6 @@
         ]
       }
     },
-    "headingFirst": "My Current",
-    "headingSecond": "Experiments",
     "touchHint": "Tap another object to explore more."
   }
 }

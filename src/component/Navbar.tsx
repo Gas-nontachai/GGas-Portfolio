@@ -165,7 +165,7 @@ function Navbar() {
             role="tooltip"
             className="pointer-events-none invisible absolute top-[calc(100%+14px)] right-0 z-10 border-2 border-[var(--navbar-ink)] bg-secondary-background px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap text-foreground opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 group-data-[tooltip-dismissed=true]:hidden"
           >
-            <ScrambleText text={t('language.tooltip')} />
+            <ScrambleText text={language === 'th' ? 'English' : 'ภาษาไทย'} />
           </span>
         </div>
       </div>

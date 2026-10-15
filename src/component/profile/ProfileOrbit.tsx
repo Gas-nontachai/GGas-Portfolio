@@ -310,8 +310,8 @@ export default function ProfileOrbit() {
           <button
             type="button"
             className="profile-orbit__item absolute top-1/2 left-1/2 z-[2] aspect-square w-[clamp(40px,12%,64px)] touch-none border-0 bg-transparent p-0 select-none will-change-transform [-webkit-user-select:none] [-webkit-tap-highlight-color:transparent] focus-visible:rounded-lg focus-visible:outline-[3px] focus-visible:outline-offset-[6px] focus-visible:outline-foreground"
-            aria-label={t(`profile.${name}`)}
-            title={t(`profile.${name}`)}
+            aria-label={name === 'react' ? 'React' : t(`profile.${name}`)}
+            title={name === 'react' ? 'React' : t(`profile.${name}`)}
           >
             <span
               data-orbit-depth

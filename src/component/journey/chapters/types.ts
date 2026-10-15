@@ -6,7 +6,7 @@ export type ChapterPageProps = {
   navigation?: {
     entries: readonly {
       id: string
-      titleKey: string
+      title: string
       descriptionKey: string
       spreadIndex: number
     }[]
@@ -15,10 +15,9 @@ export type ChapterPageProps = {
   }
 }
 
-export type NotebookSpread = {
+export type NotebookSpread = ({ title: string } | { titleKey: string }) & {
   id: string
   Content: ComponentType<ChapterPageProps>
-  titleKey: string
   descriptionKey: string
   className?: string
 }

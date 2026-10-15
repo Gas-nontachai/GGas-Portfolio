@@ -42,11 +42,9 @@
     "tooltip": "ธีม{{mode}}"
   },
   "language": {
-    "switch": "เปลี่ยนเป็นภาษาอังกฤษ",
-    "tooltip": "English"
+    "switch": "เปลี่ยนเป็นภาษาอังกฤษ"
   },
   "profile": {
-    "role": "Fullstack Developer",
     "cartoon": "ภาพการ์ตูนของ {{name}}",
     "photo": "ภาพถ่ายของ {{name}}",
     "cartoonUnavailable": "ไม่สามารถแสดงภาพการ์ตูนของ {{name}}",
@@ -55,7 +53,6 @@
     "showPhoto": "แสดงภาพถ่ายจริงของ {{name}}",
     "cartoonTooltip": "กลับไปแบบเดิมดีก่า",
     "photoTooltip": "เอ๊ะ หน้าจริงๆเป็นไงนะ?",
-    "react": "React",
     "gaming": "เล่นเกม",
     "printing": "การพิมพ์สามมิติ"
   },
@@ -75,7 +72,6 @@
       "read": "เปิดสมุดบันทึก →",
       "close": "ปิดสมุดบันทึก",
       "pages": "เรื่องราวและความทรงจำในสมุด",
-      "memory": "Mini Memory",
       "pageNavigation": "หน้าสมุดบันทึก",
       "previousPage": "หน้าก่อนหน้า",
       "nextPage": "หน้าถัดไป",
@@ -96,7 +92,6 @@
         "shortDescription": "จุดเริ่มต้นของเส้นทางการเขียนโค้ดของผม",
         "description": "จุดเริ่มต้นของเส้นทางการเขียนโค้ดของผม",
         "preview": "จากโค้ดบรรทัดแรก สู่การค้นพบสิ่งใหม่",
-        "tag": "Curiosity / Code / Discovery",
         "period": "2021–2025",
         "memory": "ครั้งแรกที่โปรเจกต์เล็กๆ ทำงานได้จริง ผมกดเล่นมันซ้ำอยู่นานมาก คิดว่าตัวเองเก่งแล้วจนกระทั่งได้มาเจอโลกจริง",
         "story": "เริ่มต้นการเรียนวิศวะด้วยการต่อวงจรและการคำนวณไฟฟ้า แต่เอ๊ะทำไมนะเราถึงไม่สนุกเท่าการที่จะมาเขียน html css ถ้างั้นเรามาลองฝึกสกิลด้านนี้กันเถอะ",
@@ -124,16 +119,13 @@
         "takeaway": "ซอฟต์แวร์ที่ดีเติบโตจากการร่วมมือและปรับปรุงทีละนิด",
         "spreads": {
           "first": {
-            "company": "TCC Technology Limited",
-            "role": "Full Stack Developer",
             "photos": {
               "team": {
                 "alt": "ภาพถ่ายกับเพื่อนร่วมทีม TCC Technology ในโฟโต้บูธ",
                 "caption": "ทีมน้องๆจูเนียร์"
               },
               "party": {
-                "alt": "ภาพหมู่เพื่อนร่วมงานในงาน Staff Party ของ TCC Technology",
-                "caption": "Outing Party / TCC Technology"
+                "alt": "ภาพหมู่เพื่อนร่วมงานในงาน Staff Party ของ TCC Technology"
               }
             },
             "title": "งานแรก",
@@ -148,74 +140,46 @@
             }
           },
           "sustainability": {
-            "title": "Sustainability",
             "category": "โปรเจกต์ / เว็บองค์กร",
             "description": "web app ในการคำนวณและจัดการมลพิษและของเสียต่างๆทั้งภายในและนอกองกรค์",
             "frontendLabel": "Sustainability / หน้าบ้าน",
             "frontendTopics": [
               {
-                "title": "Micro-Frontends",
-                "description": "แบ่ง module ของแอปออกเป็นส่วนย่อยที่สามารถ deploy ได้อิสระ แต่ทำงานร่วมกันภายในแอปเดียว",
-                "stack": ["React", "TypeScript", "Webpack"]
+                "description": "แบ่ง module ของแอปออกเป็นส่วนย่อยที่สามารถ deploy ได้อิสระ แต่ทำงานร่วมกันภายในแอปเดียว"
               },
               {
-                "title": "Sustaina SharedUI",
-                "description": "สร้าง Shared UI Component Library และเผยแพร่ผ่าน npm ให้ทีมใช้ร่วมกัน",
-                "stack": ["React", "Tailwind CSS", "npm"]
+                "description": "สร้าง Shared UI Component Library และเผยแพร่ผ่าน npm ให้ทีมใช้ร่วมกัน"
               },
               {
-                "title": "State, Query and Integration",
-                "description": "ทำ async selects พร้อม cache, pagination และจัดการ error",
-                "stack": ["Zustand", "TanStack Query", "TypeScript"]
+                "description": "ทำ async selects พร้อม cache, pagination และจัดการ error"
               }
             ],
             "backendLabel": "Sustainability / หลังบ้านและการส่งมอบ",
             "backendTopics": [
               {
-                "title": "Backend, Micro service",
-                "description": "Dervelop Be แบบ microservices เพื่อให้ง่ายต่อการ dev&deploy",
-                "stack": ["Node.js", "Fastify", "Prisma", "Kafka"]
+                "description": "Dervelop Be แบบ microservices เพื่อให้ง่ายต่อการ dev&deploy"
               },
               {
-                "title": "Authenticate & Permission",
-                "description": "สิทธิ์ระดับ task ตามผู้ใช้/กลุ่ม พร้อม session restoration และ route ช่วง maintenance",
-                "stack": ["Fastify", "Prisma", "Authentication", "Authorization"]
+                "description": "สิทธิ์ระดับ task ตามผู้ใช้/กลุ่ม พร้อม session restoration และ route ช่วง maintenance"
               },
               {
-                "title": "Testing and QA handoff",
-                "description": "ทดสอบสิทธิ์, tenant isolation และกลุ่ม inactive; debug, refactor, review และส่งงานต่อให้ QA",
-                "stack": ["Unit testing", "Agile Scrum", "Git", "AI-assisted development"]
+                "description": "ทดสอบสิทธิ์, tenant isolation และกลุ่ม inactive; debug, refactor, review และส่งงานต่อให้ QA"
               }
-            ],
-            "toolsTitle": "เครื่องมือในกระเป๋า",
-            "tools": [
-              "PostgreSQL",
-              "MySQL",
-              "Git",
-              "Docker",
-              "Nginx",
-              "Argo CD",
-              "Postman",
-              "Figma"
             ]
           },
           "flyer": {
-            "title": "Appsflyer",
             "category": "โปรเจกต์ / แอปมือถือ",
             "description": "integration Appsflyer เข้าแอป Oishi Club สำหรับติดตามข้อมูลลูกค้า",
             "purpose": "ติดตามข้อมูลลูกค้า",
-            "stackLabel": "Appsflyer / Stack",
             "stackTitle": "หน้าจอแอป & หลังบ้าน",
             "workTopics": [
               {
                 "title": "แอปมือถือ",
-                "description": "integration Appsflyer เข้าแอป Oishi Club สำหรับติดตามข้อมูลลูกค้า",
-                "stack": ["Flutter"]
+                "description": "integration Appsflyer เข้าแอป Oishi Club สำหรับติดตามข้อมูลลูกค้า"
               },
               {
                 "title": "ระบบหลังบ้าน",
-                "description": "ประสานข้อมูลของ Appsflyer, Oishi club, Connect X เข้าด้วยกัน",
-                "stack": ["Go"]
+                "description": "ประสานข้อมูลของ Appsflyer, Oishi club, Connect X เข้าด้วยกัน"
               }
             ],
             "summary": "Oishi Club คือแหล่งข้อมูลลูกค้า ส่วน Appsflyer คือแอปที่ใช้ติดตามข้อมูลเหล่านั้นก่อนที่จะไปเก็บลง Connect X"
@@ -243,7 +207,6 @@
     },
     "details": "รายละเอียดเรื่องราว: {{stage}}",
     "highlights": "สิ่งที่ได้ทำระหว่างทาง",
-    "takeaway": "Next Step:",
     "continued": "แล้วเจอกันที่ป้ายต่อไป!",
     "replay": "เดินทางอีกครั้ง",
     "continue": "ดูส่วนถัดไป",
@@ -311,8 +274,6 @@
         "highlights": ["ฝึกตัดต่อและจัดจังหวะ", "ทดลองปรับสีภาพ", "ลองจัดเสียงและใส่ข้อความ"]
       }
     },
-    "headingFirst": "My Current",
-    "headingSecond": "Experiments",
     "touchHint": "แตะวัตถุอื่นเพื่อดูสิ่งที่ผมกำลังเรียนรู้"
   }
 }

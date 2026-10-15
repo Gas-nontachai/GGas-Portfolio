@@ -6,8 +6,10 @@ import TechnologyBadge from '../widgets/TechnologyBadge'
 import type { ChapterPageProps } from './types'
 import { EpisodeLabel, PhotoFrame, Sticker } from '../widgets/NotebookWidgets'
 import SustainabilityProject from './SustainabilityProject'
+import { careerProjectTitles } from '../../../config/journey'
 
 type CareerTopic = { title: string; description: string; stack: string[] }
+const flyerStacks = [['Flutter'], ['Go']]
 
 function StackTags({ items }: { items: string[] }) {
   return (
@@ -48,17 +50,17 @@ export function FirstJobSpread({ side, label, navigation }: ChapterPageProps) {
       <>
         <EpisodeLabel text={`${t('journey.chapter')} ${label} / ${t(`${prefix}.title`)}`} />
         <h2 className="notebook-first-company">
-          <ScrambleText text={t(`${prefix}.company`)} />
+          <ScrambleText text="TCC Technology Limited" />
         </h2>
         <p className="notebook-lead">
-          <ScrambleText text={t(`${prefix}.role`)} />
+          <ScrambleText text="Full Stack Developer" />
           <ScrambleText text={t(`${prefix}.story`)} />
         </p>
         <div className="notebook-first-photos">
           <PhotoFrame
             src={partyPhoto}
             alt={t(`${prefix}.photos.party.alt`)}
-            caption={t(`${prefix}.photos.party.caption`)}
+            caption="Outing Party / TCC Technology"
             variant="polaroid"
             rotation={-6}
           />
@@ -104,7 +106,7 @@ export function FirstJobSpread({ side, label, navigation }: ChapterPageProps) {
                     </span>
                   </span>
                   <span className="notebook-contents-title">
-                    <ScrambleText text={t(entry.titleKey)} />
+                    <ScrambleText text={entry.title} />
                     <span className="notebook-contents-pixel-arrow" aria-hidden="true" />
                   </span>
                   <span className="notebook-contents-description">
@@ -136,7 +138,7 @@ export function AppsflyerSpread({ side, label }: ChapterPageProps) {
       <>
         <EpisodeLabel text={`${t('journey.chapter')} ${label} / ${t(`${prefix}.category`)}`} />
         <h2>
-          <ScrambleText text={t(`${prefix}.title`)} />
+          <ScrambleText text={careerProjectTitles.flyer} />
         </h2>
         <p className="notebook-lead">
           <ScrambleText text={t(`${prefix}.description`)} />
@@ -147,7 +149,7 @@ export function AppsflyerSpread({ side, label }: ChapterPageProps) {
             ↓
           </span>
           <div className="notebook-flyer-app">
-            <span>Appsflyer</span>
+            <span>{careerProjectTitles.flyer}</span>
             <p>
               <ScrambleText text={t(`${prefix}.purpose`)} />
             </p>
@@ -163,11 +165,17 @@ export function AppsflyerSpread({ side, label }: ChapterPageProps) {
 
   return (
     <>
-      <EpisodeLabel text={t(`${prefix}.stackLabel`)} />
+      <EpisodeLabel text={`${careerProjectTitles.flyer} / Stack`} />
       <h2 className="notebook-career-heading">
         <ScrambleText text={t(`${prefix}.stackTitle`)} />
       </h2>
-      <WorkTopics items={t(`${prefix}.workTopics`, { returnObjects: true }) as CareerTopic[]} />
+      <WorkTopics
+        items={flyerStacks.map((stack, index) => ({
+          title: t(`${prefix}.workTopics.${index}.title`),
+          description: t(`${prefix}.workTopics.${index}.description`),
+          stack,
+        }))}
+      />
       <p className="notebook-flyer-note">
         <ScrambleText text={t(`${prefix}.summary`)} />
       </p>

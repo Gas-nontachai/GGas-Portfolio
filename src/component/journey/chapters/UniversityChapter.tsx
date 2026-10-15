@@ -49,15 +49,15 @@ export default function UniversityChapter({ side, label }: ChapterPageProps) {
         title={t('journey.highlights')}
         items={t(`${prefix}.highlights`, { returnObjects: true }) as string[]}
       />
-      <MemoryNote title={t('journey.notebook.memory')}>
+      <MemoryNote title="Mini Memory">
         <p>
           <ScrambleText text={t(`${prefix}.memory`)} />
         </p>
       </MemoryNote>
-      <Takeaway label={t('journey.takeaway')}>
+      <Takeaway label="Next Step:">
         <ScrambleText text={t(`${prefix}.takeaway`)} />
       </Takeaway>
-      <Tags text={t(`${prefix}.tag`)} />
+      <Tags text="Curiosity / Code / Discovery" />
       <Sticker kind="heart" className="notebook-heart-sticker" />
       <Sticker kind="car" className="notebook-car-sticker" />
     </>

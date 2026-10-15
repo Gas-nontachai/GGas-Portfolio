@@ -2,6 +2,7 @@ import UniversityChapter from './UniversityChapter'
 import { FirstJobSpread, SustainabilitySpread, AppsflyerSpread } from './CareerChapter'
 import FutureChapter from './FutureChapter'
 import type { NotebookSpread } from './types'
+import { careerProjectTitles } from '../../../config/journey'
 
 // Add, remove, or reorder spreads here; the notebook derives its controls from this list.
 export const notebookChapters = {
@@ -23,14 +24,14 @@ export const notebookChapters = {
     {
       id: 'sustainability',
       Content: SustainabilitySpread,
-      titleKey: 'journey.stages.career.spreads.sustainability.title',
+      title: careerProjectTitles.sustainability,
       descriptionKey: 'journey.stages.career.spreads.sustainability.description',
       className: 'sustainability-notebook',
     },
     {
       id: 'app-flyer',
       Content: AppsflyerSpread,
-      titleKey: 'journey.stages.career.spreads.flyer.title',
+      title: careerProjectTitles.flyer,
       descriptionKey: 'journey.stages.career.spreads.flyer.description',
     },
   ],

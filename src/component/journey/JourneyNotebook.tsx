@@ -404,7 +404,7 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
       style={{ '--notebook-accent': selection.color } as CSSProperties}
     >
       <span id="notebook-title" className="sr-only">
-        {t(activeSpread.titleKey)}
+        {'title' in activeSpread ? activeSpread.title : t(activeSpread.titleKey)}
       </span>
       <span id="notebook-description" className="sr-only">
         {t(activeSpread.descriptionKey)}
@@ -468,7 +468,7 @@ export default function JourneyNotebook({ selection, onExited }: Props) {
                   navigation={{
                     entries: spreads.map((spread, spreadIndex) => ({
                       id: spread.id,
-                      titleKey: spread.titleKey,
+                      title: 'title' in spread ? spread.title : t(spread.titleKey),
                       descriptionKey: spread.descriptionKey,
                       spreadIndex,
                     })),

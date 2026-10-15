@@ -201,9 +201,9 @@ export default function ExperimentsSection({ ready = true }: { ready?: boolean }
             <ScrambleText text={`03 / ${t('experiments.eyebrow')}`} />
           </p>
           <h2 id="experiments-heading">
-            <ScrambleText text={t('experiments.headingFirst')} />
+            <ScrambleText text="My Current" />
             <br />
-            <ScrambleText text={t('experiments.headingSecond')} />
+            <ScrambleText text="Experiments" />
             <span className="experiments-period">.</span>
           </h2>
           <p className="experiments-intro">

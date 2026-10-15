@@ -13,12 +13,29 @@ import ScrambleText from '../../ScrambleText'
 import TechnologyBadge from '../widgets/TechnologyBadge'
 import { EpisodeLabel } from '../widgets/NotebookWidgets'
 import type { ChapterPageProps } from './types'
+import { careerProjectTitles } from '../../../config/journey'
 import office from '../../../assets/journey_timeline/office_building.png'
 import tree from '../../../assets/journey_timeline/tree_round.png'
 import tape from '../../../assets/journey-notebook-asset-pack/svg/07-paper-tape-blue.svg'
 import './sustainability.css'
 
 type Topic = { title: string; description: string; stack: string[] }
+const frontendTopics = [
+  { title: 'Micro-Frontends', stack: ['React', 'TypeScript', 'Webpack'] },
+  { title: 'Sustaina SharedUI', stack: ['React', 'Tailwind CSS', 'npm'] },
+  { title: 'State, Query and Integration', stack: ['Zustand', 'TanStack Query', 'TypeScript'] },
+]
+const backendTopics = [
+  { title: 'Backend, Micro service', stack: ['Node.js', 'Fastify', 'Prisma', 'Kafka'] },
+  {
+    title: 'Authenticate & Permission',
+    stack: ['Fastify', 'Prisma', 'Authentication', 'Authorization'],
+  },
+  {
+    title: 'Testing and QA handoff',
+    stack: ['Unit testing', 'Agile Scrum', 'Git', 'AI-assisted development'],
+  },
+]
 const illustrations = [PanelsTopLeft, Blocks, ListFilter, ServerCog, UserRound, ClipboardCheck]
 
 function IllustratedTopics({ topics, start }: { topics: Topic[]; start: number }) {
@@ -70,7 +87,7 @@ export default function SustainabilityProject({ side, label }: ChapterPageProps)
         <header className="sustainability-intro mb-4">
           <EpisodeLabel text={`${t('journey.chapter')} ${label} / ${t(`${prefix}.category`)}`} />
           <h2>
-            <ScrambleText text={t(`${prefix}.title`)} />
+            <ScrambleText text={careerProjectTitles.sustainability} />
           </h2>
           <div className="sustainability-snapshot z-999" aria-hidden="true">
             <img className="sustainability-snapshot-tree" src={tree} alt="" />
@@ -83,7 +100,10 @@ export default function SustainabilityProject({ side, label }: ChapterPageProps)
           text={t(`${prefix}.frontendLabel`)}
         />
         <IllustratedTopics
-          topics={t(`${prefix}.frontendTopics`, { returnObjects: true }) as Topic[]}
+          topics={frontendTopics.map((topic, index) => ({
+            ...topic,
+            description: t(`${prefix}.frontendTopics.${index}.description`),
+          }))}
           start={0}
         />
       </>
@@ -93,7 +113,10 @@ export default function SustainabilityProject({ side, label }: ChapterPageProps)
     <>
       <EpisodeLabel className="sustainability-backend-label" text={t(`${prefix}.backendLabel`)} />
       <IllustratedTopics
-        topics={t(`${prefix}.backendTopics`, { returnObjects: true }) as Topic[]}
+        topics={backendTopics.map((topic, index) => ({
+          ...topic,
+          description: t(`${prefix}.backendTopics.${index}.description`),
+        }))}
         start={3}
       />
     </>

@@ -48,7 +48,7 @@ function Portrait({ src, name, cartoon }: { src: string; name: string; cartoon: 
 
 export default function InteractiveProfileCard({
   name = profileConfig.name,
-  role,
+  role = profileConfig.role,
   cartoonSrc = cartoonPortrait,
   photoSrc = realPortrait,
 }: InteractiveProfileCardProps) {
@@ -189,7 +189,7 @@ export default function InteractiveProfileCard({
             <span className="text-[#a52e44]">.</span>
           </h3>
           <span className="mt-[9px] max-w-full rounded-sm border-2 border-[#171717] bg-[#fff6dc] px-3 py-[5px] text-sm font-semibold wrap-anywhere">
-            <ScrambleText text={role ?? t('profile.role')} />
+            <ScrambleText text={role} />
           </span>
         </div>
         <span className="mt-[18px] flex shrink-0 -rotate-6 items-center gap-[7px] self-end rounded-[6px] border-[3px] border-[#171717] bg-[#ffe16b] px-3 py-[7px] text-sm font-bold shadow-[3px_3px_0_#171717] max-[380px]:mt-3">
