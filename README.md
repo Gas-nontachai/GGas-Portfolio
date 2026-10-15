@@ -89,9 +89,9 @@ To block merging until checks pass, configure GitHub **Settings > Rules > Rulese
 1. Create an active branch ruleset targeting `main`.
 2. Enable **Require a pull request before merging**.
 3. Enable **Require status checks to pass** and select **Lint and build** after
-  the workflow has run once.
+   the workflow has run once.
 4. Enable **Require branches to be up to date before merging** unless using a
-  merge queue, and restrict bypass permissions as needed.
+   merge queue, and restrict bypass permissions as needed.
 
 The workflow alone does not prevent direct pushes or merges. These rules must
 be enabled on GitHub. Deployment is not configured by this workflow.
@@ -137,7 +137,6 @@ export default defineConfig([
     },
   },
 ])
-
 ```
 
 You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
@@ -167,5 +166,4 @@ export default defineConfig([
     },
   },
 ])
-
 ```

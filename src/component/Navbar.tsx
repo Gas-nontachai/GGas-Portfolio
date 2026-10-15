@@ -72,14 +72,24 @@ function Navbar() {
       data-hidden={navbarHidden}
       inert={navbarHidden}
     >
-      <a href="#main" onClick={handleScrollNavigation} className="flex w-fit items-center gap-2.5 text-xl leading-none font-bold text-foreground no-underline max-[420px]:gap-1.5" aria-label={t('nav.brand')}>
+      <a
+        href="#main"
+        onClick={handleScrollNavigation}
+        className="flex w-fit items-center gap-2.5 text-xl leading-none font-bold text-foreground no-underline max-[420px]:gap-1.5"
+        aria-label={t('nav.brand')}
+      >
         <img src={favicon} className="size-8 shrink-0" alt="" aria-hidden="true" />
         Portfolio
         <span className="-ml-2.5 text-[#df563d] max-[420px]:-ml-1.5">.</span>
       </a>
-      <nav className="flex items-center justify-center gap-7 [&_a]:py-2.5 [&_a]:text-sm [&_a]:font-bold [&_a]:text-foreground [&_a]:no-underline [&_a]:underline-offset-[5px] [&_a:hover]:underline [&_a:hover]:decoration-2 max-[800px]:col-span-full max-[800px]:row-start-2 max-[800px]:justify-between max-[800px]:gap-4 max-[800px]:border-t-2 max-[800px]:border-[var(--navbar-ink)] max-[800px]:pt-1 max-[420px]:[&_a]:text-xs" aria-label={t('nav.label')}>
+      <nav
+        className="flex items-center justify-center gap-7 [&_a]:py-2.5 [&_a]:text-sm [&_a]:font-bold [&_a]:text-foreground [&_a]:no-underline [&_a]:underline-offset-[5px] [&_a:hover]:underline [&_a:hover]:decoration-2 max-[800px]:col-span-full max-[800px]:row-start-2 max-[800px]:justify-between max-[800px]:gap-4 max-[800px]:border-t-2 max-[800px]:border-[var(--navbar-ink)] max-[800px]:pt-1 max-[420px]:[&_a]:text-xs"
+        aria-label={t('nav.label')}
+      >
         {navigationItems.map(({ href, labelKey }) => (
-          <a key={href} href={href} onClick={handleScrollNavigation}><ScrambleText text={t(labelKey)} /></a>
+          <a key={href} href={href} onClick={handleScrollNavigation}>
+            <ScrambleText text={t(labelKey)} />
+          </a>
         ))}
       </nav>
       <div className="flex items-center gap-[18px] max-[420px]:gap-2.5">
@@ -101,13 +111,27 @@ function Navbar() {
             onKeyDown={(event) => {
               if (event.key === 'Escape') setTooltipDismissed(true)
             }}
-            aria-label={t('theme.switch', { mode: t(`theme.${theme === 'light' ? 'dark' : 'light'}`) })}
+            aria-label={t('theme.switch', {
+              mode: t(`theme.${theme === 'light' ? 'dark' : 'light'}`),
+            })}
             aria-describedby="theme-switch-tooltip"
           >
-            {theme === 'light' ? <Moon className="size-5 stroke-[1.5]" aria-hidden="true" /> : <Sun className="size-5 stroke-[1.5]" aria-hidden="true" />}
+            {theme === 'light' ? (
+              <Moon className="size-5 stroke-[1.5]" aria-hidden="true" />
+            ) : (
+              <Sun className="size-5 stroke-[1.5]" aria-hidden="true" />
+            )}
           </button>
-          <span id="theme-switch-tooltip" role="tooltip" className="pointer-events-none invisible absolute top-[calc(100%+14px)] right-0 z-10 border-2 border-[var(--navbar-ink)] bg-secondary-background px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap text-foreground opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 group-data-[tooltip-dismissed=true]:hidden">
-            <ScrambleText text={t('theme.tooltip', { mode: t(`theme.${theme === 'light' ? 'dark' : 'light'}`) })} />
+          <span
+            id="theme-switch-tooltip"
+            role="tooltip"
+            className="pointer-events-none invisible absolute top-[calc(100%+14px)] right-0 z-10 border-2 border-[var(--navbar-ink)] bg-secondary-background px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap text-foreground opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 group-data-[tooltip-dismissed=true]:hidden"
+          >
+            <ScrambleText
+              text={t('theme.tooltip', {
+                mode: t(`theme.${theme === 'light' ? 'dark' : 'light'}`),
+              })}
+            />
           </span>
         </div>
         <div
@@ -131,9 +155,15 @@ function Navbar() {
             aria-label={t('language.switch')}
             aria-describedby="language-switch-tooltip"
           >
-            <span aria-hidden="true"><ScrambleText text={language.toUpperCase()} /></span>
+            <span aria-hidden="true">
+              <ScrambleText text={language.toUpperCase()} />
+            </span>
           </button>
-          <span id="language-switch-tooltip" role="tooltip" className="pointer-events-none invisible absolute top-[calc(100%+14px)] right-0 z-10 border-2 border-[var(--navbar-ink)] bg-secondary-background px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap text-foreground opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 group-data-[tooltip-dismissed=true]:hidden">
+          <span
+            id="language-switch-tooltip"
+            role="tooltip"
+            className="pointer-events-none invisible absolute top-[calc(100%+14px)] right-0 z-10 border-2 border-[var(--navbar-ink)] bg-secondary-background px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap text-foreground opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 group-data-[tooltip-dismissed=true]:hidden"
+          >
             <ScrambleText text={t('language.tooltip')} />
           </span>
         </div>

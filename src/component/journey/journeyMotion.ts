@@ -19,5 +19,5 @@ export function getMilestoneScrollProgress(index: number, milestoneCount: number
   if (lastIndex === 0) return 0
   // Land inside the final hold so browser scroll rounding cannot miss arrival.
   if (clampedIndex === lastIndex) return (1 + JOURNEY_ARRIVAL_PROGRESS) / 2
-  return clampedIndex / lastIndex * JOURNEY_ARRIVAL_PROGRESS
+  return (clampedIndex / lastIndex) * JOURNEY_ARRIVAL_PROGRESS
 }

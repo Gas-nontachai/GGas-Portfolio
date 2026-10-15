@@ -155,29 +155,17 @@
               {
                 "title": "Micro-Frontends",
                 "description": "Split the app into independently deployable modules that work together in one application.",
-                "stack": [
-                  "React",
-                  "TypeScript",
-                  "Webpack"
-                ]
+                "stack": ["React", "TypeScript", "Webpack"]
               },
               {
                 "title": "Sustaina SharedUI",
                 "description": "Create a shared UI component library and publish it through npm for the team.",
-                "stack": [
-                  "React",
-                  "Tailwind CSS",
-                  "npm"
-                ]
+                "stack": ["React", "Tailwind CSS", "npm"]
               },
               {
                 "title": "State, Query and Integration",
                 "description": "Async selects with caching, pagination, and error handling.",
-                "stack": [
-                  "Zustand",
-                  "TanStack Query",
-                  "TypeScript"
-                ]
+                "stack": ["Zustand", "TanStack Query", "TypeScript"]
               }
             ],
             "backendLabel": "Sustainability / Backend & delivery",
@@ -185,32 +173,17 @@
               {
                 "title": "Backend Microservices",
                 "description": "Develop backend microservices to simplify development and deployment.",
-                "stack": [
-                  "Node.js",
-                  "Fastify",
-                  "Prisma",
-                  "Kafka"
-                ]
+                "stack": ["Node.js", "Fastify", "Prisma", "Kafka"]
               },
               {
                 "title": "Authentication & Permissions",
                 "description": "Task access by user/group, session restoration, and route access during maintenance.",
-                "stack": [
-                  "Fastify",
-                  "Prisma",
-                  "Authentication",
-                  "Authorization"
-                ]
+                "stack": ["Fastify", "Prisma", "Authentication", "Authorization"]
               },
               {
                 "title": "Testing and QA Handoff",
                 "description": "Test permissions, tenant isolation, and inactive groups; debug, refactor, review, and hand off to QA.",
-                "stack": [
-                  "Unit testing",
-                  "Agile Scrum",
-                  "Git",
-                  "AI-assisted development"
-                ]
+                "stack": ["Unit testing", "Agile Scrum", "Git", "AI-assisted development"]
               }
             ],
             "toolsTitle": "Tools in my bag",
@@ -236,16 +209,12 @@
               {
                 "title": "Mobile application",
                 "description": "Integrate AppsFlyer into the Oishi Club app to track customer data.",
-                "stack": [
-                  "Flutter"
-                ]
+                "stack": ["Flutter"]
               },
               {
                 "title": "Backend",
                 "description": "Connect data across AppsFlyer, Oishi Club, and Connect X.",
-                "stack": [
-                  "Go"
-                ]
+                "stack": ["Go"]
               }
             ],
             "summary": "Oishi Club is the customer data source; AppsFlyer tracks that data before it is stored in Connect X."

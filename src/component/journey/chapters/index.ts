@@ -6,15 +6,41 @@ import type { NotebookSpread } from './types'
 // Add, remove, or reorder spreads here; the notebook derives its controls from this list.
 export const notebookChapters = {
   university: [
-    { id: 'university', Content: UniversityChapter, titleKey: 'journey.stages.university.notebookTitle', descriptionKey: 'journey.stages.university.degree' },
+    {
+      id: 'university',
+      Content: UniversityChapter,
+      titleKey: 'journey.stages.university.notebookTitle',
+      descriptionKey: 'journey.stages.university.degree',
+    },
   ],
   career: [
-    { id: 'first-job', Content: FirstJobSpread, titleKey: 'journey.stages.career.spreads.first.title', descriptionKey: 'journey.stages.career.spreads.first.description' },
-    { id: 'sustainability', Content: SustainabilitySpread, titleKey: 'journey.stages.career.spreads.sustainability.title', descriptionKey: 'journey.stages.career.spreads.sustainability.description', className: 'sustainability-notebook' },
-    { id: 'app-flyer', Content: AppsflyerSpread, titleKey: 'journey.stages.career.spreads.flyer.title', descriptionKey: 'journey.stages.career.spreads.flyer.description' },
+    {
+      id: 'first-job',
+      Content: FirstJobSpread,
+      titleKey: 'journey.stages.career.spreads.first.title',
+      descriptionKey: 'journey.stages.career.spreads.first.description',
+    },
+    {
+      id: 'sustainability',
+      Content: SustainabilitySpread,
+      titleKey: 'journey.stages.career.spreads.sustainability.title',
+      descriptionKey: 'journey.stages.career.spreads.sustainability.description',
+      className: 'sustainability-notebook',
+    },
+    {
+      id: 'app-flyer',
+      Content: AppsflyerSpread,
+      titleKey: 'journey.stages.career.spreads.flyer.title',
+      descriptionKey: 'journey.stages.career.spreads.flyer.description',
+    },
   ],
   future: [
-    { id: 'future', Content: FutureChapter, titleKey: 'journey.stages.future.notebookTitle', descriptionKey: 'journey.stages.future.description' },
+    {
+      id: 'future',
+      Content: FutureChapter,
+      titleKey: 'journey.stages.future.notebookTitle',
+      descriptionKey: 'journey.stages.future.description',
+    },
   ],
 } satisfies Record<string, [NotebookSpread, ...NotebookSpread[]]>
 

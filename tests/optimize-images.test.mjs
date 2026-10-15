@@ -7,8 +7,11 @@ import sharp from 'sharp'
 import { optimizeAssets, optimizeImage } from '../scripts/optimize-images.mjs'
 
 test('PNG optimization retains decoded pixels, dimensions and transparency', async () => {
-  const original = await sharp({ create: { width: 128, height: 128, channels: 4, background: '#ff80ab80' } })
-    .png({ compressionLevel: 0 }).toBuffer()
+  const original = await sharp({
+    create: { width: 128, height: 128, channels: 4, background: '#ff80ab80' },
+  })
+    .png({ compressionLevel: 0 })
+    .toBuffer()
   const { buffer } = await optimizeImage(original, '.PNG')
   assert.ok(buffer.length < original.length)
   const metadata = await sharp(buffer).metadata()
@@ -22,9 +25,13 @@ test('PNG optimization retains decoded pixels, dimensions and transparency', asy
 test('dry run does not write; write mode preserves SVG and original paths', async () => {
   const directory = await mkdtemp(path.join(os.tmpdir(), 'ggas-images-'))
   try {
-    const image = await sharp({ create: { width: 64, height: 64, channels: 3, background: '#ffe16b' } })
-      .png({ compressionLevel: 0 }).toBuffer()
-    const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><path id="cursor" d="M0 0h8v8H0z"/></svg>'
+    const image = await sharp({
+      create: { width: 64, height: 64, channels: 3, background: '#ffe16b' },
+    })
+      .png({ compressionLevel: 0 })
+      .toBuffer()
+    const svg =
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><path id="cursor" d="M0 0h8v8H0z"/></svg>'
     await writeFile(path.join(directory, 'sample.png'), image)
     await writeFile(path.join(directory, 'cursor.svg'), svg)
     const options = { roots: [directory], log: () => {} }
@@ -61,8 +68,11 @@ test('failed decodes leave originals untouched and report errors', async () => {
 })
 
 test('large mode resizes only oversized images, retains format and aspect ratio', async () => {
-  const original = await sharp({ create: { width: 2048, height: 512, channels: 4, background: '#ff80ab80' } })
-    .png({ compressionLevel: 0 }).toBuffer()
+  const original = await sharp({
+    create: { width: 2048, height: 512, channels: 4, background: '#ff80ab80' },
+  })
+    .png({ compressionLevel: 0 })
+    .toBuffer()
   assert.ok(original.length > 1_000_000)
   const normal = await optimizeImage(original, '.png')
   assert.equal((await sharp(normal.buffer).metadata()).width, 2048)
@@ -74,7 +84,10 @@ test('large mode resizes only oversized images, retains format and aspect ratio'
   assert.equal(metadata.height, 192)
   assert.equal(metadata.hasAlpha, true)
   assert.ok(resized.buffer.length < original.length)
-  const expected = await sharp(original).resize({ width: 768, height: 768, fit: 'inside' }).raw().toBuffer()
+  const expected = await sharp(original)
+    .resize({ width: 768, height: 768, fit: 'inside' })
+    .raw()
+    .toBuffer()
   assert.deepEqual(await sharp(resized.buffer).raw().toBuffer(), expected)
 
   const smallFile = await sharp(original).png({ compressionLevel: 9 }).toBuffer()
@@ -88,8 +101,11 @@ test('large-mode dry run leaves files untouched before explicitly writing', asyn
   const directory = await mkdtemp(path.join(os.tmpdir(), 'ggas-large-images-'))
   try {
     const filename = path.join(directory, 'large.png')
-    const original = await sharp({ create: { width: 1024, height: 1024, channels: 3, background: '#6699f5' } })
-      .png({ compressionLevel: 0 }).toBuffer()
+    const original = await sharp({
+      create: { width: 1024, height: 1024, channels: 3, background: '#6699f5' },
+    })
+      .png({ compressionLevel: 0 })
+      .toBuffer()
     await writeFile(filename, original)
     const options = { roots: [directory], resizeLarge: true, log: () => {} }
     const preview = await optimizeAssets(options)

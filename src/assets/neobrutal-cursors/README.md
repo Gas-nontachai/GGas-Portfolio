@@ -3,6 +3,7 @@
 18 original SVG cursors (48×48): default, hover, pointer, pressed, grab, grabbing, drag, drop, no-drop, text, link, loading, disabled, resize-horizontal, resize-vertical, resize-diagonal, help, precision.
 
 ## Usage (React + Vite)
+
 `src/component/CustomCursor.tsx` loads every SVG in this folder with
 `import.meta.glob` and selects the cursor from pointer events and `data-cursor`
 attributes. Keep all 18 SVGs: their filenames are resolved dynamically.

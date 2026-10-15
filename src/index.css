@@ -1,4 +1,4 @@
-@import "@risky2k1/neobrutalism-ui/styles.css";
+@import '@risky2k1/neobrutalism-ui/styles.css';
 @source "../node_modules/@risky2k1/neobrutalism-ui/dist";
 
 @property --background {
@@ -27,7 +27,11 @@
 
 @media (prefers-reduced-motion: no-preference) {
   :root {
-    transition: --background 450ms ease, --secondary-background 450ms ease, --foreground 450ms ease, --border 450ms ease;
+    transition:
+      --background 450ms ease,
+      --secondary-background 450ms ease,
+      --foreground 450ms ease,
+      --border 450ms ease;
   }
 }
 
@@ -46,13 +50,18 @@
   --animate-inventory-float: inventory-float 3.8s ease-in-out infinite;
 
   @keyframes inventory-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
   }
 }
 
 ::selection {
-  background-color: #FFD43B;
+  background-color: #ffd43b;
   color: #000000;
 }
 
@@ -88,7 +97,10 @@ body {
   margin: 0;
   min-width: 320px;
   background-color: var(--background);
-  background-image: radial-gradient(color-mix(in srgb, var(--foreground) 14%, transparent) 1px, transparent 1px);
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--foreground) 14%, transparent) 1px,
+    transparent 1px
+  );
   background-size: 22px 22px;
   color: var(--foreground);
 }
@@ -104,11 +116,16 @@ img {
 }
 
 @media (pointer: fine) {
-  body, body * { cursor: none !important; }
+  body,
+  body * {
+    cursor: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation: none !important;
     transition: none !important;
   }

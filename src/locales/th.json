@@ -155,29 +155,17 @@
               {
                 "title": "Micro-Frontends",
                 "description": "แบ่ง module ของแอปออกเป็นส่วนย่อยที่สามารถ deploy ได้อิสระ แต่ทำงานร่วมกันภายในแอปเดียว",
-                "stack": [
-                  "React",
-                  "TypeScript",
-                  "Webpack"
-                ]
+                "stack": ["React", "TypeScript", "Webpack"]
               },
               {
                 "title": "Sustaina SharedUI",
                 "description": "สร้าง Shared UI Component Library และเผยแพร่ผ่าน npm ให้ทีมใช้ร่วมกัน",
-                "stack": [
-                  "React",
-                  "Tailwind CSS",
-                  "npm"
-                ]
+                "stack": ["React", "Tailwind CSS", "npm"]
               },
               {
                 "title": "State, Query and Integration",
                 "description": "ทำ async selects พร้อม cache, pagination และจัดการ error",
-                "stack": [
-                  "Zustand",
-                  "TanStack Query",
-                  "TypeScript"
-                ]
+                "stack": ["Zustand", "TanStack Query", "TypeScript"]
               }
             ],
             "backendLabel": "Sustainability / หลังบ้านและการส่งมอบ",
@@ -185,32 +173,17 @@
               {
                 "title": "Backend, Micro service",
                 "description": "Dervelop Be แบบ microservices เพื่อให้ง่ายต่อการ dev&deploy",
-                "stack": [
-                  "Node.js",
-                  "Fastify",
-                  "Prisma",
-                  "Kafka"
-                ]
+                "stack": ["Node.js", "Fastify", "Prisma", "Kafka"]
               },
               {
                 "title": "Authenticate & Permission",
                 "description": "สิทธิ์ระดับ task ตามผู้ใช้/กลุ่ม พร้อม session restoration และ route ช่วง maintenance",
-                "stack": [
-                  "Fastify",
-                  "Prisma",
-                  "Authentication",
-                  "Authorization"
-                ]
+                "stack": ["Fastify", "Prisma", "Authentication", "Authorization"]
               },
               {
                 "title": "Testing and QA handoff",
                 "description": "ทดสอบสิทธิ์, tenant isolation และกลุ่ม inactive; debug, refactor, review และส่งงานต่อให้ QA",
-                "stack": [
-                  "Unit testing",
-                  "Agile Scrum",
-                  "Git",
-                  "AI-assisted development"
-                ]
+                "stack": ["Unit testing", "Agile Scrum", "Git", "AI-assisted development"]
               }
             ],
             "toolsTitle": "เครื่องมือในกระเป๋า",
@@ -236,16 +209,12 @@
               {
                 "title": "แอปมือถือ",
                 "description": "integration Appsflyer เข้าแอป Oishi Club สำหรับติดตามข้อมูลลูกค้า",
-                "stack": [
-                  "Flutter"
-                ]
+                "stack": ["Flutter"]
               },
               {
                 "title": "ระบบหลังบ้าน",
                 "description": "ประสานข้อมูลของ Appsflyer, Oishi club, Connect X เข้าด้วยกัน",
-                "stack": [
-                  "Go"
-                ]
+                "stack": ["Go"]
               }
             ],
             "summary": "Oishi Club คือแหล่งข้อมูลลูกค้า ส่วน Appsflyer คือแอปที่ใช้ติดตามข้อมูลเหล่านั้นก่อนที่จะไปเก็บลง Connect X"

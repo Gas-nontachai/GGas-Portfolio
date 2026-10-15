@@ -24,11 +24,13 @@ export default function ScrambleText({ text }: { text: string }) {
     const glyphs = Array.from(segmenter.segment(text), ({ segment }) => segment)
     const render = () => {
       const progress = Math.min(1, (performance.now() - started) / 520)
-      animated.textContent = glyphs.map((character, index) => (
-        /\s/u.test(character) || index < Math.floor(progress * glyphs.length)
-          ? character
-          : characters[Math.floor(Math.random() * characters.length)]
-      )).join('')
+      animated.textContent = glyphs
+        .map((character, index) =>
+          /\s/u.test(character) || index < Math.floor(progress * glyphs.length)
+            ? character
+            : characters[Math.floor(Math.random() * characters.length)],
+        )
+        .join('')
       if (progress === 1) {
         wrapper.removeAttribute('data-scrambling')
         window.clearInterval(timer)
@@ -48,7 +50,11 @@ export default function ScrambleText({ text }: { text: string }) {
   return (
     <span ref={container} className="group/scramble relative inline-block max-w-full align-bottom">
       <span className="group-data-[scrambling=true]/scramble:opacity-0">{text}</span>
-      <span ref={overlay} aria-hidden="true" className="pointer-events-none absolute inset-0 hidden overflow-hidden group-data-[scrambling=true]/scramble:block" />
+      <span
+        ref={overlay}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 hidden overflow-hidden group-data-[scrambling=true]/scramble:block"
+      />
     </span>
   )
 }

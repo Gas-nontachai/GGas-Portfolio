@@ -7,6 +7,6 @@ import AssetGate from './component/AssetGate'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <AssetGate>{ready => <App ready={ready} />}</AssetGate>
+    <AssetGate>{(ready) => <App ready={ready} />}</AssetGate>
   </StrictMode>,
 )
