@@ -67,14 +67,14 @@ test('rapid selection settles on the latest choice without stale preview', () =>
   assert.deepEqual(state, { selected: 'davinci', hovered: null, focused: null })
 })
 
-test('TH/EN include descriptions, three highlights, and all statuses', () => {
+test('TH/EN include descriptions, four highlights, and all statuses', () => {
   for (const language of ['en', 'th']) {
     const { experiments } = JSON.parse(
       readFileSync(new URL(`../src/locales/${language}.json`, import.meta.url), 'utf8'),
     )
     for (const id of ['flutter', 'esp32', 'printing', 'davinci']) {
       assert.ok(experiments.items[id].description.length > 0)
-      assert.equal(experiments.items[id].highlights.length, 3)
+      assert.equal(experiments.items[id].highlights.length, 4)
       assert.ok(experiments.items[id].highlights.every((text) => text.length > 0))
     }
     for (const status of ['learning', 'exploring', 'experimenting'])

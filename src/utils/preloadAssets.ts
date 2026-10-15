@@ -14,11 +14,14 @@ export const overlayImageUrls = [
   printerIcon,
 ]
 
-const imageUrls = import.meta.glob<string>('../assets/**/*.{png,jpg,jpeg,webp,gif,svg}', {
-  eager: true,
-  query: '?url',
-  import: 'default',
-})
+const imageUrls = import.meta.glob<string>(
+  ['../assets/**/*.{png,jpg,jpeg,webp,gif,svg}', '!../assets/current-experiments-asset-pack/**'],
+  {
+    eager: true,
+    query: '?url',
+    import: 'default',
+  },
+)
 
 const images = new Map<string, Promise<void>>()
 let fontTask: Promise<void> | undefined

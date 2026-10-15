@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import type { Experiment } from './experiments.config'
 import type { SelectionAction } from './experimentSelection'
 import ScrambleText from '../ScrambleText'
+import ExperimentActivity from './ExperimentActivity'
 
 type Props = {
   experiment: Experiment
@@ -52,7 +53,7 @@ export default function ExperimentObject({ experiment, selected, previewed, disp
       >
         <span className="experiment-object-art">
           <img src={asset} width={width} height={height} alt="" draggable={false} />
-          <span className={`experiment-idle experiment-idle--${id}`} aria-hidden="true" />
+          <ExperimentActivity experiment={experiment} />
         </span>
         <span className="experiment-name">
           <span className="experiment-dot" />
