@@ -485,7 +485,7 @@ export default function JourneyTimeline({ ready = true }: { ready?: boolean }) {
                 <RotateCcw size={14} aria-hidden="true" />
                 <ScrambleText text={t('journey.replay')} />
               </button>
-              <a href="#after-journey" onClick={handleScrollNavigation}>
+              <a href="#current-experiments" onClick={handleScrollNavigation}>
                 <ScrambleText text={t('journey.continue')} />
                 <ArrowDown size={14} aria-hidden="true" />
               </a>
