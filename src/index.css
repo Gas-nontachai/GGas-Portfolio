@@ -111,6 +111,41 @@ body {
   flex-direction: column;
 }
 
+html[data-rewinding='true']::before,
+html[data-rewinding='true']::after {
+  position: fixed;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+html[data-rewinding='true']::before {
+  content: 'REW // CCTV';
+  top: 16px;
+  right: 16px;
+  padding: 6px 10px;
+  border: 1px solid rgb(255 255 255 / 55%);
+  background: rgb(13 24 28 / 72%);
+  color: #fff;
+  font: 700 12px/1.2 monospace;
+}
+
+html[data-rewinding='true']::after {
+  content: '';
+  inset: 0;
+  background:
+    linear-gradient(transparent 48%, rgb(255 255 255 / 28%) 50%, transparent 52%) 0 0 / 100% 150px,
+    repeating-linear-gradient(to bottom, rgb(0 0 0 / 15%) 0 1px, transparent 1px 4px);
+  animation: cctv-rewind 130ms linear infinite;
+}
+
+@keyframes cctv-rewind {
+  to {
+    background-position:
+      0 150px,
+      0 0;
+  }
+}
+
 img {
   -webkit-user-drag: none;
 }

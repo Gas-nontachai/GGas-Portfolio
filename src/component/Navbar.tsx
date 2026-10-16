@@ -10,6 +10,7 @@ const navigationItems = [
   { href: '#main', labelKey: 'nav.home' },
   { href: '#journey', labelKey: 'nav.journey' },
   { href: '#current-experiments', labelKey: 'nav.experiments' },
+  { href: '#my-creations', labelKey: 'nav.creations' },
 ] as const
 
 function Navbar() {
