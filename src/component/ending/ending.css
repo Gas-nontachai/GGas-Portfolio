@@ -133,14 +133,15 @@
 .ending-message {
   position: absolute;
   top: max(95px, 6%);
-  left: 50%;
+  left: 0;
+  right: 0;
   z-index: 400;
   width: min(700px, 88%);
+  margin-inline: auto;
   box-sizing: border-box;
   overflow-wrap: anywhere;
   padding: 20px 26px;
   transform: translateY(14px);
-  translate: -50% 0;
   opacity: 0;
   visibility: hidden;
   color: var(--foreground);
@@ -211,9 +212,6 @@
   margin-left: 10px;
 }
 @media (max-width: 1023px) {
-  .ending-roadside:nth-of-type(n + 9) {
-    display: none;
-  }
   .ending-cockpit {
     height: 18%;
   }
@@ -250,10 +248,6 @@
   .ending-steering {
     left: 25%;
     width: min(42vw, 24dvh);
-  }
-  .ending-roadside:nth-of-type(n + 7),
-  .ending-roadside--lamp {
-    display: none;
   }
 }
 @media (max-width: 767px) and (max-height: 700px) {
