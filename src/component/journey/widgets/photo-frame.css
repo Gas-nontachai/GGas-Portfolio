@@ -53,6 +53,9 @@ html {
     0 4px 10px #17171724,
     0 1px 2px #17171716;
 }
+.notebook-photo.notebook-photo-polaroid.university-notebook-photo {
+  width: min(calc(100% - 16px), clamp(200px, 32vw, 350px));
+}
 
 .notebook-photo.notebook-photo-polaroid > img:not(.notebook-tape) {
   width: 100%;

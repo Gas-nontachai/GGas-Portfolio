@@ -16,8 +16,8 @@
 }
 .notebook-stage {
   position: relative;
-  width: min(960px, calc(100vw - 72px));
-  height: min(660px, calc(100dvh - 80px));
+  width: min(1240px, calc(100vw - 56px));
+  height: min(860px, calc(100dvh - 56px));
   perspective: 1800px;
 }
 .notebook-pages {
@@ -407,7 +407,7 @@
   line-height: 1.2;
 }
 .notebook-first-photos {
-  --first-photo-width: min(82%, max(0px, calc((100dvh - 200px) * 0.48)), 300px);
+  --first-photo-width: min(65%, max(0px, calc((100dvh - 200px) * 0.58)), 370px);
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   justify-items: center;
@@ -423,7 +423,7 @@
   z-index: 2;
   margin-top: calc(var(--first-photo-width) * -0.12);
 }
-.notebook-first-photos .notebook-photo-polaroid {
+.notebook-first-photos .notebook-photo.notebook-photo-polaroid {
   width: var(--first-photo-width);
 }
 .notebook-overlay .notebook-career-heading {

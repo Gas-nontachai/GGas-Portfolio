@@ -29,6 +29,7 @@ export default function UniversityChapter({ side, label }: ChapterPageProps) {
           <ScrambleText text={t(`${prefix}.faculty`)} />
         </p>
         <PhotoFrame
+          className="university-notebook-photo"
           src={universityPhoto}
           alt={t('journey.notebook.images.university')}
           caption={t(`${prefix}.period`)}
