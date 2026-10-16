@@ -217,6 +217,7 @@ export default function ItemInspection({
         <div ref={panel} className="creation-preview-panel">
           <button
             ref={closeButton}
+            type="button"
             className="creation-preview-close"
             onClick={onClose}
             aria-label={t('creations.close')}

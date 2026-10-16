@@ -234,14 +234,38 @@
   position: absolute;
   top: 12px;
   right: 12px;
+  z-index: 2;
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
-  border: 2px solid var(--border);
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 3px solid #171717;
   border-radius: 0;
-  background: var(--background);
-  color: var(--foreground);
+  background: #ffe16b;
+  color: #171717;
+  box-shadow: 4px 4px 0 #171717;
+  cursor: pointer;
+  transition:
+    translate 120ms ease,
+    box-shadow 120ms ease,
+    background-color 120ms ease;
+}
+.creation-preview-close > svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 3;
+}
+@media (hover: hover) {
+  .creation-preview-close:hover {
+    background: #ffd43b;
+    translate: -1px -1px;
+    box-shadow: 5px 5px 0 #171717;
+  }
+}
+.creation-preview-close:active {
+  translate: 4px 4px;
+  box-shadow: none;
 }
 .creation-preview-meta {
   padding-right: 35px;
