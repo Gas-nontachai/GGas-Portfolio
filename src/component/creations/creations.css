@@ -651,6 +651,257 @@
   font-size: 11px;
   line-height: 1.4;
 }
+.notebook-overlay[data-chapter='longduw'] .notebook-stage {
+  width: min(1240px, calc(100vw - 56px));
+  height: min(860px, calc(100dvh - 56px));
+}
+.longduw-notebook .notebook-paper-right {
+  padding-top: 82px;
+}
+.longduw-notebook .notebook-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.3px;
+}
+.longduw-notebook .notebook-content {
+  padding-bottom: 8px;
+}
+.longduw-story-page,
+.longduw-evolution-page {
+  display: flex;
+  min-height: calc(100dvh - 250px);
+  flex-direction: column;
+}
+.longduw-notebook-subtitle {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 16px;
+  padding-bottom: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+.longduw-notebook-subtitle::after {
+  position: absolute;
+  bottom: 0;
+  left: 2px;
+  width: 38%;
+  height: 3px;
+  border-radius: 50%;
+  background: #4fc8ec;
+  content: '';
+  transform: rotate(-2deg);
+}
+.longduw-highlight-title {
+  position: relative;
+  z-index: 0;
+  width: fit-content;
+  max-width: 100%;
+  isolation: isolate;
+}
+.longduw-highlight-title::after {
+  position: absolute;
+  z-index: -1;
+  right: -3px;
+  bottom: 5px;
+  left: -3px;
+  height: 0.27em;
+  border-radius: 3px 8px 3px 6px;
+  background: #ffe16b;
+  content: '';
+  transform: rotate(-1deg);
+}
+.longduw-story-photo {
+  width: min(100%, 380px);
+  margin: 12px auto 18px;
+  padding: 6px;
+  border: 1px solid #17171718;
+  background: #fffefa;
+  box-shadow:
+    0 4px 10px #17171724,
+    0 1px 2px #17171716;
+}
+.longduw-story-photo > img:not(.notebook-tape) {
+  height: clamp(128px, 26dvh, 220px);
+  padding: 0;
+  background: transparent;
+  object-fit: contain;
+}
+.longduw-story-copy p {
+  margin: 0 0 12px;
+}
+.longduw-story-page > .notebook-tags {
+  margin-top: auto;
+}
+.longduw-memory-wrap {
+  position: relative;
+  margin: auto 4px 22px;
+}
+.longduw-memory-heart {
+  position: absolute;
+  top: -18px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  transform: rotate(12deg);
+}
+.longduw-story-tags {
+  margin-top: 0;
+}
+.longduw-evolution-page > h2 {
+  font-size: clamp(24px, 2.5vw, 32px);
+}
+.longduw-evolution-page > .longduw-notebook-subtitle {
+  margin-bottom: 12px;
+}
+.longduw-evolution-grid {
+  display: grid;
+  flex: 1;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.longduw-evolution-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 10px 12px;
+  border: 3px solid #171717;
+  box-shadow: 4px 4px 0 #171717;
+}
+.longduw-evolution-card--blue {
+  --longduw-evolution-marker: #4fc8ec;
+  background: #bceff9;
+}
+.longduw-evolution-card--green {
+  --longduw-evolution-marker: #56ce7f;
+  background: #c2f0b3;
+}
+.longduw-evolution-card--yellow {
+  --longduw-evolution-marker: #ffcf47;
+  background: #ffe992;
+}
+.longduw-evolution-card--pink {
+  --longduw-evolution-marker: #f267a7;
+  background: #ffd8e8;
+}
+.longduw-evolution-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 8px;
+  font-size: 17px;
+  line-height: 1.25;
+}
+.longduw-evolution-number {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  place-items: center;
+  border: 3px solid #171717;
+  border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%;
+  background: var(--longduw-evolution-marker);
+  box-shadow: 2px 2px 0 #171717;
+  font-size: 13px;
+  line-height: 1;
+}
+.longduw-evolution-title {
+  background-image: linear-gradient(transparent 70%, var(--longduw-evolution-marker) 70%);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.longduw-evolution-body {
+  display: grid;
+  flex: 1;
+  grid-template-columns: minmax(0, 1fr) clamp(52px, 14%, 64px);
+  align-items: start;
+  gap: 8px;
+}
+.longduw-evolution-copy {
+  min-width: 0;
+}
+.longduw-evolution-copy > p {
+  margin: 0 0 8px;
+  font-size: 11.5px;
+  line-height: 1.35;
+}
+.longduw-evolution-art {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1;
+  place-items: center;
+  align-self: center;
+  opacity: 0.58;
+  transform: rotate(3deg);
+}
+.longduw-evolution-art > svg {
+  width: 84%;
+  height: 84%;
+  color: var(--longduw-evolution-marker);
+}
+.longduw-planned-label {
+  display: inline-block;
+  margin: 7px 0 4px;
+  padding: 3px 7px;
+  border: 1px dashed #171717;
+  background: #fff8de;
+  font-size: 9px;
+  letter-spacing: 0;
+}
+.longduw-evolution-card .notebook-tags {
+  margin: auto 0 0;
+  background: #fffdf2;
+  font-size: 10px !important;
+}
+.longduw-evolution-card .health-tech-list {
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.longduw-evolution-card .health-tech-list .sustainability-tech-badge > span:last-child {
+  overflow-wrap: anywhere;
+}
+.longduw-evolution-card .health-tech-list .sustainability-tech-badge {
+  min-height: 52px;
+}
+.longduw-planned-wrap {
+  margin-top: 6px;
+}
+.longduw-planned-wrap .longduw-planned-label {
+  margin: 4px 0;
+}
+.longduw-planned-wrap .notebook-tags {
+  margin: 0;
+}
+.longduw-evolution-card .notebook-memories {
+  gap: 6px;
+  margin: 4px 0 6px;
+  font-size: 10px;
+  line-height: 1.35;
+}
+.longduw-evolution-card .notebook-memories li {
+  gap: 7px;
+}
+.longduw-evolution-card .notebook-memories li > span:first-child {
+  width: 23px;
+  height: 23px;
+  flex: 0 0 23px;
+}
+.longduw-evolution-card .notebook-takeaway {
+  margin-top: 6px;
+}
+.longduw-evolution-card .notebook-takeaway img {
+  width: 23px;
+  height: 23px;
+}
+.longduw-evolution-card .notebook-takeaway p {
+  font-size: 10px;
+  line-height: 1.35;
+}
 @media (max-width: 1023px) {
   .creations-layout {
     grid-template-columns: minmax(0, 1fr);
@@ -754,6 +1005,49 @@
     height: 34px;
     flex-basis: 34px;
     font-size: 12px;
+  }
+}
+@media (max-width: 700px) {
+  .notebook-overlay[data-chapter='longduw'] .notebook-stage {
+    width: calc(100vw - 40px);
+    height: calc(100dvh - 64px);
+  }
+  .longduw-notebook .notebook-paper {
+    padding: 22px 16px 28px;
+  }
+  .longduw-notebook .notebook-paper-right {
+    padding-top: 64px;
+  }
+  .longduw-story-page,
+  .longduw-evolution-page {
+    min-height: 0;
+  }
+  .longduw-story-page > .notebook-tags {
+    margin-top: 4px;
+  }
+  .longduw-story-photo > img:not(.notebook-tape) {
+    height: clamp(140px, 23dvh, 210px);
+  }
+  .longduw-evolution-grid {
+    flex: none;
+    grid-template-rows: auto auto;
+    align-content: start;
+    gap: 10px;
+  }
+  .longduw-evolution-card {
+    padding: 11px 10px;
+  }
+  .longduw-evolution-card h3 {
+    font-size: 15px;
+  }
+  .longduw-evolution-body {
+    grid-template-columns: minmax(0, 1fr) 48px;
+  }
+  .longduw-evolution-number {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+    font-size: 11px;
   }
 }
 @media (max-height: 600px) and (min-width: 600px) {

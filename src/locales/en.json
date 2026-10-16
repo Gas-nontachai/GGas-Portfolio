@@ -321,7 +321,61 @@
       },
       "longduw": {
         "title": "LongDuw",
-        "summary": "I wanted a sample project to learn CRUD from start to finish, including notifications."
+        "summary": "I wanted a sample project to learn CRUD from start to finish, including notifications.",
+        "notebook": {
+          "story": {
+            "title": "LongDuw",
+            "subtitle": "I wanted to try Flutter, so I built a real app!",
+            "artCaption": "LongDuw app icon",
+            "origin": [
+              "I was getting interested in Flutter at the time, and figured I needed a real project to learn something new by actually building it.",
+              "I picked a To-Do List because it seemed like a simple place to start. But as I kept working on it, there was more to learn than I expected: managing data, shaping the UI, and making the app genuinely comfortable to use."
+            ],
+            "rightLabel": "The starting idea",
+            "heading": "Why a To-Do List?",
+            "idea": [
+              "I wanted to start with something easy to understand, but with room to keep building on it.",
+              "At first I thought adding, editing, and deleting tasks would be enough. Then I wanted to add search, filters, sorting, and notifications too."
+            ],
+            "noteTitle": "From practice project to a real app",
+            "note": "I thought I was just making an app to practice Flutter. I ended up trying a lot more new things than I expected.",
+            "tags": ["Flutter", "Dart", "Mobile Development"]
+          },
+          "evolution": {
+            "title": "From CRUD to a useful mobile app",
+            "subtitle": "Learning one feature at a time by building it",
+            "label": "Development Journey",
+            "cards": {
+              "basics": {
+                "title": "Start with CRUD",
+                "description": "The first thing I tried was adding, editing, deleting, and marking tasks as complete. It sounds simple, but building it gave me practice with state management, form validation, and designing screens that feel good to use.",
+                "tech": ["Flutter", "Dart", "State Management"]
+              },
+              "useful": {
+                "title": "CRUD alone wasn't quite enough",
+                "description": "As the task list grew, I added search, filters for priority and due date, and sorting to make things easier to find. I also added Thai/English language switching and Light/Dark themes.",
+                "features": ["Search", "Filter", "Sort", "Thai/English", "Light/Dark Themes"]
+              },
+              "data": {
+                "title": "Keep the data, send the reminders",
+                "description": "I separated data from the UI and explored SQLite for local storage. For notifications, I planned a daily task summary instead of a reminder for every task.",
+                "tech": ["SQLite", "SharedPreferences", "Local Notifications"],
+                "plannedLabel": "In development",
+                "planned": ["SQLite migration", "Daily Notifications"]
+              },
+              "learning": {
+                "title": "What did I learn from this?",
+                "description": "This project showed me mobile development is about more than a polished UI.",
+                "points": [
+                  "State and storage need to work together.",
+                  "Android/iOS differences and small usability details shape the experience."
+                ],
+                "takeawayLabel": "What I learned",
+                "takeaway": "Sometimes the best way to learn isn't just reading. It's trying, breaking things, and coming back to fix them yourself."
+              }
+            }
+          }
+        }
       },
       "ngenbills": {
         "title": "NgenBills",
