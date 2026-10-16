@@ -234,13 +234,13 @@
   "ending": {
     "eyebrow": "THE ROAD AHEAD",
     "title": "End of this road. Not the end of the journey.",
-    "description": "Thanks for coming along. I wonder what exciting new paths might be waiting ahead.",
+    "description": "Thanks for coming along. I wonder what exciting new things are waiting up ahead. I hope I keep learning and growing along the way.",
     "back": "Back to Start",
     "scroll": "Scroll to follow the road"
   },
   "creations": {
-    "eyebrow": "BUILT FROM CURIOSITY",
-    "description": "Built from curiosity, kept as a collection. Apps, small experiments, and ideas waiting for their turn.",
+    "eyebrow": "WHAT ELSE DO I MAKE OUTSIDE WORK?",
+    "description": "Outside work, I like trying to build new things. Some come from requests, some are ideas I want to explore, and some are still waiting to be made.",
     "collection": "COLLECTION / {{count}} ITEMS",
     "inventory": "My creation inventory",
     "inspect": "Inspect {{title}}",
@@ -257,27 +257,27 @@
     "live": "Open live site",
     "categories": {
       "health": "Health",
-      "productivity": "Productivity",
+      "productivity": "Task management",
       "finance": "Personal finance",
       "idea": "Future idea"
     },
     "status": {
-      "completed": "Completed",
+      "completed": "Built",
       "wip": "In progress",
       "mystery": "Not built yet"
     },
     "items": {
       "health": {
         "title": "Health SaaS",
-        "summary": "A personal project called Health SaaS. Explore it through the live site."
+        "summary": "A web app for tracking your personal health online, with records you can export and share with your doctor."
       },
       "longduw": {
         "title": "LongDuw",
-        "summary": "A To-Do list application built with Flutter."
+        "summary": "I wanted a sample project to learn CRUD from start to finish, including notifications."
       },
       "ngenbills": {
         "title": "NgenBills",
-        "summary": "A Flutter app for tracking personal debts and payments, with data stored on your device.",
+        "summary": "After learning CRUD and notifications, I wanted to build an app to put what I had learned into practice.",
         "overview": "NgenBills tracks multiple debt accounts offline. Debt and payment records are stored in SQLite on the device, without a user account or backend.",
         "features": [
           "Track multiple debt accounts, balances and payment progress.",
