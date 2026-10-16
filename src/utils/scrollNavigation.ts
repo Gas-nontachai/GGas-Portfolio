@@ -8,7 +8,11 @@ let scrollTween: gsap.core.Tween | null = null
 
 export function scrollToSection(
   hash: string,
-  { offsetY = hash === '#current-experiments' ? 0 : 24, duration = 0.7 } = {},
+  {
+    offsetY = hash === '#current-experiments' ? 0 : 24,
+    duration = 0.7,
+    ease = 'power2.out',
+  }: { offsetY?: number; duration?: number; ease?: 'power2.out' | 'none' } = {},
 ) {
   if (!hash.startsWith('#') || hash.length === 1) return null
 
@@ -24,7 +28,7 @@ export function scrollToSection(
   scrollTween = gsap.to(window, {
     scrollTo: { y: target, offsetY, autoKill: true },
     duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : duration,
-    ease: 'power2.out',
+    ease,
   })
 
   return scrollTween
