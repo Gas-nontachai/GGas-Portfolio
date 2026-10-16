@@ -367,6 +367,7 @@ export default function JourneyTimeline({ ready = true }: { ready?: boolean }) {
                         </span>
                         <span className="journey-card-tag">
                           <ScrambleText text={t('journey.notebook.read')} />
+                          <ArrowRight size={12} strokeWidth={2.5} aria-hidden="true" />
                         </span>
                       </span>
                     </button>

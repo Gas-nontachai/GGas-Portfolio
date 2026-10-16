@@ -330,6 +330,10 @@
   margin-top: 24px;
 }
 .creation-project-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
   color: #171717;
   font-weight: 700;
   text-underline-offset: 4px;
@@ -474,6 +478,7 @@
   transform: rotate(12deg);
 }
 .health-live-link {
+  gap: 6px;
   display: inline-flex;
   min-height: 42px;
   align-items: center;
@@ -1213,28 +1218,62 @@
     min-height: clamp(64px, 9svh, 104px);
   }
 }
+/* Stretch the inventory into available mobile space instead of centering a fixed-size board. */
 @media (max-width: 600px) {
   .creations-section {
-    padding: 20px 18px;
+    min-height: 100svh;
+    align-items: stretch;
+    padding: clamp(12px, 2svh, 20px) 16px;
+  }
+  .creations-layout {
+    grid-template-rows: auto minmax(min-content, 1fr);
+    align-items: stretch;
+    margin-block: 0;
+    gap: 12px;
+  }
+  .creations-eyebrow {
+    margin-bottom: 8px;
+    font-size: 10px;
+  }
+  .creations-heading h2 {
+    font-size: clamp(28px, 4.5svh, 36px);
+  }
+  .creations-heading > p:not(.creations-eyebrow) {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .creations-collection-tag {
+    padding: 4px 8px;
+    font-size: 10px;
   }
   .creation-board {
-    padding: 12px;
-    gap: 10px;
+    grid-template-rows: repeat(2, minmax(min-content, 1fr)) repeat(2, minmax(44px, 0.6fr));
+    padding: 10px;
+    gap: 8px;
     box-shadow: 5px 5px 0 var(--border);
   }
   .creation-slot {
-    min-height: clamp(58px, 9svh, 90px);
-    padding: 18px 5px 7px;
-    gap: 4px;
+    min-height: 44px;
+    padding: 16px 4px 6px;
+    gap: 3px;
   }
   .creation-slot-art {
-    width: min(72px, 70%);
+    width: clamp(32px, 7svh, 56px);
+    max-width: 70%;
   }
   .creation-slot-label {
     font-size: 12px;
   }
   .creation-slot-status {
     font-size: 9px;
+  }
+  .creation-slot--empty {
+    padding: 4px;
+    gap: 0;
+  }
+  .creation-slot--empty > span:first-child {
+    font-size: 22px;
   }
   .creation-preview-panel {
     padding: 22px 20px;
@@ -1411,6 +1450,11 @@
   .creation-slot-status {
     font-size: 8px;
   }
+  .creation-slot--empty {
+    min-height: 44px;
+    padding: 4px;
+    gap: 0;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .creations-section *,
@@ -1418,4 +1462,9 @@
     animation: none !important;
     transition: none !important;
   }
+}
+
+.creation-project-links a > svg,
+.health-live-link > svg {
+  flex-shrink: 0;
 }

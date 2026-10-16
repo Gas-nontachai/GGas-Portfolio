@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { Asterisk } from 'lucide-react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -50,7 +51,7 @@ export default function ContactSection({ ready = true }: { ready?: boolean }) {
         </p>
         <h2 id="contact-heading">
           <ScrambleText text={t('contact.title')} />
-          <span aria-hidden="true"> ✳</span>
+          <Asterisk className="contact-heading-mark" strokeWidth={3} aria-hidden="true" />
         </h2>
       </header>
       <ProfileCard />

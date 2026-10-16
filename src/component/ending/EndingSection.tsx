@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { ArrowDown } from 'lucide-react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -162,7 +163,8 @@ export default function EndingSection({ ready = true }: { ready?: boolean }) {
       <DrivingScene />
       <EndingMessage />
       <p className="ending-scroll-hint" data-ending-hint>
-        <ScrambleText text={t('ending.scroll')} /> <span aria-hidden="true">↓</span>
+        <ScrambleText text={t('ending.scroll')} />{' '}
+        <ArrowDown size={18} strokeWidth={2.5} aria-hidden="true" />
       </p>
     </section>
   )

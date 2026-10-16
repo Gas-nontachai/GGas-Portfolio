@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import type { ReactNode } from 'react'
-import { BookOpenCheck, Lightbulb, PanelsTopLeft, ServerCog } from 'lucide-react'
+import { ArrowUpRight, BookOpenCheck, Lightbulb, PanelsTopLeft, ServerCog } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import ScrambleText from '../ScrambleText'
 import {
@@ -112,7 +112,8 @@ export default function HealthNotebookContent({ item, side, label, spread }: Pro
         </div>
         {item.links?.live && (
           <a className="health-live-link" href={item.links.live} target="_blank" rel="noreferrer">
-            <ScrambleText text={`${t('creations.live')} ↗`} />
+            <ScrambleText text={t('creations.live')} />
+            <ArrowUpRight size={18} strokeWidth={2.5} aria-hidden="true" />
           </a>
         )}
       </div>

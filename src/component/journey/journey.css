@@ -316,7 +316,9 @@
   line-height: 1.4;
 }
 .journey-card-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   margin-top: 7px;
   font-size: 9px;
   font-weight: 700;

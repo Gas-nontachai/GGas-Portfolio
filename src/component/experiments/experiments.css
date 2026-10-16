@@ -473,7 +473,8 @@
   min-width: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  overscroll-behavior-y: contain;
+  /* Let wheel and touch scrolling continue into the page at either edge. */
+  overscroll-behavior-y: auto;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
   padding: 2px 4px 2px 2px;
@@ -967,4 +968,11 @@
   .experiments-explore:is(:hover, :active) {
     transform: none;
   }
+}
+
+.experiments-note-smile {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.12em;
 }

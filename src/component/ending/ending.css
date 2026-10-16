@@ -195,6 +195,13 @@
   outline-offset: 6px;
 }
 .ending-scroll-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  white-space: nowrap;
   position: absolute;
   z-index: 330;
   top: 8%;
@@ -208,8 +215,8 @@
   font-size: 14px;
   font-weight: 700;
 }
-.ending-scroll-hint span {
-  margin-left: 10px;
+.ending-scroll-hint > svg {
+  flex-shrink: 0;
 }
 @media (max-width: 1023px) {
   .ending-cockpit {
@@ -303,7 +310,7 @@
     width: 25dvh;
   }
   .ending-scroll-hint {
-    left: 72%;
+    left: 50%;
     top: 7%;
     font-size: 12px;
   }
