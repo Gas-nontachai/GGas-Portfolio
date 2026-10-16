@@ -8,7 +8,7 @@ import SocialLinks from './SocialLinks'
 export default function ProfileCard() {
   const { t } = useTranslation()
   return (
-    <article className="contact-card" aria-labelledby="contact-profile-name">
+    <article id="profile-card" className="contact-card" aria-labelledby="contact-profile-name">
       <header className="contact-card-bar">
         <span>
           <Code2 size={20} aria-hidden="true" /> THANGGAS — PROFILE

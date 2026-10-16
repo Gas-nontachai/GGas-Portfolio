@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
-import { createPortal } from 'react-dom'
+import { createPortal, flushSync } from 'react-dom'
 import gsap from 'gsap'
 import { Flip } from 'gsap/Flip'
 import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react'
@@ -41,6 +41,10 @@ export default function Notebook({ selection, spreads, onOpened, onCloseStart, o
   const sourceElement = useRef(selection.source)
   const closeAnimation = useRef<() => void>(() => {})
   const [page, setPage] = useState(0)
+  const [side, setSide] = useState<'left' | 'right'>('left')
+  const [singlePage, setSinglePage] = useState(
+    () => window.matchMedia('(max-width: 767px)').matches,
+  )
   const [busy, setBusy] = useState(true)
   const turning = useRef(true)
   const pageTurn = useRef<gsap.core.Timeline | null>(null)
@@ -50,26 +54,120 @@ export default function Notebook({ selection, spreads, onOpened, onCloseStart, o
   const activeSpread = spreads[page]
   const ChapterContent = activeSpread.Content
 
+  const renderPagination = (placement: 'desktop' | 'mobile') => {
+    const single = placement === 'mobile'
+    const current = single ? page * 2 + (side === 'right' ? 1 : 0) : page
+    const total = single ? pageCount * 2 : pageCount
+    const navigate = (next: number) =>
+      turnPage(single ? Math.floor(next / 2) : next, single && next % 2 ? 'right' : 'left')
+
+    return (
+      total > 1 && (
+        <nav
+          className={`notebook-pagination notebook-pagination--${placement}`}
+          aria-label={t('journey.notebook.pageNavigation')}
+        >
+          <button
+            type="button"
+            disabled={busy || current === 0}
+            onClick={() => navigate(current - 1)}
+            aria-label={t('journey.notebook.previousPage')}
+          >
+            <ArrowLeft size={20} aria-hidden="true" />
+          </button>
+          <span role="status" aria-live="polite" aria-atomic="true">
+            {t('journey.notebook.pageIndicator', { current: current + 1, total })}
+          </span>
+          <button
+            type="button"
+            disabled={busy || current === total - 1}
+            onClick={() => navigate(current + 1)}
+            aria-label={t('journey.notebook.nextPage')}
+          >
+            <ArrowRight size={20} aria-hidden="true" />
+          </button>
+        </nav>
+      )
+    )
+  }
+
+  useLayoutEffect(() => {
+    const query = window.matchMedia('(max-width: 767px)')
+    const updateLayout = () => {
+      pageTurn.current?.progress(1)
+      setSinglePage(query.matches)
+    }
+    query.addEventListener('change', updateLayout)
+    return () => query.removeEventListener('change', updateLayout)
+  }, [])
+
   useLayoutEffect(() => {
     if (busy || !restorePageFocus.current) return
     restorePageFocus.current = false
-    overlayRef.current
-      ?.querySelector<HTMLButtonElement>('.notebook-pagination button:not(:disabled)')
+    Array.from(
+      overlayRef.current?.querySelectorAll<HTMLButtonElement>(
+        '.notebook-pagination button:not(:disabled)',
+      ) ?? [],
+    )
+      .find((button) => button.getClientRects().length > 0)
       ?.focus({ preventScroll: true })
   }, [page, busy])
 
-  const turnPage = (next: number) => {
-    if (turning.current || next < 0 || next >= pageCount || next === page) return
+  useLayoutEffect(() => {
+    const scroll = overlayRef.current?.querySelector<HTMLElement>('.notebook-paper-scroll')
+    if (scroll) scroll.scrollTop = 0
+  }, [page, side, singlePage])
+
+  const turnPage = (next: number, nextSide: 'left' | 'right' = 'left') => {
+    if (
+      turning.current ||
+      next < 0 ||
+      next >= pageCount ||
+      (next === page && (!singlePage || nextSide === side))
+    )
+      return
     restorePageFocus.current = true
     const overlay = overlayRef.current!
-    const scroll = overlay.querySelector<HTMLElement>('.notebook-paper-scroll')!
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setPage(next)
-      scroll.scrollTop = 0
+      setSide(nextSide)
       return
     }
     turning.current = true
     setBusy(true)
+    if (singlePage) {
+      const scroll = overlay.querySelector<HTMLElement>('.notebook-paper-scroll')!
+      const direction =
+        next * 2 + (nextSide === 'right' ? 1 : 0) > page * 2 + (side === 'right' ? 1 : 0) ? 1 : -1
+      pageTurn.current = gsap
+        .timeline({
+          onComplete: () => {
+            gsap.set(scroll, { clearProps: 'opacity,transform' })
+            pageTurn.current = null
+            turning.current = false
+            setBusy(false)
+          },
+        })
+        .to(scroll, { opacity: 0, x: -8 * direction, duration: 0.14, ease: smootherstep })
+        .call(() => {
+          flushSync(() => {
+            setPage(next)
+            setSide(nextSide)
+          })
+        })
+        .fromTo(
+          scroll,
+          { opacity: 0, x: 8 * direction },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.22,
+            ease: smootherstep,
+            immediateRender: false,
+          },
+        )
+      return
+    }
     const forward = next > page
     const paper = overlay.querySelector<HTMLElement>(
       forward ? '.notebook-paper-right' : '.notebook-paper-left',
@@ -124,7 +222,7 @@ export default function Notebook({ selection, spreads, onOpened, onCloseStart, o
       .call(
         () => {
           setPage(next)
-          scroll.scrollTop = 0
+          setSide(nextSide)
         },
         [],
         0.22,
@@ -203,7 +301,7 @@ export default function Notebook({ selection, spreads, onOpened, onCloseStart, o
     source.style.visibility = 'hidden'
 
     const context = gsap.context(() => {
-      const mobile = window.matchMedia('(max-width: 700px)').matches
+      const mobile = window.matchMedia('(max-width: 767px)').matches
       gsap.set(stage, { x: mobile ? 0 : -stage.clientWidth / 4 })
       gsap.set(pages, { opacity: 0 })
       gsap.set(contents, { opacity: 0, y: 12 })
@@ -308,7 +406,7 @@ export default function Notebook({ selection, spreads, onOpened, onCloseStart, o
       }
       // Re-read the source on close: resize may have changed its position/size.
       const destination = Flip.getState(source)
-      const mobile = window.matchMedia('(max-width: 700px)').matches
+      const mobile = window.matchMedia('(max-width: 767px)').matches
       const closingTimeline = gsap.timeline({ onComplete: finish })
       closingTimeline
         .to(contents, { opacity: 0, y: 8, duration: 0.18, ease: smoothstep }, 0)
@@ -358,7 +456,7 @@ export default function Notebook({ selection, spreads, onOpened, onCloseStart, o
       if (event.key !== 'Tab') return
       const focusable = [
         ...overlay.querySelectorAll<HTMLElement>('button:not(:disabled), a[href], [tabindex="0"]'),
-      ].filter((element) => !element.closest('[inert]'))
+      ].filter((element) => !element.closest('[inert]') && element.getClientRects().length > 0)
       const first = focusable[0]
       const last = focusable[focusable.length - 1]
       if (
@@ -428,7 +526,7 @@ export default function Notebook({ selection, spreads, onOpened, onCloseStart, o
       <div className="notebook-stage">
         <div
           className={`notebook-pages ${activeSpread.className ?? ''}`}
-          data-paginated={pageCount > 1}
+          data-paginated={singlePage || pageCount > 1}
           data-spread={activeSpread.id}
         >
           <div
@@ -437,7 +535,10 @@ export default function Notebook({ selection, spreads, onOpened, onCloseStart, o
             role="region"
             aria-label={t('journey.notebook.pages')}
           >
-            <section className="notebook-paper notebook-paper-left">
+            <section
+              className="notebook-paper notebook-paper-left"
+              hidden={singlePage && side !== 'left'}
+            >
               <div className="notebook-content">
                 <ChapterContent side="left" label={selection.label} />
                 <span className="notebook-page-number">
@@ -445,33 +546,11 @@ export default function Notebook({ selection, spreads, onOpened, onCloseStart, o
                 </span>
               </div>
             </section>
-            <section className="notebook-paper notebook-paper-right">
-              {pageCount > 1 && (
-                <nav
-                  className="notebook-pagination"
-                  aria-label={t('journey.notebook.pageNavigation')}
-                >
-                  <button
-                    type="button"
-                    disabled={busy || page === 0}
-                    onClick={() => turnPage(page - 1)}
-                    aria-label={t('journey.notebook.previousPage')}
-                  >
-                    <ArrowLeft size={20} aria-hidden="true" />
-                  </button>
-                  <span role="status" aria-live="polite" aria-atomic="true">
-                    {t('journey.notebook.pageIndicator', { current: page + 1, total: pageCount })}
-                  </span>
-                  <button
-                    type="button"
-                    disabled={busy || page === pageCount - 1}
-                    onClick={() => turnPage(page + 1)}
-                    aria-label={t('journey.notebook.nextPage')}
-                  >
-                    <ArrowRight size={20} aria-hidden="true" />
-                  </button>
-                </nav>
-              )}
+            <section
+              className="notebook-paper notebook-paper-right"
+              hidden={singlePage && side !== 'right'}
+            >
+              {renderPagination('desktop')}
               <div className="notebook-content">
                 <ChapterContent
                   side="right"
@@ -493,6 +572,8 @@ export default function Notebook({ selection, spreads, onOpened, onCloseStart, o
               </div>
             </section>
           </div>
+          {renderPagination('mobile')}
+
           <div className="notebook-spine" aria-hidden="true">
             <i />
             <i />

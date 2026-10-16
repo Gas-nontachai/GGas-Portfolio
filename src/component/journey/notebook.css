@@ -336,6 +336,9 @@
   font-size: 11px;
   font-weight: 700;
 }
+.notebook-pagination--mobile {
+  display: none;
+}
 .notebook-pagination button {
   display: grid;
   place-items: center;
@@ -785,24 +788,64 @@
   text-align: center;
   font-weight: 700;
 }
-@media (max-width: 700px) {
+@media (max-width: 767px) {
   .notebook-overlay {
     padding: 22px 16px;
   }
   .notebook-stage {
     width: calc(100vw - 40px);
-    height: calc(100dvh - 64px);
+    height: calc(100dvh - 64px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
     max-height: 780px;
+  }
+  .notebook-pages {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
   }
   .notebook-paper-scroll {
     display: block;
+    min-height: 0;
+    height: auto;
+    overflow-x: hidden;
+    overflow-anchor: none;
+  }
+  .notebook-pages[data-paginated='true'] .notebook-paper-scroll {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .notebook-overlay .notebook-pages[data-paginated='true'] .notebook-paper-right {
+    padding-top: 23px;
+  }
+  .notebook-pagination--desktop {
+    display: none;
+  }
+  .notebook-pagination--mobile {
+    display: flex;
+    position: relative;
+    inset: auto;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 10px max(8px, env(safe-area-inset-bottom, 0px));
+    border: 2px solid #171717;
+    border-top: 0;
+    border-radius: 0 0 7px 7px;
+    background: #fff8de;
+  }
+  .notebook-pagination > span {
+    min-width: 0;
+    text-align: center;
+  }
+  .notebook-pagination button {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
   }
   .notebook-paper {
+    min-height: 100%;
     padding: 23px 20px;
+    overflow-wrap: anywhere;
   }
   .notebook-paper-left {
     border-right: 0;
-    border-bottom: 2px dashed #171717;
   }
   .notebook-spine {
     display: none;
@@ -841,7 +884,7 @@
     right: 9px;
   }
 }
-@media (max-height: 500px) and (min-width: 701px) {
+@media (max-height: 500px) and (min-width: 768px) {
   .notebook-stage {
     height: calc(100dvh - 44px);
   }

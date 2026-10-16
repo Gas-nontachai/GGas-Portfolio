@@ -15,6 +15,7 @@ import {
 } from './experimentScroll'
 import { getExperimentSceneScale } from './experimentLayout'
 import ScrambleText from '../ScrambleText'
+import { isScrollNavigationActive, scrollNavigationEvent } from '../../utils/scrollNavigation'
 import './experiments.css'
 
 gsap.registerPlugin(ScrollToPlugin)
@@ -110,6 +111,7 @@ export default function ExperimentsSection({ ready = true }: { ready?: boolean }
               scrollY: window.scrollY,
               sectionTop: node.getBoundingClientRect().top,
               viewportHeight: window.innerHeight,
+              navigationActive: isScrollNavigationActive(),
             })
             if (target === null || scrollTween?.isActive()) return
             const motion = getExperimentAttractionMotion(target - window.scrollY, velocity)
@@ -139,6 +141,7 @@ export default function ExperimentsSection({ ready = true }: { ready?: boolean }
             })
           })
         }
+        window.addEventListener(scrollNavigationEvent, stopCapture)
         window.addEventListener('scroll', handleScroll, { passive: true })
         const timeline = gsap
           .timeline({ paused: true })
@@ -164,6 +167,7 @@ export default function ExperimentsSection({ ready = true }: { ready?: boolean }
           stopCapture()
           window.cancelAnimationFrame(scrollFrame)
           window.removeEventListener('scroll', handleScroll)
+          window.removeEventListener(scrollNavigationEvent, stopCapture)
         }
       })
       return () => media.revert()

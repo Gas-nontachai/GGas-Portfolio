@@ -1,4 +1,9 @@
-type EntranceFrame = { scrollY: number; sectionTop: number; viewportHeight: number }
+type EntranceFrame = {
+  scrollY: number
+  sectionTop: number
+  viewportHeight: number
+  navigationActive?: boolean
+}
 
 export function createScrollVelocityTracker(initialY: number, initialTime: number) {
   let previousY = initialY
@@ -34,11 +39,21 @@ export function createExperimentEntranceCapture(initialScrollY: number) {
   let previousScrollY = initialScrollY
   let consumed = false
 
-  return ({ scrollY, sectionTop, viewportHeight }: EntranceFrame): number | null => {
+  return ({
+    scrollY,
+    sectionTop,
+    viewportHeight,
+    navigationActive = false,
+  }: EntranceFrame): number | null => {
     const movingDown = scrollY > previousScrollY
     previousScrollY = scrollY
     // Rearm only after returning to the previous section, not on every wheel tick.
     if (sectionTop > viewportHeight * 0.82) consumed = false
+    // Track navigation frames without capturing them or their final scroll event.
+    if (navigationActive) {
+      if (sectionTop <= viewportHeight * 0.82) consumed = true
+      return null
+    }
     if (
       consumed ||
       !movingDown ||
