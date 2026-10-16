@@ -229,5 +229,12 @@
         ]
       }
     }
+  },
+  "ending": {
+    "eyebrow": "THE ROAD AHEAD",
+    "title": "End of this road. Not the end of the journey.",
+    "description": "Thanks for coming along. I wonder what exciting new paths might be waiting ahead.",
+    "back": "Back to Start",
+    "scroll": "Scroll to follow the road"
   }
 }

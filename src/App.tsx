@@ -9,6 +9,7 @@ import CurrentlyExploring from './component/home/CurrentlyExploring'
 import MainClass from './component/home/MainClass'
 import JourneyTimeline from './component/journey/JourneyTimeline'
 import ExperimentsSection from './component/experiments/ExperimentsSection'
+import EndingSection from './component/ending/EndingSection'
 import { useThemeStore } from './store/useThemeStore'
 
 function App({ ready = true }: { ready?: boolean }) {
@@ -72,6 +73,7 @@ function App({ ready = true }: { ready?: boolean }) {
       </main>
       <JourneyTimeline ready={ready} />
       <ExperimentsSection ready={ready} />
+      <EndingSection ready={ready} />
       <footer className="mt-auto flex justify-between gap-4 border-t-[3px] border-border bg-secondary-background px-6 py-5 font-mono text-xs sm:px-10">
         <span>GGAS PORTFOLIO</span>
         <span>2026</span>

@@ -1,0 +1,22 @@
+{
+  "tool": "Built-in image_gen",
+  "basePrompt": "Production game scene asset, transparent PNG. Match attached reference's 2D playful cartoon platformer style: very thick black outlines, simple chunky shapes, flat colors and minimal two-tone cartoon shading. Friendly, clean, not photorealistic or 3D, no fine detail or texture, no text, no watermark, no surrounding scene. Isolated entire asset with small transparent margin. ",
+  "assets": [
+    {
+      "file": "barricade.png",
+      "prompt": "One wooden road barricade seen straight from a driver's viewpoint, wide horizontal plank with two simple sturdy wooden trestle feet. Warm tan/yellow wood, one coral stripe at each end, thick near-black outlines. Front view, not side view. Empty transparent space around and between legs. Width about 2.4 times height. Do not include lights, foliage, asphalt, sky, lettering or sign.",
+      "reference": "../journey_timeline/construction_barrier.png"
+    },
+    {
+      "file": "dashboard.png",
+      "prompt": "First-person interior of the same small yellow cartoon car as the reference. ONE minimal dashboard only: wide horizontal curved yellow dashboard top rim, charcoal lower dashboard, small simple central vent and three cream round instrument dials on the LEFT. View straight forward from driver seat through windshield. The dashboard forms a shallow wide strip about 4:1, no windshield frame above it, no steering wheel, no hands, no seats, no scenery. Outside the dashboard silhouette is transparent including all space above it. Keep instrument details sparse.",
+      "reference": "../journey_timeline/journey_car_side.png"
+    },
+    {
+      "file": "steering-wheel.png",
+      "prompt": "ONE black three-spoke steering wheel from a small yellow cartoon car seen from the driver seat, near-frontal circular view, yellow center hub with small cream circle, black chunky rim and spokes, minimal flat dark gray cartoon shading. The gaps between rim/spokes are truly transparent. No hands, dashboard, scenery, logo, text or background.",
+      "reference": "../journey_timeline/journey_car_side.png"
+    }
+  ],
+  "processing": "Transparent margins trimmed; resized for web and saved as optimized transparent PNG."
+}
