@@ -40,7 +40,10 @@
     "brand": "GGAS home",
     "journey": "Journey",
     "experiments": "Experiments",
-    "creations": "Creations"
+    "creations": "Creations",
+    "businessCard": "Business Card",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
   },
   "home": {
     "hello": "Hey, I'm",

@@ -1,22 +1,26 @@
 .creations-section {
   flex-shrink: 0;
   box-sizing: border-box;
+  min-height: 100svh;
   display: grid;
-  align-items: center;
+  align-items: stretch;
   scroll-margin-top: 24px;
   border-top: 3px solid var(--border);
-  padding: clamp(24px, 5svh, 56px) clamp(20px, 4vw, 64px);
-  padding-bottom: 24px;
+  padding: 24px clamp(20px, 4vw, 64px);
   background: var(--background);
 }
 .creations-layout {
   display: grid;
+  align-self: center;
   grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.5fr);
-  align-items: center;
+  align-items: stretch;
   gap: clamp(28px, 4vw, 64px);
   width: 100%;
   max-width: 1320px;
-  margin: auto;
+  margin: 0 auto;
+}
+.creations-heading {
+  align-self: center;
 }
 .creations-eyebrow {
   font-size: 12px;
@@ -49,6 +53,7 @@
 .creation-board {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(min-content, 1fr);
   gap: 14px;
   min-width: 0;
   padding: 20px;
@@ -1154,7 +1159,7 @@
   font-size: 11px;
   line-height: 1.4;
 }
-@media (max-width: 700px) {
+@media (max-width: 767px) {
   .ngenbills-notebook .notebook-paper {
     padding: 22px 16px 28px;
   }
@@ -1199,6 +1204,7 @@
 @media (max-width: 1023px) {
   .creations-layout {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(min-content, 1fr);
     max-width: 780px;
     gap: clamp(16px, 3svh, 28px);
   }
@@ -1209,19 +1215,26 @@
     display: none;
   }
   .creations-heading h2 {
-    font-size: clamp(34px, 6vw, 52px);
+    font-size: 40px;
   }
   .creations-heading > p:not(.creations-eyebrow) {
-    margin: 16px 0;
+    margin: 12px 0;
+    font-size: 16px;
+    line-height: 1.45;
   }
   .creation-slot {
-    min-height: clamp(64px, 9svh, 104px);
+    min-height: 44px;
+    padding: 16px 6px 8px;
+    gap: 4px;
+  }
+  .creation-slot-art {
+    width: clamp(32px, 5svh, 56px);
+    max-width: 70%;
   }
 }
 /* Stretch the inventory into available mobile space instead of centering a fixed-size board. */
 @media (max-width: 600px) {
   .creations-section {
-    min-height: 100svh;
     align-items: stretch;
     padding: clamp(12px, 2svh, 20px) 16px;
   }
@@ -1288,7 +1301,7 @@
     gap: 20px;
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 767px) {
   .health-notebook .notebook-paper {
     padding: 22px 16px 28px;
   }
@@ -1331,7 +1344,7 @@
     font-size: 12px;
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 767px) {
   .longduw-notebook .notebook-paper {
     padding: 22px 16px 28px;
   }
@@ -1376,6 +1389,7 @@
   }
   .creations-layout {
     grid-template-columns: minmax(190px, 0.72fr) minmax(0, 1.28fr);
+    grid-template-rows: minmax(min-content, 1fr);
     gap: 18px;
   }
   .creations-heading h2 {

@@ -39,7 +39,10 @@
     "brand": "หน้าแรก GGAS",
     "journey": "เส้นทางชีวิต",
     "experiments": "สิ่งที่สนใจ",
-    "creations": "ผลงาน"
+    "creations": "ผลงาน",
+    "businessCard": "นามบัตร",
+    "openMenu": "เปิดเมนูหลัก",
+    "closeMenu": "ปิดเมนูหลัก"
   },
   "home": {
     "hello": "สวัสดีครับ ผม",

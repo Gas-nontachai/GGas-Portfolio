@@ -98,3 +98,30 @@ test('fast scrolling beyond the entrance and layout changes at rest do not pull 
   assert.equal(capture(frame(4300)), null)
   assert.equal(capture({ scrollY: 4300, sectionTop: 100, viewportHeight: 800 }), null)
 })
+
+test('menu navigation can cross the experiments entrance without being captured', () => {
+  const capture = createExperimentEntranceCapture(0)
+  for (const scrollY of [3000, 3400, 3800, 4000, 4400]) {
+    assert.equal(capture({ ...frame(scrollY), navigationActive: true }), null)
+  }
+  assert.equal(capture(frame(4401)), null)
+})
+
+test('navigating to experiments also suppresses the final scroll event after arrival', () => {
+  const capture = createExperimentEntranceCapture(0)
+  assert.equal(capture({ ...frame(3500), navigationActive: true }), null)
+  assert.equal(capture({ ...frame(3999), navigationActive: true }), null)
+  assert.equal(capture(frame(4000)), null)
+  // A later manual entrance still gets the original attraction animation.
+  assert.equal(capture(frame(3000)), null)
+  assert.equal(capture(frame(3400)), 4000)
+})
+
+test('returning to the top through navigation rearms the next manual entrance', () => {
+  const capture = createExperimentEntranceCapture(3200)
+  assert.equal(capture(frame(3400)), 4000)
+  for (const scrollY of [3200, 2000, 0]) {
+    assert.equal(capture({ ...frame(scrollY), navigationActive: true }), null)
+  }
+  assert.equal(capture(frame(3400)), 4000)
+})

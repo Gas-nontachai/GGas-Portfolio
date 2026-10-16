@@ -4,12 +4,18 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
 gsap.registerPlugin(ScrollToPlugin)
 
+export const scrollNavigationEvent = 'portfolio:scroll-navigation'
+
 let scrollTween: gsap.core.Tween | null = null
+
+export function isScrollNavigationActive() {
+  return scrollTween?.isActive() ?? false
+}
 
 export function scrollToSection(
   hash: string,
   {
-    offsetY = hash === '#current-experiments' ? 0 : 24,
+    offsetY,
     duration = 0.7,
     ease = 'power2.out',
   }: { offsetY?: number; duration?: number; ease?: 'power2.out' | 'none' } = {},
@@ -19,6 +25,27 @@ export function scrollToSection(
   const target = document.getElementById(hash.slice(1))
   if (!target) return null
 
+  // Sticky sections must navigate to their document anchor, not their current sticky position.
+  const destination =
+    hash === '#journey' ? (target.closest<HTMLElement>('.journey-scroll-shell') ?? target) : target
+  let destinationY: number | HTMLElement = destination
+  let navbarOffset = 0
+  if (hash === '#my-creations' || hash === '#profile-card') {
+    destinationY = 0
+    let element: HTMLElement | null = destination
+    while (element) {
+      destinationY += element.offsetTop
+      const parent = element.offsetParent as HTMLElement | null
+      if (parent) destinationY += parent.clientTop
+      element = parent
+    }
+    const navbar = document.getElementById('navbar-navigation')?.closest('header')
+    if (navbar && hash !== '#my-creations') {
+      navbarOffset =
+        navbar.offsetHeight + (Number.parseFloat(getComputedStyle(navbar).top) || 0) + 16
+    }
+  }
+  window.dispatchEvent(new Event(scrollNavigationEvent))
   scrollTween?.kill()
 
   if (window.location.hash !== hash) {
@@ -26,7 +53,11 @@ export function scrollToSection(
   }
 
   scrollTween = gsap.to(window, {
-    scrollTo: { y: target, offsetY, autoKill: true },
+    scrollTo: {
+      y: hash === '#main' ? 0 : destinationY,
+      offsetY: offsetY ?? navbarOffset,
+      autoKill: true,
+    },
     duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : duration,
     ease,
   })
