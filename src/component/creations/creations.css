@@ -1,8 +1,12 @@
 .creations-section {
   flex-shrink: 0;
+  box-sizing: border-box;
+  display: grid;
+  align-items: center;
+  min-height: 100svh;
   scroll-margin-top: 24px;
   border-top: 3px solid var(--border);
-  padding: clamp(50px, 8vw, 110px) clamp(20px, 4vw, 64px);
+  padding: clamp(24px, 5svh, 56px) clamp(20px, 4vw, 64px);
   background: var(--background);
 }
 .creations-layout {
@@ -10,6 +14,7 @@
   grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.5fr);
   align-items: center;
   gap: clamp(28px, 4vw, 64px);
+  width: 100%;
   max-width: 1320px;
   margin: auto;
 }
@@ -59,7 +64,7 @@
   justify-content: center;
   gap: 7px;
   min-width: 0;
-  min-height: 168px;
+  min-height: clamp(76px, 16svh, 140px);
   padding: 22px 8px 12px;
   border: 2px solid var(--border);
   border-radius: 0;
@@ -343,7 +348,7 @@
   .creations-layout {
     grid-template-columns: minmax(0, 1fr);
     max-width: 780px;
-    gap: 30px;
+    gap: clamp(16px, 3svh, 28px);
   }
   .creation-board {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -357,10 +362,13 @@
   .creations-heading > p:not(.creations-eyebrow) {
     margin: 16px 0;
   }
+  .creation-slot {
+    min-height: clamp(64px, 9svh, 104px);
+  }
 }
 @media (max-width: 600px) {
   .creations-section {
-    padding: 44px 18px;
+    padding: 20px 18px;
   }
   .creation-board {
     padding: 12px;
@@ -368,9 +376,12 @@
     box-shadow: 5px 5px 0 var(--border);
   }
   .creation-slot {
-    min-height: 132px;
-    padding: 22px 5px 10px;
-    gap: 6px;
+    min-height: clamp(58px, 9svh, 90px);
+    padding: 18px 5px 7px;
+    gap: 4px;
+  }
+  .creation-slot-art {
+    width: min(72px, 70%);
   }
   .creation-slot-label {
     font-size: 12px;
@@ -389,6 +400,87 @@
   .creation-inspection-content {
     padding: 24px 18px;
     gap: 20px;
+  }
+}
+@media (max-height: 600px) and (min-width: 600px) {
+  .creations-section {
+    padding: 14px clamp(18px, 3vw, 36px);
+  }
+  .creations-layout {
+    grid-template-columns: minmax(190px, 0.72fr) minmax(0, 1.28fr);
+    gap: 18px;
+  }
+  .creations-heading h2 {
+    font-size: clamp(28px, 4vw, 38px);
+  }
+  .creations-heading > p:not(.creations-eyebrow) {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .creations-eyebrow {
+    margin-bottom: 10px;
+  }
+  .creation-board {
+    gap: 8px;
+    padding: 10px;
+  }
+  .creation-slot {
+    min-height: clamp(44px, 12svh, 64px);
+    gap: 2px;
+    padding: 16px 3px 5px;
+  }
+  .creation-slot-art {
+    width: clamp(24px, 6svh, 32px);
+  }
+  .creation-slot-label {
+    font-size: 10px;
+    line-height: 1.1;
+  }
+  .creation-slot-status {
+    font-size: 8px;
+  }
+}
+@media (max-height: 600px) and (max-width: 599px) {
+  .creations-section {
+    padding: 12px 14px;
+  }
+  .creations-layout {
+    gap: 12px;
+  }
+  .creations-eyebrow {
+    margin-bottom: 8px;
+  }
+  .creations-heading h2 {
+    font-size: clamp(26px, 7vw, 34px);
+  }
+  .creations-heading > p:not(.creations-eyebrow) {
+    margin: 8px 0;
+    font-size: 14px;
+    line-height: 1.35;
+  }
+  .creations-collection-tag {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+  .creation-board {
+    gap: 6px;
+    padding: 8px;
+  }
+  .creation-slot {
+    min-height: clamp(48px, 8svh, 64px);
+    gap: 2px;
+    padding: 16px 3px 5px;
+  }
+  .creation-slot-art {
+    width: clamp(24px, 6svh, 32px);
+  }
+  .creation-slot-label {
+    font-size: 10px;
+    line-height: 1.1;
+  }
+  .creation-slot-status {
+    font-size: 8px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
