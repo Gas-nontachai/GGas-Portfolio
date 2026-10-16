@@ -3,10 +3,10 @@
   box-sizing: border-box;
   display: grid;
   align-items: center;
-  min-height: 100svh;
   scroll-margin-top: 24px;
   border-top: 3px solid var(--border);
   padding: clamp(24px, 5svh, 56px) clamp(20px, 4vw, 64px);
+  padding-bottom: 24px;
   background: var(--background);
 }
 .creations-layout {

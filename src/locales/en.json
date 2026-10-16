@@ -1,5 +1,33 @@
 {
+  "contact": {
+    "eyebrow": "KEEP THE CONVERSATION GOING",
+    "title": "Let's connect!",
+    "intro": "Have an idea, a question, or just want to say hi? Pick a channel below.",
+    "role": "Full-Stack Developer",
+    "bio": "Just a developer who loves building things and exploring new ideas.",
+    "xp": "XP / Still exploring",
+    "xpNote": "Just for fun. Always more to discover.",
+    "actions": "Contact ThangGas",
+    "email": "Email",
+    "resume": "View Resume",
+    "portfolio": "Explore My Portfolio",
+    "phone": "Phone",
+    "links": "Find me around the internet",
+    "newTab": "opens in a new tab"
+  },
   "loading": {
+    "preparing": "Getting ready for the journey...",
+    "preparingDetail": "Preparing the type and cursor",
+    "packing": "Packing up the stories...",
+    "finishing": "Putting everything in place...",
+    "images": "Images prepared",
+    "files": "Images ready: {{completed}} / {{total}}",
+    "slow": "Still getting things ready. Thanks for staying!",
+    "tips": [
+      "A little code, a little curiosity, and plenty of experiments.",
+      "There are notebooks to open along the journey.",
+      "You can explore in Thai or English."
+    ],
     "title": "Loading",
     "wait": "Preparing something fun...",
     "error": "Couldn't load everything",

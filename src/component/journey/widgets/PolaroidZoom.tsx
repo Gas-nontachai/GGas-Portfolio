@@ -28,6 +28,7 @@ export default function PolaroidZoom({ source, onExited }: Props) {
     const originalOverflow = html.style.overflow
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
     let closing = false
+    let opening = true
     let disposed = false
     let timeline: gsap.core.Timeline | null = null
 
@@ -35,13 +36,21 @@ export default function PolaroidZoom({ source, onExited }: Props) {
     const originals = [source, ...source.querySelectorAll<HTMLElement>('*')]
     const copies = [clone, ...clone.querySelectorAll<HTMLElement>('*')]
     const copyAppearance = () => {
-      originals.forEach((element, index) => {
-        const computed = getComputedStyle(element)
-        for (const property of computed)
-          copies[index].style.setProperty(property, computed.getPropertyValue(property))
-        copies[index].removeAttribute('id')
-        copies[index].removeAttribute('tabindex')
-      })
+      // Resize can recopy the frame after its source has been hidden for flight.
+      // Read its original visibility so the cloned photo stays visible too.
+      const visibility = source.style.visibility
+      gsap.set(source, { visibility: originalVisibility })
+      try {
+        originals.forEach((element, index) => {
+          const computed = getComputedStyle(element)
+          for (const property of computed)
+            copies[index].style.setProperty(property, computed.getPropertyValue(property))
+          copies[index].removeAttribute('id')
+          copies[index].removeAttribute('tabindex')
+        })
+      } finally {
+        gsap.set(source, { visibility })
+      }
       Object.assign(clone.style, {
         position: 'relative',
         margin: '0',
@@ -141,6 +150,7 @@ export default function PolaroidZoom({ source, onExited }: Props) {
     const close = () => {
       if (closing || disposed) return
       closing = true
+      opening = false
       timeline?.kill()
       if (reduced.matches) {
         finish()
@@ -154,11 +164,16 @@ export default function PolaroidZoom({ source, onExited }: Props) {
     }
     closeAnimation.current = close
     if (reduced.matches) {
+      opening = false
       gsap.set(flight, centeredPose())
       gsap.set([backdrop, closeButton], { opacity: 1 })
     } else {
       timeline = gsap
-        .timeline()
+        .timeline({
+          onComplete: () => {
+            opening = false
+          },
+        })
         .to(flight, { ...centeredPose(), duration: 0.65, ease: 'power3.inOut' }, 0)
         .to(backdrop, { opacity: 1, duration: 0.65, ease: smoothstep }, 0)
         .to(closeButton, { opacity: 1, duration: 0.2 }, 0.4)
@@ -189,8 +204,22 @@ export default function PolaroidZoom({ source, onExited }: Props) {
       }
       timeline?.kill()
       updateSize()
-      gsap.set(flight, centeredPose())
-      gsap.set([backdrop, closeButton], { opacity: 1 })
+      if (opening && !reduced.matches) {
+        // Locking page scroll can resize the viewport as the photo opens.
+        // Continue the flight from its current pose instead of snapping to center.
+        timeline = gsap
+          .timeline({
+            onComplete: () => {
+              opening = false
+            },
+          })
+          .to(flight, { ...centeredPose(), duration: 0.65, ease: 'power3.inOut' }, 0)
+          .to([backdrop, closeButton], { opacity: 1, duration: 0.4 }, 0)
+      } else {
+        opening = false
+        gsap.set(flight, centeredPose())
+        gsap.set([backdrop, closeButton], { opacity: 1 })
+      }
     }
     const motionChanged = () => {
       if (reduced.matches) resize()

@@ -50,7 +50,7 @@ export default function EndingMessage() {
   return (
     <div className="ending-message" data-ending-message inert aria-hidden="true">
       <p className="ending-eyebrow">
-        <ScrambleText text={`05 / ${t('ending.eyebrow')}`} />
+        <ScrambleText text={`06 / ${t('ending.eyebrow')}`} />
       </p>
       <h2 id="ending-heading">
         <ScrambleText text={t('ending.title')} />
