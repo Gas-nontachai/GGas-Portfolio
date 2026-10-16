@@ -101,6 +101,39 @@ function DrawnIcon({ name }: { name: string }) {
         </>
       )
       break
+    case 'Google Apps Script':
+      drawing = (
+        <>
+          <path fill="#ffd34e" d="M15 6h24l11 12v39H15a5 5 0 0 1-5-5V11a5 5 0 0 1 5-5Z" />
+          <path fill="#fff0a8" d="M39 6v13h11" />
+          <path fill="#34a853" d="m21 30 7-6 5 5-5 4 5 4-5 6-7-6 4-4Z" />
+          <path fill="#4285f4" d="m35 29 5-5 7 6-4 4 4 4-7 6-5-6 5-4Z" />
+          <path fill="#fbbc04" d="m28 33 7-8 6 5-7 8-6 6-6-5Z" />
+        </>
+      )
+      break
+    case 'React Router':
+      drawing = (
+        <>
+          <path fill="none" stroke="#f08a62" strokeWidth="8" d="M18 16v30q0 7 8 7h15q7 0 7-7V34" />
+          <circle fill="#f08a62" cx="18" cy="13" r="7" />
+          <circle fill="#f08a62" cx="18" cy="50" r="7" />
+          <circle fill="#f08a62" cx="48" cy="31" r="7" />
+          <path fill="#fff3de" d="m39 29 10-8 10 8-10 8Z" />
+        </>
+      )
+      break
+    case 'PostgreSQL':
+      drawing = (
+        <>
+          <path fill="#76a9d3" d="M10 18q0-10 22-10t22 10v27q0 10-22 10T10 45Z" />
+          <ellipse fill="#b8d9f0" cx="32" cy="18" rx="22" ry="10" />
+          <path fill="none" d="M10 31q0 10 22 10t22-10M10 43q0 9 22 9t22-9" />
+          <path fill="#fff" stroke="none" d="M24 18h16v5H29v4h9v5h-9v9h-5Z" />
+          <path fill="#fff" stroke="none" d="M38 18h5v23h-5Z" />
+        </>
+      )
+      break
     case 'REST APIs':
       drawing = (
         <>

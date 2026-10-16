@@ -269,7 +269,55 @@
     "items": {
       "health": {
         "title": "Health SaaS",
-        "summary": "A web app for tracking your personal health online, with records you can export and share with your doctor."
+        "summary": "A web app for tracking your personal health online, with records you can export and share with your doctor.",
+        "notebook": {
+          "story": {
+            "title": "From a little worry to an app I wanted to make",
+            "subtitle": "A project that started close to home",
+            "artCaption": "Health SaaS app icon",
+            "origin": [
+              "Honestly, this project started with my mom.",
+              "She has diabetes, so she needs to keep track of her blood sugar. Writing it all down in a notebook every day wasn't very convenient, and Excel felt like more work than it was worth."
+            ],
+            "tag": "Family health",
+            "rightLabel": "Where it began",
+            "heading": "What if I made it a web app?",
+            "idea": [
+              "So I thought... what if I made a small website that made it easier for Mom to keep track of everything?",
+              "I wasn't trying to build some big app at first. I just wanted to make something she could open and use without a fuss."
+            ],
+            "noteTitle": "Where Health SaaS began",
+            "note": "And that's how Health SaaS got its start."
+          },
+          "evolution": {
+            "title": "From a small idea to a web app",
+            "subtitle": "A project that kept growing along with me",
+            "label": "From prototype to full stack",
+            "cards": {
+              "prototype": {
+                "title": "Start with the simplest thing",
+                "description": "I started with a Google Apps Script prototype. I just wanted to see if my idea could actually make things easier to use."
+              },
+              "frontend": {
+                "title": "Time for a new frontend!",
+                "description": "When I wanted to turn it into a proper app, I moved to React and built an SPA. It gave me more room to shape the look and feel."
+              },
+              "backend": {
+                "title": "From Apps Script to a proper backend",
+                "description": "As more people became interested, it felt like time to rework the backend. I moved to Fastify for the API, with Prisma and PostgreSQL, so everything was better organized and easier to build on."
+              },
+              "learning": {
+                "title": "What this project taught me",
+                "points": [
+                  "You don't always have to start with the newest or most complicated technology.",
+                  "Starting with a small problem close to home, then building and improving little by little, can take you further than you think."
+                ],
+                "takeawayLabel": "What I learned",
+                "takeaway": "I only wanted to make something for Mom at first. Somehow, it became a project that taught me a whole lot along the way."
+              }
+            }
+          }
+        }
       },
       "longduw": {
         "title": "LongDuw",

@@ -22,9 +22,6 @@ export default function ProjectNotebookContent({
         </h2>
         <figure className="creation-notebook-illustration">
           <CreationArtwork artwork={item.artwork} />
-          <figcaption>
-            <ScrambleText text={t('creations.illustration')} />
-          </figcaption>
         </figure>
         <p className="notebook-lead">
           <ScrambleText text={t(notebook?.overviewKey ?? item.summaryKey)} />
