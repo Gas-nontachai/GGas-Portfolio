@@ -1,6 +1,7 @@
 import type { MouseEvent } from 'react'
 import { ArrowUpLeft } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import ScrambleText from '../ScrambleText'
 import { scrollToSection } from '../../utils/scrollNavigation'
 
 export default function EndingMessage() {
@@ -31,12 +32,18 @@ export default function EndingMessage() {
   }
   return (
     <div className="ending-message" data-ending-message inert aria-hidden="true">
-      <p className="ending-eyebrow">04 / {t('ending.eyebrow')}</p>
-      <h2 id="ending-heading">{t('ending.title')}</h2>
-      <p className="ending-copy">{t('ending.description')}</p>
+      <p className="ending-eyebrow">
+        <ScrambleText text={`05 / ${t('ending.eyebrow')}`} />
+      </p>
+      <h2 id="ending-heading">
+        <ScrambleText text={t('ending.title')} />
+      </h2>
+      <p className="ending-copy">
+        <ScrambleText text={t('ending.description')} />
+      </p>
       <a className="ending-back" href="#main" onClick={backToStart}>
         <ArrowUpLeft aria-hidden="true" size={20} />
-        {t('ending.back')}
+        <ScrambleText text={t('ending.back')} />
       </a>
     </div>
   )

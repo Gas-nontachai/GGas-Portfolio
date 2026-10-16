@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useTranslation } from 'react-i18next'
+import ScrambleText from '../ScrambleText'
 import DrivingScene from './DrivingScene'
 import EndingMessage from './EndingMessage'
 import { endingConfig, roadsideObjects } from './ending.config'
@@ -161,7 +162,7 @@ export default function EndingSection({ ready = true }: { ready?: boolean }) {
       <DrivingScene />
       <EndingMessage />
       <p className="ending-scroll-hint" data-ending-hint>
-        {t('ending.scroll')} <span aria-hidden="true">↓</span>
+        <ScrambleText text={t('ending.scroll')} /> <span aria-hidden="true">↓</span>
       </p>
     </section>
   )

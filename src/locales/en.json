@@ -11,7 +11,8 @@
     "label": "Main navigation",
     "brand": "GGAS home",
     "journey": "Journey",
-    "experiments": "Experiments"
+    "experiments": "Experiments",
+    "creations": "Creations"
   },
   "home": {
     "hello": "Hey, I'm",
@@ -236,5 +237,58 @@
     "description": "Thanks for coming along. I wonder what exciting new paths might be waiting ahead.",
     "back": "Back to Start",
     "scroll": "Scroll to follow the road"
+  },
+  "creations": {
+    "eyebrow": "BUILT FROM CURIOSITY",
+    "description": "Built from curiosity, kept as a collection. Apps, small experiments, and ideas waiting for their turn.",
+    "collection": "COLLECTION / {{count}} ITEMS",
+    "inventory": "My creation inventory",
+    "inspect": "Inspect {{title}}",
+    "empty": "Empty slot",
+    "project": "PROJECT",
+    "close": "Close preview",
+    "more": "View More",
+    "illustration": "Project illustration",
+    "why": "Why I built it",
+    "details": "Build notes",
+    "features": "What I built",
+    "tools": "Tools used",
+    "learnings": "What I learned",
+    "live": "Open live site",
+    "categories": {
+      "health": "Health",
+      "productivity": "Productivity",
+      "finance": "Personal finance",
+      "idea": "Future idea"
+    },
+    "status": {
+      "completed": "Completed",
+      "wip": "In progress",
+      "mystery": "Not built yet"
+    },
+    "items": {
+      "health": {
+        "title": "Health SaaS",
+        "summary": "A personal project called Health SaaS. Explore it through the live site."
+      },
+      "longduw": {
+        "title": "LongDuw",
+        "summary": "A To-Do list application built with Flutter."
+      },
+      "ngenbills": {
+        "title": "NgenBills",
+        "summary": "A Flutter app for tracking personal debts and payments, with data stored on your device.",
+        "overview": "NgenBills tracks multiple debt accounts offline. Debt and payment records are stored in SQLite on the device, without a user account or backend.",
+        "features": [
+          "Track multiple debt accounts, balances and payment progress.",
+          "Record payments and additional borrowing, with dates, notes and history.",
+          "Back up local data to a file and restore it through the app settings."
+        ]
+      },
+      "mystery": {
+        "title": "Mystery {{number}}",
+        "summary": "An idea waiting to be built. There is still room in the collection for whatever comes next."
+      }
+    }
   }
 }

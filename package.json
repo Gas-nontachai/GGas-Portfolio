@@ -18,7 +18,8 @@
     "test:experiments": "node --test tests/experiment-selection.test.mjs tests/experiment-scroll.test.mjs tests/experiment-layout.test.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test:creations": "node --test tests/creations-state.test.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
