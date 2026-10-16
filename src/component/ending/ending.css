@@ -282,9 +282,6 @@
   }
   .ending-message {
     top: 70px;
-    left: 3%;
-    translate: 0;
-    width: 44%;
     padding: clamp(8px, 2.5dvh, 12px) 14px;
     box-shadow: 4px 4px 0 var(--border);
   }
