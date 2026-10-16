@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import type { ReactNode } from 'react'
+import { ArrowUpRight } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import ScrambleText from '../ScrambleText'
 import {
@@ -115,6 +116,19 @@ export default function LongDuwNotebookContent({ item, side, label, spread }: Pr
           className="longduw-story-tags"
           text={(t(`${prefix}.story.tags`, { returnObjects: true }) as string[]).join(' / ')}
         />
+        {item.links?.github && (
+          <div className="creation-project-links">
+            <a
+              className="creation-source-link"
+              href={item.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ScrambleText text={t('creations.github')} />
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+          </div>
+        )}
       </div>
     )
   }

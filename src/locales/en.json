@@ -255,6 +255,7 @@
     "tools": "Tools used",
     "learnings": "What I learned",
     "live": "Open live site",
+    "github": "View source on GitHub",
     "categories": {
       "health": "Health",
       "productivity": "Task management",
@@ -385,7 +386,64 @@
           "Track multiple debt accounts, balances and payment progress.",
           "Record payments and additional borrowing, with dates, notes and history.",
           "Back up local data to a file and restore it through the app settings."
-        ]
+        ],
+        "notebook": {
+          "story": {
+            "title": "NgenBills",
+            "subtitle": "A debt tracker that makes money a little easier to understand.",
+            "artCaption": "NgenBills wallet icon",
+            "origin": [
+              "Money can get confusing, especially when you're keeping track of several debts at once.",
+              "What's left to pay? How much have I paid already? What went out this month? Without one place to see it all, it's easy to lose track.",
+              "I thought a small app that shows the balance and payment progress at a glance could make it all feel a bit more manageable."
+            ],
+            "tags": ["Personal Finance", "Debt Tracker"],
+            "rightLabel": "The idea behind it",
+            "heading": "Why NgenBills?",
+            "why": [
+              "I wasn't trying to build a finance app packed with features. I just wanted to open it and immediately know where I stood with each debt.",
+              "So each account gets a progress chart, a payment history, and its remaining balance in one place.",
+              "The data stays on the device in SQLite, too. No account to sign up for and no backend to rely on."
+            ],
+            "noteTitle": "A little progress is still progress",
+            "note": "Every time someone opens the app, I hope they see more than what's left to pay. I hope they can see how far they've already come, too. :)"
+          },
+          "evolution": {
+            "label": "Development Journey",
+            "title": "From an idea to an app you can use",
+            "subtitle": "Keeping things simple enough for everyday life",
+            "cards": {
+              "accounts": {
+                "title": "Several debts, all in one place",
+                "description": "I built it to keep multiple debt accounts together, so you can swipe between them instead of digging through separate screens.",
+                "points": [
+                  "Keep multiple debt accounts",
+                  "Customize each account's name, color, and icon",
+                  "Swipe between accounts"
+                ]
+              },
+              "progress": {
+                "title": "See how far you've come",
+                "description": "A remaining balance is useful, but it doesn't tell the whole story. The half-circle chart shows how much you've paid, with dated payments, notes, and history close at hand.",
+                "points": [
+                  "Log payments with dates and notes",
+                  "See payment progress and what's left",
+                  "Look back through payment history"
+                ]
+              },
+              "architecture": {
+                "title": "Your data stays yours",
+                "description": "I chose Flutter and SQLite so the app can keep its data on-device and work offline. Riverpod helps keep app state and responsibilities organized."
+              },
+              "learning": {
+                "title": "What I learned",
+                "description": "This project got me thinking more about UX from the user's side. Money can already be stressful, so I wanted the app to feel calm, clear, and easy to get around.",
+                "takeawayLabel": "What stuck with me",
+                "takeaway": "The best app isn't always the one with the most features. Sometimes it's the one that makes a complicated thing feel easier to handle. :)"
+              }
+            }
+          }
+        }
       },
       "mystery": {
         "title": "Mystery {{number}}",

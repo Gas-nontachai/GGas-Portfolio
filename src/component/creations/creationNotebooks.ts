@@ -5,6 +5,7 @@ import { canOpenNotebook } from './inventoryState'
 import ProjectNotebookContent from './ProjectNotebookContent'
 import HealthNotebookContent from './HealthNotebookContent'
 import LongDuwNotebookContent from './LongDuwNotebookContent'
+import NgenBillsNotebookContent from './NgenBillsNotebookContent'
 
 export const creationNotebooks = new Map(
   creations.filter(canOpenNotebook).map((item) => [
@@ -47,14 +48,33 @@ export const creationNotebooks = new Map(
                 createElement(LongDuwNotebookContent, { ...props, item, spread: 'evolution' }),
             },
           ] satisfies NotebookSpread[])
-        : ([
-            {
-              id: item.id,
-              titleKey: item.titleKey,
-              descriptionKey: item.summaryKey,
-              Content: (props: ChapterPageProps) =>
-                createElement(ProjectNotebookContent, { ...props, item }),
-            },
-          ] satisfies NotebookSpread[]),
+        : item.id === 'ngenbills'
+          ? ([
+              {
+                id: 'ngenbills-story',
+                titleKey: 'creations.items.ngenbills.notebook.story.title',
+                descriptionKey: 'creations.items.ngenbills.notebook.story.subtitle',
+                className: 'ngenbills-notebook',
+                Content: (props: ChapterPageProps) =>
+                  createElement(NgenBillsNotebookContent, { ...props, item, spread: 'story' }),
+              },
+              {
+                id: 'ngenbills-evolution',
+                titleKey: 'creations.items.ngenbills.notebook.evolution.title',
+                descriptionKey: 'creations.items.ngenbills.notebook.evolution.subtitle',
+                className: 'ngenbills-notebook',
+                Content: (props: ChapterPageProps) =>
+                  createElement(NgenBillsNotebookContent, { ...props, item, spread: 'evolution' }),
+              },
+            ] satisfies NotebookSpread[])
+          : ([
+              {
+                id: item.id,
+                titleKey: item.titleKey,
+                descriptionKey: item.summaryKey,
+                Content: (props: ChapterPageProps) =>
+                  createElement(ProjectNotebookContent, { ...props, item }),
+              },
+            ] satisfies NotebookSpread[]),
   ]),
 )

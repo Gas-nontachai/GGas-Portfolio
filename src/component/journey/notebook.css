@@ -224,11 +224,17 @@ html {
 }
 .notebook-tags {
   display: inline-block;
+  width: fit-content;
+  max-width: 100%;
+  align-self: flex-start;
   padding: 5px 10px;
   border: 2px solid #171717;
   background: var(--notebook-accent);
+  box-shadow: 2px 2px 0 #171717;
   font-weight: 700;
   font-size: 11px !important;
+  overflow-wrap: anywhere;
+  transform: rotate(-1deg);
 }
 .notebook-car-sticker {
   display: block;
