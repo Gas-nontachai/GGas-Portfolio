@@ -76,10 +76,6 @@ function App({ ready = true }: { ready?: boolean }) {
       <ExperimentsSection ready={ready} />
       <MyCreationsSection ready={ready} />
       <EndingSection ready={ready} />
-      <footer className="mt-auto flex justify-between gap-4 border-t-[3px] border-border bg-secondary-background px-6 py-5 font-mono text-xs sm:px-10">
-        <span>GGAS PORTFOLIO</span>
-        <span>2026</span>
-      </footer>
     </>
   )
 }

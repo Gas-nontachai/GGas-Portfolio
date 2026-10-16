@@ -135,7 +135,11 @@ export default function MyCreationsSection({ ready = true }: { ready?: boolean }
             <ScrambleText text={t('creations.description')} />
           </p>
           <span className="creations-collection-tag">
-            <ScrambleText text={t('creations.collection', { count: creations.length })} />
+            <ScrambleText
+              text={t('creations.collection', {
+                count: creations.filter((item) => item.status !== 'mystery').length,
+              })}
+            />
           </span>
         </header>
         <div className="creation-board" role="group" aria-label={t('creations.inventory')}>

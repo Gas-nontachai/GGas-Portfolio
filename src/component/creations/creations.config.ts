@@ -11,7 +11,7 @@ export const inventoryConfig = {
 export const creations: readonly Creation[] = [
   {
     id: 'health',
-    status: 'completed',
+    status: 'wip',
     categoryKey: 'creations.categories.health',
     titleKey: 'creations.items.health.title',
     summaryKey: 'creations.items.health.summary',
@@ -21,7 +21,7 @@ export const creations: readonly Creation[] = [
   },
   {
     id: 'longduw',
-    status: 'completed',
+    status: 'wip',
     categoryKey: 'creations.categories.productivity',
     titleKey: 'creations.items.longduw.title',
     summaryKey: 'creations.items.longduw.summary',
@@ -31,7 +31,7 @@ export const creations: readonly Creation[] = [
   },
   {
     id: 'ngenbills',
-    status: 'completed',
+    status: 'wip',
     categoryKey: 'creations.categories.finance',
     titleKey: 'creations.items.ngenbills.title',
     summaryKey: 'creations.items.ngenbills.summary',
