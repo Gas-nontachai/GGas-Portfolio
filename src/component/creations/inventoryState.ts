@@ -65,18 +65,20 @@ export function inventoryReducer(state: InventoryState, action: InventoryAction)
   }
 }
 
-export function canOpenNotebook(item: Pick<Creation, 'status' | 'notebook'>) {
+export function canOpenNotebook(item: Pick<Creation, 'status' | 'notebook' | 'links'>) {
   const notebook = item.notebook
   return (
     item.status !== 'mystery' &&
     Boolean(
-      notebook &&
-      (notebook.overviewKey ||
-        notebook.whyKey ||
-        notebook.featureKeys?.length ||
-        notebook.tech?.length ||
-        notebook.learningKeys?.length ||
-        notebook.screenshots?.length),
+      item.links?.live ||
+      item.links?.github ||
+      (notebook &&
+        (notebook.overviewKey ||
+          notebook.whyKey ||
+          notebook.featureKeys?.length ||
+          notebook.tech?.length ||
+          notebook.learningKeys?.length ||
+          notebook.screenshots?.length)),
     )
   )
 }

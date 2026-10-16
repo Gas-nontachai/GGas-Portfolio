@@ -40,6 +40,10 @@ test('mystery has a preview but never a notebook; empty slots cannot be selected
   assert.equal(canOpenNotebook({ status: 'mystery', notebook: {} }), false)
   assert.equal(canOpenNotebook({ status: 'wip', notebook: {} }), false)
   assert.equal(canOpenNotebook({ status: 'wip', notebook: { tech: ['Flutter'] } }), true)
+  assert.equal(
+    canOpenNotebook({ status: 'completed', links: { live: 'https://example.com' } }),
+    true,
+  )
   assert.equal(canOpenNotebook({ status: 'completed', notebook: {} }), false)
   assert.equal(canOpenNotebook({ status: 'completed' }), false)
 })
