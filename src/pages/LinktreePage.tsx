@@ -1,4 +1,4 @@
-import { Moon, Sun } from 'lucide-react'
+import { Heart, Moon, Sun } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { contactLinks, contactProfile } from '../data/contactLinks'
 import { useThemeStore } from '../store/useThemeStore'
@@ -61,7 +61,21 @@ export default function LinktreePage() {
             </div>
           ))}
         </nav>
-        <footer>{contactProfile.footer}</footer>
+        <footer>
+          {contactProfile.footer.split('♥').map((part, index) => (
+            <span key={index}>
+              {index > 0 && (
+                <Heart
+                  className="linktree-footer-heart"
+                  size={14}
+                  aria-label="love"
+                  fill="currentColor"
+                />
+              )}
+              {part}
+            </span>
+          ))}
+        </footer>
       </main>
     </>
   )

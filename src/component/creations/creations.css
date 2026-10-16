@@ -330,6 +330,10 @@
   margin-top: 24px;
 }
 .creation-project-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
   color: #171717;
   font-weight: 700;
   text-underline-offset: 4px;
@@ -474,6 +478,7 @@
   transform: rotate(12deg);
 }
 .health-live-link {
+  gap: 6px;
   display: inline-flex;
   min-height: 42px;
   align-items: center;
@@ -1418,4 +1423,9 @@
     animation: none !important;
     transition: none !important;
   }
+}
+
+.creation-project-links a > svg,
+.health-live-link > svg {
+  flex-shrink: 0;
 }

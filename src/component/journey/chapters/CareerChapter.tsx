@@ -1,3 +1,4 @@
+import { ArrowDown } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import ScrambleText from '../../ScrambleText'
 import teamPhoto from '../../../assets/journey_timeline/img/tcc-team-photobooth.jpg'
@@ -146,7 +147,7 @@ export function AppsFlyerSpread({ side, label }: ChapterPageProps) {
         <div className="notebook-flyer-flow">
           <span className="notebook-flyer-source">Oishi Club</span>
           <span aria-hidden="true" className="notebook-flyer-arrow">
-            ↓
+            <ArrowDown size={24} strokeWidth={2.5} />
           </span>
           <div className="notebook-flyer-app">
             <span>{careerProjectTitles.flyer}</span>
@@ -155,7 +156,7 @@ export function AppsFlyerSpread({ side, label }: ChapterPageProps) {
             </p>
           </div>
           <span aria-hidden="true" className="notebook-flyer-arrow">
-            ↓
+            <ArrowDown size={24} strokeWidth={2.5} />
           </span>
           <span className="notebook-flyer-destination">Connect X</span>
         </div>

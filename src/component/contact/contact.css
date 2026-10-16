@@ -18,11 +18,24 @@
   font-weight: 700;
 }
 .contact-heading h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2em;
   margin: 0;
   font-size: clamp(36px, 5vw, 60px);
   line-height: 1.15;
 }
-.contact-heading h2 > span:last-child,
+.contact-heading-mark {
+  width: 0.8em;
+  height: 0.8em;
+  flex: 0 0 auto;
+  color: #df563d;
+}
+.contact-heading h2 > .group\/scramble {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 .contact-identity h3 span,
 .linktree-header h1 > span:last-child {
   color: #df563d;
@@ -393,4 +406,9 @@
   .contact-actions {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+
+.linktree-footer-heart {
+  display: inline-block;
+  vertical-align: -0.12em;
 }

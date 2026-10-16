@@ -1,4 +1,5 @@
 import type { Dispatch } from 'react'
+import { Smile } from 'lucide-react'
 import avatar from '../../assets/experiments-neubrutal/avatar.webp'
 import shelf from '../../assets/experiments-neubrutal/shelf.webp'
 import desk from '../../assets/experiments-neubrutal/desk.webp'
@@ -30,7 +31,7 @@ export default function ExperimentScene({
             <br />
             Create.
             <br />
-            Repeat. <span>☺</span>
+            Repeat. <Smile className="experiments-note-smile" aria-hidden="true" />
           </div>
           <div className="experiments-avatar" data-experiment-avatar>
             <img src={avatar} width="800" height="742" alt="" />
@@ -72,12 +73,12 @@ export default function ExperimentScene({
             <br />
             progress,
             <br />
-            not perfect. ☺
+            not perfect. <Smile className="experiments-note-smile" aria-hidden="true" />
           </div>
           <div className="experiments-note experiments-note--green">
             Same curiosity.
             <br />
-            Different day. ☺
+            Different day. <Smile className="experiments-note-smile" aria-hidden="true" />
           </div>
         </div>
         <div className="experiments-foreground" aria-hidden="true">

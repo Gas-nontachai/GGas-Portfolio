@@ -102,7 +102,8 @@ export default function ProjectNotebookContent({
         <div className="creation-project-links">
           {item.links?.live && (
             <a href={item.links.live} target="_blank" rel="noopener noreferrer">
-              <ScrambleText text={`${t('creations.live')} ↗`} />
+              <ScrambleText text={t('creations.live')} />
+              <ArrowUpRight size={18} strokeWidth={2.5} aria-hidden="true" />
             </a>
           )}
           {item.links?.github && (
