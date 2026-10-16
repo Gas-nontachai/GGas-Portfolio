@@ -123,7 +123,7 @@
   margin: 0;
   font-size: 44px;
   line-height: 1.15;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
 }
 .contact-role {
   margin: 14px 0 16px;
@@ -137,7 +137,7 @@
 }
 .contact-socials {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   max-width: 100%;
   gap: 4px;
@@ -437,8 +437,8 @@
     padding: 24px 16px 28px;
   }
   .contact-identity {
-    grid-template-columns: minmax(88px, 0.8fr) minmax(0, 1.2fr);
-    gap: 20px;
+    grid-template-columns: minmax(72px, 0.8fr) minmax(176px, 1.2fr);
+    gap: 16px;
   }
   .contact-portrait-star {
     width: 38px;
@@ -456,7 +456,7 @@
     line-height: 1.2;
   }
   .contact-identity h3 {
-    font-size: 32px;
+    font-size: 28px;
   }
   .contact-name-row {
     flex-direction: column;
@@ -537,8 +537,8 @@
     padding-inline: 12px;
   }
   .contact-identity {
-    grid-template-columns: 88px minmax(0, 1fr);
-    gap: 16px;
+    grid-template-columns: minmax(60px, 1fr) minmax(176px, 1.6fr);
+    gap: 12px;
   }
   .contact-identity h3 {
     font-size: 28px;
