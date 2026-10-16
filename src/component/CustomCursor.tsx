@@ -1,10 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-const cursorAssets = import.meta.glob<string>('../assets/neobrutal-cursors/*.svg', {
-  eager: true,
-  query: '?url',
-  import: 'default',
-})
+import { cursorAssets } from '../config/cursors'
 
 const hotspots = {
   default: [23, 23],
@@ -51,6 +47,8 @@ export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    const originalCursor = document.body.hasAttribute('data-custom-cursor')
+    document.body.setAttribute('data-custom-cursor', '')
     let currentCursor: CursorName | null = null
 
     const updateCursor = (event: PointerEvent) => {
@@ -86,6 +84,7 @@ export default function CustomCursor() {
     window.addEventListener('blur', hideCursor)
 
     return () => {
+      if (!originalCursor) document.body.removeAttribute('data-custom-cursor')
       window.removeEventListener('pointermove', updateCursor)
       window.removeEventListener('pointerover', updateCursor)
       window.removeEventListener('pointerdown', updateCursor)
@@ -101,7 +100,7 @@ export default function CustomCursor() {
       ref={cursorRef}
       aria-hidden="true"
       style={{ visibility: 'hidden' }}
-      className="pointer-events-none fixed top-0 left-0 z-[9999] size-[32px] bg-contain bg-no-repeat will-change-transform pointer-coarse:hidden"
+      className="pointer-events-none fixed top-0 left-0 z-[10001] size-[32px] bg-contain bg-no-repeat will-change-transform pointer-coarse:hidden"
     />
   )
 }

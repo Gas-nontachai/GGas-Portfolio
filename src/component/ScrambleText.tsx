@@ -10,10 +10,14 @@ export default function ScrambleText({ text }: { text: string }) {
   const container = useRef<HTMLSpanElement>(null)
   const overlay = useRef<HTMLSpanElement>(null)
   const previousLanguage = useRef(language)
+  const previousText = useRef(text)
 
   useLayoutEffect(() => {
-    if (previousLanguage.current === language) return
+    const languageChanged = previousLanguage.current !== language
+    const textChanged = previousText.current !== text
     previousLanguage.current = language
+    previousText.current = text
+    if (!languageChanged || !textChanged) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
     const wrapper = container.current

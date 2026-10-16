@@ -1,0 +1,129 @@
+html {
+  scrollbar-gutter: stable;
+}
+
+.notebook-photo {
+  position: relative;
+  margin: 22px 8px;
+  padding: 12px 12px 8px;
+  border: 3px solid #171717;
+  background: #fff;
+  box-shadow: 5px 5px 0 #171717;
+  transform: rotate(-3deg);
+}
+.notebook-photo > img:not(.notebook-tape) {
+  display: block;
+  width: 100%;
+  height: 155px;
+  padding: 12px;
+  background: #c9e9ee;
+  object-fit: contain;
+}
+.notebook-photo figcaption {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+.notebook-photo-personal > img:not(.notebook-tape) {
+  height: auto;
+  max-height: 220px;
+  padding: 0;
+  background: #fff;
+  object-fit: contain;
+}
+
+.notebook-tape {
+  position: absolute;
+  z-index: 1;
+  top: -21px;
+  left: calc(50% - 45px);
+  width: 90px;
+  height: 42px;
+  transform: rotate(5deg);
+}
+
+.notebook-photo.notebook-photo-polaroid {
+  width: min(calc(100% - 16px), 240px);
+  margin: 0;
+  padding: 8px 8px 6px;
+  border: 1px solid #17171718;
+  background: #fffefa;
+  box-shadow:
+    0 4px 10px #17171724,
+    0 1px 2px #17171716;
+}
+.notebook-photo.notebook-photo-polaroid.university-notebook-photo {
+  width: min(calc(100% - 16px), clamp(200px, 32vw, 350px));
+}
+
+.notebook-photo.notebook-photo-polaroid > img:not(.notebook-tape) {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  padding: 0;
+  background: transparent;
+  object-fit: contain;
+}
+.notebook-photo-polaroid figcaption {
+  margin: 0;
+  padding: 10px 1px 5px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #45413b;
+}
+.notebook-photo-polaroid[role='button'] {
+  cursor: zoom-in;
+  touch-action: manipulation;
+}
+.notebook-photo-polaroid[role='button']:focus-visible {
+  outline: 3px dashed #171717;
+  outline-offset: 5px;
+}
+.polaroid-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  isolation: isolate;
+  color: #171717;
+  font-family: var(--font-sans);
+  overscroll-behavior: contain;
+}
+.polaroid-zoom-backdrop {
+  position: absolute;
+  inset: 0;
+  background: #171717d9;
+  touch-action: none;
+}
+.polaroid-zoom-flight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  will-change: transform;
+  backface-visibility: hidden;
+  overflow: visible;
+}
+.polaroid-zoom-close {
+  position: absolute;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(20px, env(safe-area-inset-right));
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid #171717;
+  border-radius: 4px;
+  background: #ffe16b;
+  color: #171717;
+  box-shadow: 4px 4px 0 #171717;
+}
+.polaroid-zoom-close:hover {
+  background: #fffefa;
+}
+.polaroid-zoom-close:focus-visible {
+  outline: 3px dashed #fffefa;
+  outline-offset: 5px;
+}

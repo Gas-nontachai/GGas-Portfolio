@@ -28,6 +28,7 @@ export const creations: readonly Creation[] = [
     color: '#68a4ff',
     artwork: { kind: 'image', src: longduwLogo },
     notebook: { tech: ['Flutter'] },
+    links: { github: 'https://github.com/Gas-nontachai/LongDuw-ToDoList' },
   },
   {
     id: 'ngenbills',

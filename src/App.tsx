@@ -1,7 +1,6 @@
-import { useEffect, useLayoutEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
-import CustomCursor from './component/CustomCursor'
 import Navbar from './component/Navbar'
 import Introduction from './component/home/Introduction'
 import PlayerProfile from './component/home/PlayerProfile'
@@ -11,10 +10,9 @@ import JourneyTimeline from './component/journey/JourneyTimeline'
 import ExperimentsSection from './component/experiments/ExperimentsSection'
 import MyCreationsSection from './component/creations/MyCreationsSection'
 import EndingSection from './component/ending/EndingSection'
-import { useThemeStore } from './store/useThemeStore'
+import ContactSection from './component/contact/ContactSection'
 
 function App({ ready = true }: { ready?: boolean }) {
-  const theme = useThemeStore((state) => state.theme)
   const main = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -52,15 +50,8 @@ function App({ ready = true }: { ready?: boolean }) {
     { scope: main, dependencies: [ready], revertOnUpdate: true },
   )
 
-  useLayoutEffect(() => {
-    const dark = theme === 'dark'
-    document.documentElement.classList.toggle('dark', dark)
-    document.documentElement.style.colorScheme = dark ? 'dark' : 'light'
-  }, [theme])
-
   return (
     <>
-      {ready && <CustomCursor />}
       <Navbar />
       <main
         ref={main}
@@ -75,6 +66,7 @@ function App({ ready = true }: { ready?: boolean }) {
       <JourneyTimeline ready={ready} />
       <ExperimentsSection ready={ready} />
       <MyCreationsSection ready={ready} />
+      <ContactSection ready={ready} />
       <EndingSection ready={ready} />
     </>
   )

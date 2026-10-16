@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/linktree", "destination": "/index.html" },
+    { "source": "/linktree/", "destination": "/index.html" }
+  ]
+}

@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { ArrowUpRight } from 'lucide-react'
 import type { ChapterPageProps } from '../journey/chapters/types'
 import ScrambleText from '../ScrambleText'
 import type { Creation } from './types'
@@ -22,9 +23,6 @@ export default function ProjectNotebookContent({
         </h2>
         <figure className="creation-notebook-illustration">
           <CreationArtwork artwork={item.artwork} />
-          <figcaption>
-            <ScrambleText text={t('creations.illustration')} />
-          </figcaption>
         </figure>
         <p className="notebook-lead">
           <ScrambleText text={t(notebook?.overviewKey ?? item.summaryKey)} />
@@ -108,8 +106,14 @@ export default function ProjectNotebookContent({
             </a>
           )}
           {item.links?.github && (
-            <a href={item.links.github} target="_blank" rel="noopener noreferrer">
-              GitHub ↗
+            <a
+              className="creation-source-link"
+              href={item.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <ScrambleText text={t('creations.github')} />
+              <ArrowUpRight size={17} aria-hidden="true" />
             </a>
           )}
         </div>

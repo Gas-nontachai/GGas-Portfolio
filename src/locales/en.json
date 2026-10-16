@@ -1,5 +1,33 @@
 {
+  "contact": {
+    "eyebrow": "KEEP THE CONVERSATION GOING",
+    "title": "Let's connect!",
+    "intro": "Have an idea, a question, or just want to say hi? Pick a channel below.",
+    "role": "Full-Stack Developer",
+    "bio": "Just a developer who loves building things and exploring new ideas.",
+    "xp": "XP / Still exploring",
+    "xpNote": "Just for fun. Always more to discover.",
+    "actions": "Contact ThangGas",
+    "email": "Email",
+    "resume": "View Resume",
+    "portfolio": "Explore My Portfolio",
+    "phone": "Phone",
+    "links": "Find me around the internet",
+    "newTab": "opens in a new tab"
+  },
   "loading": {
+    "preparing": "Getting ready for the journey...",
+    "preparingDetail": "Preparing the type and cursor",
+    "packing": "Packing up the stories...",
+    "finishing": "Putting everything in place...",
+    "images": "Images prepared",
+    "files": "Images ready: {{completed}} / {{total}}",
+    "slow": "Still getting things ready. Thanks for staying!",
+    "tips": [
+      "A little code, a little curiosity, and plenty of experiments.",
+      "There are notebooks to open along the journey.",
+      "You can explore in Thai or English."
+    ],
     "title": "Loading",
     "wait": "Preparing something fun...",
     "error": "Couldn't load everything",
@@ -255,6 +283,7 @@
     "tools": "Tools used",
     "learnings": "What I learned",
     "live": "Open live site",
+    "github": "View source on GitHub",
     "categories": {
       "health": "Health",
       "productivity": "Task management",
@@ -269,11 +298,113 @@
     "items": {
       "health": {
         "title": "Health SaaS",
-        "summary": "A web app for tracking your personal health online, with records you can export and share with your doctor."
+        "summary": "A web app for tracking your personal health online, with records you can export and share with your doctor.",
+        "notebook": {
+          "story": {
+            "title": "From a little worry to an app I wanted to make",
+            "subtitle": "A project that started close to home",
+            "artCaption": "Health SaaS app icon",
+            "origin": [
+              "Honestly, this project started with my mom.",
+              "She has diabetes, so she needs to keep track of her blood sugar. Writing it all down in a notebook every day wasn't very convenient, and Excel felt like more work than it was worth."
+            ],
+            "tag": "Family health",
+            "rightLabel": "Where it began",
+            "heading": "What if I made it a web app?",
+            "idea": [
+              "So I thought... what if I made a small website that made it easier for Mom to keep track of everything?",
+              "I wasn't trying to build some big app at first. I just wanted to make something she could open and use without a fuss."
+            ],
+            "noteTitle": "Where Health SaaS began",
+            "note": "And that's how Health SaaS got its start."
+          },
+          "evolution": {
+            "title": "From a small idea to a web app",
+            "subtitle": "A project that kept growing along with me",
+            "label": "From prototype to full stack",
+            "cards": {
+              "prototype": {
+                "title": "Start with the simplest thing",
+                "description": "I started with a Google Apps Script prototype. I just wanted to see if my idea could actually make things easier to use."
+              },
+              "frontend": {
+                "title": "Time for a new frontend!",
+                "description": "When I wanted to turn it into a proper app, I moved to React and built an SPA. It gave me more room to shape the look and feel."
+              },
+              "backend": {
+                "title": "From Apps Script to a proper backend",
+                "description": "As more people became interested, it felt like time to rework the backend. I moved to Fastify for the API, with Prisma and PostgreSQL, so everything was better organized and easier to build on."
+              },
+              "learning": {
+                "title": "What this project taught me",
+                "points": [
+                  "You don't always have to start with the newest or most complicated technology.",
+                  "Starting with a small problem close to home, then building and improving little by little, can take you further than you think."
+                ],
+                "takeawayLabel": "What I learned",
+                "takeaway": "I only wanted to make something for Mom at first. Somehow, it became a project that taught me a whole lot along the way."
+              }
+            }
+          }
+        }
       },
       "longduw": {
         "title": "LongDuw",
-        "summary": "I wanted a sample project to learn CRUD from start to finish, including notifications."
+        "summary": "I wanted a sample project to learn CRUD from start to finish, including notifications.",
+        "notebook": {
+          "story": {
+            "title": "LongDuw",
+            "subtitle": "I wanted to try Flutter, so I built a real app!",
+            "artCaption": "LongDuw app icon",
+            "origin": [
+              "I was getting interested in Flutter at the time, and figured I needed a real project to learn something new by actually building it.",
+              "I picked a To-Do List because it seemed like a simple place to start. But as I kept working on it, there was more to learn than I expected: managing data, shaping the UI, and making the app genuinely comfortable to use."
+            ],
+            "rightLabel": "The starting idea",
+            "heading": "Why a To-Do List?",
+            "idea": [
+              "I wanted to start with something easy to understand, but with room to keep building on it.",
+              "At first I thought adding, editing, and deleting tasks would be enough. Then I wanted to add search, filters, sorting, and notifications too."
+            ],
+            "noteTitle": "From practice project to a real app",
+            "note": "I thought I was just making an app to practice Flutter. I ended up trying a lot more new things than I expected.",
+            "tags": ["Flutter", "Dart", "Mobile Development"]
+          },
+          "evolution": {
+            "title": "From CRUD to a useful mobile app",
+            "subtitle": "Learning one feature at a time by building it",
+            "label": "Development Journey",
+            "cards": {
+              "basics": {
+                "title": "Start with CRUD",
+                "description": "The first thing I tried was adding, editing, deleting, and marking tasks as complete. It sounds simple, but building it gave me practice with state management, form validation, and designing screens that feel good to use.",
+                "tech": ["Flutter", "Dart", "State Management"]
+              },
+              "useful": {
+                "title": "CRUD alone wasn't quite enough",
+                "description": "As the task list grew, I added search, filters for priority and due date, and sorting to make things easier to find. I also added Thai/English language switching and Light/Dark themes.",
+                "features": ["Search", "Filter", "Sort", "Thai/English", "Light/Dark Themes"]
+              },
+              "data": {
+                "title": "Keep the data, send the reminders",
+                "description": "I separated data from the UI and explored SQLite for local storage. For notifications, I planned a daily task summary instead of a reminder for every task.",
+                "tech": ["SQLite", "SharedPreferences", "Local Notifications"],
+                "plannedLabel": "In development",
+                "planned": ["SQLite migration", "Daily Notifications"]
+              },
+              "learning": {
+                "title": "What did I learn from this?",
+                "description": "This project showed me mobile development is about more than a polished UI.",
+                "points": [
+                  "State and storage need to work together.",
+                  "Android/iOS differences and small usability details shape the experience."
+                ],
+                "takeawayLabel": "What I learned",
+                "takeaway": "Sometimes the best way to learn isn't just reading. It's trying, breaking things, and coming back to fix them yourself."
+              }
+            }
+          }
+        }
       },
       "ngenbills": {
         "title": "NgenBills",
@@ -283,7 +414,63 @@
           "Track multiple debt accounts, balances and payment progress.",
           "Record payments and additional borrowing, with dates, notes and history.",
           "Back up local data to a file and restore it through the app settings."
-        ]
+        ],
+        "notebook": {
+          "story": {
+            "title": "NgenBills",
+            "subtitle": "A debt tracker that makes money a little easier to understand.",
+            "artCaption": "NgenBills wallet icon",
+            "origin": [
+              "Money can get confusing, especially when you're keeping track of several debts at once.",
+              "What's left to pay? How much have I paid already? What went out this month? Without one place to see it all, it's easy to lose track.",
+              "I thought a small app that shows the balance and payment progress at a glance could make it all feel a bit more manageable."
+            ],
+            "rightLabel": "The idea behind it",
+            "heading": "Why NgenBills?",
+            "why": [
+              "I wasn't trying to build a finance app packed with features. I just wanted to open it and immediately know where I stood with each debt.",
+              "So each account gets a progress chart, a payment history, and its remaining balance in one place.",
+              "The data stays on the device in SQLite, too. No account to sign up for and no backend to rely on."
+            ],
+            "noteTitle": "See how far we've come",
+            "note": "Each time we open the app, I want us to see more than what's left to pay. I want us to see how far we've already come, too. :)"
+          },
+          "evolution": {
+            "label": "Development Journey",
+            "title": "From an idea to an app you can use",
+            "subtitle": "Keeping things simple enough for everyday life",
+            "cards": {
+              "accounts": {
+                "title": "Several debts, all in one place",
+                "description": "I brought multiple debt accounts together and made it easy to swipe between them, instead of hopping through separate screens.",
+                "points": [
+                  "Keep multiple debt accounts",
+                  "Customize each account's name, color, and icon",
+                  "Swipe between accounts"
+                ]
+              },
+              "progress": {
+                "title": "See how far you've come",
+                "description": "A balance alone doesn't show the progress you've made, so I added a half-circle chart. You can log payments with dates and notes, then look back through the history.",
+                "points": [
+                  "Log payments with dates and notes",
+                  "See payment progress and what's left",
+                  "Look back through payment history"
+                ]
+              },
+              "architecture": {
+                "title": "Your data stays yours",
+                "description": "I chose Flutter and SQLite so the app can keep its data on-device and work offline. Riverpod helps keep app state and responsibilities organized."
+              },
+              "learning": {
+                "title": "What I learned",
+                "description": "This project got me thinking more about UX from the user's side. Money can already be stressful, so I wanted the app to feel calm, clear, and easy to get around.",
+                "takeawayLabel": "What stuck with me",
+                "takeaway": "The best app isn't always the one with the most features. Sometimes it's the one that makes a complicated thing feel easier to handle. :)"
+              }
+            }
+          }
+        }
       },
       "mystery": {
         "title": "Mystery {{number}}",

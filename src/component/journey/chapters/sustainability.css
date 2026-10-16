@@ -1,8 +1,3 @@
-.notebook-overlay[data-chapter='career'] .notebook-stage {
-  width: min(1240px, calc(100vw - 56px));
-  height: min(860px, calc(100dvh - 56px));
-}
-
 .sustainability-notebook {
   background: #a9d98b;
   box-shadow: 8px 8px 0 #171717;
@@ -31,7 +26,7 @@
 }
 .sustainability-intro {
   position: relative;
-  padding-right: 106px;
+  padding-right: 126px;
 }
 .notebook-overlay .sustainability-intro h2 {
   margin: 8px 0 5px;
@@ -44,7 +39,7 @@
   line-height: 1.45;
 }
 .sustainability-intro .sustainability-description {
-  margin: 12px -106px 16px 0;
+  margin: 12px -126px 16px 0;
   font-size: 13px;
   line-height: 1.5;
 }
@@ -53,8 +48,8 @@
   position: absolute;
   top: 15px;
   right: 0;
-  width: 92px;
-  height: 88px;
+  width: 112px;
+  height: 107px;
   border: 3px solid #171717;
   padding: 5px;
   background: linear-gradient(#fff8de 0 5px, #a5e5fa 5px 65%, #8ac878 65% 85%, #fff8de 85%);
@@ -63,16 +58,16 @@
 }
 .sustainability-snapshot-tree {
   position: absolute;
-  width: 44px;
-  height: 58px;
+  width: 46%;
+  height: 66%;
   left: 3px;
   bottom: 12px;
   object-fit: contain;
 }
 .sustainability-snapshot-office {
   position: absolute;
-  width: 48px;
-  height: 56px;
+  width: 48%;
+  height: 64%;
   right: 1px;
   bottom: 12px;
   object-fit: contain;
@@ -300,7 +295,7 @@
   .sustainability-topic > p {
     font-size: 14px;
     margin-bottom: 10px;
-    max-width: calc(100% - 110px);
+    max-width: calc(100% - 124px);
   }
   .notebook-overlay .sustainability-topic h3 {
     font-size: 22px;
@@ -315,8 +310,11 @@
     height: 40px;
   }
   .sustainability-topic-art {
-    width: 110px;
-    height: 125px;
+    width: 124px;
+    height: 146px;
+  }
+  .sustainability-tech-list {
+    max-width: calc(100% - 124px);
   }
   .sustainability-topics {
     gap: 18px;
@@ -324,10 +322,6 @@
 }
 
 @media (max-width: 700px) {
-  .notebook-overlay[data-chapter='career'] .notebook-stage {
-    width: calc(100vw - 40px);
-    height: calc(100dvh - 64px);
-  }
   .sustainability-notebook .notebook-paper {
     padding: 24px 16px 30px;
   }
@@ -341,6 +335,14 @@
     width: 74px;
     height: 76px;
     margin: 12px 3px 16px 16px;
+  }
+  .sustainability-snapshot-tree {
+    width: 44px;
+    height: 58px;
+  }
+  .sustainability-snapshot-office {
+    width: 48px;
+    height: 56px;
   }
   .sustainability-intro .sustainability-description {
     margin-right: 0;
