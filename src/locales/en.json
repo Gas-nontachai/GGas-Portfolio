@@ -425,7 +425,6 @@
               "What's left to pay? How much have I paid already? What went out this month? Without one place to see it all, it's easy to lose track.",
               "I thought a small app that shows the balance and payment progress at a glance could make it all feel a bit more manageable."
             ],
-            "tags": ["Personal Finance", "Debt Tracker"],
             "rightLabel": "The idea behind it",
             "heading": "Why NgenBills?",
             "why": [
@@ -433,8 +432,8 @@
               "So each account gets a progress chart, a payment history, and its remaining balance in one place.",
               "The data stays on the device in SQLite, too. No account to sign up for and no backend to rely on."
             ],
-            "noteTitle": "A little progress is still progress",
-            "note": "Every time someone opens the app, I hope they see more than what's left to pay. I hope they can see how far they've already come, too. :)"
+            "noteTitle": "See how far we've come",
+            "note": "Each time we open the app, I want us to see more than what's left to pay. I want us to see how far we've already come, too. :)"
           },
           "evolution": {
             "label": "Development Journey",
@@ -443,7 +442,7 @@
             "cards": {
               "accounts": {
                 "title": "Several debts, all in one place",
-                "description": "I built it to keep multiple debt accounts together, so you can swipe between them instead of digging through separate screens.",
+                "description": "I brought multiple debt accounts together and made it easy to swipe between them, instead of hopping through separate screens.",
                 "points": [
                   "Keep multiple debt accounts",
                   "Customize each account's name, color, and icon",
@@ -452,7 +451,7 @@
               },
               "progress": {
                 "title": "See how far you've come",
-                "description": "A remaining balance is useful, but it doesn't tell the whole story. The half-circle chart shows how much you've paid, with dated payments, notes, and history close at hand.",
+                "description": "A balance alone doesn't show the progress you've made, so I added a half-circle chart. You can log payments with dates and notes, then look back through the history.",
                 "points": [
                   "Log payments with dates and notes",
                   "See payment progress and what's left",

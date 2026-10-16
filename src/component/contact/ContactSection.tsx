@@ -52,9 +52,6 @@ export default function ContactSection({ ready = true }: { ready?: boolean }) {
           <ScrambleText text={t('contact.title')} />
           <span aria-hidden="true"> ✳</span>
         </h2>
-        <p>
-          <ScrambleText text={t('contact.intro')} />
-        </p>
       </header>
       <ProfileCard />
     </section>

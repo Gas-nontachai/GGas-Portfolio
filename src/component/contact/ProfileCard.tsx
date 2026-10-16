@@ -38,7 +38,7 @@ export default function ProfileCard() {
               <SocialLinks />
             </div>
             <p className="contact-role">
-              <ScrambleText text={t('contact.role')} />
+              <ScrambleText text={'Full-Stack Developer'} />
             </p>
             <div className="contact-tags">
               {contactProfile.tags.map((tag) => (
@@ -53,7 +53,7 @@ export default function ProfileCard() {
         <div className="contact-xp" aria-hidden="true">
           <div className="contact-xp-label">
             <span>
-              <ScrambleText text={t('contact.xp')} />
+              <ScrambleText text={'XP / ∞'} />
             </span>
             <span>{contactProfile.xp}%</span>
           </div>

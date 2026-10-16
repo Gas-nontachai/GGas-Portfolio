@@ -31,6 +31,7 @@ const evolutionCards = [
 ] as const
 
 const techStack = ['Flutter', 'Dart', 'SQLite', 'Riverpod']
+const storyTags = ['Personal Finance', 'Debt Tracker']
 
 function EvolutionCard({
   number,
@@ -96,10 +97,7 @@ export default function NgenBillsNotebookContent({ item, side, label, spread }: 
               </p>
             ))}
           </div>
-          <Tags
-            className="ngenbills-story-tags"
-            text={(t(`${prefix}.story.tags`, { returnObjects: true }) as string[]).join(' / ')}
-          />
+          <Tags className="ngenbills-story-tags" text={storyTags.join(' / ')} />
         </div>
       )
 
@@ -124,10 +122,7 @@ export default function NgenBillsNotebookContent({ item, side, label, spread }: 
           </MemoryNote>
           <Sticker kind="heart" className="ngenbills-memory-sticker" />
         </div>
-        <Tags
-          className="ngenbills-story-tags"
-          text={(t(`${prefix}.story.tags`, { returnObjects: true }) as string[]).join(' / ')}
-        />
+        <Tags className="ngenbills-story-tags" text={storyTags.join(' / ')} />
         {item.links?.github && (
           <a
             className="creation-source-link"
